@@ -1,14 +1,6 @@
 <?php namespace App;
 
-use Illuminate\Auth\UserTrait;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Auth\Reminders\RemindableTrait;
-use Illuminate\Contracts\Auth\User as UserContract;
-use Illuminate\Contracts\Auth\Remindable as RemindableContract;
-
-class User extends Model implements UserContract, RemindableContract {
-
-	use UserTrait, RemindableTrait;
+class User extends \Cartalyst\Sentry\Users\Eloquent\User {
 
 	/**
 	 * The database table used by the model.
@@ -17,11 +9,13 @@ class User extends Model implements UserContract, RemindableContract {
 	 */
 	protected $table = 'users';
 
-	/**
-	 * The attributes excluded from the model's JSON form.
-	 *
-	 * @var array
-	 */
-	protected $hidden = ['password', 'remember_token'];
+	public function routes()
+	{
+		$this->hasMany('App\\UserRoute', 'user_id', 'id');
+	}
 
+	public function companions()
+	{
+		return $this->belongsToMany('App\\UserRoute', 'user_route_companions', 'user_id');
+	}
 }

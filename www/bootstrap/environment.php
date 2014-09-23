@@ -14,5 +14,6 @@
 $env = $app->detectEnvironment([
 
 	'local' => ['homestead'],
+	'development' => ['kalaomer-local']
 
 ]);
