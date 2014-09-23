@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="PBV-gk-hCF">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Rotalarım-->
@@ -84,67 +85,112 @@
             </objects>
             <point key="canvasLocation" x="750" y="360"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Kayıt Ol-->
         <scene sceneID="4bD-I2-fan">
             <objects>
-                <tableViewController id="gfD-0o-oaB" sceneMemberID="viewController">
+                <tableViewController id="gfD-0o-oaB" customClass="SignupViewController" customModule="OzU_Carpool" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="Dfh-NE-afP">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
-                            <tableViewSection headerTitle="Kayıt ol - Socivy Carpool" footerTitle="Alın verin, ulaşıma can verin :-)" id="Pu6-L1-XfF">
+                            <tableViewSection id="Dal-Xg-wwN">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="PNo-qj-gg5">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="120" id="Y8M-Nq-T2l">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Y8M-Nq-T2l" id="bNF-RT-Euc">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" alpha="0.69999998807907104" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Socivy-Logo-Vector-File-03" translatesAutoresizingMaskIntoConstraints="NO" id="Jep-zo-nIw">
+                                                    <rect key="frame" x="0.0" y="8" width="600" height="104"/>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Jep-zo-nIw" firstAttribute="top" secondItem="bNF-RT-Euc" secondAttribute="topMargin" id="1Fb-EM-Kth"/>
+                                                <constraint firstItem="Jep-zo-nIw" firstAttribute="leading" secondItem="bNF-RT-Euc" secondAttribute="leadingMargin" constant="-8" id="Aeb-z4-Gbw"/>
+                                                <constraint firstItem="Jep-zo-nIw" firstAttribute="bottom" secondItem="bNF-RT-Euc" secondAttribute="bottomMargin" id="HT0-AH-vFS"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Jep-zo-nIw" secondAttribute="trailing" constant="-8" id="IR6-TY-xpP"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="Kayıt ol - Socivy Carpool" id="Pu6-L1-XfF">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="50" id="PNo-qj-gg5" customClass="TextFieldCell" customModule="OzU_Carpool" customModuleProvider="target">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PNo-qj-gg5" id="6lA-NZ-v44">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Ad Soyad (John Appleseed)" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="i9U-cF-iSI">
-                                                    <rect key="frame" x="8" y="7" width="584" height="30"/>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Ad Soyad (John Appleseed)" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="i9U-cF-iSI">
+                                                    <rect key="frame" x="8" y="10" width="584" height="40"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottomMargin" secondItem="i9U-cF-iSI" secondAttribute="bottom" constant="-8" id="PUx-nd-lx9"/>
+                                                <constraint firstItem="i9U-cF-iSI" firstAttribute="top" secondItem="6lA-NZ-v44" secondAttribute="topMargin" constant="2" id="bsE-Dp-AYQ"/>
+                                                <constraint firstItem="i9U-cF-iSI" firstAttribute="trailing" secondItem="6lA-NZ-v44" secondAttribute="trailingMargin" id="pyV-rq-qas"/>
+                                                <constraint firstItem="i9U-cF-iSI" firstAttribute="leading" secondItem="6lA-NZ-v44" secondAttribute="leadingMargin" id="wks-58-CJ2"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="S1l-Iy-9qe">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="50" id="S1l-Iy-9qe" customClass="TextFieldCell" customModule="OzU_Carpool" customModuleProvider="target">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="S1l-Iy-9qe" id="TWc-G5-57B">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ÖzÜ Email (john.appleseed@ozu.edu.tr)" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Vl7-Uw-kMP">
-                                                    <rect key="frame" x="8" y="7" width="584" height="30"/>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="ÖzÜ Email (john.appleseed@ozu.edu.tr)" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Vl7-Uw-kMP">
+                                                    <rect key="frame" x="8" y="8" width="584" height="42"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottomMargin" secondItem="Vl7-Uw-kMP" secondAttribute="bottom" constant="-8" id="26r-YV-Akj"/>
+                                                <constraint firstItem="Vl7-Uw-kMP" firstAttribute="trailing" secondItem="TWc-G5-57B" secondAttribute="trailingMargin" id="E1R-CF-iPY"/>
+                                                <constraint firstItem="Vl7-Uw-kMP" firstAttribute="leading" secondItem="TWc-G5-57B" secondAttribute="leadingMargin" id="IrQ-IR-OYf"/>
+                                                <constraint firstItem="Vl7-Uw-kMP" firstAttribute="top" secondItem="TWc-G5-57B" secondAttribute="topMargin" id="jKe-Iy-t1k"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="6d5-fG-oei">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="50" id="6d5-fG-oei" customClass="TextFieldCell" customModule="OzU_Carpool" customModuleProvider="target">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6d5-fG-oei" id="wW1-WK-k6b">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Şifre (qwerty1234ozu2014freewifi)" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ebs-Vz-DmE">
-                                                    <rect key="frame" x="8" y="8" width="584" height="30"/>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Şifre (qwerty1234ozu2014freewifi)" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ebs-Vz-DmE">
+                                                    <rect key="frame" x="8" y="0.0" width="584" height="50"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="ebs-Vz-DmE" firstAttribute="leading" secondItem="wW1-WK-k6b" secondAttribute="leadingMargin" id="8Gx-mW-6uQ"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="ebs-Vz-DmE" secondAttribute="bottom" constant="-8" id="Drm-0x-aae"/>
+                                                <constraint firstItem="ebs-Vz-DmE" firstAttribute="top" secondItem="wW1-WK-k6b" secondAttribute="topMargin" constant="-8" id="OlV-65-Afo"/>
+                                                <constraint firstItem="ebs-Vz-DmE" firstAttribute="trailing" secondItem="wW1-WK-k6b" secondAttribute="trailingMargin" id="nYc-8C-jXB"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="pXX-nH-ohT">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="50" id="pXX-nH-ohT" customClass="TextFieldCell" customModule="OzU_Carpool" customModuleProvider="target">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pXX-nH-ohT" id="hwM-qQ-b4m">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Cep Telefonu (05...)" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9aQ-Um-2Ti">
-                                                    <rect key="frame" x="8" y="8" width="584" height="30"/>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Cep Telefonu (05...)" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9aQ-Um-2Ti">
+                                                    <rect key="frame" x="8" y="8" width="584" height="34"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="9aQ-Um-2Ti" firstAttribute="leading" secondItem="hwM-qQ-b4m" secondAttribute="leadingMargin" id="IjJ-Hc-Jm8"/>
+                                                <constraint firstItem="9aQ-Um-2Ti" firstAttribute="trailing" secondItem="hwM-qQ-b4m" secondAttribute="trailingMargin" id="PDt-IZ-UZg"/>
+                                                <constraint firstItem="9aQ-Um-2Ti" firstAttribute="top" secondItem="hwM-qQ-b4m" secondAttribute="topMargin" id="s8V-Ol-BW3"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="9aQ-Um-2Ti" secondAttribute="bottom" id="uAJ-aY-D4t"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="374-oc-rZ2" style="IBUITableViewCellStyleDefault" id="9Mm-ab-GCK">
@@ -161,6 +207,7 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.1007598851" green="0.44303433520000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -170,6 +217,7 @@
                             <outlet property="delegate" destination="gfD-0o-oaB" id="Xaj-GJ-ntk"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="Kayıt Ol" id="jgu-1U-CV6"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jxX-n0-VKb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -194,79 +242,89 @@
             </objects>
             <point key="canvasLocation" x="0.0" y="0.0"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Socivy Carpool - ÖzÜ-->
         <scene sceneID="u6v-NI-ckh">
             <objects>
-                <tableViewController id="1GD-eu-wGo" sceneMemberID="viewController">
+                <tableViewController id="1GD-eu-wGo" customClass="LoginViewController" customModule="OzU_Carpool" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="M3Q-tK-qrG">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
-                            <tableViewSection headerTitle="Socivy Carpool " footerTitle="Login, login, login..." id="8zN-Kz-feF">
+                            <tableViewSection id="8zN-Kz-feF">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Ije-S5-UGk">
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ije-S5-UGk" id="SsU-Wj-P8u">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ÖzÜ Email (john.appleseed@ozu.edu.tr)" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XrJ-t3-ixA">
-                                                    <rect key="frame" x="8" y="7" width="584" height="30"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                </textField>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="2qg-kB-XIp">
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2qg-kB-XIp" id="fVg-Gf-noJ">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Şifre" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Fvl-zJ-Dkz">
-                                                    <rect key="frame" x="8" y="7" width="584" height="30"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
-                                                </textField>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="fwy-9d-1hj" style="IBUITableViewCellStyleDefault" id="wYX-dB-BL2">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="120" id="wYX-dB-BL2">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wYX-dB-BL2" id="DD1-XD-Rcd">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Giriş Yap" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="fwy-9d-1hj">
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <color key="backgroundColor" red="0.1007598851" green="0.44303433520000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                <imageView userInteractionEnabled="NO" alpha="0.69999999999999973" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Socivy-Logo-Vector-File-03" translatesAutoresizingMaskIntoConstraints="NO" id="zLv-9f-IYW">
+                                                    <rect key="frame" x="0.0" y="8" width="600" height="104"/>
+                                                </imageView>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="zLv-9f-IYW" firstAttribute="top" secondItem="DD1-XD-Rcd" secondAttribute="topMargin" id="By8-jq-kM6"/>
+                                                <constraint firstItem="zLv-9f-IYW" firstAttribute="bottom" secondItem="DD1-XD-Rcd" secondAttribute="bottomMargin" id="TH8-pH-DzH"/>
+                                                <constraint firstItem="zLv-9f-IYW" firstAttribute="leading" secondItem="DD1-XD-Rcd" secondAttribute="leadingMargin" constant="-8" id="c0Y-yR-Fz9"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="zLv-9f-IYW" secondAttribute="trailing" constant="-8" id="mpN-73-8zW"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="CpM-zH-uAf" style="IBUITableViewCellStyleDefault" id="lHr-tE-8IF">
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection footerTitle="Socivy Carpool 1.0" id="d6T-3w-Czb">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="50" id="Y4N-lx-8LA" customClass="TextFieldCell" customModule="OzU_Carpool" customModuleProvider="target">
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lHr-tE-8IF" id="YUh-Su-wxS">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Y4N-lx-8LA" id="ioS-Zs-81f">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Şifremi Unuttum" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="CpM-zH-uAf">
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <color key="backgroundColor" red="0.1007598851" green="0.44303433520000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="ÖzÜ Email " textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uRY-wq-YjK">
+                                                    <rect key="frame" x="8" y="8" width="584" height="34"/>
+                                                    <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="uRY-wq-YjK" firstAttribute="leading" secondItem="ioS-Zs-81f" secondAttribute="leadingMargin" id="11H-mg-7hj"/>
+                                                <constraint firstItem="uRY-wq-YjK" firstAttribute="top" secondItem="ioS-Zs-81f" secondAttribute="topMargin" id="I6w-fj-oWg"/>
+                                                <constraint firstItem="uRY-wq-YjK" firstAttribute="trailing" secondItem="ioS-Zs-81f" secondAttribute="trailingMargin" id="PQH-4m-dw9"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="uRY-wq-YjK" secondAttribute="bottom" id="clc-88-EbD"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="textField" destination="uRY-wq-YjK" id="G1R-um-8F8"/>
+                                        </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="KLS-JI-WUL" style="IBUITableViewCellStyleDefault" id="naz-2g-jTG">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="50" id="ccH-XJ-czZ" customClass="TextFieldCell" customModule="OzU_Carpool" customModuleProvider="target">
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="naz-2g-jTG" id="hRi-sQ-d0k">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ccH-XJ-czZ" id="KDA-c4-7k4">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Hesabım Yok :-(" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="KLS-JI-WUL">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Şifre" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="D17-0E-CeN">
+                                                    <rect key="frame" x="8" y="8" width="584" height="34"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="D17-0E-CeN" firstAttribute="leading" secondItem="KDA-c4-7k4" secondAttribute="leadingMargin" id="DjP-ll-hpm"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="D17-0E-CeN" secondAttribute="bottom" id="EX9-rR-fF3"/>
+                                                <constraint firstItem="D17-0E-CeN" firstAttribute="trailing" secondItem="KDA-c4-7k4" secondAttribute="trailingMargin" id="Hv3-ES-k4B"/>
+                                                <constraint firstItem="D17-0E-CeN" firstAttribute="top" secondItem="KDA-c4-7k4" secondAttribute="topMargin" id="Rk5-Dd-Zvi"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="textField" destination="D17-0E-CeN" id="RV3-PB-qVj"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="hbb-rF-TcW" style="IBUITableViewCellStyleDefault" id="dWR-m2-RaF">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dWR-m2-RaF" id="kKd-pW-ySX">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Giriş Yap" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hbb-rF-TcW">
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" red="0.1007598851" green="0.44303433520000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -275,6 +333,42 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.1007598851" green="0.44303433520000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="8kr-ux-shW" style="IBUITableViewCellStyleDefault" id="ha9-0D-Wc0">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ha9-0D-Wc0" id="6Ab-uM-tdN">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Şifremi Unuttum" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8kr-ux-shW">
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" red="0.1007598851" green="0.44303433520000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.1007598851" green="0.44303433520000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="a5t-jx-3jA" style="IBUITableViewCellStyleDefault" id="YO6-4J-IFe">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YO6-4J-IFe" id="uO5-d4-MlK">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Kayıt Ol" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="a5t-jx-3jA">
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" red="0.1007598851" green="0.44303433520000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.1007598851" green="0.44303433520000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <segue destination="gfD-0o-oaB" kind="show" id="ZMf-KI-mKk"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -284,13 +378,38 @@
                             <outlet property="delegate" destination="1GD-eu-wGo" id="Nuv-eG-w1z"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="Socivy Carpool - ÖzÜ" id="2V6-3C-Kev"/>
+                    <connections>
+                        <outlet property="emailCell" destination="Y4N-lx-8LA" id="T54-8w-s9E"/>
+                        <outlet property="forgotPasswordCell" destination="ha9-0D-Wc0" id="aHg-5T-b2k"/>
+                        <outlet property="loginCell" destination="dWR-m2-RaF" id="Qqv-iU-sJx"/>
+                        <outlet property="passwordCell" destination="ccH-XJ-czZ" id="J1l-2j-xXT"/>
+                        <outlet property="signupCell" destination="YO6-4J-IFe" id="jAl-ZG-jyB"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rvP-f6-dQ7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="45" y="1034"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="B3d-GM-cMc">
+            <objects>
+                <navigationController id="PBV-gk-hCF" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ejY-gs-OMG">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="1GD-eu-wGo" kind="relationship" relationship="rootViewController" id="laB-Yz-DsO"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ldv-pw-juL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="45" y="1726"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="Socivy-Logo-Vector-File-03" width="761" height="504"/>
         <image name="first" width="30" height="30"/>
         <image name="second" width="30" height="30"/>
     </resources>

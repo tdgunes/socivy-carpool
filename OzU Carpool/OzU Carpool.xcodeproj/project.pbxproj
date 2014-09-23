@@ -14,6 +14,10 @@
 		3DABB0AA19D22332005CE136 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3DABB0A919D22332005CE136 /* Images.xcassets */; };
 		3DABB0AD19D22332005CE136 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DABB0AB19D22332005CE136 /* LaunchScreen.xib */; };
 		3DABB0B919D22332005CE136 /* OzU_CarpoolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DABB0B819D22332005CE136 /* OzU_CarpoolTests.swift */; };
+		3DABB0C319D22756005CE136 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DABB0C219D22756005CE136 /* LoginViewController.swift */; };
+		3DABB0C519D22765005CE136 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DABB0C419D22765005CE136 /* SignupViewController.swift */; };
+		3DABB0C719D22CA3005CE136 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DABB0C619D22CA3005CE136 /* API.swift */; };
+		3DABB0C919D23290005CE136 /* TextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DABB0C819D23290005CE136 /* TextFieldCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +42,10 @@
 		3DABB0B219D22332005CE136 /* OzU CarpoolTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "OzU CarpoolTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DABB0B719D22332005CE136 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3DABB0B819D22332005CE136 /* OzU_CarpoolTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OzU_CarpoolTests.swift; sourceTree = "<group>"; };
+		3DABB0C219D22756005CE136 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		3DABB0C419D22765005CE136 /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		3DABB0C619D22CA3005CE136 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		3DABB0C819D23290005CE136 /* TextFieldCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TextFieldCell.swift; path = ../TextFieldCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +87,7 @@
 		3DABB09D19D22332005CE136 /* OzU Carpool */ = {
 			isa = PBXGroup;
 			children = (
+				3DABB0C819D23290005CE136 /* TextFieldCell.swift */,
 				3DABB0A019D22332005CE136 /* AppDelegate.swift */,
 				3DABB0A219D22332005CE136 /* FirstViewController.swift */,
 				3DABB0A419D22332005CE136 /* SecondViewController.swift */,
@@ -86,6 +95,9 @@
 				3DABB0A919D22332005CE136 /* Images.xcassets */,
 				3DABB0AB19D22332005CE136 /* LaunchScreen.xib */,
 				3DABB09E19D22332005CE136 /* Supporting Files */,
+				3DABB0C219D22756005CE136 /* LoginViewController.swift */,
+				3DABB0C419D22765005CE136 /* SignupViewController.swift */,
+				3DABB0C619D22CA3005CE136 /* API.swift */,
 			);
 			path = "OzU Carpool";
 			sourceTree = "<group>";
@@ -215,8 +227,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3DABB0C319D22756005CE136 /* LoginViewController.swift in Sources */,
+				3DABB0C919D23290005CE136 /* TextFieldCell.swift in Sources */,
 				3DABB0A519D22332005CE136 /* SecondViewController.swift in Sources */,
+				3DABB0C519D22765005CE136 /* SignupViewController.swift in Sources */,
 				3DABB0A119D22332005CE136 /* AppDelegate.swift in Sources */,
+				3DABB0C719D22CA3005CE136 /* API.swift in Sources */,
 				3DABB0A319D22332005CE136 /* FirstViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -409,6 +425,7 @@
 				3DABB0BE19D22332005CE136 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3DABB0BF19D22332005CE136 /* Build configuration list for PBXNativeTarget "OzU CarpoolTests" */ = {
 			isa = XCConfigurationList;
@@ -417,6 +434,7 @@
 				3DABB0C119D22332005CE136 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
