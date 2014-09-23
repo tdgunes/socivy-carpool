@@ -1,6 +1,6 @@
 //
-//  O_zU__CarpoolTests.swift
-//  ÖzÜ CarpoolTests
+//  OzU_CarpoolTests.swift
+//  OzU CarpoolTests
 //
 //  Created by Taha Doğan Güneş on 24/09/14.
 //  Copyright (c) 2014 TDG. All rights reserved.
@@ -9,7 +9,7 @@
 import UIKit
 import XCTest
 
-class O_zU__CarpoolTests: XCTestCase {
+class OzU_CarpoolTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
