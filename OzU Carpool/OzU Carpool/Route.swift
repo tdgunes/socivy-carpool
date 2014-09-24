@@ -10,10 +10,10 @@ import Foundation
 import MapKit
 
 class Stop {
-    var location:CLLocation?
+    var location:CLLocationCoordinate2D?
     var name:String?
     
-    init (name:String?, location:CLLocation?){
+    init (name:String?, location:CLLocationCoordinate2D?){
         self.location = location
         self.name = name
     }
@@ -25,12 +25,14 @@ class Route {
     var timestamp:Int?
     var description: String?
     var toOzu:Bool?
+    var driver:String?
     
-    init(stop:Stop?, timestamp:Int?, description:String?, toOzu:Bool){
+    init(stop:Stop?, timestamp:Int?, description:String?, toOzu:Bool, driver:String?){
         self.stop = stop
         self.timestamp = timestamp
         self.description = description
         self.toOzu = toOzu
+        self.driver = driver
     }
     
     

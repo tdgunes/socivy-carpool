@@ -22,6 +22,7 @@
 		3DABB0D119D24D4A005CE136 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DABB0D019D24D4A005CE136 /* Route.swift */; };
 		3DABB0D319D24DFD005CE136 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DABB0D219D24DFD005CE136 /* MapKit.framework */; };
 		3DABB0D519D25C9A005CE136 /* RouteDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DABB0D419D25C9A005CE136 /* RouteDetailViewController.swift */; };
+		3DABB0D719D25E4D005CE136 /* MapCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DABB0D619D25E4D005CE136 /* MapCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,7 @@
 		3DABB0D019D24D4A005CE136 /* Route.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		3DABB0D219D24DFD005CE136 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		3DABB0D419D25C9A005CE136 /* RouteDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteDetailViewController.swift; sourceTree = "<group>"; };
+		3DABB0D619D25E4D005CE136 /* MapCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,20 +99,20 @@
 			isa = PBXGroup;
 			children = (
 				3DABB0C819D23290005CE136 /* TextFieldCell.swift */,
+				3DABB0D619D25E4D005CE136 /* MapCell.swift */,
 				3DABB0A019D22332005CE136 /* AppDelegate.swift */,
 				3DABB0A619D22332005CE136 /* Main.storyboard */,
 				3DABB0A919D22332005CE136 /* Images.xcassets */,
 				3DABB0AB19D22332005CE136 /* LaunchScreen.xib */,
 				3DABB09E19D22332005CE136 /* Supporting Files */,
 				3DABB0C219D22756005CE136 /* LoginViewController.swift */,
-				3DABB0CE19D24CCC005CE136 /* RoutesViewController.swift */,
+				3DABB0D819D25FE7005CE136 /* Don't Have Car */,
 				3DABB0CC19D23F30005CE136 /* SettingsViewController.swift */,
 				3DABB0C419D22765005CE136 /* SignupViewController.swift */,
 				3DABB0C619D22CA3005CE136 /* API.swift */,
 				3DABB0CA19D23A7C005CE136 /* MainTabBarController.swift */,
 				3DABB0D019D24D4A005CE136 /* Route.swift */,
 				3DABB0D219D24DFD005CE136 /* MapKit.framework */,
-				3DABB0D419D25C9A005CE136 /* RouteDetailViewController.swift */,
 			);
 			path = "OzU Carpool";
 			sourceTree = "<group>";
@@ -138,6 +140,15 @@
 				3DABB0B719D22332005CE136 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3DABB0D819D25FE7005CE136 /* Don't Have Car */ = {
+			isa = PBXGroup;
+			children = (
+				3DABB0CE19D24CCC005CE136 /* RoutesViewController.swift */,
+				3DABB0D419D25C9A005CE136 /* RouteDetailViewController.swift */,
+			);
+			name = "Don't Have Car";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -251,6 +262,7 @@
 				3DABB0CB19D23A7C005CE136 /* MainTabBarController.swift in Sources */,
 				3DABB0C519D22765005CE136 /* SignupViewController.swift in Sources */,
 				3DABB0A119D22332005CE136 /* AppDelegate.swift in Sources */,
+				3DABB0D719D25E4D005CE136 /* MapCell.swift in Sources */,
 				3DABB0C719D22CA3005CE136 /* API.swift in Sources */,
 				3DABB0D519D25C9A005CE136 /* RouteDetailViewController.swift in Sources */,
 				3DABB0CF19D24CCC005CE136 /* RoutesViewController.swift in Sources */,
