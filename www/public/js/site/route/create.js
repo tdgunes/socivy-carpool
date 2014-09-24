@@ -2,8 +2,6 @@
  * Created by kalaomer on 24.09.2014.
  */
 
-window.markers = [];
-
 $(function() {
     var map = L.map('map').setView([41.0230, 29.0805], 11);
 
@@ -12,50 +10,74 @@ $(function() {
         attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
 
+    window._map = map;
+
+    window.markers.map = map;
+
 // add a marker in the given location, attach some popup content to it and open the popup
 /*    L.marker([51.5, -0.09]).addTo(map)
         .bindPopup('A pretty CSS3 popup. <br> Easily customizable.')
         .openPopup();
 */
     map.on('click', function(e) {
-        var marker = L.marker(e.latlng, {
-            draggable: true
-        });
-
-        marker.addTo(map);
-
-        window.markers.push(marker);
+        window.markers.add(e.latlng);
     });
 });
 
 (function() {
     var markers = {
         data: [],
-        listItem: null
+        popups: null,
+        map: null,
+        popup: {
+            options: {
+                maxWidth: 300,
+                minWidth: 200
+            }
+        }
     };
 
-    /**
-     * Marker listesine eleman ekle.
-     * @param _item JQUERY
-     */
-    markers.setListItem = function(_item) {
-        this.listItem = _item;
+    markers.addPopup = function(marker) {
+        var popup = this.newPopup();
+        var popupContent = $(popup.getContent());
+
+        popupContent.find('button.delete-popup').click(function() {
+            markers.map.removeLayer(marker);
+        });
+
+        popupContent.show();
+
+        console.log('Popup added!', popup);
+
+        marker.bindPopup(popup).openPopup();
+    };
+
+    markers.newPopup = function() {
+        var popupContent = $('.point-popup').clone();
+
+        var popup = L.popup(this.popup.options);
+
+        popup.setContent(popupContent[0]);
+
+        return popup;
     }
 
     /**
      *
      * @param marker
      */
-    markers.add = function(marker) {
+    markers.add = function(coordinate) {
+
+        var marker = L.marker(coordinate, {
+            draggable: true
+        });
+
+        marker.addTo(this.map);
+
         this.data.push(marker);
-        this.addList(marker);
+        this.addPopup(marker);
     }
 
-    markers.addList = function(marker) {
+    window.markers = markers;
 
-    }
-
-    markers.listItems = function() {
-        return this.listItem.find('');
-    }
 })();
