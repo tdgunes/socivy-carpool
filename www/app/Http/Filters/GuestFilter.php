@@ -1,6 +1,7 @@
 <?php namespace App\Http\Filters;
 
-use Illuminate\Http\RedirectResponse;
+use Cartalyst\Sentry\Facades\Laravel\Sentry;
+use Illuminate\Support\Facades\Redirect;
 
 class GuestFilter {
 
@@ -13,13 +14,9 @@ class GuestFilter {
 
 	/**
 	 * Create a new filter instance.
-	 *
-	 * @param  Authenticator  $auth
-	 * @return void
 	 */
-	public function __construct(Authenticator $auth)
+	public function __construct()
 	{
-		$this->auth = $auth;
 	}
 
 	/**
@@ -29,9 +26,9 @@ class GuestFilter {
 	 */
 	public function filter()
 	{
-		if ($this->auth->check())
+		if (Sentry::check())
 		{
-			return new RedirectResponse(url('/'));
+			return Redirect::route('home');
 		}
 	}
 

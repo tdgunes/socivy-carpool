@@ -22,6 +22,8 @@ class UserRoutes extends Migration {
 			$table->string('description');
 			$table->unsignedInteger('available_seat');
 
+			$table->timestamp('action_time');
+
 			$table->foreign('user_id')->references('id')->on('users');
 		});
 	}

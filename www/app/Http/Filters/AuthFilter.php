@@ -4,6 +4,8 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
 use Illuminate\Contracts\Auth\Authenticator;
 use Illuminate\Contracts\Routing\ResponseFactory;
+use Cartalyst\Sentry\Facades\Laravel\Sentry;
+use Illuminate\Support\Facades\Redirect;
 
 class AuthFilter {
 
@@ -24,15 +26,10 @@ class AuthFilter {
 	/**
 	 * Create a new filter instance.
 	 *
-	 * @param  Authenticator  $auth
-	 * @param  ResponseFactory  $response
-	 * @return void
 	 */
-	public function __construct(Authenticator $auth,
-								ResponseFactory $response)
+	public function __construct()
 	{
-		$this->auth = $auth;
-		$this->response = $response;
+
 	}
 
 	/**
@@ -44,7 +41,7 @@ class AuthFilter {
 	 */
 	public function filter(Route $route, Request $request)
 	{
-		if ($this->auth->guest())
+		if (!Sentry::check())
 		{
 			if ($request->ajax())
 			{
@@ -52,7 +49,7 @@ class AuthFilter {
 			}
 			else
 			{
-				return $this->response->redirectGuest('auth/login');
+				return Redirect::route('auth.login');
 			}
 		}
 	}

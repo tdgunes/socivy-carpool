@@ -8,4 +8,6 @@ class UserInformation extends Model {
 	use SoftDeletingTrait;
 
 	protected $table = 'user_information';
+
+	protected $guarded = [];
 } 

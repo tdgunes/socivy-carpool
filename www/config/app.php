@@ -52,7 +52,7 @@ return [
 	|
 	*/
 
-	'locale' => 'en',
+	'locale' => 'tr',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -129,6 +129,8 @@ return [
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
 
+		'Cartalyst\Sentry\SentryServiceProvider',
+
 	],
 
 	/*
@@ -186,6 +188,8 @@ return [
 		'URL'       => 'Illuminate\Support\Facades\URL',
 		'Validator' => 'Illuminate\Support\Facades\Validator',
 		'View'      => 'Illuminate\Support\Facades\View',
+
+		'Sentry' => 'Cartalyst\Sentry\Facades\Laravel\Sentry',
 
 	],
 

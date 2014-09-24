@@ -18,4 +18,9 @@ class User extends \Cartalyst\Sentry\Users\Eloquent\User {
 	{
 		return $this->belongsToMany('App\\UserRoute', 'user_route_companions', 'user_id');
 	}
+
+	public function information()
+	{
+		return $this->hasMany('App\\UserInformation', 'user_id', 'id');
+	}
 }
