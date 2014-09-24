@@ -3,5 +3,5 @@
 return [
 	'debug' => true,
 
-	'url' => 'http://carpool.socivy.dev'
+	'url' => getenv('local_url')
 ];
