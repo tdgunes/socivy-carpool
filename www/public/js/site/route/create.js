@@ -2,6 +2,8 @@
  * Created by kalaomer on 24.09.2014.
  */
 
+window.markers = [];
+
 $(function() {
     var map = L.map('map').setView([41.0230, 29.0805], 11);
 
@@ -15,4 +17,45 @@ $(function() {
         .bindPopup('A pretty CSS3 popup. <br> Easily customizable.')
         .openPopup();
 */
+    map.on('click', function(e) {
+        var marker = L.marker(e.latlng, {
+            draggable: true
+        });
+
+        marker.addTo(map);
+
+        window.markers.push(marker);
+    });
 });
+
+(function() {
+    var markers = {
+        data: [],
+        listItem: null
+    };
+
+    /**
+     * Marker listesine eleman ekle.
+     * @param _item JQUERY
+     */
+    markers.setListItem = function(_item) {
+        this.listItem = _item;
+    }
+
+    /**
+     *
+     * @param marker
+     */
+    markers.add = function(marker) {
+        this.data.push(marker);
+        this.addList(marker);
+    }
+
+    markers.addList = function(marker) {
+
+    }
+
+    markers.listItems = function() {
+        return this.listItem.find('');
+    }
+})();
