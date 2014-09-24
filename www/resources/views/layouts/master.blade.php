@@ -16,6 +16,17 @@
             <link rel="stylesheet" href="/style/bootstrap.min.css" />
         @show
 
+        @if (Config::get('app.debug'))
+            @section('head-debug')
+                <!-- Less development mode for block local storage -->
+                <script>
+                    var less = {
+                        env: 'development'
+                    };
+                </script>
+            @show
+        @endif
+
         @section('scripts')
             <script src="/js/jquery.min.js"></script>
             <script src="/js/bootstrap.min.js"></script>

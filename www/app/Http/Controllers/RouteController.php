@@ -22,7 +22,7 @@ class RouteController extends Controller {
 	 */
 	public function create()
 	{
-		//
+		return View::make('route.create');
 	}
 
 	/**
