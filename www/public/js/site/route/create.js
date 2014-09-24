@@ -3,7 +3,9 @@
  */
 
 $(function() {
-    var map = L.map('map').setView([41.0230, 29.0805], 11);
+    var map = L.map('map', {
+        doubleClickZoom: false
+    }).setView([41.0230, 29.0805], 11);
 
 // add an OpenStreetMap tile layer
     L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
@@ -19,7 +21,7 @@ $(function() {
         .bindPopup('A pretty CSS3 popup. <br> Easily customizable.')
         .openPopup();
 */
-    map.on('click', function(e) {
+    map.on('dblclick', function(e) {
         window.markers.add(e.latlng);
     });
 });
