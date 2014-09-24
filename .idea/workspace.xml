@@ -2,128 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b0e70bf8-bf52-49d4-8e21-e71be6428db6" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/public/img/auth/login/cover.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/app/Http/Controllers/Auth.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/resources/views/emails/auth/activation.blade.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/config/development/app.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/public/style/bootstrap-datetimepicker.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/public/js/bootstrap-datetimepicker.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/public/style/bootstrap.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/public/js/bootstrap.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/resources/views/auth/login/content.blade.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/resources/views/auth/register/content.blade.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/resources/views/home/index/content.blade.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/resources/views/place/create/content.blade.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/resources/views/place/index/content.blade.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/resources/views/route/index/content.blade.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/public/style/site/body/page/cover.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/resources/views/place/create.blade.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/resources/views/layouts/body/page/footer.blade.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/resources/views/home/index.blade.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/resources/views/place/index.blade.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/resources/views/route/index.blade.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/public/style/site/route/index.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/public/js/jquery.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/public/js/less.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/resources/views/auth/login.blade.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/public/style/site/auth/login.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/public/style/site/main.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/public/style/site/body/page/main.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/public/style/site/body/page/footer/main.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/resources/views/layouts/master.blade.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/resources/views/layouts/body/page/metabar.blade.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/public/js/moment.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/resources/views/layouts/body/page.blade.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/resources/views/auth/register.blade.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/public/style/site/auth/register.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/resources/lang/tr/site.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/public/js/sprintf.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/webResources.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/app/Http/Requests/.gitkeep" afterPath="$PROJECT_DIR$/www/app/Http/Requests/.gitkeep" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/config/packages/.gitkeep" afterPath="$PROJECT_DIR$/www/config/packages/.gitkeep" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/database/migrations/.gitkeep" afterPath="$PROJECT_DIR$/www/database/migrations/.gitkeep" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/database/seeds/.gitkeep" afterPath="$PROJECT_DIR$/www/database/seeds/.gitkeep" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/public/packages/.gitkeep" afterPath="$PROJECT_DIR$/www/public/packages/.gitkeep" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/storage/work/.gitkeep" afterPath="$PROJECT_DIR$/www/storage/work/.gitkeep" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/carpool.mwb.bak" afterPath="$PROJECT_DIR$/database/carpool.mwb.bak" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/carpool.mwb" afterPath="$PROJECT_DIR$/database/carpool.mwb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/carpool.png" afterPath="$PROJECT_DIR$/database/carpool.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/public/favicon.ico" afterPath="$PROJECT_DIR$/www/public/favicon.ico" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/.gitattributes" afterPath="$PROJECT_DIR$/www/.gitattributes" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/.gitignore" afterPath="$PROJECT_DIR$/www/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/database/.gitignore" afterPath="$PROJECT_DIR$/www/database/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/storage/cache/.gitignore" afterPath="$PROJECT_DIR$/www/storage/cache/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/storage/logs/.gitignore" afterPath="$PROJECT_DIR$/www/storage/logs/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/storage/meta/.gitignore" afterPath="$PROJECT_DIR$/www/storage/meta/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/storage/sessions/.gitignore" afterPath="$PROJECT_DIR$/www/storage/sessions/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/storage/views/.gitignore" afterPath="$PROJECT_DIR$/www/storage/views/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/public/.htaccess" afterPath="$PROJECT_DIR$/www/public/.htaccess" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/database/migrations/2014_09_23_220644_migration_cartalyst_sentry_install_users.php" afterPath="$PROJECT_DIR$/www/database/migrations/2014_09_23_220644_migration_cartalyst_sentry_install_users.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/database/migrations/2014_09_23_220645_migration_cartalyst_sentry_install_groups.php" afterPath="$PROJECT_DIR$/www/database/migrations/2014_09_23_220645_migration_cartalyst_sentry_install_groups.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/database/migrations/2014_09_23_220646_migration_cartalyst_sentry_install_users_groups_pivot.php" afterPath="$PROJECT_DIR$/www/database/migrations/2014_09_23_220646_migration_cartalyst_sentry_install_users_groups_pivot.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/database/migrations/2014_09_23_220647_migration_cartalyst_sentry_install_throttle.php" afterPath="$PROJECT_DIR$/www/database/migrations/2014_09_23_220647_migration_cartalyst_sentry_install_throttle.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/database/migrations/2014_09_23_221405_places.php" afterPath="$PROJECT_DIR$/www/database/migrations/2014_09_23_221405_places.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/database/migrations/2014_09_23_221416_user_routes.php" afterPath="$PROJECT_DIR$/www/database/migrations/2014_09_23_221416_user_routes.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/database/migrations/2014_09_23_221426_user_route_places.php" afterPath="$PROJECT_DIR$/www/database/migrations/2014_09_23_221426_user_route_places.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/database/migrations/2014_09_23_221447_user_route_companions.php" afterPath="$PROJECT_DIR$/www/database/migrations/2014_09_23_221447_user_route_companions.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/database/migrations/2014_09_23_221504_user_information.php" afterPath="$PROJECT_DIR$/www/database/migrations/2014_09_23_221504_user_information.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/app/Providers/AppServiceProvider.php" afterPath="$PROJECT_DIR$/www/app/Providers/AppServiceProvider.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/app/Providers/ArtisanServiceProvider.php" afterPath="$PROJECT_DIR$/www/app/Providers/ArtisanServiceProvider.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/app/Http/Filters/AuthFilter.php" afterPath="$PROJECT_DIR$/www/app/Http/Filters/AuthFilter.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/app/Http/Filters/BasicAuthFilter.php" afterPath="$PROJECT_DIR$/www/app/Http/Filters/BasicAuthFilter.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/app/Http/Filters/CsrfFilter.php" afterPath="$PROJECT_DIR$/www/app/Http/Filters/CsrfFilter.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/database/seeds/DatabaseSeeder.php" afterPath="$PROJECT_DIR$/www/database/seeds/DatabaseSeeder.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/app/Providers/ErrorServiceProvider.php" afterPath="$PROJECT_DIR$/www/app/Providers/ErrorServiceProvider.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/tests/ExampleTest.php" afterPath="$PROJECT_DIR$/www/tests/ExampleTest.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/app/Providers/FilterServiceProvider.php" afterPath="$PROJECT_DIR$/www/app/Providers/FilterServiceProvider.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/app/Http/Filters/GuestFilter.php" afterPath="$PROJECT_DIR$/www/app/Http/Filters/GuestFilter.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/app/Http/Controllers/HomeController.php" afterPath="$PROJECT_DIR$/www/app/Http/Controllers/HomeController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/app/Console/InspireCommand.php" afterPath="$PROJECT_DIR$/www/app/Console/InspireCommand.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/app/Providers/LogServiceProvider.php" afterPath="$PROJECT_DIR$/www/app/Providers/LogServiceProvider.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/app/Http/Filters/MaintenanceFilter.php" afterPath="$PROJECT_DIR$/www/app/Http/Filters/MaintenanceFilter.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/app/Place.php" afterPath="$PROJECT_DIR$/www/app/Place.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/app/Providers/RouteServiceProvider.php" afterPath="$PROJECT_DIR$/www/app/Providers/RouteServiceProvider.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/tests/TestCase.php" afterPath="$PROJECT_DIR$/www/tests/TestCase.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/app/UseRouteCompanion.php" afterPath="$PROJECT_DIR$/www/app/UseRouteCompanion.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/app/User.php" afterPath="$PROJECT_DIR$/www/app/User.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/app/UserInformation.php" afterPath="$PROJECT_DIR$/www/app/UserInformation.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/app/UserRoute.php" afterPath="$PROJECT_DIR$/www/app/UserRoute.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/app/UserRoutePlace.php" afterPath="$PROJECT_DIR$/www/app/UserRoutePlace.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/config/app.php" afterPath="$PROJECT_DIR$/www/config/app.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/config/local/app.php" afterPath="$PROJECT_DIR$/www/config/local/app.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/config/auth.php" afterPath="$PROJECT_DIR$/www/config/auth.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/bootstrap/autoload.php" afterPath="$PROJECT_DIR$/www/bootstrap/autoload.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/config/cache.php" afterPath="$PROJECT_DIR$/www/config/cache.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/config/testing/cache.php" afterPath="$PROJECT_DIR$/www/config/testing/cache.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/config/compile.php" afterPath="$PROJECT_DIR$/www/config/compile.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/composer.json" afterPath="$PROJECT_DIR$/www/composer.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/config/packages/cartalyst/sentry/config.php" afterPath="$PROJECT_DIR$/www/config/packages/cartalyst/sentry/config.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/config/database.php" afterPath="$PROJECT_DIR$/www/config/database.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/config/development/database.php" afterPath="$PROJECT_DIR$/www/config/development/database.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/config/local/database.php" afterPath="$PROJECT_DIR$/www/config/local/database.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/bootstrap/environment.php" afterPath="$PROJECT_DIR$/www/bootstrap/environment.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/config/filesystems.php" afterPath="$PROJECT_DIR$/www/config/filesystems.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/resources/views/hello.php" afterPath="$PROJECT_DIR$/www/resources/views/hello.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/public/index.php" afterPath="$PROJECT_DIR$/www/public/index.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/config/mail.php" afterPath="$PROJECT_DIR$/www/config/mail.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/config/namespaces.php" afterPath="$PROJECT_DIR$/www/config/namespaces.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/resources/lang/en/pagination.php" afterPath="$PROJECT_DIR$/www/resources/lang/en/pagination.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/bootstrap/paths.php" afterPath="$PROJECT_DIR$/www/bootstrap/paths.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/phpunit.xml" afterPath="$PROJECT_DIR$/www/phpunit.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/readme.md" afterPath="$PROJECT_DIR$/www/readme.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/resources/views/emails/auth/reminder.blade.php" afterPath="$PROJECT_DIR$/www/resources/views/emails/auth/reminder.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/resources/lang/en/reminders.php" afterPath="$PROJECT_DIR$/www/resources/lang/en/reminders.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/public/robots.txt" afterPath="$PROJECT_DIR$/www/public/robots.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/app/Http/routes.php" afterPath="$PROJECT_DIR$/www/app/Http/routes.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/server.php" afterPath="$PROJECT_DIR$/www/server.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/config/services.php" afterPath="$PROJECT_DIR$/www/config/services.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/config/session.php" afterPath="$PROJECT_DIR$/www/config/session.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/config/testing/session.php" afterPath="$PROJECT_DIR$/www/config/testing/session.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/socivy-carpool.iml" afterPath="$PROJECT_DIR$/.idea/socivy-carpool.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/bootstrap/start.php" afterPath="$PROJECT_DIR$/www/bootstrap/start.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/resources/lang/en/validation.php" afterPath="$PROJECT_DIR$/www/resources/lang/en/validation.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/config/view.php" afterPath="$PROJECT_DIR$/www/config/view.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/config/workbench.php" afterPath="$PROJECT_DIR$/www/config/workbench.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="socivy-carpool.iws" />
@@ -149,11 +27,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="content.blade.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/www/resources/views/auth/register/content.blade.php">
+      <file leaf-file-name=".env.development.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/www/.env.development.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.056650247" vertical-offset="0" max-vertical-offset="1196">
-              <caret line="2" column="91" selection-start-line="2" selection-start-column="91" selection-end-line="2" selection-end-column="91" />
+            <state vertical-scroll-proportion="0.08497537" vertical-offset="0" max-vertical-offset="812">
+              <caret line="3" column="22" selection-start-line="3" selection-start-column="22" selection-end-line="3" selection-end-column="22" />
               <folding />
             </state>
           </provider>
@@ -1273,7 +1151,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1" y="27" width="1602" height="874" extended-state="7" />
+    <frame x="-1" y="27" width="1602" height="874" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1320,13 +1198,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/www/public/js/bootstrap.min.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="7268">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/www/storage/logs/laravel.log">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-19.007652" vertical-offset="17340" max-vertical-offset="18607">
@@ -1692,6 +1563,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.056650247" vertical-offset="0" max-vertical-offset="1196">
           <caret line="2" column="91" selection-start-line="2" selection-start-column="91" selection-end-line="2" selection-end-column="91" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/www/.env.development.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.08497537" vertical-offset="0" max-vertical-offset="812">
+          <caret line="3" column="22" selection-start-line="3" selection-start-column="22" selection-end-line="3" selection-end-column="22" />
           <folding />
         </state>
       </provider>
