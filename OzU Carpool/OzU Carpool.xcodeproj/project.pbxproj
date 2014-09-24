@@ -21,6 +21,7 @@
 		3DABB0CF19D24CCC005CE136 /* RoutesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DABB0CE19D24CCC005CE136 /* RoutesViewController.swift */; };
 		3DABB0D119D24D4A005CE136 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DABB0D019D24D4A005CE136 /* Route.swift */; };
 		3DABB0D319D24DFD005CE136 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DABB0D219D24DFD005CE136 /* MapKit.framework */; };
+		3DABB0D519D25C9A005CE136 /* RouteDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DABB0D419D25C9A005CE136 /* RouteDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,7 @@
 		3DABB0CE19D24CCC005CE136 /* RoutesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RoutesViewController.swift; path = ../RoutesViewController.swift; sourceTree = "<group>"; };
 		3DABB0D019D24D4A005CE136 /* Route.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		3DABB0D219D24DFD005CE136 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		3DABB0D419D25C9A005CE136 /* RouteDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +110,7 @@
 				3DABB0CA19D23A7C005CE136 /* MainTabBarController.swift */,
 				3DABB0D019D24D4A005CE136 /* Route.swift */,
 				3DABB0D219D24DFD005CE136 /* MapKit.framework */,
+				3DABB0D419D25C9A005CE136 /* RouteDetailViewController.swift */,
 			);
 			path = "OzU Carpool";
 			sourceTree = "<group>";
@@ -249,6 +252,7 @@
 				3DABB0C519D22765005CE136 /* SignupViewController.swift in Sources */,
 				3DABB0A119D22332005CE136 /* AppDelegate.swift in Sources */,
 				3DABB0C719D22CA3005CE136 /* API.swift in Sources */,
+				3DABB0D519D25C9A005CE136 /* RouteDetailViewController.swift in Sources */,
 				3DABB0CF19D24CCC005CE136 /* RoutesViewController.swift in Sources */,
 				3DABB0CD19D23F30005CE136 /* SettingsViewController.swift in Sources */,
 			);

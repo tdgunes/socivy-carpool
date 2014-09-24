@@ -1,5 +1,5 @@
 //
-//  RoutesViewController.swift
+//  RouteDetailViewController.swift
 //  OzU Carpool
 //
 //  Created by Taha Doğan Güneş on 24/09/14.
@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class RoutesViewController: UITableViewController {
+class RouteDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +24,5 @@ class RoutesViewController: UITableViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
     
 }
