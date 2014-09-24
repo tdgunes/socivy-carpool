@@ -206,7 +206,7 @@
         <scene sceneID="6pU-V1-Xfy">
             <objects>
                 <navigationController id="yFz-DC-9sT" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Arabam Yok" image="16-car" id="Kd8-0p-nlA"/>
+                    <tabBarItem key="tabBarItem" title="Arabam Yok" image="103-map" id="Kd8-0p-nlA"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="hDI-As-bqw">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -252,7 +252,7 @@
         <scene sceneID="DqZ-Nl-0jC">
             <objects>
                 <navigationController id="myY-OX-Feb" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Arabam Var" image="103-map" id="zIR-Qn-BMT"/>
+                    <tabBarItem key="tabBarItem" title="Arabam Var" image="16-car" id="zIR-Qn-BMT"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="fuQ-fx-xQF">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>

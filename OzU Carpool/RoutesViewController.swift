@@ -22,8 +22,8 @@ class RoutesViewController: UITableViewController {
         
         let umraniye = CLLocationCoordinate2D(latitude:41.030420 , longitude: 29.122009)
         var stop = Stop(name:"Ümraniye", location:umraniye)
-        
-        var route = Route(stop: stop, timestamp: 12123123123, description: "GO go go", toOzu:true, driver:"Taha Doğan Güneş")
+        var driver = User(name: "Taha Doğan Güneş", cellphone: "05378764948")
+        var route = Route(stop: stop, timestamp: 12123123123, description: "GO go go", toOzu:true, driver:driver)
 
         routes.append(route)
         

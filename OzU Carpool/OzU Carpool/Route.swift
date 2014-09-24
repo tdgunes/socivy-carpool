@@ -9,9 +9,23 @@
 import Foundation
 import MapKit
 
+
+class User {
+    
+    var name:String
+    var cellphone:String
+    
+    init(name:String, cellphone:String){
+        self.name = name
+        self.cellphone = cellphone
+    }
+    
+}
+
 class Stop {
     var location:CLLocationCoordinate2D?
     var name:String?
+    
     
     init (name:String?, location:CLLocationCoordinate2D?){
         self.location = location
@@ -25,9 +39,10 @@ class Route {
     var timestamp:Int?
     var description: String?
     var toOzu:Bool?
-    var driver:String?
+    var driver:User?
     
-    init(stop:Stop?, timestamp:Int?, description:String?, toOzu:Bool, driver:String?){
+    
+    init(stop:Stop?, timestamp:Int?, description:String?, toOzu:Bool, driver:User?){
         self.stop = stop
         self.timestamp = timestamp
         self.description = description
