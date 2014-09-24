@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		3DABB0A119D22332005CE136 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DABB0A019D22332005CE136 /* AppDelegate.swift */; };
-		3DABB0A319D22332005CE136 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DABB0A219D22332005CE136 /* FirstViewController.swift */; };
-		3DABB0A519D22332005CE136 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DABB0A419D22332005CE136 /* SecondViewController.swift */; };
 		3DABB0A819D22332005CE136 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3DABB0A619D22332005CE136 /* Main.storyboard */; };
 		3DABB0AA19D22332005CE136 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3DABB0A919D22332005CE136 /* Images.xcassets */; };
 		3DABB0AD19D22332005CE136 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DABB0AB19D22332005CE136 /* LaunchScreen.xib */; };
@@ -36,8 +34,6 @@
 		3DABB09B19D22332005CE136 /* OzU Carpool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "OzU Carpool.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DABB09F19D22332005CE136 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3DABB0A019D22332005CE136 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		3DABB0A219D22332005CE136 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		3DABB0A419D22332005CE136 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		3DABB0A719D22332005CE136 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3DABB0A919D22332005CE136 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		3DABB0AC19D22332005CE136 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -93,8 +89,6 @@
 			children = (
 				3DABB0C819D23290005CE136 /* TextFieldCell.swift */,
 				3DABB0A019D22332005CE136 /* AppDelegate.swift */,
-				3DABB0A219D22332005CE136 /* FirstViewController.swift */,
-				3DABB0A419D22332005CE136 /* SecondViewController.swift */,
 				3DABB0A619D22332005CE136 /* Main.storyboard */,
 				3DABB0A919D22332005CE136 /* Images.xcassets */,
 				3DABB0AB19D22332005CE136 /* LaunchScreen.xib */,
@@ -236,11 +230,9 @@
 				3DABB0C319D22756005CE136 /* LoginViewController.swift in Sources */,
 				3DABB0C919D23290005CE136 /* TextFieldCell.swift in Sources */,
 				3DABB0CB19D23A7C005CE136 /* MainTabBarController.swift in Sources */,
-				3DABB0A519D22332005CE136 /* SecondViewController.swift in Sources */,
 				3DABB0C519D22765005CE136 /* SignupViewController.swift in Sources */,
 				3DABB0A119D22332005CE136 /* AppDelegate.swift in Sources */,
 				3DABB0C719D22CA3005CE136 /* API.swift in Sources */,
-				3DABB0A319D22332005CE136 /* FirstViewController.swift in Sources */,
 				3DABB0CD19D23F30005CE136 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
