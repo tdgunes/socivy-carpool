@@ -25,7 +25,7 @@ class User {
 class Stop {
     var location:CLLocationCoordinate2D?
     var name:String?
-    
+
     
     init (name:String?, location:CLLocationCoordinate2D?){
         self.location = location
@@ -35,15 +35,15 @@ class Stop {
 
 class Route {
 
-    var stop:Stop?;
+    var stops:[Stop];
+    var selectedStop:Stop?;
     var timestamp:Int?
     var description: String?
     var toOzu:Bool?
     var driver:User?
     
-    
-    init(stop:Stop?, timestamp:Int?, description:String?, toOzu:Bool, driver:User?){
-        self.stop = stop
+    init(stops:[Stop], timestamp:Int?, description:String?, toOzu:Bool, driver:User?){
+        self.stops = stops
         self.timestamp = timestamp
         self.description = description
         self.toOzu = toOzu
@@ -51,4 +51,12 @@ class Route {
     }
     
     
+    func getTime()->String?{
+        let date:NSDate = NSDate(timeIntervalSince1970: NSTimeInterval(self.timestamp!))
+        var dateFormatter:NSDateFormatter = NSDateFormatter()
+        dateFormatter.dateStyle = .ShortStyle
+        dateFormatter.timeStyle = .ShortStyle
+        
+        return dateFormatter.stringFromDate(date)
+    }
 }

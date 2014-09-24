@@ -19,13 +19,15 @@ class RoutesViewController: UITableViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
 
-        
         let umraniye = CLLocationCoordinate2D(latitude:41.030420 , longitude: 29.122009)
         var stop = Stop(name:"Ümraniye", location:umraniye)
         var driver = User(name: "Taha Doğan Güneş", cellphone: "05378764948")
-        var route = Route(stop: stop, timestamp: 12123123123, description: "GO go go", toOzu:true, driver:driver)
+        
+        
+        var example1: Route = Route(stops: [stop], timestamp: 1322486053, description: "Arabamiz tupludur, sigara icmeyin!", toOzu: true, driver: driver)
+        example1.selectedStop = stop
 
-        routes.append(route)
+        routes.append(example1)
         
     }
     
@@ -46,14 +48,14 @@ class RoutesViewController: UITableViewController {
         let cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier("Route", forIndexPath:indexPath) as UITableViewCell
         var route = routes[indexPath.row]
         if route.toOzu == true{
-            cell.textLabel?.text = "\(route.timestamp!) - \(route.stop!.name!) -> ÖzÜ "
+            cell.detailTextLabel?.text = "\(route.selectedStop!.name!) -> ÖzÜ, \(route.driver!.name)"
         }
         else if route.toOzu == false {
-            cell.textLabel?.text = "\(route.timestamp!) - ÖzÜ -> \(route.stop!.name!)  "
+            cell.detailTextLabel?.text = "ÖzÜ -> \(route.selectedStop!.name!) \(route.driver!.name)"
+
         }
-
-        cell.detailTextLabel?.text = "Şoför: \(route.driver!)"
-
+        cell.textLabel?.text = "\(route.getTime()!)"
+       
         
         return cell
         
@@ -63,5 +65,8 @@ class RoutesViewController: UITableViewController {
         return routes.count
     }
     
+    @IBAction func showCategoryView(){
+        
+    }
     
 }

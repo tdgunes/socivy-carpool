@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		3DABB0A119D22332005CE136 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DABB0A019D22332005CE136 /* AppDelegate.swift */; };
-		3DABB0A819D22332005CE136 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3DABB0A619D22332005CE136 /* Main.storyboard */; };
 		3DABB0AA19D22332005CE136 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3DABB0A919D22332005CE136 /* Images.xcassets */; };
 		3DABB0AD19D22332005CE136 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DABB0AB19D22332005CE136 /* LaunchScreen.xib */; };
 		3DABB0B919D22332005CE136 /* OzU_CarpoolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DABB0B819D22332005CE136 /* OzU_CarpoolTests.swift */; };
@@ -23,6 +22,10 @@
 		3DABB0D319D24DFD005CE136 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DABB0D219D24DFD005CE136 /* MapKit.framework */; };
 		3DABB0D519D25C9A005CE136 /* RouteDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DABB0D419D25C9A005CE136 /* RouteDetailViewController.swift */; };
 		3DABB0D719D25E4D005CE136 /* MapCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DABB0D619D25E4D005CE136 /* MapCell.swift */; };
+		3DABB0DA19D2E870005CE136 /* RouteSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DABB0D919D2E870005CE136 /* RouteSearchViewController.swift */; };
+		3DABB0DF19D33B15005CE136 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3DABB0DD19D33B15005CE136 /* Main.storyboard */; };
+		3DEBA12B19D3626500C84094 /* DatePickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEBA12A19D3626500C84094 /* DatePickerCell.swift */; };
+		3DEBA12D19D362C000C84094 /* SegmentedControlCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEBA12C19D362C000C84094 /* SegmentedControlCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,7 +42,6 @@
 		3DABB09B19D22332005CE136 /* OzU Carpool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "OzU Carpool.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DABB09F19D22332005CE136 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3DABB0A019D22332005CE136 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		3DABB0A719D22332005CE136 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3DABB0A919D22332005CE136 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		3DABB0AC19D22332005CE136 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		3DABB0B219D22332005CE136 /* OzU CarpoolTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "OzU CarpoolTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -56,6 +58,10 @@
 		3DABB0D219D24DFD005CE136 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		3DABB0D419D25C9A005CE136 /* RouteDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteDetailViewController.swift; sourceTree = "<group>"; };
 		3DABB0D619D25E4D005CE136 /* MapCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapCell.swift; sourceTree = "<group>"; };
+		3DABB0D919D2E870005CE136 /* RouteSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteSearchViewController.swift; sourceTree = "<group>"; };
+		3DABB0DE19D33B15005CE136 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		3DEBA12A19D3626500C84094 /* DatePickerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerCell.swift; sourceTree = "<group>"; };
+		3DEBA12C19D362C000C84094 /* SegmentedControlCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentedControlCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,11 +105,13 @@
 			isa = PBXGroup;
 			children = (
 				3DABB0C819D23290005CE136 /* TextFieldCell.swift */,
+				3DEBA12A19D3626500C84094 /* DatePickerCell.swift */,
+				3DEBA12C19D362C000C84094 /* SegmentedControlCell.swift */,
 				3DABB0D619D25E4D005CE136 /* MapCell.swift */,
 				3DABB0A019D22332005CE136 /* AppDelegate.swift */,
-				3DABB0A619D22332005CE136 /* Main.storyboard */,
 				3DABB0A919D22332005CE136 /* Images.xcassets */,
 				3DABB0AB19D22332005CE136 /* LaunchScreen.xib */,
+				3DABB0DD19D33B15005CE136 /* Main.storyboard */,
 				3DABB09E19D22332005CE136 /* Supporting Files */,
 				3DABB0C219D22756005CE136 /* LoginViewController.swift */,
 				3DABB0D819D25FE7005CE136 /* Don't Have Car */,
@@ -146,6 +154,7 @@
 			isa = PBXGroup;
 			children = (
 				3DABB0CE19D24CCC005CE136 /* RoutesViewController.swift */,
+				3DABB0D919D2E870005CE136 /* RouteSearchViewController.swift */,
 				3DABB0D419D25C9A005CE136 /* RouteDetailViewController.swift */,
 			);
 			name = "Don't Have Car";
@@ -236,7 +245,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3DABB0A819D22332005CE136 /* Main.storyboard in Resources */,
+				3DABB0DF19D33B15005CE136 /* Main.storyboard in Resources */,
 				3DABB0AD19D22332005CE136 /* LaunchScreen.xib in Resources */,
 				3DABB0AA19D22332005CE136 /* Images.xcassets in Resources */,
 			);
@@ -256,17 +265,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3DABB0DA19D2E870005CE136 /* RouteSearchViewController.swift in Sources */,
 				3DABB0D119D24D4A005CE136 /* Route.swift in Sources */,
 				3DABB0C319D22756005CE136 /* LoginViewController.swift in Sources */,
 				3DABB0C919D23290005CE136 /* TextFieldCell.swift in Sources */,
 				3DABB0CB19D23A7C005CE136 /* MainTabBarController.swift in Sources */,
 				3DABB0C519D22765005CE136 /* SignupViewController.swift in Sources */,
+				3DEBA12D19D362C000C84094 /* SegmentedControlCell.swift in Sources */,
 				3DABB0A119D22332005CE136 /* AppDelegate.swift in Sources */,
 				3DABB0D719D25E4D005CE136 /* MapCell.swift in Sources */,
 				3DABB0C719D22CA3005CE136 /* API.swift in Sources */,
 				3DABB0D519D25C9A005CE136 /* RouteDetailViewController.swift in Sources */,
 				3DABB0CF19D24CCC005CE136 /* RoutesViewController.swift in Sources */,
 				3DABB0CD19D23F30005CE136 /* SettingsViewController.swift in Sources */,
+				3DEBA12B19D3626500C84094 /* DatePickerCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -289,20 +301,20 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		3DABB0A619D22332005CE136 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				3DABB0A719D22332005CE136 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		3DABB0AB19D22332005CE136 /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				3DABB0AC19D22332005CE136 /* Base */,
 			);
 			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+		3DABB0DD19D33B15005CE136 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3DABB0DE19D33B15005CE136 /* Base */,
+			);
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
