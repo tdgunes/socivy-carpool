@@ -56,7 +56,7 @@
         <!--Arama-->
         <scene sceneID="HGE-4f-ugA">
             <objects>
-                <tableViewController storyboardIdentifier="CategoryDetail" useStoryboardIdentifierAsRestorationIdentifier="YES" id="VR5-4n-imT" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="CategoryDetail" useStoryboardIdentifierAsRestorationIdentifier="YES" id="VR5-4n-imT" customClass="SearchResultsController" customModule="OzU_Carpool" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="HF8-aE-ZS2">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -201,7 +201,7 @@
         <!--Ara-->
         <scene sceneID="Tfc-PL-VDs">
             <objects>
-                <tableViewController id="Ope-g9-ohp" sceneMemberID="viewController">
+                <tableViewController id="Ope-g9-ohp" customClass="RouteSearchViewController" customModule="OzU_Carpool" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Fzr-VL-W5I">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -218,7 +218,7 @@
                                                     <rect key="frame" x="8" y="7" width="584" height="29"/>
                                                     <segments>
                                                         <segment title="ÖzÜ'den Durağa"/>
-                                                        <segment title="Duraktan ÖzÜ"/>
+                                                        <segment title="Duraktan ÖzÜ'ye"/>
                                                     </segments>
                                                 </segmentedControl>
                                             </subviews>
@@ -263,14 +263,14 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="mqu-Rq-khc">
-                                                    <rect key="frame" x="8" y="8" width="584" height="160.5"/>
+                                                    <rect key="frame" x="0.0" y="8" width="600" height="160.5"/>
                                                 </mapView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="mqu-Rq-khc" firstAttribute="trailing" secondItem="Sd9-e2-hoL" secondAttribute="trailingMargin" id="Ds4-2d-zOm"/>
+                                                <constraint firstItem="mqu-Rq-khc" firstAttribute="trailing" secondItem="Sd9-e2-hoL" secondAttribute="trailingMargin" constant="8" id="Ds4-2d-zOm"/>
                                                 <constraint firstItem="mqu-Rq-khc" firstAttribute="top" secondItem="Sd9-e2-hoL" secondAttribute="topMargin" id="HzT-5V-nmL"/>
                                                 <constraint firstItem="mqu-Rq-khc" firstAttribute="bottom" secondItem="Sd9-e2-hoL" secondAttribute="bottomMargin" id="dY7-zy-l4K"/>
-                                                <constraint firstItem="mqu-Rq-khc" firstAttribute="leading" secondItem="Sd9-e2-hoL" secondAttribute="leadingMargin" id="exp-q1-CZI"/>
+                                                <constraint firstItem="mqu-Rq-khc" firstAttribute="leading" secondItem="Sd9-e2-hoL" secondAttribute="leadingMargin" constant="-8" id="exp-q1-CZI"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -305,6 +305,12 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Ara" id="QeP-CQ-ac8"/>
+                    <connections>
+                        <outlet property="datePicker" destination="bdc-ZN-ELq" id="MuU-S7-KlP"/>
+                        <outlet property="mapCell" destination="HXU-Fx-vgs" id="TqM-dX-jZb"/>
+                        <outlet property="searchCell" destination="5bL-Nc-h35" id="Gt0-Yf-4Nv"/>
+                        <outlet property="segmentedControl" destination="xA7-QM-zsr" id="lq9-MA-Iri"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KQW-kc-hQU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
