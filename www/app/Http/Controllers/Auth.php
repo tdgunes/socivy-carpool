@@ -1,7 +1,10 @@
 <?php  namespace App\Http\Controllers;
 
+use App\Http\Requests\AuthenticationRequest;
 use App\Http\Requests\Register;
 use Cartalyst\Sentry\Facades\Laravel\Sentry;
+use Cartalyst\Sentry\Users\UserNotActivatedException;
+use Cartalyst\Sentry\Users\WrongPasswordException;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
@@ -20,13 +23,25 @@ class Auth  extends Controller {
 		return Redirect::route('auth.login');
 	}
 
-	public function authentication()
+	public function authentication(AuthenticationRequest $validation)
 	{
 		// TODO: Buraya gerekli senarylara göre yönlendirmeler eklenecek!
-		$user = Sentry::authenticate([
-			'email' => Input::get('email'),
-			'password' => Input::get('password')
-		]);
+		try {
+			$user = Sentry::authenticate([
+				'email' => Input::get('email'),
+				'password' => Input::get('password')
+			]);
+		}
+		catch(WrongPasswordException $e) {
+			return Redirect::route('auth.login')->withErrors([
+				'Yanlış bilgi girdiniz.'
+			]);
+		}
+		catch(UserNotActivatedException $e) {
+			return Redirect::route('auth.login')->withErrors([
+				'Hesabınız onaylanmamış, lütfen posta kutunuzu kontrol edin.'
+			]);
+		}
 
 		return Redirect::route('home');
 	}
