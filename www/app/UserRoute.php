@@ -56,7 +56,7 @@ class UserRoute extends Model {
 	public function getCanCancelAttribute()
 	{
 		$userID = \Sentry::getUser()->id;
-		$route = Self::where('id', $this->id)->with(['companions' => function($q) use ($userID) {
+		$route = $this->where('id', $this->id)->with(['companions' => function($q) use ($userID) {
 			$q->where('user_id', $userID);
 		}])->first();
 
