@@ -27,7 +27,7 @@ class RouteController extends Controller {
 					$q->groupBy('name');
 				}
 			])->get();
-	//	var_dump($routes->toArray()); die();
+
 		return View::make('route.index', [
 			'routes' => $routes
 		]);

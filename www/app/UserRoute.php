@@ -37,7 +37,7 @@ class UserRoute extends Model {
 	public function getCanRequestAttribute()
 	{
 		$userID = \Sentry::getUser()->id;
-		$route = Self::where('id', $this->id)->with(['companions' => function($q) use ($userID) {
+		$route = self::where('id', $this->id)->with(['companions' => function($q) use ($userID) {
 			$q->where('user_id', $userID);
 		}])->first();
 
