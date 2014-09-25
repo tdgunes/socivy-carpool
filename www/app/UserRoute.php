@@ -14,6 +14,8 @@ class UserRoute extends Model {
 
 	protected $appends = array('seats', 'canRequest', 'canCancel', 'withOnRoad');
 
+	protected $dates = ['action_time'];
+
 	public static $ON_ROAD_MODIFY = '-1 hour';
 
 	public function user()
@@ -29,11 +31,6 @@ class UserRoute extends Model {
 	public function companions()
 	{
 		return $this->belongsToMany('App\\User', 'user_route_companions', 'route_id', 'user_id');
-	}
-
-	public function getDates()
-	{
-		return array('created_at', 'updated_at', 'deleted_at', 'action_time');
 	}
 
 	public function getSeatsAttribute()

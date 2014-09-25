@@ -8,11 +8,15 @@ $(function() {
     map._map.on('dblclick', function(e) {
         var marker = window.map.addMarker(e.latlng);
 
-        getCoordinateInfo(e.latlng.lng, e.latlng.lat, function (data) {
-            var popupContent = $(marker.getPopup().getContent());
+        window.map.updateMarkerPopupByCoordinate(marker, e);
 
-            var address = data.address.county || data.address.town || data.address.suburb || data.address.state;
-            popupContent.find('.point-name').first().val(address);
+        // Sırf fazla request atmasın diye Marker içinde tut noktayı, sonra çekeriz bilgileri!
+        marker.on('move', function(e) {
+            marker._lastCoordinate = e;
+        });
+
+        marker.on('dragend', function(e) {
+            window.map.updateMarkerPopupByCoordinate(marker, marker._lastCoordinate);
         });
     });
 
@@ -53,14 +57,3 @@ $(function() {
         }
     });
 });
-
-function getCoordinateInfo(lng, lat, callback) {
-    $.get('http://nominatim.openstreetmap.org/reverse', {
-        format: 'json',
-        lat: lat,
-        lon: lng
-    }, function(data) {
-        console.log('Coordinate Info', data);
-        callback(data);
-    },'json');
-}

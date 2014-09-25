@@ -49,27 +49,40 @@
 
                 <div class="form-group">
                     <label for="" class="col-xs-2 control-label">Yola Çıkış Vakti</label>
-                    <div class="col-xs-5">
-                        <div class='input-group date' id='datetimepicker'>
-                            <input readonly required name="date" type='text' class="form-control" data-date-format="YYYY/MM/DD hh:mm"/>
-                            <span class="input-group-addon">
-                                <span class="glyphicon glyphicon-calendar"></span>
-                            </span>
+                    <div class="col-xs-10">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <select name="action_day" class="form-control">
+                                    <option value="0">Bugün</option>
+                                    <option value="1">Yarın</option>
+                                </select>
+                            </div>
+                            <div class="col-xs-3 col-lg-2">
+                                <select name="action_hour" class="form-inline form-control">
+                                    @for($i=0; $i<10; $i++)
+                                        <option value="{{{0 . $i}}}">{{{0 . $i}}}</option>
+                                    @endfor
+                                    @for($i=10; $i<24; $i++)
+                                        <option value="{{{$i}}}">{{{$i}}}</option>
+                                    @endfor
+                                </select>
+                            </div>
+                            <div class="col-xs-3 col-lg-2">
+                                <select name="action_minute" class="form-control">
+                                    <option value="00">00</option>
+                                    <option value="00">05</option>
+                                    @for($i=10; $i<61; $i=$i+5)
+                                        <option value="{{{$i}}}">{{{$i}}}</option>
+                                    @endfor
+                                </select>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <script type="text/javascript">
-                    $(function () {
-                        $('#datetimepicker').datetimepicker()
-                            .data("DateTimePicker")
-                            .setMinDate(new Date());
-                    });
-                </script>
-
                 <div class="form-group">
                     <label for="input-description" class="col-xs-2 control-label">Boş koltuk</label>
-                    <div class="col-xs-2">
+                    <div class="col-xs-4 col-md-4">
                         <input required type="text" name="available_seat" id="description" class="form-control">
                     </div>
                 </div>

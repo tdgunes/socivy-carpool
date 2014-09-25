@@ -45,12 +45,15 @@ class RouteController extends Controller {
 
 	public function store(RouteRequest $request)
 	{
+		$actionTime = Carbon::create(null, null, null, Input::get('action_hour'), Input::get('action_minute'), 0)
+							->modify('+' . Input::get('action_day') . ' day');
+
 		$route = new UserRoute([
 			'description' => Input::get('description'),
 			'available_seat' => Input::get('available_seat'),
 			'plan' => Input::get('plan'),
 			'user_id' => Sentry::getUser()->id,
-			'action_time' => Input::get('date')
+			'action_time' => $actionTime
 		]);
 
 		$route->save();

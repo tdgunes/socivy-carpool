@@ -10,7 +10,9 @@ $(function() {
     {
         var point = points[key];
 
-        var marker = map.addMarker(point);
+        var marker = map.addMarker(point, {
+            draggable: false
+        });
 
         marker.getPopup().setContent(point.name);
     }

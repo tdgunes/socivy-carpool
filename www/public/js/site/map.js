@@ -17,6 +17,9 @@
             startup: {
                 view: [41.0230, 29.0805],
                 zoom: 11
+            },
+            marker: {
+                draggable: true
             }
         }
     };
@@ -72,11 +75,16 @@
      *
      * @param marker
      */
-    map.addMarker = function(coordinate) {
+    map.addMarker = function(coordinate, _opt) {
 
-        var marker = L.marker(coordinate, {
-            draggable: true
-        });
+        var opt = this.options.marker;
+
+        if(_opt)
+        {
+            opt = $.extend({}, opt, _opt);
+        }
+
+        var marker = L.marker(coordinate, opt);
 
         marker.addTo(this._map);
 
@@ -84,6 +92,28 @@
         this.addPopup(marker);
 
         return marker;
+    }
+
+    map.updateMarkerPopupByCoordinate = function(marker, e) {
+
+        this.getCoordinateInfo(e.latlng.lng, e.latlng.lat, function (data) {
+            var popupContent = $(marker.getPopup().getContent());
+
+            var address = data.address.county || data.address.town || data.address.suburb || data.address.state;
+            popupContent.find('.point-name').first().val(address);
+        });
+
+    }
+
+    map.getCoordinateInfo = function(lng, lat, callback) {
+        $.get('http://nominatim.openstreetmap.org/reverse', {
+            format: 'json',
+            lat: lat,
+            lon: lng
+        }, function(data) {
+            console.log('Coordinate Info', data);
+            callback(data);
+        },'json');
     }
 
     window.map = map;
