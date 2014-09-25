@@ -19,6 +19,7 @@ class Register extends FormRequest {
 			'name' => 'required',
 			'email' => 'required|email|unique:users,email',
 			'password' => 'required|min:6',
+			'phone' => 'required|regex:"^\+?9?0?\s?[0-9]{3}\s?[0-9]{3}\s?[0-9]{2}\s?[0-9]{2}\s?$"'
 		];
 	}
 
