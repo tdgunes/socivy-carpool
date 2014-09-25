@@ -3,48 +3,76 @@
  */
 
 $(function() {
-    var map = L.map('map', {
-        doubleClickZoom: false
-    }).setView([41.0230, 29.0805], 11);
+    window.map.init('map');
 
-// add an OpenStreetMap tile layer
-    L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(map);
+    map._map.on('dblclick', function(e) {
+        window.map.addMarker(e.latlng);
+    });
 
-    window._map = map;
+    $('#route-form').submit(function() {
+        var i;
+        for(i=0; i<map.markers.length; i++) {
+            var marker = map.markers[i];
+            var coordinate = marker.getLatLng();
 
-    window.markers.map = map;
+            var hiddenLatElement = document.createElement('input');
+            hiddenLatElement.setAttribute('type', 'hidden');
+            hiddenLatElement.setAttribute('name', 'point[' + i + '][lat]');
+            hiddenLatElement.setAttribute('value', coordinate.lat);
 
-// add a marker in the given location, attach some popup content to it and open the popup
-/*    L.marker([51.5, -0.09]).addTo(map)
-        .bindPopup('A pretty CSS3 popup. <br> Easily customizable.')
-        .openPopup();
-*/
-    map.on('dblclick', function(e) {
-        window.markers.add(e.latlng);
+            var hiddenLngElement = document.createElement('input');
+            hiddenLngElement.setAttribute('type', 'hidden');
+            hiddenLngElement.setAttribute('name', 'point[' + i + '][lng]');
+            hiddenLngElement.setAttribute('value', coordinate.lng);
+
+            var popupContent = $(marker.getPopup().getContent());
+            var hiddenNameElement = document.createElement('input');
+            hiddenNameElement.setAttribute('type', 'hidden');
+            hiddenNameElement.setAttribute('name', 'point[' + i + '][lng]');
+            hiddenNameElement.setAttribute('value', popupContent.find('.point-name').first().val());
+
+            $('#route-form').append(hiddenLatElement);
+            $('#route-form').append(hiddenLngElement);
+            $('#route-form').append(hiddenNameElement);
+        }
     });
 });
 
 (function() {
-    var markers = {
-        data: [],
-        popups: null,
-        map: null,
-        popup: {
-            options: {
+    var map = {
+        markers: [],
+        _map: null,
+        options: {
+            map: {
+                doubleClickZoom: false
+            },
+            popup: {
                 maxWidth: 300,
                 minWidth: 200
+            },
+            startup: {
+                view: [41.0230, 29.0805],
+                zoom: 11
             }
         }
     };
 
-    markers.addPopup = function(marker) {
+    map.init = function(mapName) {
+        this._map = L.map(mapName,this.options.map).setView(this.options.startup.view, this.options.startup.zoom);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(this._map);
+    }
+
+    map.addPopup = function(marker) {
         var popup = this.newPopup();
         var popupContent = $(popup.getContent());
 
         popupContent.find('button.delete-popup').click(function() {
-            markers.map.removeLayer(marker);
+            map._map.removeLayer(marker);
+
+            map.removeMarker(marker);
         });
 
         popupContent.show();
@@ -54,10 +82,22 @@ $(function() {
         marker.bindPopup(popup).openPopup();
     };
 
-    markers.newPopup = function() {
+    map.removeMarker = function(marker)
+    {
+        for(var key in map.markers)
+        {
+            var _marker = map.markers[key];
+            if(marker === _marker)
+            {
+                delete map.markers[key];
+            }
+        }
+    }
+
+    map.newPopup = function() {
         var popupContent = $('.point-popup').clone();
 
-        var popup = L.popup(this.popup.options);
+        var popup = L.popup(this.options.popup);
 
         popup.setContent(popupContent[0]);
 
@@ -68,18 +108,18 @@ $(function() {
      *
      * @param marker
      */
-    markers.add = function(coordinate) {
+    map.addMarker = function(coordinate) {
 
         var marker = L.marker(coordinate, {
             draggable: true
         });
 
-        marker.addTo(this.map);
+        marker.addTo(this._map);
 
-        this.data.push(marker);
+        this.markers.push(marker);
         this.addPopup(marker);
     }
 
-    window.markers = markers;
+    window.map = map;
 
 })();

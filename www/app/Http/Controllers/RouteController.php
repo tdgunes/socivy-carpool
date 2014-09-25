@@ -2,6 +2,7 @@
 
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Input;
 
 class RouteController extends Controller {
 
@@ -32,7 +33,11 @@ class RouteController extends Controller {
 	 */
 	public function store()
 	{
-		//
+		var_dump(Input::get());
+
+		die();
+
+
 	}
 
 	/**
