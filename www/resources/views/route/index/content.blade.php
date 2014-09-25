@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="col-md-6 col-md-offset-3 col-xs-12 form-horizontal route-list">
+    <div class="col-md-6 col-md-offset-3 col-xs-10 col-xs-offset-1 form-horizontal route-list">
         @foreach($routes as $route)
             <div class="row route">
                 <div class="col-xs-12">

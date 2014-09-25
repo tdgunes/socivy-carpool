@@ -17,7 +17,7 @@
     </div>
 
 
-    <div class="col-md-6 col-md-offset-3 col-xs-12 form-area">
+    <div class="col-md-6 col-md-offset-3 col-xs-10 col-xs-offset-1 form-area">
 
         <blockquote class="text-success" style="padding-bottom: 10px;">Haritaya çift tıklayarak uğrayacağınız noktaları ekleyebilirsiniz. Noktaların üzerine genel bir ad ekleyiniz.</blockquote>
         <blockquote id="map-point-error" class="text-danger" style="padding-bottom: 10px; display: none;">Lütfen haritaya nokta ekleyiniz!</blockquote>
@@ -51,13 +51,13 @@
                     <label for="" class="col-xs-2 control-label">Yola Çıkış Vakti</label>
                     <div class="col-xs-10">
                         <div class="row">
-                            <div class="col-xs-3">
+                            <div class="col-xs-4">
                                 <select name="action_day" class="form-control">
                                     <option value="0">Bugün</option>
                                     <option value="1">Yarın</option>
                                 </select>
                             </div>
-                            <div class="col-xs-3 col-lg-2">
+                            <div class="col-xs-4 col-lg-2">
                                 <select name="action_hour" class="form-inline form-control">
                                     @for($i=0; $i<10; $i++)
                                         <option value="{{{0 . $i}}}">{{{0 . $i}}}</option>
@@ -67,7 +67,7 @@
                                     @endfor
                                 </select>
                             </div>
-                            <div class="col-xs-3 col-lg-2">
+                            <div class="col-xs-4 col-lg-2">
                                 <select name="action_minute" class="form-control">
                                     <option value="00">00</option>
                                     <option value="00">05</option>
