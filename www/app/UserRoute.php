@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletingTrait;
+use Carbon\Carbon;
 
 class UserRoute extends Model {
 
@@ -11,7 +12,9 @@ class UserRoute extends Model {
 
 	protected $guarded = [];
 
-	protected $appends = array('seats', 'canRequest', 'canCancel');
+	protected $appends = array('seats', 'canRequest', 'canCancel', 'withOnRoad');
+
+	public static $ON_ROAD_MODIFY = '-1 hour';
 
 	public function user()
 	{
@@ -26,6 +29,11 @@ class UserRoute extends Model {
 	public function companions()
 	{
 		return $this->belongsToMany('App\\User', 'user_route_companions', 'route_id', 'user_id');
+	}
+
+	public function getDates()
+	{
+		return array('created_at', 'updated_at', 'deleted_at', 'action_time');
 	}
 
 	public function getSeatsAttribute()
@@ -68,5 +76,24 @@ class UserRoute extends Model {
 		}
 
 		return false;
+	}
+
+	public function getOnRoadAttribute()
+	{
+		$now = Carbon::now();
+
+		if( $this->action_time->diffInMinutes($now, false) > 0 )
+		{
+			return false;
+		}
+		else {
+			return true;
+		}
+	}
+
+	public function scopeWithOnRoads($q)
+	{
+		$time = Carbon::now()->modify(self::$ON_ROAD_MODIFY);
+		return $q->where('action_time', '>', $time);
 	}
 } 
