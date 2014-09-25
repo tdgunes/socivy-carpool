@@ -20,7 +20,7 @@ class RouteController extends Controller {
 	 */
 	public function index()
 	{
-		$routes = UserRoute::where('action_time', '>', new Carbon())
+		$routes = UserRoute::withOnRoads()
 			->with([
 				'user',
 				'places' => function($q) {
@@ -129,7 +129,6 @@ class RouteController extends Controller {
 	{
 		$route = UserRoute::where('id', $id)->first();
 
-//		var_dump($route->toArray());die();
 		if($route->canRequest)
 		{
 			Sentry::getUser()->companions()->attach($id);
