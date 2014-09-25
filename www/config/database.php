@@ -55,9 +55,9 @@ return [
 		'mysql' => [
 			'driver'    => 'mysql',
 			'host'      => 'localhost',
-			'database'  => 'socivy_carpool',
-			'username'  => 'root',
-			'password'  => 'satellite',
+			'database'  => getenv('database_name'),
+			'username'  => getenv('database_user'),
+			'password'  => getenv('database_password'),
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',
