@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3D5FE79219D4D828003745AB /* LocationStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5FE79119D4D828003745AB /* LocationStorage.swift */; };
 		3DABB0A119D22332005CE136 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DABB0A019D22332005CE136 /* AppDelegate.swift */; };
 		3DABB0AA19D22332005CE136 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3DABB0A919D22332005CE136 /* Images.xcassets */; };
 		3DABB0AD19D22332005CE136 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DABB0AB19D22332005CE136 /* LaunchScreen.xib */; };
@@ -40,6 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3D5FE79119D4D828003745AB /* LocationStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationStorage.swift; sourceTree = "<group>"; };
 		3DABB09B19D22332005CE136 /* OzU Carpool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "OzU Carpool.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DABB09F19D22332005CE136 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3DABB0A019D22332005CE136 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -120,6 +122,7 @@
 				3DABB0CA19D23A7C005CE136 /* MainTabBarController.swift */,
 				3DABB0D019D24D4A005CE136 /* Route.swift */,
 				3DABB0D219D24DFD005CE136 /* MapKit.framework */,
+				3D5FE79119D4D828003745AB /* LocationStorage.swift */,
 			);
 			path = "OzU Carpool";
 			sourceTree = "<group>";
@@ -290,6 +293,7 @@
 				3DABB0CF19D24CCC005CE136 /* RoutesViewController.swift in Sources */,
 				3DABB0CD19D23F30005CE136 /* SettingsViewController.swift in Sources */,
 				3DEBA13219D36A6100C84094 /* SearchResultsController.swift in Sources */,
+				3D5FE79219D4D828003745AB /* LocationStorage.swift in Sources */,
 				3DEBA12B19D3626500C84094 /* DatePickerCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

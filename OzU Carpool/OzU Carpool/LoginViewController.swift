@@ -48,7 +48,7 @@ class LoginViewController: UITableViewController {
             println("[peek] Email: \(emailCell?.textField?.text)")
             println("[peek] Password: \(passwordCell?.textField?.text)")
             let main = self.storyboard?.instantiateViewControllerWithIdentifier("Main") as UIViewController
-            self.navigationController?.pushViewController(main, animated: false)
+            self.presentViewController(main, animated: true, completion: nil)
 
         }
         else if selectedCell == forgotPasswordCell {

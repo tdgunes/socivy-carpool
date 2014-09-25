@@ -37,12 +37,18 @@ class RouteSearchViewController: UITableViewController{
         var recognizer:UILongPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: "handleLongPress:")
         recognizer.minimumPressDuration = 1.5
         self.mapCell?.mapView?.addGestureRecognizer(recognizer)
-        let region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude:41.030420 , longitude: 29.122009), span: MKCoordinateSpan(latitudeDelta: 0.3, longitudeDelta: 0.3))
-            
+        let region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude:41.030420 , longitude: 29.122009), span: MKCoordinateSpan(latitudeDelta: 0.3, longitudeDelta: 0.3))        
         self.mapCell?.mapView?.setRegion(region, animated: true)
-
         
     
+        self.configureDatePicker()
+    }
+    
+    func configureDatePicker(){
+        self.datePicker?.datePicker?.minimumDate = NSDate()
+        var maximumDate = NSDate()
+        maximumDate = maximumDate.dateByAddingTimeInterval(60*60*24*1)
+        self.datePicker?.datePicker?.maximumDate = maximumDate
     }
     
     func handleLongPress(gestureRecognizer:UIGestureRecognizer){
@@ -80,12 +86,21 @@ class RouteSearchViewController: UITableViewController{
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         var selectedCell = self.tableView.cellForRowAtIndexPath(indexPath)
-        
-        let main = self.storyboard?.instantiateViewControllerWithIdentifier("CategoryDetail") as UIViewController
-        
 
-        if main == searchCell {
+        if selectedCell == searchCell {
             println("[peek] searchCell touched")
+            
+            if let annotated = self.annotation {
+                println("[peek] latitude: \(annotated.coordinate.latitude)")
+                println("[peek] longitude: \(annotated.coordinate.longitude)")
+                println("[peek] time&date: \(self.datePicker?.datePicker?.date)")
+                
+            }
+            else {
+                println("[peek] showAlertView here")
+            }
+
+            
         }
         
         
