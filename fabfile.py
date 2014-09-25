@@ -45,6 +45,5 @@ def deploy():
     code_dir = "/var/www/socivy-carpool"
     with cd(code_dir):
         run("git pull")
-        run("fab run_silent")
         run("echo \"On commit:\"")
         run("git rev-list HEAD --count")

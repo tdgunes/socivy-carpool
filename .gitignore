@@ -27,3 +27,5 @@ DerivedData
 
 .idea/
 *.pyc
+
+.idea/workspace.xml
