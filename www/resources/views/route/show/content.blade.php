@@ -18,7 +18,7 @@
         </div>
     </div>
 
-    <div class="col-md-6 col-md-offset-3 col-xs-12 form-area">
+    <div class="col-md-6 col-md-offset-3 col-xs-10 col-xs-offset-1 form-area">
         <div class="form-horizontal">
         <div class="row">
 
