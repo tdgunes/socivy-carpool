@@ -7,6 +7,7 @@ use Cartalyst\Sentry\Users\UserNotActivatedException;
 use Cartalyst\Sentry\Users\WrongPasswordException;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\View;
 
@@ -25,7 +26,6 @@ class Auth  extends Controller {
 
 	public function authentication(AuthenticationRequest $validation)
 	{
-		// TODO: Buraya gerekli senarylara göre yönlendirmeler eklenecek!
 		try {
 			$user = Sentry::authenticate([
 				'email' => Input::get('email'),
@@ -40,6 +40,11 @@ class Auth  extends Controller {
 		catch(UserNotActivatedException $e) {
 			return Redirect::route('auth.login')->withErrors([
 				'Hesabınız onaylanmamış, lütfen posta kutunuzu kontrol edin.'
+			]);
+		}
+		catch(\Exception $e) {
+			return Redirect::route('auth.login')->withErrors([
+				'Bir hata oluştu.'
 			]);
 		}
 
