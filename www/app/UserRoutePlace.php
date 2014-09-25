@@ -8,4 +8,6 @@ class UserRoutePlace extends Model {
 	use SoftDeletingTrait;
 
 	protected $table = 'user_route_places';
+
+	protected $guarded = [];
 } 

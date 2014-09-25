@@ -20,6 +20,11 @@
     <div class="col-md-6 col-md-offset-3 col-xs-12 form-area">
 
         <blockquote class="text-success" style="padding-bottom: 10px;">Haritaya çift tıklayarak uğrayacağınız noktaları ekleyebilirsiniz. Noktaların üzerine genel bir ad ekleyiniz.</blockquote>
+        <blockquote id="map-point-error" class="text-danger" style="padding-bottom: 10px; display: none;">Lütfen haritaya nokta ekleyiniz!</blockquote>
+
+        @foreach ($errors->all() as $error)
+        	<p class="bg-danger" style="padding: 10px;">{{{ $error }}}</p>
+        @endforeach
 
         <div class="row">
 
@@ -43,16 +48,36 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="input-description" class="col-xs-2 control-label">Bilgi</label>
-                    <div class="col-xs-10">
-                        <textarea id="description" name="description" cols="30" rows="3" class="form-control"></textarea>
+                    <label for="" class="col-xs-2 control-label">Yola Çıkış Vakti</label>
+                    <div class="col-xs-5">
+                        <div class='input-group date' id='datetimepicker'>
+                            <input readonly required name="date" type='text' class="form-control" data-date-format="YYYY/MM/DD hh:mm"/>
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                        </div>
                     </div>
                 </div>
+
+                <script type="text/javascript">
+                    $(function () {
+                        $('#datetimepicker').datetimepicker()
+                            .data("DateTimePicker")
+                            .setMinDate(new Date());
+                    });
+                </script>
 
                 <div class="form-group">
                     <label for="input-description" class="col-xs-2 control-label">Boş koltuk</label>
                     <div class="col-xs-2">
-                        <input required type="text" name="available-seat" id="description" class="form-control">
+                        <input required type="text" name="available_seat" id="description" class="form-control">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="input-description" class="col-xs-2 control-label">Ek Bilgi</label>
+                    <div class="col-xs-10">
+                        <textarea id="description" name="description" cols="30" rows="3" class="form-control"></textarea>
                     </div>
                 </div>
 

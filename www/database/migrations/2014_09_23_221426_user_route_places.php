@@ -19,11 +19,15 @@ class UserRoutePlaces extends Migration {
 			$table->softDeletes();
 
 			$table->unsignedInteger('route_id');
-			$table->unsignedInteger('place_id');
+			$table->string('name');
 
-			$table->foreign('place_id')->references('id')->on('places');
+			$table->float('latitude',9, 7);
+			$table->float('longitude', 10, 7);
+
 			$table->foreign('route_id')->references('id')->on('user_routes');
 		});
+
+		DB::statement("ALTER TABLE user_route_places ADD point POINT;");
 	}
 
 	/**

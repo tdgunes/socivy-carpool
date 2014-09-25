@@ -21,6 +21,10 @@ class UserRoutes extends Migration {
 			$table->unsignedInteger('user_id');
 			$table->string('description');
 			$table->unsignedInteger('available_seat');
+			$table->enum('plan', [
+				'fromSchool',
+				'toSchool'
+			]);
 
 			$table->timestamp('action_time');
 

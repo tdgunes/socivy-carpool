@@ -1,6 +1,13 @@
 <?php namespace App\Http\Controllers;
 
+use App\Http\Requests\RouteRequest;
+use App\UserRoute;
+use App\UserRoutePlace;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Redirect;
+use Cartalyst\Sentry\Facades\Laravel\Sentry;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Input;
 
@@ -13,7 +20,17 @@ class RouteController extends Controller {
 	 */
 	public function index()
 	{
-		return View::make('route.index');
+		$routes = UserRoute::where('action_time', '>', new Carbon())
+			->with([
+				'user',
+				'places' => function($q) {
+					$q->groupBy('name');
+				}
+			])->get();
+	//	var_dump($routes->toArray()); die();
+		return View::make('route.index', [
+			'routes' => $routes
+		]);
 	}
 
 	/**
@@ -26,35 +43,52 @@ class RouteController extends Controller {
 		return View::make('route.create');
 	}
 
-	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @return Response
-	 */
-	public function store()
+	public function store(RouteRequest $request)
 	{
-		var_dump(Input::get());
+		$route = new UserRoute([
+			'description' => Input::get('description'),
+			'available_seat' => Input::get('available_seat'),
+			'plan' => Input::get('plan'),
+			'user_id' => Sentry::getUser()->id,
+			'action_time' => Input::get('date')
+		]);
 
-		die();
+		$route->save();
 
+		foreach(Input::get('points') as $point)
+		{
+			$routePlace = new UserRoutePlace([
+				'name' => $point['name'],
+				'longitude' => $point['lng'],
+				'latitude' => $point['lat'],
+				'route_id' => $route->id
+			]);
 
+			$routePlace->save();
+		}
+
+		return Redirect::route('route.show', [$route->id]);
 	}
 
 	/**
 	 * Display the specified resource.
 	 *
-	 * @param  int  $id
+	 * @param  int $id
 	 * @return Response
 	 */
 	public function show($id)
 	{
-		//
+		$route = UserRoute::where('id', $id)->with('places', 'user.information', 'companions')->first();
+
+		return View::make('route.show', [
+			'route' => $route
+		]);
 	}
 
 	/**
 	 * Show the form for editing the specified resource.
 	 *
-	 * @param  int  $id
+	 * @param  int $id
 	 * @return Response
 	 */
 	public function edit($id)
@@ -65,7 +99,7 @@ class RouteController extends Controller {
 	/**
 	 * Update the specified resource in storage.
 	 *
-	 * @param  int  $id
+	 * @param  int $id
 	 * @return Response
 	 */
 	public function update($id)
@@ -76,12 +110,44 @@ class RouteController extends Controller {
 	/**
 	 * Remove the specified resource from storage.
 	 *
-	 * @param  int  $id
+	 * @param  int $id
 	 * @return Response
 	 */
 	public function destroy($id)
 	{
-		//
+		$route = UserRoute::where('id', $id)->first();
+
+		if($route->user_id == Sentry::getUser()->id)
+		{
+			$route->delete();
+		}
+
+		return Redirect::route('route.index');
+	}
+
+	public function request($id)
+	{
+		$route = UserRoute::where('id', $id)->first();
+
+//		var_dump($route->toArray());die();
+		if($route->canRequest)
+		{
+			Sentry::getUser()->companions()->attach($id);
+		}
+
+		return Redirect::route('route.show', [$id]);
+	}
+
+	public function cancel($id)
+	{
+		$route = UserRoute::where('id', $id)->first();
+
+		if($route->canCancel)
+		{
+			Sentry::getUser()->companions()->detach($id);
+		}
+
+		return Redirect::route('route.show', [$id]);
 	}
 
 }

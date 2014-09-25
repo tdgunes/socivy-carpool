@@ -27,6 +27,16 @@ Route::group([
 
 	Route::resource('route', 'RouteController');
 
+	Route::get('route/{id}/request', [
+		'uses' => 'RouteController@request',
+		'as' => 'route.request'
+	]);
+
+	Route::get('route/{id}/cancel', [
+		'uses' => 'RouteController@cancel',
+		'as' => 'route.cancel'
+	]);
+
 	Route::resource('place', 'PlaceController');
 
 });

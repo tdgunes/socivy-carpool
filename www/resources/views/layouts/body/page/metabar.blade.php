@@ -21,13 +21,13 @@
 
 				<li>
                     <a href="{{{ route('route.index')  }}}">
-                        Rotalar
+                        Arabam Yok
                     </a>
                 </li>
 
                 <li>
-                    <a href="{{{ route('place.index')  }}}">
-                        Yerler
+                    <a href="{{{ route('route.create')  }}}">
+                        Rota Oluştur
                     </a>
                 </li>
 

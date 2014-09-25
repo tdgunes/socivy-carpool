@@ -3,7 +3,7 @@
 @section('styles')
     @parent
 
-    <link rel="stylesheet/less" href="/style/site/route/create.less" />
+    <link rel="stylesheet/less" href="/style/site/route/show.less" />
     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
     <link rel="stylesheet" href="/style/bootstrap-datetimepicker.min.css" />
 @stop
@@ -13,16 +13,14 @@
 
     <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
     <script src="/js/site/map.js"></script>
-    <script src="/js/site/route/create.js"></script>
-    <script src="/js/moment.js"></script>
-    <script src="/js/bootstrap-datetimepicker.min.js"></script>
+    <script src="/js/site/route/show.js"></script>
 @stop
 
 @section('page-content')
 
     @include('layouts.body.page.metabar')
 
-    @include('route.create.content')
+    @include('route.show.content')
 
     @include('layouts.body.page.footer')
 @stop
