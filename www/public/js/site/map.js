@@ -43,7 +43,7 @@
 
         console.log('Popup added!', popup);
 
-        marker.bindPopup(popup).openPopup();
+        marker.bindPopup(popup);
     };
 
     map.removeMarker = function(marker)
