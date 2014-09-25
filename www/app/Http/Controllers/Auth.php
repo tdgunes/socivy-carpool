@@ -38,7 +38,7 @@ class Auth  extends Controller {
 
 	public function registerPost(Register $register)
 	{
-		return Redirect::route('home');
+		return Redirect::route('auth.login')->withErrors(['Aktivasyon için mail adresinizi kontrol edin!']);
 	}
 
 	public function activation($userID, $activationCode)

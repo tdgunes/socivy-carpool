@@ -74,6 +74,8 @@
                     <label for="" class="col-xs-2 control-label">İlan Sahibi</label>
                     <div class="col-xs-10">
                         <p>{{{ $route->user->name  }}}</p>
+                        <p>{{{ $route->user->information->phone  }}}</p>
+                        <p>{{{ $route->user->email  }}}</p>
                     </div>
                 </div>
 
@@ -94,7 +96,7 @@
                             <div class="col-xs-10">
                                 <p>{{{ $companion->name  }}}</p>
                                 <p>{{{ $companion->email  }}}</p>
-                                <p>{{{ $companion->phone  }}}</p>
+                                <p>{{{ $companion->information->phone  }}}</p>
                             </div>
                         </div>
 

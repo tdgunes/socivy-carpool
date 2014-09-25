@@ -11,8 +11,8 @@ $(function() {
         getCoordinateInfo(e.latlng.lng, e.latlng.lat, function (data) {
             var popupContent = $(marker.getPopup().getContent());
 
-            var address = data.address.county || data.address.town || data.address.suburb;
-            popupContent.find('.point-name').first().val(data.address.county);
+            var address = data.address.county || data.address.town || data.address.suburb || data.address.state;
+            popupContent.find('.point-name').first().val(address);
         });
     });
 
@@ -60,6 +60,7 @@ function getCoordinateInfo(lng, lat, callback) {
         lat: lat,
         lon: lng
     }, function(data) {
+        console.log('Coordinate Info', data);
         callback(data);
     },'json');
 }

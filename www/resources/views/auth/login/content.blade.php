@@ -6,7 +6,7 @@
     	@endforeach
     </div>
 
-    <div class="col-lg-4 col-lg-offset-4 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1 login-area">
+    <div class="col-sm-4 col-sm-offset-4 col-xs-10 col-xs-offset-1 login-area">
         <form action="{{{ route('auth.authentication') }}}" method="post">
             <div class="row">
 

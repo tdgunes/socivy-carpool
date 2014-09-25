@@ -21,7 +21,7 @@
 
 				<li>
                     <a href="{{{ route('route.index')  }}}">
-                        Arabam Yok
+                        Arabam Yok!
                     </a>
                 </li>
 
@@ -40,9 +40,10 @@
 				@yield('metabar-right-list')
 
 				@if (Sentry::check() === True)
-					<li><a href="{{{ route('auth.logout') }}}">Çıkış</a></li>
+					<li><a href="{{{ route('auth.logout') }}}">({{{Sentry::getUser()->name}}}) Çıkış</a></li>
 				@else
 				    <li><a href="{{{ route('auth.login') }}}">Giriş</a></li>
+				    <li><a href="{{{ route('auth.register') }}}">Kayıt Ol</a></li>
 				@endif
 			</ul>
 		</div>
