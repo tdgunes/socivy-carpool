@@ -11,6 +11,13 @@
                     </div>
 
                     <div class="form-group">
+                        <label for="" class="control-label col-xs-2">Sürücü</label>
+                        <div class="col-xs-10">
+                            <p>{{{ $route->user->name }}}</p>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
                         <label for="" class="control-label col-xs-2">Geçtiği Noktalar</label>
                         <div class="col-xs-10">
                             <p>
