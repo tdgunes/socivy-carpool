@@ -7,5 +7,8 @@
         <p class="main-text">
             Özyeğin Üniversitesi araç paylaşım ağı!
         </p>
+        <p class="login-text">
+            Üyeler için <a class="link" href="{{{ route('auth.login') }}}">Giriş</a>
+        </p>
     </div>
 </div>
