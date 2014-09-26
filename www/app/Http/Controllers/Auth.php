@@ -32,11 +32,6 @@ class Auth  extends Controller {
 				'password' => Input::get('password')
 			]);
 		}
-		catch(WrongPasswordException $e) {
-			return Redirect::route('auth.login')->withErrors([
-				'Yanlış bilgi girdiniz.'
-			]);
-		}
 		catch(UserNotActivatedException $e) {
 			return Redirect::route('auth.login')->withErrors([
 				'Hesabınız onaylanmamış, lütfen posta kutunuzu kontrol edin.'
@@ -44,7 +39,7 @@ class Auth  extends Controller {
 		}
 		catch(\Exception $e) {
 			return Redirect::route('auth.login')->withErrors([
-				'Bir hata oluştu.'
+				'Hatalı giriş.'
 			]);
 		}
 
