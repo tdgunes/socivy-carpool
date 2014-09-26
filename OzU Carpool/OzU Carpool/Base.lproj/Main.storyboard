@@ -94,10 +94,10 @@
             </objects>
             <point key="canvasLocation" x="3211" y="-1758"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Search Result View Controller-->
         <scene sceneID="UWM-ew-pQd">
             <objects>
-                <tableViewController id="Mt6-Yb-tIF" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="SearchResult" id="Mt6-Yb-tIF" customClass="SearchResultViewController" customModule="OzU_Carpool" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="ako-7x-6CM">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -169,7 +169,7 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Durağını Seç" id="23H-Qx-nhD">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="400" id="wtT-q0-x2r">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="400" id="wtT-q0-x2r" customClass="MapCell" customModule="OzU_Carpool" customModuleProvider="target">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wtT-q0-x2r" id="r4H-Df-5mw">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -185,6 +185,9 @@
                                                 <constraint firstAttribute="bottomMargin" secondItem="ah5-Dv-pwk" secondAttribute="bottom" constant="-8" id="zh1-JE-IPR"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="mapView" destination="ah5-Dv-pwk" id="F1F-Qe-ofq"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -194,23 +197,16 @@
                             <outlet property="delegate" destination="Mt6-Yb-tIF" id="kfg-Db-kwq"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="descriptionCell" destination="pgm-sh-UZb" id="iIL-Ik-Me3"/>
+                        <outlet property="driverCell" destination="jU9-MB-nNz" id="TnN-7I-L0c"/>
+                        <outlet property="mapCell" destination="wtT-q0-x2r" id="2DJ-eK-gyK"/>
+                        <outlet property="timeDateCell" destination="afP-4p-GnT" id="cgu-4q-bCN"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZKr-qA-IjK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3839" y="-1758"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="MEM-Ce-fSK">
-            <objects>
-                <viewController id="xOZ-MF-Rfb" sceneMemberID="viewController">
-                    <mapView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="LWQ-js-9dq">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    </mapView>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="xb5-BB-DHX" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4507" y="-1758"/>
+            <point key="canvasLocation" x="3933" y="-1758"/>
         </scene>
         <!--Ara-->
         <scene sceneID="Tfc-PL-VDs">
