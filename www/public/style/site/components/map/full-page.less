@@ -1,12 +1,19 @@
-#page {
-  &>.container-fluid {
-    height: 100%;
-    overflow-y: auto;
+@media (min-width: 1200px) {
 
-    &>.row {
-      height: 100%;
-    }
+  #page,
+  #page > .container-fluid,
+  #page > .container-fluid > .row,
+  #map,
+  .map-row .map-addition
+  {
+    height: 100% !important;
   }
+
+  .map-row .map-addition
+  {
+    overflow-y: auto;
+  }
+
 }
 
 .map-row {
@@ -16,7 +23,7 @@
 
     #map {
       width: 100%;
-      height: 100%;
+      height: 350px;
     }
 
     .point-popup {
@@ -36,11 +43,6 @@
   }
 
   .map-addition {
-    @media (min-width: 1200px) {
-      height: 100%;
-      overflow-y: auto;
-    }
-
     margin-top: 0;
     padding-top: 15px;
     padding-bottom: 15px;
