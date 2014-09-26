@@ -18,7 +18,7 @@ import Foundation
 import UIKit
 import MapKit
 
-class RouteSearchViewController: UITableViewController{
+class RouteSearchViewController: UITableViewController, MKMapViewDelegate{
     
     
     @IBOutlet weak var mapCell: MapCell?
@@ -34,15 +34,63 @@ class RouteSearchViewController: UITableViewController{
         
      
         
+        self.configureMapView()
+        self.configureDatePicker()
+        self.mapCell?.mapView?.delegate = self
+    }
+    
+    
+    func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
+        
+        var optionalPinView:MKPinAnnotationView? = mapView.dequeueReusableAnnotationViewWithIdentifier("pinView") as MKPinAnnotationView?
+        
+        if var pinView = optionalPinView {
+            pinView.annotation = annotation
+            return pinView
+        }
+        else {
+            var newPinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "pinView")
+            
+            if annotation is Location{
+                newPinView.pinColor = (annotation as Location).color
+                newPinView.animatesDrop = false
+                newPinView.canShowCallout = true
+            }
+            else {
+                
+                
+                newPinView.pinColor = MKPinAnnotationColor.Red
+                newPinView.animatesDrop = false
+                newPinView.canShowCallout = true
+                
+                //details button
+                //            var rightButton = UIButton.buttonWithType(UIButtonType.DetailDisclosure) as UIButton
+                
+                //            newPinView.rightCalloutAccessoryView = rightButton
+                
+                
+            }
+            return newPinView
+        }
+        
+        
+        
+        
+    }
+
+    
+    func configureMapView(){
         var recognizer:UILongPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: "handleLongPress:")
         recognizer.minimumPressDuration = 1.5
+        
         self.mapCell?.mapView?.addGestureRecognizer(recognizer)
-        let region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude:41.030420 , longitude: 29.122009), span: MKCoordinateSpan(latitudeDelta: 0.3, longitudeDelta: 0.3))        
+        let region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude:41.030420 , longitude: 29.122009), span: MKCoordinateSpan(latitudeDelta: 0.3, longitudeDelta: 0.3))
         self.mapCell?.mapView?.setRegion(region, animated: true)
         
-    
-        self.configureDatePicker()
+        self.mapCell?.mapView?.addAnnotations(LocationStorage.sharedInstance.getAll() as [Location])
     }
+    
+    
     
     func configureDatePicker(){
         self.datePicker?.datePicker?.minimumDate = NSDate()
@@ -71,7 +119,7 @@ class RouteSearchViewController: UITableViewController{
         annotation!.setCoordinate(touchMapCoordinate!)
         
         self.mapCell?.mapView?.addAnnotation(annotation)
-        self.mapCell?.mapView?.showAnnotations([annotation!], animated: true)
+//        self.mapCell?.mapView?.showAnnotations([annotation!], animated: true)
         
     }
     

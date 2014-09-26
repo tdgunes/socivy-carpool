@@ -85,9 +85,7 @@ class RouteDetailViewController: UITableViewController, MKMapViewDelegate {
     
     func handleMapView() {
         
-        
-        
-        
+    
         let loc = route?.selectedStop?.location!
         let region = MKCoordinateRegion(center: loc!, span: MKCoordinateSpan(latitudeDelta: 0.3, longitudeDelta: 0.3))
         self.mapCell?.mapView?.setRegion(region, animated: true)
