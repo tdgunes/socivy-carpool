@@ -34,7 +34,7 @@ class SettingsViewController: UITableViewController {
         var selectedCell = self.tableView.cellForRowAtIndexPath(indexPath)
         if selectedCell == logoutCell {
             println("[peek] logout touched")
-            self.tabBarController?.navigationController?.popToRootViewControllerAnimated(false)
+            self.dismissViewControllerAnimated(true, completion: nil)
         }
 
         

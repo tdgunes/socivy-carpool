@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 import MapKit
-class RouteDetailViewController: UITableViewController {
+class RouteDetailViewController: UITableViewController, MKMapViewDelegate {
     
     @IBOutlet weak var nameCell:UITableViewCell?
     @IBOutlet weak var timeDateCell:UITableViewCell?
@@ -32,6 +32,8 @@ class RouteDetailViewController: UITableViewController {
 
         self.handleMapView()
         
+        self.mapCell?.mapView?.delegate = self
+        
     }
     
     
@@ -42,22 +44,72 @@ class RouteDetailViewController: UITableViewController {
         }
     }
     
+    func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
+        
+        var optionalPinView:MKPinAnnotationView? = mapView.dequeueReusableAnnotationViewWithIdentifier("pinView") as MKPinAnnotationView?
+        
+        if var pinView = optionalPinView {
+            pinView.annotation = annotation
+            return pinView
+        }
+        else {
+            var newPinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "pinView")
+            
+            if annotation is Location{
+                newPinView.pinColor = (annotation as Location).color
+                newPinView.animatesDrop = false
+                newPinView.canShowCallout = true
+            }
+            else {
+ 
+                
+                newPinView.pinColor = MKPinAnnotationColor.Green
+                newPinView.animatesDrop = false
+                newPinView.canShowCallout = true
+                
+                //details button
+                //            var rightButton = UIButton.buttonWithType(UIButtonType.DetailDisclosure) as UIButton
+                
+                //            newPinView.rightCalloutAccessoryView = rightButton
+                
+                
+            }
+            return newPinView
+        }
+        
+        
+      
+        
+    }
+
+    
     func handleMapView() {
         
+    
         let loc = route?.selectedStop?.location!
-        let region = MKCoordinateRegion(center: loc!, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+        let region = MKCoordinateRegion(center: loc!, span: MKCoordinateSpan(latitudeDelta: 0.3, longitudeDelta: 0.3))
         self.mapCell?.mapView?.setRegion(region, animated: true)
     
         // point annotation
         var annotation = MKPointAnnotation()
+
         annotation.setCoordinate(loc!)
         annotation.title = self.route?.selectedStop?.name
+
         self.mapCell?.mapView?.addAnnotation(annotation)
+        
+        self.mapCell?.mapView?.addAnnotations(LocationStorage.sharedInstance.getAll())
+
+        
+        
     }
     
     func callDriver() {
-        println("[peek] callDriver() ")
-        UIApplication.sharedApplication().openURL(NSURL(string: "tel:\(self.route?.driver?.cellphone)"))
+        
+        if let cellphone = self.route?.driver?.cellphone{
+            println("[peek] tel:\(cellphone)")
+            UIApplication.sharedApplication().openURL(NSURL(string: "tel:\(cellphone)"))
+        }
     }
     
     @IBAction func cancelRoute(){
