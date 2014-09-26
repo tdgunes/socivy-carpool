@@ -49,7 +49,7 @@
                 <label for="" class="col-xs-3 control-label">Yola Çıkış Günü</label>
                 <div class="col-xs-9">
                     <div class="row">
-                        <div class="col-lg-12 col-md-5">
+                        <div class="col-lg-12 col-sm-3 col-xs-12">
                             <select name="action_day" class="form-control">
                                 <option value="0">Bugün</option>
                                 <option value="1">Yarın</option>
@@ -63,7 +63,7 @@
                 <label for="" class="col-xs-3 control-label">Yola Çıkış Saati</label>
                 <div class="col-xs-9">
                     <div class="row">
-                        <div class="col-xs-4 col-md-3 col-lg-5">
+                        <div class="col-xs-6 col-sm-3 col-lg-5">
                             <select name="action_hour" class="form-control">
                                 @for($i=0; $i<10; $i++)
                                     <option value="{{{0 . $i}}}">{{{0 . $i}}}</option>
@@ -73,7 +73,7 @@
                                 @endfor
                             </select>
                         </div>
-                        <div class="col-xs-4 col-md-3 col-lg-5">
+                        <div class="col-xs-6 col-sm-3 col-lg-5">
                             <select name="action_minute" class="form-control">
                                 <option value="00">00</option>
                                 <option value="00">05</option>
@@ -88,7 +88,7 @@
 
             <div class="form-group">
                 <label for="input-description" class="col-xs-3 control-label">Boş koltuk</label>
-                <div class="col-xs-4 col-md-4">
+                <div class="col-xs-4 col-sm-3">
                     <input required type="number" min="1" max="50" name="available_seat" class="form-control">
                 </div>
             </div>
