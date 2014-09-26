@@ -5,7 +5,7 @@
             Socivy Carpool
         </p>
         <p class="main-text">
-            Özyeğin Üniversitesi >araç paylaşım ağı!
+            Özyeğin Üniversitesi araç paylaşım ağı!
         </p>
     </div>
 </div>
