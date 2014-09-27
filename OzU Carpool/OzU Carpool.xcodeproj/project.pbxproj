@@ -25,6 +25,8 @@
 		3DABB0D519D25C9A005CE136 /* RouteDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DABB0D419D25C9A005CE136 /* RouteDetailViewController.swift */; };
 		3DABB0D719D25E4D005CE136 /* MapCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DABB0D619D25E4D005CE136 /* MapCell.swift */; };
 		3DABB0DF19D33B15005CE136 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3DABB0DD19D33B15005CE136 /* Main.storyboard */; };
+		3DEA550E19D700D90026D4DC /* AddRouteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEA550D19D700D90026D4DC /* AddRouteViewController.swift */; };
+		3DEA551119D7066C0026D4DC /* AddRouteSecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEA551019D7066C0026D4DC /* AddRouteSecondViewController.swift */; };
 		3DEBA12B19D3626500C84094 /* DatePickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEBA12A19D3626500C84094 /* DatePickerCell.swift */; };
 		3DEBA12D19D362C000C84094 /* SegmentedControlCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEBA12C19D362C000C84094 /* SegmentedControlCell.swift */; };
 		3DEBA12F19D3646100C84094 /* RouteSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEBA12E19D3646100C84094 /* RouteSearchViewController.swift */; };
@@ -64,6 +66,8 @@
 		3DABB0D419D25C9A005CE136 /* RouteDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteDetailViewController.swift; sourceTree = "<group>"; };
 		3DABB0D619D25E4D005CE136 /* MapCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapCell.swift; sourceTree = "<group>"; };
 		3DABB0DE19D33B15005CE136 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		3DEA550D19D700D90026D4DC /* AddRouteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddRouteViewController.swift; path = ../AddRouteViewController.swift; sourceTree = "<group>"; };
+		3DEA551019D7066C0026D4DC /* AddRouteSecondViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddRouteSecondViewController.swift; sourceTree = "<group>"; };
 		3DEBA12A19D3626500C84094 /* DatePickerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerCell.swift; sourceTree = "<group>"; };
 		3DEBA12C19D362C000C84094 /* SegmentedControlCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentedControlCell.swift; sourceTree = "<group>"; };
 		3DEBA12E19D3646100C84094 /* RouteSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteSearchViewController.swift; sourceTree = "<group>"; };
@@ -118,6 +122,7 @@
 				3DABB09E19D22332005CE136 /* Supporting Files */,
 				3DABB0C219D22756005CE136 /* LoginViewController.swift */,
 				3DABB0D819D25FE7005CE136 /* Don't Have Car */,
+				3DEA550F19D700E40026D4DC /* Have a Car */,
 				3DABB0CC19D23F30005CE136 /* SettingsViewController.swift */,
 				3DABB0C419D22765005CE136 /* SignupViewController.swift */,
 				3DABB0C619D22CA3005CE136 /* API.swift */,
@@ -164,6 +169,15 @@
 				3D5FE79319D4E807003745AB /* SearchResultViewController.swift */,
 			);
 			name = "Don't Have Car";
+			sourceTree = "<group>";
+		};
+		3DEA550F19D700E40026D4DC /* Have a Car */ = {
+			isa = PBXGroup;
+			children = (
+				3DEA550D19D700D90026D4DC /* AddRouteViewController.swift */,
+				3DEA551019D7066C0026D4DC /* AddRouteSecondViewController.swift */,
+			);
+			name = "Have a Car";
 			sourceTree = "<group>";
 		};
 		3DEBA13019D3649B00C84094 /* CustomCells */ = {
@@ -292,12 +306,14 @@
 				3DABB0A119D22332005CE136 /* AppDelegate.swift in Sources */,
 				3DABB0D719D25E4D005CE136 /* MapCell.swift in Sources */,
 				3DABB0C719D22CA3005CE136 /* API.swift in Sources */,
+				3DEA551119D7066C0026D4DC /* AddRouteSecondViewController.swift in Sources */,
 				3DABB0D519D25C9A005CE136 /* RouteDetailViewController.swift in Sources */,
 				3DABB0CF19D24CCC005CE136 /* RoutesViewController.swift in Sources */,
 				3DABB0CD19D23F30005CE136 /* SettingsViewController.swift in Sources */,
 				3D5FE79419D4E807003745AB /* SearchResultViewController.swift in Sources */,
 				3DEBA13219D36A6100C84094 /* SearchResultsController.swift in Sources */,
 				3D5FE79219D4D828003745AB /* LocationStorage.swift in Sources */,
+				3DEA550E19D700D90026D4DC /* AddRouteViewController.swift in Sources */,
 				3DEBA12B19D3626500C84094 /* DatePickerCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
