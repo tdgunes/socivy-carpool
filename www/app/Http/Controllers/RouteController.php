@@ -23,9 +23,7 @@ class RouteController extends Controller {
 		$routes = UserRoute::withOnRoads()
 			->with([
 				'user',
-				'places' => function($q) {
-					$q->groupBy('name');
-				}
+				'places'
 			])->get();
 
 		return View::make('route.index', [
