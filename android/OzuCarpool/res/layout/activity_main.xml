@@ -1,0 +1,79 @@
+<ScrollView
+     xmlns:android="http://schemas.android.com/apk/res/android"
+      android:layout_width="fill_parent"
+      android:layout_height="fill_parent"
+    >
+
+<LinearLayout 
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingLeft="2dp"
+    android:paddingRight="2dp"
+     >
+    
+     <ImageView
+         android:id="@+id/imageView1"
+         android:layout_width="wrap_content"
+         android:layout_height="100dp"
+         android:layout_gravity="center_horizontal"
+         android:src="@drawable/socivylogo" />
+     
+    <EditText
+        android:id="@+id/editText1"
+        android:layout_width="match_parent" 
+    	android:layout_height="40dip" 
+    	android:hint="E-mail adresi"
+    	android:textColorHint="#778BB0" 
+    	android:textColor="#778BB0" 
+    	android:textSize="12sp"
+        android:inputType="textEmailAddress"
+        />
+    
+     <EditText
+         android:id="@+id/editText2"
+         android:layout_width="match_parent" 
+    	android:layout_height="40dip" 
+    	android:hint="Şifre"
+    	android:textColorHint="#778BB0" 
+    	android:textColor="#778BB0" 
+    	android:textSize="12sp"
+        android:inputType="textPassword"
+        android:layout_marginTop="-5dp"
+        />
+
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/custom_button"
+        android:text="Giriş Yap"
+        android:textColor="#fff" />
+    
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/custom_button"
+        android:gravity="center_horizontal"
+        android:text="Şifremi Unuttum"
+        android:textColor="#fff" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/custom_button"
+        android:text="Kayıt Ol"
+        android:textColor="#fff" />
+   
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Android pişmanlıktır"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+</LinearLayout>
+</ScrollView>
