@@ -87,7 +87,7 @@
                             <select name="action_minute" class="form-control">
                                 <option value="00">00</option>
                                 <option value="00">05</option>
-                                @for($i=10; $i<61; $i=$i+5)
+                                @for($i=10; $i<60; $i=$i+5)
                                     <option value="{{{$i}}}">{{{$i}}}</option>
                                 @endfor
                             </select>
