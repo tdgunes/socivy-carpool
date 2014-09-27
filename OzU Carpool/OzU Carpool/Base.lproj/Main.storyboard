@@ -485,6 +485,210 @@
             </objects>
             <point key="canvasLocation" x="2530" y="-1098"/>
         </scene>
+        <!--Rota Ekle-->
+        <scene sceneID="Ggs-nU-p6X">
+            <objects>
+                <tableViewController id="Pa6-lG-I9y" customClass="AddRouteViewController" customModule="OzU_Carpool" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="jC0-bs-B0w">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <sections>
+                            <tableViewSection headerTitle="Şöforüm, istikamet nereye?" id="w5g-qj-OKO">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="heA-d1-674" customClass="SegmentedControlCell" customModule="OzU_Carpool" customModuleProvider="target">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="heA-d1-674" id="Rgk-Zn-JJL">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="hAx-hr-2Te">
+                                                    <rect key="frame" x="8" y="7" width="584" height="29"/>
+                                                    <segments>
+                                                        <segment title="ÖzÜ'den Durağa"/>
+                                                        <segment title="Duraktan ÖzÜ'ye"/>
+                                                    </segments>
+                                                </segmentedControl>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="hAx-hr-2Te" firstAttribute="trailing" secondItem="Rgk-Zn-JJL" secondAttribute="trailingMargin" id="Au8-YL-St1"/>
+                                                <constraint firstItem="hAx-hr-2Te" firstAttribute="top" secondItem="Rgk-Zn-JJL" secondAttribute="topMargin" constant="-1" id="NuI-dM-wG2"/>
+                                                <constraint firstItem="hAx-hr-2Te" firstAttribute="leading" secondItem="Rgk-Zn-JJL" secondAttribute="leadingMargin" id="YaV-5U-6Ph"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="hAx-hr-2Te" secondAttribute="bottom" constant="1" id="e4u-cI-KrX"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="segmentedControl" destination="hAx-hr-2Te" id="T50-jU-eY5"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="Ne Zaman?" id="S53-1x-0S1">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="160" id="7Jh-Ea-FlX" customClass="DatePickerCell" customModule="OzU_Carpool" customModuleProvider="target">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7Jh-Ea-FlX" id="Xmh-ZK-JFL">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="QJd-8V-37U">
+                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="162"/>
+                                                    <date key="date" timeIntervalSinceReferenceDate="433519457.65220499">
+                                                        <!--2014-09-27 14:04:17 +0000-->
+                                                    </date>
+                                                </datePicker>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailingMargin" secondItem="QJd-8V-37U" secondAttribute="trailing" constant="-8" id="5Vc-aQ-2ef"/>
+                                                <constraint firstItem="QJd-8V-37U" firstAttribute="leading" secondItem="Xmh-ZK-JFL" secondAttribute="leadingMargin" constant="-8" id="6aR-uT-bt7"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="QJd-8V-37U" secondAttribute="bottom" constant="-10.5" id="A82-9S-7v5"/>
+                                                <constraint firstItem="QJd-8V-37U" firstAttribute="top" secondItem="Xmh-ZK-JFL" secondAttribute="topMargin" constant="-8" id="AWM-xG-W7b"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="datePicker" destination="QJd-8V-37U" id="P6B-AE-9n4"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="Eklemek İstedikleriniz" id="KXK-IR-vIU">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="50" id="fD1-OC-bpo" customClass="TextFieldCell" customModule="OzU_Carpool" customModuleProvider="target">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fD1-OC-bpo" id="9go-xK-bQR">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Plaka, araç özellikleri, kurabiye, poğaça vb." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tqJ-eP-FJH">
+                                                    <rect key="frame" x="8" y="0.0" width="584" height="50"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="tqJ-eP-FJH" firstAttribute="top" secondItem="9go-xK-bQR" secondAttribute="topMargin" constant="-8" id="62W-gq-j8I"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="tqJ-eP-FJH" secondAttribute="bottom" constant="-8" id="ElB-f2-EfD"/>
+                                                <constraint firstItem="tqJ-eP-FJH" firstAttribute="leading" secondItem="9go-xK-bQR" secondAttribute="leadingMargin" id="Z6P-5U-8RO"/>
+                                                <constraint firstItem="tqJ-eP-FJH" firstAttribute="trailing" secondItem="9go-xK-bQR" secondAttribute="trailingMargin" id="rl4-Om-7eB"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="Hazır mısın?" id="DAN-2x-lIw">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" textLabel="as1-rw-WPi" style="IBUITableViewCellStyleDefault" id="LNM-sZ-aZS">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LNM-sZ-aZS" id="ai3-yd-4Ej">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Duraklarımı Belirle" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="as1-rw-WPi">
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="Tbv-TW-bQU" kind="show" id="DAe-V3-oms"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="Pa6-lG-I9y" id="FuP-GT-Zex"/>
+                            <outlet property="delegate" destination="Pa6-lG-I9y" id="jvC-di-JmP"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Rota Ekle" id="7Wi-z6-vIC">
+                        <barButtonItem key="rightBarButtonItem" title="Vazgeç" id="hdY-1l-zQc">
+                            <connections>
+                                <action selector="dismissView" destination="Pa6-lG-I9y" id="Med-dY-1Q7"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0CH-bR-dyr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3308" y="-420"/>
+        </scene>
+        <!--Durakları Belirle-->
+        <scene sceneID="XWH-Ms-bu6">
+            <objects>
+                <viewController id="Tbv-TW-bQU" customClass="AddRouteSecondViewController" customModule="OzU_Carpool" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="77d-xe-lch"/>
+                        <viewControllerLayoutGuide type="bottom" id="09w-Uq-IkY"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="aiy-fq-3hn">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Mxd-ua-aHD">
+                                <rect key="frame" x="0.0" y="64" width="600" height="492"/>
+                            </mapView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mcU-tO-Li1">
+                                <rect key="frame" x="0.0" y="556" width="600" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="L3p-gp-rsm"/>
+                                </constraints>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="wwS-N6-sYG"/>
+                                    <barButtonItem title="Kaydet" id="d3x-ER-RDC"/>
+                                </items>
+                            </toolbar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="mcU-tO-Li1" firstAttribute="top" secondItem="Mxd-ua-aHD" secondAttribute="bottom" id="0PK-Ez-Kn5"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Mxd-ua-aHD" secondAttribute="trailing" constant="-16" id="BbZ-UK-tqd"/>
+                            <constraint firstItem="Mxd-ua-aHD" firstAttribute="leading" secondItem="aiy-fq-3hn" secondAttribute="leadingMargin" constant="-16" id="Eyp-tV-4de"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="mcU-tO-Li1" secondAttribute="bottom" constant="-1" id="FZ1-EP-f42"/>
+                            <constraint firstItem="Mxd-ua-aHD" firstAttribute="top" secondItem="77d-xe-lch" secondAttribute="bottom" id="I6o-ge-UmX"/>
+                            <constraint firstItem="mcU-tO-Li1" firstAttribute="leading" secondItem="09w-Uq-IkY" secondAttribute="leading" id="KOw-4e-hmn"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="mcU-tO-Li1" secondAttribute="bottom" constant="-1" id="VRa-8D-gBF"/>
+                            <constraint firstItem="mcU-tO-Li1" firstAttribute="leading" secondItem="aiy-fq-3hn" secondAttribute="leadingMargin" constant="-16" id="YDK-9F-OZx"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="mcU-tO-Li1" secondAttribute="trailing" constant="-16" id="oSz-NQ-sHx"/>
+                            <constraint firstItem="mcU-tO-Li1" firstAttribute="trailing" secondItem="09w-Uq-IkY" secondAttribute="trailing" id="rqO-r7-XSa"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="FZ1-EP-f42"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <navigationItem key="navigationItem" title="Durakları Belirle" id="07Z-h5-UPK">
+                        <barButtonItem key="rightBarButtonItem" title="Vazgeç" id="h5p-Ed-Id4">
+                            <connections>
+                                <action selector="dismissView" destination="Tbv-TW-bQU" id="FjG-6u-bAR"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="mapView" destination="Mxd-ua-aHD" id="aMu-lM-Uqa"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TMD-gx-LQu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4021" y="-418"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="mVq-0V-DdN">
+            <objects>
+                <navigationController id="GCr-ty-48Y" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="2B1-v2-s8D">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Pa6-lG-I9y" kind="relationship" relationship="rootViewController" id="TXc-EY-LUO"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Yg0-HX-Y0I" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2537" y="-420"/>
+        </scene>
         <!--Arabam Yok-->
         <scene sceneID="6pU-V1-Xfy">
             <objects>
@@ -524,7 +728,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Sağladığım Rotalar" id="zEh-4a-oda">
-                        <barButtonItem key="rightBarButtonItem" title="Ekle" id="AiL-Mk-kEr"/>
+                        <barButtonItem key="rightBarButtonItem" title="Ekle" id="AiL-Mk-kEr">
+                            <connections>
+                                <segue destination="GCr-ty-48Y" kind="showDetail" id="R5i-9P-6EH"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vbs-L0-uhP" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -997,6 +1205,48 @@
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ldv-pw-juL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="2el-e8-Hne" customClass="SegmentedControlCell" customModule="OzU_Carpool" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                    <autoresizingMask key="autoresizingMask"/>
+                    <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2el-e8-Hne" id="fAs-d9-x8j">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="SkA-AG-wZc">
+                                <rect key="frame" x="8" y="7" width="584" height="29"/>
+                                <segments>
+                                    <segment title="ÖzÜ'den Durağa"/>
+                                    <segment title="Duraktan ÖzÜ'ye"/>
+                                </segments>
+                            </segmentedControl>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="SkA-AG-wZc" firstAttribute="trailing" secondItem="fAs-d9-x8j" secondAttribute="trailingMargin" id="6hB-JK-goB"/>
+                            <constraint firstItem="SkA-AG-wZc" firstAttribute="leading" secondItem="fAs-d9-x8j" secondAttribute="leadingMargin" id="bpJ-YS-Emz"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="SkA-AG-wZc" secondAttribute="bottom" constant="1" id="chl-Ng-ZkH"/>
+                            <constraint firstItem="SkA-AG-wZc" firstAttribute="top" secondItem="fAs-d9-x8j" secondAttribute="topMargin" constant="-1" id="vKi-Dh-Hfi"/>
+                        </constraints>
+                    </tableViewCellContentView>
+                    <connections>
+                        <outlet property="segmentedControl" destination="SkA-AG-wZc" id="zd0-j2-CfM"/>
+                    </connections>
+                </tableViewCell>
+                <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" textLabel="Se2-kv-cGB" style="IBUITableViewCellStyleDefault" id="iso-cq-3DC">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                    <autoresizingMask key="autoresizingMask"/>
+                    <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="iso-cq-3DC" id="BhN-aa-xpH">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Ara" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Se2-kv-cGB">
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    </tableViewCellContentView>
+                </tableViewCell>
             </objects>
             <point key="canvasLocation" x="45" y="1726"/>
         </scene>
