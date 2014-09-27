@@ -19,7 +19,7 @@
     <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
     <!--
      The following two permissions are not required to use
-     Google Maps Android API v2, but are recommended.
+     Google Maps Android API v2, but are recommended.
     -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -56,6 +56,14 @@
         <activity
             android:name=".UserActivity"
             android:label="@string/title_activity_user" >
+        </activity>
+        <activity
+            android:name=".AddRouteActivity"
+            android:label="@string/title_activity_add_route" >
+        </activity>
+        <activity
+            android:name=".AddRouteMapActivity"
+            android:label="@string/title_activity_add_route_map" >
         </activity>
     </application>
 

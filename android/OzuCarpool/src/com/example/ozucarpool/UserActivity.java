@@ -3,6 +3,8 @@ package com.example.ozucarpool;
 import java.util.Locale;
 
 import com.example.ozucarpool.R;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -16,6 +18,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class UserActivity extends ActionBarActivity implements
@@ -168,8 +171,22 @@ public class UserActivity extends ActionBarActivity implements
 		public View onCreateView(LayoutInflater inflater, ViewGroup container,
 				Bundle savedInstanceState) {
 			
+			
 			View rootView = inflater.inflate(R.layout.fragment_user, container,
 					false);
+			
+			Button myButton = (Button) rootView.findViewById(R.id.button1);
+
+			myButton.setOnClickListener(new View.OnClickListener() {
+
+				@Override
+				public void onClick(View v) {
+
+					Intent intent = new Intent(v.getContext(), AddRouteActivity.class);
+					startActivity(intent);
+				}
+			});
+
 			
 			return rootView;
 		}
