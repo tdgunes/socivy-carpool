@@ -28,8 +28,6 @@ class RouteController extends Controller {
 				}
 			])->get();
 
-		var_dump(\DB::getQueryLog()); die();
-
 		return View::make('route.index', [
 			'routes' => $routes
 		]);
