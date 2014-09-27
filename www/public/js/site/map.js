@@ -2,6 +2,8 @@
  * Created by kalaomer on 25.09.2014.
  */
 
+"use strict";
+
 (function() {
     var map = {
         markers: [],
@@ -19,7 +21,8 @@
                 zoom: 11
             },
             marker: {
-                draggable: true
+                draggable: true,
+                addPopup: true
             }
         }
     };
@@ -36,30 +39,14 @@
         var popup = this.newPopup();
         var popupContent = $(popup.getContent());
 
-        popupContent.find('button.delete-popup').click(function() {
-            map._map.removeLayer(marker);
-
-            map.removeMarker(marker);
-        });
-
         popupContent.show();
 
         console.log('Popup added!', popup);
 
         marker.bindPopup(popup);
-    };
 
-    map.removeMarker = function(marker)
-    {
-        for(var key in map.markers)
-        {
-            var _marker = map.markers[key];
-            if(marker === _marker)
-            {
-                delete map.markers[key];
-            }
-        }
-    }
+        return popup;
+    };
 
     map.newPopup = function() {
         var popupContent = $('.point-popup').clone();
@@ -71,11 +58,7 @@
         return popup;
     }
 
-    /**
-     *
-     * @param marker
-     */
-    map.addMarker = function(coordinate, _opt) {
+    map.createMarker = function(coordinate, _opt) {
 
         var opt = this.options.marker;
 
@@ -88,10 +71,32 @@
 
         marker.addTo(this._map);
 
-        this.markers.push(marker);
-        this.addPopup(marker);
+        if(opt.addPopup)
+            this.addPopup(marker);
 
         return marker;
+    }
+
+    /**
+     *
+     * @param marker
+     */
+    map.addMarker = function(marker) {
+
+        this.markers.push(marker);
+        return marker;
+    }
+
+    map.removeMarker = function(marker)
+    {
+        for(var key in map.markers)
+        {
+            var _marker = map.markers[key];
+            if(marker === _marker)
+            {
+                map.markers.splice(key, 1);
+            }
+        }
     }
 
     map.updateMarkerPopupByCoordinate = function(marker, e) {

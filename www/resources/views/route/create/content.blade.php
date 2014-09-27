@@ -1,3 +1,16 @@
+<script>
+    // DB'de ne varsa koy abi, kus buraya!
+    var points = [];
+
+    @foreach(App\Place::all() as $place)
+        points.push({
+            lng: {{{$place->longitude}}},
+            lat: {{{$place->latitude}}},
+            name: '{{{$place->name}}}'
+        });
+    @endforeach
+</script>
+
 <div class="row map-row">
     <div class="col-lg-9 col-xs-12 map-area">
         <div id="map">
@@ -6,12 +19,9 @@
 
         <div class="point-popup" style="display: none;">
             <div class="row">
-                <div class="col-xs-9">
-                    <input class="point-name form-control" type="text"/>
-                </div>
-                <div class="col-xs-3">
-                    <button type="submit" class="btn btn-danger delete-popup">Sil</button>
-                </div>
+                    <p class="col-xs-9 point-name"></p>
+                    <button class="col-xs-3 btn btn-info add-to-route">Ekle</button>
+                    <button class="col-xs-3 btn btn-danger remove-from-route" style="display: none;">Sil</button>
             </div>
         </div>
     </div>

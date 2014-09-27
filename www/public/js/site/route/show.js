@@ -10,8 +10,14 @@ $(function() {
     {
         var point = points[key];
 
-        var marker = map.addMarker(point, {
-            draggable: false
+        var greenMarker = L.AwesomeMarkers.icon({
+            icon: 'map-marker',
+            markerColor: 'green'
+        });
+
+        var marker = map.createMarker(point, {
+            draggable: false,
+            icon: greenMarker
         });
 
         marker.getPopup().setContent(point.name);

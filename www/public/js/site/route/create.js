@@ -2,9 +2,51 @@
  * Created by kalaomer on 24.09.2014.
  */
 
+"use strict";
+
 $(function() {
     window.map.init('map');
 
+    $.each(window.points, function(index, point) {
+
+        var redMarker = L.AwesomeMarkers.icon({
+            icon: 'map-marker',
+            markerColor: 'red'
+        });
+
+        var greenMarker = L.AwesomeMarkers.icon({
+            icon: 'map-marker',
+            markerColor: 'green'
+        });
+
+        var marker = map.createMarker(point, {
+            draggable: false,
+            icon: redMarker
+        });
+
+        marker._pointData = point;
+
+        var popup = marker.getPopup();
+
+        var popupContent = $(popup.getContent());
+
+        popupContent.find('.point-name').html(point.name);
+
+        popupContent.find('.add-to-route').click(function() {
+            marker.setIcon(greenMarker);
+            window.map.addMarker(marker);
+            $(this).hide().parent().find('.remove-from-route').show();
+        });
+
+        popupContent.find('.remove-from-route').click(function() {
+            marker.setIcon(redMarker);
+            window.map.removeMarker(marker);
+            $(this).hide().parent().find('.add-to-route').show();
+        });
+
+    });
+
+    /*
     map._map.on('dblclick', function(e) {
         var marker = window.map.addMarker(e.latlng);
 
@@ -19,6 +61,7 @@ $(function() {
             window.map.updateMarkerPopupByCoordinate(marker, marker._lastCoordinate);
         });
     });
+    */
 
     $('#route-form').submit(function(e) {
 
@@ -31,7 +74,7 @@ $(function() {
         var i;
         for(i=0; i<map.markers.length; i++) {
             var marker = map.markers[i];
-            var coordinate = marker.getLatLng();
+            var coordinate = marker._pointData;
 
             // TODO: Bu kısım çok kirli, buraya sonradan bir uğra! :/
 
@@ -49,7 +92,7 @@ $(function() {
             var hiddenNameElement = document.createElement('input');
             hiddenNameElement.setAttribute('type', 'hidden');
             hiddenNameElement.setAttribute('name', 'points[' + i + '][name]');
-            hiddenNameElement.setAttribute('value', popupContent.find('.point-name').first().val());
+            hiddenNameElement.setAttribute('value', coordinate.name);
 
             $('#route-form').append(hiddenLatElement);
             $('#route-form').append(hiddenLngElement);
