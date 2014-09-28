@@ -186,17 +186,17 @@ class RouteController extends Controller {
 
 		if($route->canCancel)
 		{
-			User::where('id', Sentry::getUser()->id)
-					->first()
-					->companions()
-					->detach($id);
+			$user = User::where('id', Sentry::getUser()->id)
+					->first();
+
+			$user->companions()->detach($id);
 
 			$routeOwner = $route->user()->first();
 
 			$templateData = [
 				'userName' => $routeOwner->name,
 				'routeLink' => route('route.show', [$route->id]),
-				'companionName' => $routeOwner->name
+				'companionName' => $user->name
 			];
 
 			Mail::send('emails.route.cancel', $templateData, function($message) use ($routeOwner) {
