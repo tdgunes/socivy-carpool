@@ -12,7 +12,7 @@
     </div>
 
     <div class="col-xs-12 email-area">
-        <input type="text" name="email" placeholder="name@ozu.edu.tr"/>
+        <input type="email" name="email" placeholder="name@ozu.edu.tr"/>
     </div>
 
     <div class="col-xs-12 password-area">
