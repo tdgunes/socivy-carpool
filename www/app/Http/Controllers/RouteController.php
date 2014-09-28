@@ -161,7 +161,7 @@ class RouteController extends Controller {
 
 			$templateData = [
 				'userName' => $routeOwner->name,
-				'routeLink' => route('route.index', [$route->id]),
+				'routeLink' => route('route.show', [$route->id]),
 				'companionName' => Sentry::getUser()->name
 			];
 
@@ -185,7 +185,7 @@ class RouteController extends Controller {
 
 			$templateData = [
 				'userName' => $routeOwner->name,
-				'routeLink' => route('route.index', [$route->id]),
+				'routeLink' => route('route.show', [$route->id]),
 				'companionName' => $routeOwner->name
 			];
 
