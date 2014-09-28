@@ -1,5 +1,6 @@
 <?php  namespace App\Http\Controllers;
 
+use App\User;
 use App\UserRoute;
 use Cartalyst\Sentry\Facades\Laravel\Sentry;
 use Illuminate\Routing\Controller;
@@ -8,7 +9,7 @@ use Illuminate\Support\Facades\View;
 class MeController extends Controller {
 
 	public function index() {
-		$user = Sentry::getUser()
+		$user = User::where('id', Sentry::getUser()->id)
 				->with([
 					'routes' => function($q) {
 						return $q->withOnRoads();
@@ -19,11 +20,9 @@ class MeController extends Controller {
 
 		$myCarRoutes = $user->routes;
 
-		$companionRouteIds = $user->companions->lists('route_id');
+		$myRoutes = $user->companions()->withOnRoads()->get();
 
-		$myRoutes = UserRoute::whereIn('id', $companionRouteIds)->withOnRoads()->get();
-
-		/*
+/*
 		var_dump(\DB::getQueryLog(), $myRoutes->toArray(), [
 			'myCarRoutes' => $myCarRoutes,
 			'myRoutes' => $myRoutes

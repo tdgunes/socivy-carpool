@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers;
 
 use App\Http\Requests\RouteRequest;
+use App\User;
 use App\UserRoute;
 use App\UserRoutePlace;
 use Carbon\Carbon;
@@ -156,14 +157,17 @@ class RouteController extends Controller {
 
 		if($route->canRequest)
 		{
-			Sentry::getUser()->companions()->attach($id);
+			$user = User::where('id', Sentry::getUser()->id)
+						->first();
+
+			$user->companions()->attach($id);
 
 			$routeOwner = $route->user()->first();
 
 			$templateData = [
 				'userName' => $routeOwner->name,
 				'routeLink' => route('route.show', [$route->id]),
-				'companionName' => Sentry::getUser()->name
+				'companionName' => $user->name
 			];
 
 			Mail::send('emails.route.join', $templateData, function($message) use ($routeOwner) {
@@ -180,7 +184,10 @@ class RouteController extends Controller {
 
 		if($route->canCancel)
 		{
-			Sentry::getUser()->companions()->detach($id);
+			User::where('id', Sentry::getUser()->id)
+					->first()
+					->companions()
+					->detach($id);
 
 			$routeOwner = $route->user()->first();
 

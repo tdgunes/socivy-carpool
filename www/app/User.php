@@ -19,8 +19,7 @@ class User extends \Cartalyst\Sentry\Users\Eloquent\User {
 	//	return $this->hasMany('App\\UserRouteCompanion', 'user_id', 'id');
 
 		return $this->belongsToMany('App\\UserRoute', 'user_route_companions', 'user_id', 'route_id')
-			->whereNull('user_route_companions.deleted_at')
-			->withTimestamps();
+			->whereNull('user_route_companions.deleted_at');
 	}
 
 	public function information()

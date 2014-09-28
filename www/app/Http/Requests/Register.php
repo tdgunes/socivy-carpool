@@ -15,9 +15,17 @@ class Register extends FormRequest {
 	 */
 	public function rules()
 	{
+		if(\App::environment() == "development")
+		{
+			$emailRegex = 'regex:/^[a-z0-9\.]+\@(ozu\.edu\.tr|ozyegin\.edu\.tr|hotmail\.com|gmail\.com)$/';
+		}
+		else {
+			$emailRegex = 'regex:/^[a-z0-9\.]+\@(ozu\.edu\.tr|ozyegin\.edu\.tr)$/';
+		}
+
 		return [
 			'name' => 'required',
-			'email' => ['required','email', 'unique:users,email', 'regex:/^[a-z0-9\.]+\@(ozu\.edu\.tr|ozyegin\.edu\.tr)$/'],
+			'email' => ['required','email', 'unique:users,email', $emailRegex],
 			'password' => 'required|min:6',
 			'phone' => 'required|regex:"^\+?9?0?\s?[0-9]{3}\s?[0-9]{3}\s?[0-9]{2}\s?[0-9]{2}\s?$"'
 		];
