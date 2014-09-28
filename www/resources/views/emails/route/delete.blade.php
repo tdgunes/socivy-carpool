@@ -7,7 +7,7 @@ Silinen rotaya ait bilgiler:
 Yön: @Lang('route.plan.' . $routePlan)
 
 Saat: {{{ $routeActionTime }}}
-Rotanın uprayacağı yerler:
+Rotanın uğrayacağı yerler:
 @foreach($routePlaces as $routePlace)
     - {{{ $routePlace['name'] }}}
 @endforeach
