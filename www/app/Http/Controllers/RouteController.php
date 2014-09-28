@@ -28,7 +28,9 @@ class RouteController extends Controller {
 				'places'
 			])
 			->orderBy('action_time')
-			->get();
+			->get()->filter(function($route) {
+				return $route->seats > 0;
+			});
 
 		return View::make('route.index', [
 			'routes' => $routes

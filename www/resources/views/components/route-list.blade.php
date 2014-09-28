@@ -10,11 +10,9 @@
                 </div>
             @else
                 @foreach($routes as $route)
-                    @if($route->seats > 0)
-                        <div class="col-sm-8 col-sm-offset-2 col-xs-12">
-                            @include('components.route-list.route', ['route' => $route])
-                        </div>
-                    @endif
+                    <div class="col-sm-8 col-sm-offset-2 col-xs-12">
+                        @include('components.route-list.route', ['route' => $route])
+                    </div>
                 @endforeach
             @endif
         </div>

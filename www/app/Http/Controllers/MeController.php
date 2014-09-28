@@ -12,7 +12,7 @@ class MeController extends Controller {
 		$user = User::where('id', Sentry::getUser()->id)
 				->with([
 					'routes' => function($q) {
-						return $q->withOnRoads();
+						return $q->withOnRoads()->orderBy('action_time');
 					},
 					'companions'
 				])
@@ -20,7 +20,10 @@ class MeController extends Controller {
 
 		$myCarRoutes = $user->routes;
 
-		$myRoutes = $user->companions()->withOnRoads()->get();
+		$myRoutes = $user->companions()
+				->withOnRoads()
+				->orderBy('action_time')
+				->get();
 
 /*
 		var_dump(\DB::getQueryLog(), $myRoutes->toArray(), [
