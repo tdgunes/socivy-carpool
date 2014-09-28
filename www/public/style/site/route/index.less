@@ -1,10 +1,55 @@
 @import "/style/site/main";
 
-.route {
-  p {
-    margin: 5px 0 10px;
-  }
+.route-list {
+  margin-right: auto;
+  margin-left: auto;
+  float: none;
 
-  margin-top: 20px;
-  margin-bottom: 30px;
+  .route {
+
+    padding-top: 15px;
+    padding-bottom: 15px;
+
+    .route-content {
+      box-shadow: 0 0 5px #666;
+      border-radius: 5px;
+      padding-top: 15px;
+      padding-bottom: 15px;
+
+      .header {
+        font-size: 17px;
+      }
+
+      .content {
+        .plan {
+          font-size: 30px;
+          text-align: center;
+
+          padding-top: 15px;
+        }
+
+        .places {
+          padding-top: 15px;
+          padding-bottom: 15px;
+
+          &>div {
+            padding-top: 15px;
+            padding-bottom: 15px;
+            background: #666;
+            color: #fefefe;
+          }
+        }
+
+        .action-time {
+          text-align: right;
+        }
+      }
+
+      .footer {
+        .route-link {
+
+        }
+      }
+    }
+  }
 }
