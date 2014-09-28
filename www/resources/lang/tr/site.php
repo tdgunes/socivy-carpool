@@ -1,5 +1,5 @@
 <?php
 
 return [
-	'title' => 'Socivy Car Sharing'
+	'title' => 'Socivy Car-Sharing'
 ];
