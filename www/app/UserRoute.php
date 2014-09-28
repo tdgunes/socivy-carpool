@@ -12,11 +12,11 @@ class UserRoute extends Model {
 
 	protected $guarded = [];
 
-	protected $appends = array('seats', 'canRequest', 'canCancel', 'withOnRoad');
+	protected $appends = array('seats', 'canRequest', 'canCancel', 'isOnRoad');
 
 	protected $dates = ['action_time'];
 
-	public static $ON_ROAD_MODIFY = '-1 hour';
+	public static $ON_ROAD_MODIFY = '-30 minute';
 
 	public function user()
 	{
@@ -75,7 +75,7 @@ class UserRoute extends Model {
 		return false;
 	}
 
-	public function getOnRoadAttribute()
+	public function getIsOnRoadAttribute()
 	{
 		$now = Carbon::now();
 

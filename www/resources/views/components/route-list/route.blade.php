@@ -12,10 +12,29 @@
                         {
                             $dateClause = "Yarın ";
                         }
+
                         $dateClause .= $route->action_time->format('H:i');
                     ?>
+                    <?php
+                        $restClause = "";
+
+                        $now = Carbon\Carbon::now();
+                        $diffMinute = $now->diffInMinutes($route->action_time, false);
+                        $diffHours = $now->diffInHours($route->action_time, false);
+
+                        if($diffMinute <= 0)
+                        {
+                            $restClause = "Yolda";
+                        }
+                        else if ($diffHours > 0) {
+                            $restClause = Carbon\Carbon::now()->diffInHours($route->action_time) . " saat kaldı";
+                        }
+                        else {
+                            $restClause = Carbon\Carbon::now()->diffInMinutes($route->action_time) . " dk kaldı";
+                        }
+                    ?>
                     <div class="col-xs-7">
-                        <i class="fa fa-clock-o"></i> {{{ Carbon\Carbon::now()->diffInHours($route->action_time) }}} saat kaldı
+                        <i class="fa fa-clock-o"></i> {{{ $restClause }}}
                     </div>
                     <div class="col-xs-5 action-time" style="text-align: right;">
                         {{{ $dateClause }}}
