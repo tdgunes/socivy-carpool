@@ -11,12 +11,14 @@ class User extends \Cartalyst\Sentry\Users\Eloquent\User {
 
 	public function routes()
 	{
-		$this->hasMany('App\\UserRoute', 'user_id', 'id');
+		return $this->hasMany('App\\UserRoute', 'user_id', 'id');
 	}
 
 	public function companions()
 	{
-		return $this->belongsToMany('App\\UserRoute', 'user_route_companions', 'user_id', 'route_id');
+		return $this->hasMany('App\\UserRouteCompanion', 'user_id', 'id');
+
+		//return $this->belongsToMany('App\\UserRoute', 'user_route_companions', 'user_id', 'route_id')->withTimestamps()->withPivot(['deleted_at']);
 	}
 
 	public function information()

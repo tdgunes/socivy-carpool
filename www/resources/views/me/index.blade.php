@@ -1,16 +1,16 @@
-@extends('layouts.master')
+@extends('...layouts.master')
 
 @section('styles')
     @parent
 
-    <link rel="stylesheet/less" href="/style/site/home/index.less" />
+    <link rel="stylesheet/less" href="/style/site/me/index.less" />
 @stop
 
 @section('page-content')
 
     @include('layouts.body.page.metabar')
 
-    @include('home.index.content')
+    @include('me.index.content')
 
     @include('layouts.body.page.footer')
 @stop

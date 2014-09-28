@@ -30,7 +30,9 @@ class UserRoute extends Model {
 
 	public function companions()
 	{
-		return $this->belongsToMany('App\\User', 'user_route_companions', 'route_id', 'user_id');
+		return $this->hasMany('App\\UserRouteCompanion', 'route_id', 'id');
+
+		//return $this->belongsToMany('App\\User', 'user_route_companions', 'route_id', 'user_id');
 	}
 
 	public function getSeatsAttribute()

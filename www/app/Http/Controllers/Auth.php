@@ -43,7 +43,7 @@ class Auth  extends Controller {
 			]);
 		}
 
-		return Redirect::route('home');
+		return Redirect::route('me.index');
 	}
 
 	public function register()

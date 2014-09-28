@@ -10,4 +10,9 @@ class UserRoutePlace extends Model {
 	protected $table = 'user_route_places';
 
 	protected $guarded = [];
+
+	public function routes()
+	{
+		return $this->belongsToMany('App\UserRoute', 'route_id', 'id');
+	}
 } 

@@ -11,11 +11,6 @@
 |
 */
 
-Route::get('/', [
-	'uses' => 'HomeController@index',
-	'as' => 'home'
-]);
-
 Route::group([
 	'before' => 'auth'
 ], function() {
@@ -37,6 +32,8 @@ Route::group([
 		'as' => 'route.cancel'
 	]);
 
+	Route::resource('me', 'MeController');
+
 	Route::resource('place', 'PlaceController');
 
 });
@@ -44,6 +41,11 @@ Route::group([
 Route::group([
 	'before' => 'guest'
 ], function() {
+
+	Route::get('/', [
+		'uses' => 'HomeController@index',
+		'as' => 'home'
+	]);
 
 	Route::get('login', [
 		'uses' => 'Auth@login',
