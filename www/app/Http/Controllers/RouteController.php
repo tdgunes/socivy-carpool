@@ -131,10 +131,11 @@ class RouteController extends Controller {
 			{
 				$templateData = [
 					'userName' => $companion->name,
-					'routeOwnerName' => $route->user()->get()->name,
+					'routeOwnerName' => $route->user()->first()->name,
 					'routePlan' => $route->plan,
 					'routeActionTime' => $route->action_time,
-					'routePlaces' => $route->places()->get()->toArray()
+					'routePlaces' => $route->places()->get()->toArray(),
+					'routePlan' => $route->plan
 				];
 
 				Mail::send('emails.route.delete', $templateData, function($message) use ($companion) {
