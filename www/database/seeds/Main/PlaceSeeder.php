@@ -17,11 +17,6 @@ class PlaceSeeder extends Seeder {
 			'longitude' => '29.044544'
 		],
 		[
-			'name' => 'Merkez Ataşehir McDonalds',
-			'latitude' => '40.99269',
-			'longitude' => '29.127781'
-		],
-		[
 			'name' => 'Taşdelen Kardiyum',
 			'latitude' => '41.031689',
 			'longitude' => '29.227221'
@@ -32,17 +27,17 @@ class PlaceSeeder extends Seeder {
 			'longitude' => '29.126969'
 		],
 		[
-			'name' => 'Kadiköy',
+			'name' => 'Kadıköy Haldun Taner',
 			'latitude' => '40.991480',
 			'longitude' => '29.023352'
 		],
 		[
-			'name' => 'Bostancı',
+			'name' => 'Bostancı Lunapark',
 			'latitude' => '40.955903',
 			'longitude' => '29.099683'
 		],
 		[
-			'name' => 'Taşdelen',
+			'name' => 'Taşdelen BP',
 			'latitude' => '41.024803',
 			'longitude' => '29.225505'
 		],
