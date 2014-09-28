@@ -17,7 +17,7 @@ class Register extends FormRequest {
 	{
 		return [
 			'name' => 'required',
-			'email' => 'required|email|unique:users,email|in:@ozu.edu.tr,@ozyegin.edu.tr',
+			'email' => 'required|email|unique:users,email|regex:"^[a-z0-9\.]@(ozu.edu.tr|ozyegin.edu.tr)$"',
 			'password' => 'required|min:6',
 			'phone' => 'required|regex:"^\+?9?0?\s?[0-9]{3}\s?[0-9]{3}\s?[0-9]{2}\s?[0-9]{2}\s?$"'
 		];
