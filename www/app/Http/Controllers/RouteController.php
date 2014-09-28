@@ -125,7 +125,7 @@ class RouteController extends Controller {
 
 		if($route->user_id == Sentry::getUser()->id)
 		{
-			$companions = $route->companions();
+			$companions = $route->companions()->get();
 
 			foreach ($companions as $companion)
 			{
@@ -141,10 +141,9 @@ class RouteController extends Controller {
 					$message->to($companion->email, $companion->name)->subject('Socivy Rota Silindi');
 				});
 
-				$route->delete();
-
 			}
 
+			$route->delete();
 		}
 
 		return Redirect::route('route.index');
