@@ -86,7 +86,7 @@
                         <div class="col-xs-6 col-sm-3 col-lg-5">
                             <select name="action_minute" class="form-control">
                                 <option value="00">00</option>
-                                <option value="00">05</option>
+                                <option value="05">05</option>
                                 @for($i=10; $i<60; $i=$i+5)
                                     <option value="{{{$i}}}">{{{$i}}}</option>
                                 @endfor

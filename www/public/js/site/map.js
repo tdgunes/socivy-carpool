@@ -10,7 +10,6 @@
         _map: null,
         options: {
             map: {
-                doubleClickZoom: false
             },
             popup: {
                 maxWidth: 300,

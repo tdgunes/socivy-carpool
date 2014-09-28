@@ -10,12 +10,14 @@ $(function() {
     $.each(window.points, function(index, point) {
 
         var redMarker = L.AwesomeMarkers.icon({
-            icon: 'map-marker',
+            icon: 'car',
+            prefix: 'fa',
             markerColor: 'red'
         });
 
         var greenMarker = L.AwesomeMarkers.icon({
-            icon: 'map-marker',
+            icon: 'car',
+            prefix: 'fa',
             markerColor: 'green'
         });
 

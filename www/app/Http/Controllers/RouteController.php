@@ -10,6 +10,7 @@ use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Mail;
 
 class RouteController extends Controller {
 
@@ -24,7 +25,9 @@ class RouteController extends Controller {
 			->with([
 				'user',
 				'places'
-			])->get();
+			])
+			->orderBy('action_time')
+			->get();
 
 		return View::make('route.index', [
 			'routes' => $routes
@@ -43,7 +46,9 @@ class RouteController extends Controller {
 
 	public function store(RouteRequest $request)
 	{
-		$actionTime = Carbon::create(null, null, null, Input::get('action_hour'), Input::get('action_minute'), 0)
+		$actionTime = Carbon::today()
+							->addMinutes(Input::get('action_minute'))
+							->addHours(Input::get('action_hour'))
 							->modify('+' . Input::get('action_day') . ' day');
 
 		$route = new UserRoute([
@@ -120,7 +125,26 @@ class RouteController extends Controller {
 
 		if($route->user_id == Sentry::getUser()->id)
 		{
-			$route->delete();
+			$companions = $route->companions();
+
+			foreach ($companions as $companion)
+			{
+				$templateData = [
+					'userName' => $companion->name,
+					'routeOwnerName' => $route->user()->get()->name,
+					'routePlan' => $route->plan,
+					'routeActionTime' => $route->action_time,
+					'routePlaces' => $route->places()->get()->toArray()
+				];
+
+				Mail::send('emails.route.delete', $templateData, function($message) use ($companion) {
+					$message->to($companion->email, $companion->name)->subject('Socivy Rota Silindi');
+				});
+
+				$route->delete();
+
+			}
+
 		}
 
 		return Redirect::route('route.index');
@@ -133,6 +157,18 @@ class RouteController extends Controller {
 		if($route->canRequest)
 		{
 			Sentry::getUser()->companions()->attach($id);
+
+			$routeOwner = $route->user()->first();
+
+			$templateData = [
+				'userName' => $routeOwner->name,
+				'routeLink' => route('route.index', [$route->id]),
+				'companionName' => Sentry::getUser()->name
+			];
+
+			Mail::send('emails.route.join', $templateData, function($message) use ($routeOwner) {
+				$message->to($routeOwner->email, $routeOwner->name)->subject('Socivy Rotaya Yolcu Katılımı');
+			});
 		}
 
 		return Redirect::route('route.show', [$id]);
@@ -145,6 +181,18 @@ class RouteController extends Controller {
 		if($route->canCancel)
 		{
 			Sentry::getUser()->companions()->detach($id);
+
+			$routeOwner = $route->user()->first();
+
+			$templateData = [
+				'userName' => $routeOwner->name,
+				'routeLink' => route('route.index', [$route->id]),
+				'companionName' => $routeOwner->name
+			];
+
+			Mail::send('emails.route.cancel', $templateData, function($message) use ($routeOwner) {
+				$message->to($routeOwner->email, $routeOwner->name)->subject('Socivy Rota Yolcu İptali');
+			});
 		}
 
 		return Redirect::route('route.show', [$id]);

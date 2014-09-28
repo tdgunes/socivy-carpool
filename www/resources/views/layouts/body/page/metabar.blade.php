@@ -21,13 +21,13 @@
 
 				<li>
                     <a href="{{{ route('route.index')  }}}">
-                        Arabam Yok!
+                        <i class="fa fa-thumbs-up"></i> Arabam Yok
                     </a>
                 </li>
 
                 <li>
                     <a href="{{{ route('route.create')  }}}">
-                        Rota Oluştur
+                        <i class="fa fa-car"></i> Arabam Var
                     </a>
                 </li>
 

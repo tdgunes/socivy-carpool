@@ -14,18 +14,19 @@
       box-shadow: 0 0 5px #666;
       border-radius: 5px;
       padding-top: 15px;
-      padding-bottom: 15px;
+      overflow: hidden;
 
       .header {
         font-size: 17px;
       }
 
       .content {
+        padding-bottom: 15px;
+        padding-top: 15px;
+
         .plan {
           font-size: 30px;
           text-align: center;
-
-          padding-top: 15px;
         }
 
         .places {
@@ -39,15 +40,18 @@
             color: #fefefe;
           }
         }
-
-        .action-time {
-          text-align: right;
-        }
       }
 
-      .footer {
-        .route-link {
+      .route-link {
+        background: #269abc;
+        text-align: center;
+        padding-bottom: 10px;
+        padding-top: 10px;
 
+        color: #fefefe;
+
+        &:hover {
+          background: #357ebd;
         }
       }
     }
