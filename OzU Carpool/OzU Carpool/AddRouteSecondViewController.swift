@@ -46,7 +46,7 @@ class AddRouteSecondViewController: UIViewController, MKMapViewDelegate {
                 
                 newPinView.rightCalloutAccessoryView = rightButton
                 
-                
+                //100. commit sevgisi
             }
             else {
                 
