@@ -47,10 +47,20 @@ class PlaceSeeder extends Seeder {
 			'longitude' => '29.075049'
 		],
 		[
-			'name' => 'Madenler İETT Durağı',
+			'name' => 'Madenler, Çamlık, İETT Durağı',
 			'latitude' => '41.013956',
 			'longitude' => '29.189295'
 		],
+        [
+            'name' => 'Emlak Konutları',
+            'latitude' => '41.042106',
+            'longitude' => '29.270861'
+        ],
+        [
+            'name' => 'Nişantepe Durağı',
+            'latitude' => '41.044194',
+            'longitude' => '29.256919'
+        ],
 	];
 
 	public function run()
