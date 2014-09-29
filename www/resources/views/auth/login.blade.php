@@ -7,6 +7,9 @@
 @stop
 
 @section('auth-form-content')
+    @if(Input::get('original-url'))
+        <input type="hidden" name="original-url" value="{{{Input::get('original-url')}}}"/>
+    @endif
     <div class="col-xs-12 email-area">
         <input type="email" name="email" placeholder="name@ozu.edu.tr"/>
     </div>

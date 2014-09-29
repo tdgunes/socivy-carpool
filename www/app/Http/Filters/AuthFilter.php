@@ -49,7 +49,8 @@ class AuthFilter {
 			}
 			else
 			{
-				return Redirect::route('auth.login');
+				$route = route('auth.login') . '?original-url=' . $request->path();
+				return Redirect::to($route);
 			}
 		}
 	}

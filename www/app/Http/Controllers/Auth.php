@@ -9,6 +9,7 @@ use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\View;
 
 class Auth  extends Controller {
@@ -43,7 +44,13 @@ class Auth  extends Controller {
 			]);
 		}
 
-		return Redirect::route('me.index');
+		if(Input::get('original-url') != null)
+		{
+			return Redirect::to(Input::get('original-url'));
+		}
+		else {
+			return Redirect::route('me.index');
+		}
 	}
 
 	public function register()
