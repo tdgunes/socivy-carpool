@@ -41,6 +41,16 @@ class PlaceSeeder extends Seeder {
 			'latitude' => '41.024803',
 			'longitude' => '29.225505'
 		],
+		[
+			'name' => 'Libadiye Kavşak',
+			'latitude' => '41.020141',
+			'longitude' => '29.075049'
+		],
+		[
+			'name' => 'Madenler İETT Durağı',
+			'latitude' => '41.013956',
+			'longitude' => '29.189295'
+		],
 	];
 
 	public function run()
