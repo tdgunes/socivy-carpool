@@ -25,15 +25,14 @@ class MeController extends Controller {
 				->orderBy('action_time')
 				->get();
 
-/*
-		var_dump(\DB::getQueryLog(), $myRoutes->toArray(), [
-			'myCarRoutes' => $myCarRoutes,
-			'myRoutes' => $myRoutes
-		]); die();
-*/
 		return View::make('me.index', [
 			'myCarRoutes' => $myCarRoutes,
 			'myRoutes' => $myRoutes
 		]);
+	}
+
+	public function settings()
+	{
+		return View::make('me.settings');
 	}
 } 

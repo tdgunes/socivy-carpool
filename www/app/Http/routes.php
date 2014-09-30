@@ -32,7 +32,15 @@ Route::group([
 		'as' => 'route.cancel'
 	]);
 
-	Route::resource('me', 'MeController');
+	Route::get('me', [
+		'uses' => 'MeController@index',
+		'as' => 'me.index'
+	]);
+
+	Route::get('me/settings', [
+		'uses' => 'MeController@settings',
+		'as' => 'me.settings'
+	]);
 
 	Route::resource('place', 'PlaceController');
 

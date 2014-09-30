@@ -1,6 +1,6 @@
 <?php
 
 return [
-	'log'
+	'driver' => 'log'
 ];
  
