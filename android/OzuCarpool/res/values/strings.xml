@@ -11,6 +11,7 @@
     <string name="title_section3">Ayarlar</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_add_route">AddRouteActivity</string>
-    <string name="title_activity_add_route_map">AddRouteMapActivity</string>
+    <string name="title_activity_add_route_map">Durak Belirle</string>
+    <string name="icon_heart">&#xf1db;</string>
 
 </resources>

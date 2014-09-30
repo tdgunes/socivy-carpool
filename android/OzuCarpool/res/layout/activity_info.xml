@@ -7,81 +7,116 @@
     android:paddingRight="0dp"
     tools:context="${relativePackage}.${activityClass}" >
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="25dp"
-        android:background="#dddddd"
-        android:padding="3dp"
-        android:text="DURAK BİLGİLERİ" />
-
-    <TextView
-        android:id="@+id/textView1"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:text="İsmi: hahah"
-        android:textSize="18sp" />
+        android:background="@drawable/listviewstyle"
+        android:orientation="vertical" >
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="3dp"
-        android:background="@drawable/backgrad" />
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" >
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:text="Zaman Aralığı: "
-        android:textSize="18sp" />
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:text="Yön"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="3dp"
-        android:background="@drawable/backgrad" />
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:text="Zaman"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+        </RelativeLayout>
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:text="Şoför: "
-        android:textSize="18sp" />
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp" >
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="3dp"
-        android:background="@drawable/backgrad" />
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:text="Boş Koltuk"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
 
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:text="Açıklama: "
-        android:textSize="18sp" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:orientation="horizontal" >
 
-    <View
+                <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Sürücü"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                <TextView
+                    android:id="@+id/textView6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:text="İsim"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="DescIcon"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="Desc"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/stoplist"
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="3dp"
-        android:background="@drawable/backgrad" />
+        android:layout_height="fill_parent"
+        android:layout_weight="1" >
+    </ListView>
+
+    <fragment
+        android:id="@+id/map"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="0.75"
+        class="com.google.android.gms.maps.SupportMapFragment" />
 
     <Button
         android:id="@+id/button1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/custom_button"
-        android:text="Şoförü Ara"
+        android:text="Birlikte Git"
         android:textColor="#fff" />
-
-    <fragment
-        android:id="@+id/map"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        class="com.google.android.gms.maps.SupportMapFragment" />
 
 </LinearLayout>

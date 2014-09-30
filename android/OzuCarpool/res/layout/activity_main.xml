@@ -23,7 +23,7 @@
         android:id="@+id/editText1"
         android:layout_width="match_parent" 
     	android:layout_height="40dip" 
-    	android:hint="E-mail adresi"
+    	android:hint="isim@ozu.edu.tr"
     	android:textColorHint="#778BB0" 
     	android:textColor="#778BB0" 
     	android:textSize="12sp"
@@ -72,7 +72,7 @@
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Android pişmanlıktır"
+        android:text="v1.0"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
 </LinearLayout>
