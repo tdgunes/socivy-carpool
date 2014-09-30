@@ -29,7 +29,8 @@
     map.init = function(mapName) {
         this._map = L.map(mapName,this.options.map).setView(this.options.startup.view, this.options.startup.zoom);
 
-        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+        //L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+        L.tileLayer('/leaflet.php?s={s}&z={z}&x={x}&y={y}', {
             attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(this._map);
     }
