@@ -29,3 +29,5 @@ DerivedData
 *.pyc
 
 .idea/workspace.xml
+libproject
+appcompat_v7

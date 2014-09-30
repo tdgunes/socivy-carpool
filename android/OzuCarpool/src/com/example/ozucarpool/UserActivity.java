@@ -172,7 +172,7 @@ public class UserActivity extends ActionBarActivity implements
 				Bundle savedInstanceState) {
 			
 			
-			View rootView = inflater.inflate(R.layout.fragment_user, container,
+			View rootView = inflater.inflate(R.layout.fragment_route, container,
 					false);
 			
 			Button myButton = (Button) rootView.findViewById(R.id.button1);

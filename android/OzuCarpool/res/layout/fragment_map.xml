@@ -19,7 +19,6 @@
         android:layout_height="25dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:background="@drawable/backgrad"
         android:padding="3dp"
         android:text="Yazıldığım Duraklar" />
 
@@ -33,16 +32,5 @@
         android:background="@drawable/custom_button_nopad"
         android:textColor="#fff"
         android:text="Ara" />
-
-    <ListView
-        android:id="@+id/listView1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/textView1"
-        android:background="@drawable/listviewstyle" >
-
-    </ListView>
 
 </RelativeLayout>
