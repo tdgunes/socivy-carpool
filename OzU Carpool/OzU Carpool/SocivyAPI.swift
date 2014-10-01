@@ -112,7 +112,7 @@ class SocivyLoginAPI: AsyncHTTPRequestDelegate{
     }
     
     func authenticate(email:String, password:String) {
-        let headerDictionary:[String:String] = ["email":email, "password":password] //"publicKey": api.publicKey]
+        let headerDictionary:[String:String] = ["email":email, "password":password, "publicKey": api.publicKey]
 
         self.asyncRequest = AsyncHTTPRequest(url: self.url, headerDictionary: headerDictionary)
         self.asyncRequest?.delegate = self
@@ -121,11 +121,14 @@ class SocivyLoginAPI: AsyncHTTPRequestDelegate{
     
     func requestFailWithError(asyncHTTPRequest:AsyncHTTPRequest, error:NSError){
         println(error)
+        self.delegate?.loginDidFailWithError(self, error: error
+        )
     }
 
     func requestDidFinish(asyncHTTPRequest: AsyncHTTPRequest, _ response: NSMutableData) {
         println("[login] requestDidFinish")
         println(NSString(data: response, encoding: NSASCIIStringEncoding))
+        self.delegate?.loginDidFinish(self)
         
     }
     

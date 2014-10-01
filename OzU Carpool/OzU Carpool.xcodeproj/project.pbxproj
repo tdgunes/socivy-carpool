@@ -96,6 +96,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3D4A11CB19DCBABF005963BE /* SocivyAPI */ = {
+			isa = PBXGroup;
+			children = (
+				3DABB0C619D22CA3005CE136 /* SocivyAPI.swift */,
+			);
+			name = SocivyAPI;
+			sourceTree = "<group>";
+		};
 		3DABB09219D22332005CE136 = {
 			isa = PBXGroup;
 			children = (
@@ -128,7 +136,7 @@
 				3DABB0CC19D23F30005CE136 /* SettingsViewController.swift */,
 				3DABB0C219D22756005CE136 /* LoginViewController.swift */,
 				3DABB0C419D22765005CE136 /* SignupViewController.swift */,
-				3DABB0C619D22CA3005CE136 /* SocivyAPI.swift */,
+				3D4A11CB19DCBABF005963BE /* SocivyAPI */,
 				3DABB0CA19D23A7C005CE136 /* MainTabBarController.swift */,
 				3DABB0D019D24D4A005CE136 /* Route.swift */,
 				3D5FE79119D4D828003745AB /* LocationStorage.swift */,

@@ -20,6 +20,8 @@ class LoginViewController: UITableViewController, SocivyAPILoginDelegate {
     @IBOutlet weak var signupCell: UITableViewCell?
     
     
+    var activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.WhiteLarge)
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +35,14 @@ class LoginViewController: UITableViewController, SocivyAPILoginDelegate {
         
         SocivyAPI.sharedInstance.loginAPI?.delegate = self
         
+        var tapRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        tapRecognizer.cancelsTouchesInView = true
+        
+        self.activityIndicator.center = self.navigationController!.view.center
+        self.activityIndicator.stopAnimating()
+        self.activityIndicator.hidesWhenStopped = true
+        
+        self.navigationController?.view.addSubview(self.activityIndicator)
     }
     
     
@@ -42,6 +52,19 @@ class LoginViewController: UITableViewController, SocivyAPILoginDelegate {
     }
     
     
+    func applyBackgroundProcessMode(mode:Bool){
+        if mode == true {
+            self.view.alpha = 0.4
+            self.navigationController?.navigationBar.alpha = 0.3
+            self.activityIndicator.startAnimating()
+        }
+        else {
+            self.view.alpha = 1.0
+            self.navigationController?.navigationBar.alpha = 1.0
+            self.activityIndicator.stopAnimating()
+        }
+        
+    }
  
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         var selectedCell = self.tableView.cellForRowAtIndexPath(indexPath)
@@ -51,8 +74,9 @@ class LoginViewController: UITableViewController, SocivyAPILoginDelegate {
             println("[peek] Password: \(passwordCell?.textField?.text)")
             
             SocivyAPI.sharedInstance.loginAPI?.authenticate("kalaomer@hotmail.com", password: "123123")
-//            let main = self.storyboard?.instantiateViewControllerWithIdentifier("Main") as UIViewController
-//            self.presentViewController(main, animated: true, completion: nil)
+                self.applyBackgroundProcessMode(true)
+            
+
 
         }
         else if selectedCell == forgotPasswordCell {
@@ -67,10 +91,14 @@ class LoginViewController: UITableViewController, SocivyAPILoginDelegate {
     }
     
     func loginDidFinish(socivyAPI:SocivyLoginAPI){
-        println("login did finish")
+        println("[peek] login did finish")
+        self.applyBackgroundProcessMode(false)
+        let main = self.storyboard?.instantiateViewControllerWithIdentifier("Main") as UIViewController
+        self.presentViewController(main, animated: true, completion: nil)
     }
     func loginDidFailWithError(socivyAPI:SocivyLoginAPI, error:NSError){
-        
+        self.applyBackgroundProcessMode(false)
+    
     }
     
 

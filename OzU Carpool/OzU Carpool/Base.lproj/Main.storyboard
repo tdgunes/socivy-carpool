@@ -1073,7 +1073,7 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection footerTitle="Socivy Carpool 1.0" id="d6T-3w-Czb">
+                            <tableViewSection id="d6T-3w-Czb">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="50" id="Y4N-lx-8LA" customClass="TextFieldCell" customModule="OzU_Carpool" customModuleProvider="target">
                                         <autoresizingMask key="autoresizingMask"/>
