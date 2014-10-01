@@ -11,6 +11,11 @@
 |
 */
 
+require_once 'Controllers/API/routes.php';
+
+// Add Route routes.
+require_once 'Controllers/Route/routes.php';
+
 Route::group([
 	'before' => 'auth'
 ], function() {
@@ -18,18 +23,6 @@ Route::group([
 	Route::get('logout', [
 		'uses' => 'Auth@logout',
 		'as' => 'auth.logout'
-	]);
-
-	Route::resource('route', 'RouteController');
-
-	Route::get('route/{id}/request', [
-		'uses' => 'RouteController@request',
-		'as' => 'route.request'
-	]);
-
-	Route::get('route/{id}/cancel', [
-		'uses' => 'RouteController@cancel',
-		'as' => 'route.cancel'
 	]);
 
 	Route::get('me', [
@@ -42,7 +35,16 @@ Route::group([
 		'as' => 'me.settings'
 	]);
 
+	Route::post('me/settings', [
+		'uses' => 'MeController@updateSettings',
+		'as' => 'me.settings'
+	]);
+
 	Route::resource('place', 'PlaceController');
+
+	Route::resource('user', 'UserController');
+
+	Route::resource('message', 'MessageController');
 
 });
 

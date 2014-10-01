@@ -24,7 +24,9 @@ class UserRoutePlaces extends Migration {
 			$table->float('latitude',9, 7);
 			$table->float('longitude', 10, 7);
 
-			$table->foreign('route_id')->references('id')->on('user_routes');
+			$table->foreign('route_id')->references('id')->on('user_routes')
+				->onDelete('cascade')
+				->onUpdate('cascade');
 		});
 
 		DB::statement("ALTER TABLE user_route_places ADD point POINT;");

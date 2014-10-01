@@ -4,7 +4,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Support\Facades\Schema;
 
-class UserSettings extends Migration {
+class UserRouteGeneralSettings extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -13,16 +13,18 @@ class UserSettings extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('user_general_route_settings', function (Blueprint $table) {
+		Schema::create('user_route_general_settings', function (Blueprint $table) {
 			$table->increments('id');
 			$table->timestamps();
 			$table->softDeletes();
 
 			$table->unsignedInteger('user_id');
-			$table->string('show_phone');
-			$table->string('mail_when_route_added');
+			$table->integer('show_phone');
+			$table->integer('mail_when_route_added');
 
-			$table->foreign('user_id')->references('id')->on('users');
+			$table->foreign('user_id')->references('id')->on('users')
+				->onDelete('cascade')
+				->onUpdate('cascade');
 		});
 	}
 
@@ -33,7 +35,7 @@ class UserSettings extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('user_general_route_settings');
+		Schema::drop('user_route_general_settings');
 	}
 
 }

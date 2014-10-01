@@ -12,7 +12,7 @@ class UserRoute extends Model {
 
 	protected $guarded = [];
 
-	protected $appends = array('seats', 'canRequest', 'canCancel', 'isOnRoad');
+	protected $appends = array('seats', 'canRequest', 'canCancel', 'canCreateMessageRoom', 'isOnRoad', 'isOwner');
 
 	protected $dates = ['action_time'];
 
@@ -37,10 +37,35 @@ class UserRoute extends Model {
 				->withTimestamps();
 	}
 
+	public function messageRooms()
+	{
+		return $this->hasMany('App\\UserRouteMessageRoom', 'route_id', 'id');
+	}
+
 	public function getSeatsAttribute()
 	{
 		$companionsCount = $this->companions()->count();
 		return $this->attributes['available_seat'] - $companionsCount;
+	}
+
+	/**
+	 * @return bool
+	 */
+	public function getCanCreateMessageRoomAttribute()
+	{
+		return  ! $this->getIsOwnerAttribute()
+				&&
+				$this->messageRooms()
+					->where('creator_id', \Sentry::getUser()->id)
+					->count() == 0;
+	}
+
+	public function getIsOwnerAttribute()
+	{
+		$userID = \Sentry::getUser()->id;
+
+		// If this user isn't owner of this route.
+		return $this->attributes['user_id'] == $userID;
 	}
 
 	public function getCanRequestAttribute()
@@ -51,8 +76,13 @@ class UserRoute extends Model {
 		}])->first();
 
 		if(
+			// Eğer Rotada yer yoksa
+			$route->seats == 0
+			||
+			// Eğer rotanın sahibi ise
 			$userID == $route->user_id
 			||
+			// Eğer rotanın katılımcısı ise
 			count($route->companions->toArray()) > 0
 		)
 		{

@@ -1,5 +1,7 @@
-<?php namespace App\Http\Controllers;
+<?php namespace App\Http\Controllers\Route;
 
+use App\Http\Requests\Route\Cancel;
+use App\Http\Requests\Route\Request;
 use App\Http\Requests\RouteRequest;
 use App\User;
 use App\UserRoute;
@@ -8,7 +10,6 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\Redirect;
 use Cartalyst\Sentry\Facades\Laravel\Sentry;
 use Illuminate\Routing\Controller;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Mail;
@@ -87,7 +88,7 @@ class RouteController extends Controller {
 	 */
 	public function show($id)
 	{
-		$route = UserRoute::where('id', $id)->with('places', 'user.information', 'companions')->first();
+		$route = UserRoute::where('id', $id)->with('places', 'user.information', 'companions', 'user.routeSettings')->first();
 
 		return View::make('route.show', [
 			'route' => $route
@@ -153,56 +154,50 @@ class RouteController extends Controller {
 		return Redirect::route('route.index');
 	}
 
-	public function request($id)
+	public function request($id, Request $validate)
 	{
 		$route = UserRoute::where('id', $id)->first();
 
-		if($route->canRequest)
-		{
-			$user = User::where('id', Sentry::getUser()->id)
-						->first();
+		$user = User::where('id', Sentry::getUser()->id)
+					->first();
 
-			$user->companions()->attach($id);
+		$user->companions()->attach($id);
 
-			$routeOwner = $route->user()->first();
+		$routeOwner = $route->user()->first();
 
-			$templateData = [
-				'userName' => $routeOwner->name,
-				'routeLink' => route('route.show', [$route->id]),
-				'companionName' => $user->name
-			];
+		$templateData = [
+			'userName' => $routeOwner->name,
+			'routeLink' => route('route.show', [$route->id]),
+			'companionName' => $user->name
+		];
 
-			Mail::send('emails.route.join', $templateData, function($message) use ($routeOwner) {
-				$message->to($routeOwner->email, $routeOwner->name)->subject('Socivy Rotaya Yolcu Katılımı');
-			});
-		}
+		Mail::send('emails.route.join', $templateData, function($message) use ($routeOwner) {
+			$message->to($routeOwner->email, $routeOwner->name)->subject('Socivy Rotaya Yolcu Katılımı');
+		});
 
 		return Redirect::route('route.show', [$id]);
 	}
 
-	public function cancel($id)
+	public function cancel(Cancel $request, $id)
 	{
 		$route = UserRoute::where('id', $id)->first();
 
-		if($route->canCancel)
-		{
-			$user = User::where('id', Sentry::getUser()->id)
-					->first();
+		$user = User::where('id', Sentry::getUser()->id)
+				->first();
 
-			$user->companions()->detach($id);
+		$user->companions()->detach($id);
 
-			$routeOwner = $route->user()->first();
+		$routeOwner = $route->user()->first();
 
-			$templateData = [
-				'userName' => $routeOwner->name,
-				'routeLink' => route('route.show', [$route->id]),
-				'companionName' => $user->name
-			];
+		$templateData = [
+			'userName' => $routeOwner->name,
+			'routeLink' => route('route.show', [$route->id]),
+			'companionName' => $user->name
+		];
 
-			Mail::send('emails.route.cancel', $templateData, function($message) use ($routeOwner) {
-				$message->to($routeOwner->email, $routeOwner->name)->subject('Socivy Rota Yolcu İptali');
-			});
-		}
+		Mail::send('emails.route.cancel', $templateData, function($message) use ($routeOwner) {
+			$message->to($routeOwner->email, $routeOwner->name)->subject('Socivy Rota Yolcu İptali');
+		});
 
 		return Redirect::route('route.show', [$id]);
 	}

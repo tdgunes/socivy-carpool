@@ -20,7 +20,9 @@ class UserInformation extends Migration {
 			$table->unsignedInteger('user_id');
 			$table->string('phone');
 
-			$table->foreign('user_id')->references('id')->on('users');
+			$table->foreign('user_id')->references('id')->on('users')
+				->onDelete('cascade')
+				->onUpdate('cascade');
 		});
 	}
 

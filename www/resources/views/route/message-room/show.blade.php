@@ -1,16 +1,16 @@
-@extends('...layouts.master')
+@extends('layouts.master')
 
 @section('styles')
     @parent
 
-    <link rel="stylesheet/less" href="/style/site/me/settings.less" />
+    <link rel="stylesheet/less" href="/style/site/route/message-room/show.less" />
 @stop
 
 @section('page-content')
 
     @include('layouts.body.page.metabar')
 
-    @include('me.settings.content')
+    @include('route.message-room.show.content')
 
     @include('layouts.body.page.footer')
 @stop

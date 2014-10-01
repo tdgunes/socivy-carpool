@@ -4,7 +4,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Support\Facades\Schema;
 
-class UserRouteCompanions extends Migration {
+class UserRouteMessageRooms extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -13,17 +13,19 @@ class UserRouteCompanions extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('user_route_companions', function(Blueprint $table) {
+		Schema::create('user_route_message_rooms', function (Blueprint $table)
+		{
 			$table->increments('id');
 			$table->timestamps();
 			$table->softDeletes();
 
-			$table->unsignedInteger('user_id');
+			$table->unsignedInteger('creator_id');
 			$table->unsignedInteger('route_id');
 
-			$table->foreign('user_id')->references('id')->on('users')
+			$table->foreign('creator_id')->references('id')->on('users')
 				->onDelete('cascade')
 				->onUpdate('cascade');
+
 			$table->foreign('route_id')->references('id')->on('user_routes')
 				->onDelete('cascade')
 				->onUpdate('cascade');
@@ -37,7 +39,7 @@ class UserRouteCompanions extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('user_route_companions');
+		Schema::drop('user_route_message_rooms');
 	}
 
 }

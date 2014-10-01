@@ -44,7 +44,7 @@
             @if(\Sentry::getUser()->id == $route->user_id)
                 <form action="{{{ route('route.destroy', [$route->id]) }}}" method="POST">
                     <input type="hidden" name="_method" value="DELETE">
-                    <div class="btn-group btn-group-justified" style="margin-bottom: 30px;">
+                    <div class="btn-group btn-group-justified" style="margin-bottom: 20px;">
                         <div class="btn-group">
                             <button type="submit" class="btn btn-danger">Rotayı Sil</button>
                         </div>
@@ -53,15 +53,43 @@
             @endif
 
             @if($route->canRequest)
-                <div class="btn-group btn-group-justified" style="margin-bottom: 30px;">
+                <div class="btn-group btn-group-justified" style="margin-bottom: 20px;">
                     <div class="btn-group">
                         <a href="{{{ route('route.request', [$route->id]) }}}" class="btn btn-success">Birlikte Git</a>
                     </div>
                 </div>
             @endif
 
+            @if($route->canCreateMessageRoom)
+                <form action="{{{ route('route.message-room.store', [$route->id]) }}}" method="post">
+                    <div class="btn-group btn-group-justified" style="margin-bottom: 20px;">
+                        <div class="btn-group">
+                            <button type="submit" class="btn btn-info">Mesaj Gönder</button>
+                        </div>
+                    </div>
+                </form>
+            @endif
+
+            @if($route->messageRooms()->where('creator_id', Sentry::getUser()->id)->first())
+                <form action="{{{ route('route.message-room.show', [$route->id]) }}}" method="post">
+                    <div class="btn-group btn-group-justified" style="margin-bottom: 20px;">
+                        <div class="btn-group">
+                            <button type="submit" class="btn btn-info">Mesaj Gönder</button>
+                        </div>
+                    </div>
+                </form>
+            @endif
+
+            @if($route->isOwner)
+                <div class="btn-group btn-group-justified" style="margin-bottom: 20px;">
+                    <div class="btn-group">
+                        <a href="{{{ route('route.message-room.index', [$route->id]) }}}" class="btn btn-success">Gelen Mesajlar</a>
+                    </div>
+                </div>
+            @endif
+
             @if($route->canCancel)
-                <div class="btn-group btn-group-justified" style="margin-bottom: 30px;">
+                <div class="btn-group btn-group-justified" style="margin-bottom: 20px;">
                     <div class="btn-group">
                         <a href="{{{ route('route.cancel', [$route->id]) }}}" class="btn btn-danger">İptal Et</a>
                     </div>
@@ -92,8 +120,10 @@
             <div class="form-group">
                 <label for="" class="col-xs-3 control-label">İlan Sahibi</label>
                 <div class="col-xs-9">
-                    <p>{{{ $route->user->name  }}}</p>
-                    <p>{{{ $route->user->information->phone  }}}</p>
+                    <p>{{{ $route->user->name }}}</p>
+                    @if($route->user->routeSettings->show_phone)
+                        <p>{{{ $route->user->information->phone }}}</p>
+                    @endif
                     <p>{{{ $route->user->email  }}}</p>
                 </div>
             </div>
@@ -107,18 +137,18 @@
                 </div>
             @endif
 
-            @if(\Sentry::getUser()->id == $route->user_id)
+            @if($route->isOwner)
                 @foreach($route->companions as $companion)
-
                     <div class="form-group">
                         <label for="" class="col-xs-3 control-label">Gelecek Kişi</label>
                         <div class="col-xs-9">
-                            <p>{{{ $companion->name  }}}</p>
-                            <p>{{{ $companion->email  }}}</p>
-                            <p>{{{ $companion->information->phone  }}}</p>
+                            <p>{{{ $companion->name }}}</p>
+                            <p>{{{ $companion->email }}}</p>
+                            @if($companion->routeSettings->show_phone)
+                                <p>{{{ $companion->information->phone }}}</p>
+                            @endif
                         </div>
                     </div>
-
                 @endforeach
             @endif
 

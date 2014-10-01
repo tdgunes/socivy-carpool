@@ -28,7 +28,9 @@ class UserRoutes extends Migration {
 
 			$table->timestamp('action_time');
 
-			$table->foreign('user_id')->references('id')->on('users');
+			$table->foreign('user_id')->references('id')->on('users')
+				->onDelete('cascade')
+				->onUpdate('cascade');
 		});
 	}
 

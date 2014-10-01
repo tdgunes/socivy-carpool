@@ -26,4 +26,9 @@ class User extends \Cartalyst\Sentry\Users\Eloquent\User {
 	{
 		return $this->hasOne('App\\UserInformation', 'user_id', 'id');
 	}
+
+	public function routeSettings()
+	{
+		return $this->hasOne('App\\UserRouteGeneralSetting', 'user_id', 'id');
+	}
 }
