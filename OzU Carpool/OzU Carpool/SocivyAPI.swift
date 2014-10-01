@@ -31,22 +31,28 @@ class AsyncHTTPRequest: NSObject, NSURLConnectionDelegate, NSURLConnectionDataDe
     
     
     init(url:String, headerDictionary:[String:String]){
+        println("[async] \(url)")
         self.url = NSURL(string: url)
         self.headerDictionary = headerDictionary
     }
     
     func start(){
         var urlRequest = NSMutableURLRequest(URL:self.url)
-        self.prepareHTTPRequest(urlRequest)
+        urlRequest = self.prepareHTTPRequest(urlRequest)
         let conn = NSURLConnection(request:urlRequest, delegate: self, startImmediately: true)
+        println("[async] start()")
+
     }
     
-    func prepareHTTPRequest(urlRequest:NSMutableURLRequest) {
+    func prepareHTTPRequest(urlRequest:NSMutableURLRequest) -> NSMutableURLRequest {
         urlRequest.timeoutInterval = timeoutInterval
         urlRequest.HTTPMethod = "POST"
+        println("[async] HTTPMethod: POST")
         for (key,value) in self.headerDictionary {
+            println("[async] $POST['\(key)'] = \(value)")
             urlRequest.setValue(value, forHTTPHeaderField: key)
         }
+        return urlRequest
     }
     
     func connection(connection: NSURLConnection, didReceiveResponse response: NSURLResponse) {
@@ -58,12 +64,18 @@ class AsyncHTTPRequest: NSObject, NSURLConnectionDelegate, NSURLConnectionDataDe
     }
     
     func connectionDidFinishLoading(connection: NSURLConnection) {
+        println("[async] didFinishLoading")
         if let _responseData = responseData {
+
             self.delegate?.requestDidFinish(self,_responseData)
         }
         else {
+            println("[async] unknownError :( ")
             self.reportUnknownError()
         }
+    }
+    func connection(connection: NSURLConnection, didFailWithError error: NSError) {
+        println(error.description)
     }
     
     func reportUnknownError(){
@@ -91,27 +103,30 @@ class SocivyLoginAPI: AsyncHTTPRequestDelegate{
             return api.url + path
         }
     }
-
     
     unowned var api: SocivyAPI
     
     init(api:SocivyAPI) {
         self.api = api
+
     }
     
     func authenticate(email:String, password:String) {
-        let headerDictionary = ["email":email, "password":password, "publicKey": api.publicKey] as [String:String]
-        self.asyncRequest = AsyncHTTPRequest(url: self.path, headerDictionary: headerDictionary)
-        
+        let headerDictionary:[String:String] = ["email":email, "password":password] //"publicKey": api.publicKey]
+
+        self.asyncRequest = AsyncHTTPRequest(url: self.url, headerDictionary: headerDictionary)
+        self.asyncRequest?.delegate = self
+        self.asyncRequest?.start()
     }
     
     func requestFailWithError(asyncHTTPRequest:AsyncHTTPRequest, error:NSError){
-        
-        
+        println(error)
     }
 
     func requestDidFinish(asyncHTTPRequest: AsyncHTTPRequest, _ response: NSMutableData) {
-        println(response)
+        println("[login] requestDidFinish")
+        println(NSString(data: response, encoding: NSASCIIStringEncoding))
+        
     }
     
     
@@ -119,13 +134,19 @@ class SocivyLoginAPI: AsyncHTTPRequestDelegate{
 
 
 class SocivyAPI {
-    let publicKey = 1234
-    let url = "https://socivy.com/api/v1"
+    let publicKey = "1234"
+    let url = "http://development.socivy.com/api/v1"
     var loginAPI:SocivyLoginAPI?
 
+    
+    class var sharedInstance : SocivyAPI {
+        return _SingletonSocivyAPI
+    }
     
     init(){
         self.loginAPI = SocivyLoginAPI(api: self)
     }
     
 }
+
+let _SingletonSocivyAPI = SocivyAPI()

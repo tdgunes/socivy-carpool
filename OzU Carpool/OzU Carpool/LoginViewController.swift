@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class LoginViewController: UITableViewController {
+class LoginViewController: UITableViewController, SocivyAPILoginDelegate {
     
     
     @IBOutlet weak var emailCell: TextFieldCell?
@@ -31,6 +31,8 @@ class LoginViewController: UITableViewController {
         forgotPasswordCell?.selectionStyle = .None
         signupCell?.selectionStyle = .None
         
+        SocivyAPI.sharedInstance.loginAPI?.delegate = self
+        
     }
     
     
@@ -47,8 +49,10 @@ class LoginViewController: UITableViewController {
             println("[peek] loginCell touched")
             println("[peek] Email: \(emailCell?.textField?.text)")
             println("[peek] Password: \(passwordCell?.textField?.text)")
-            let main = self.storyboard?.instantiateViewControllerWithIdentifier("Main") as UIViewController
-            self.presentViewController(main, animated: true, completion: nil)
+            
+            SocivyAPI.sharedInstance.loginAPI?.authenticate("kalaomer@hotmail.com", password: "123123")
+//            let main = self.storyboard?.instantiateViewControllerWithIdentifier("Main") as UIViewController
+//            self.presentViewController(main, animated: true, completion: nil)
 
         }
         else if selectedCell == forgotPasswordCell {
@@ -59,6 +63,13 @@ class LoginViewController: UITableViewController {
             println("[peek] signupCell touched")
         
         }
+        
+    }
+    
+    func loginDidFinish(socivyAPI:SocivyLoginAPI){
+        println("login did finish")
+    }
+    func loginDidFailWithError(socivyAPI:SocivyLoginAPI, error:NSError){
         
     }
     
