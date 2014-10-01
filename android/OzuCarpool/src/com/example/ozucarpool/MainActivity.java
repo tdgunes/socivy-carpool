@@ -19,7 +19,7 @@ public class MainActivity extends Activity  {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-
+		HttpPoster poster = new HttpPoster();
 		
 
 		Button myButton = (Button) findViewById(R.id.button1);

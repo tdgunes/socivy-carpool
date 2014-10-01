@@ -67,13 +67,6 @@
         android:background="@drawable/custom_button"
         android:text="Kayıt Ol"
         android:textColor="#fff" />
-   
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="v1.0"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
 
 </LinearLayout>
 </ScrollView>
