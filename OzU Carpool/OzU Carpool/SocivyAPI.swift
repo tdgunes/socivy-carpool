@@ -10,8 +10,8 @@ import Foundation
 
 
 protocol SocivyAPILoginDelegate {
-    func loginDidFinish(socivyAPI:SocivyAPI)
-    func loginDidFailWithError(socivyAPI:SocivyAPI, error:NSError)
+    func loginDidFinish(socivyAPI:SocivyLoginAPI)
+    func loginDidFailWithError(socivyAPI:SocivyLoginAPI, error:NSError)
 }
 
 protocol AsyncHTTPRequestDelegate {
@@ -28,6 +28,7 @@ class AsyncHTTPRequest: NSObject, NSURLConnectionDelegate, NSURLConnectionDataDe
     var responseData : NSMutableData? = NSMutableData()
     var url:NSURL
     var headerDictionary:[String:String]
+    
     
     init(url:String, headerDictionary:[String:String]){
         self.url = NSURL(string: url)
@@ -79,13 +80,52 @@ class AsyncHTTPRequest: NSObject, NSURLConnectionDelegate, NSURLConnectionDataDe
 }
 
 
-class SocivyAPI{
+class SocivyLoginAPI: AsyncHTTPRequestDelegate{
     
+    var delegate: SocivyAPILoginDelegate?
+    var asyncRequest:AsyncHTTPRequest?
+    let path = "/authenticate"
     
-    func authenticate(user:String, password:String) {
-        
+    var url:String {
+        get{
+            return api.url + path
+        }
     }
 
     
+    unowned var api: SocivyAPI
+    
+    init(api:SocivyAPI) {
+        self.api = api
+    }
+    
+    func authenticate(email:String, password:String) {
+        let headerDictionary = ["email":email, "password":password, "publicKey": api.publicKey] as [String:String]
+        self.asyncRequest = AsyncHTTPRequest(url: self.path, headerDictionary: headerDictionary)
+        
+    }
+    
+    func requestFailWithError(asyncHTTPRequest:AsyncHTTPRequest, error:NSError){
+        
+        
+    }
+
+    func requestDidFinish(asyncHTTPRequest: AsyncHTTPRequest, _ response: NSMutableData) {
+        println(response)
+    }
+    
+    
+}
+
+
+class SocivyAPI {
+    let publicKey = 1234
+    let url = "https://socivy.com/api/v1"
+    var loginAPI:SocivyLoginAPI?
+
+    
+    init(){
+        self.loginAPI = SocivyLoginAPI(api: self)
+    }
     
 }

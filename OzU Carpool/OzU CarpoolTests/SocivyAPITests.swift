@@ -1,20 +1,23 @@
 //
-//  OzU_CarpoolTests.swift
-//  OzU CarpoolTests
+//  SocivyAPITests.swift
+//  OzU Carpool
 //
-//  Created by Taha Doğan Güneş on 24/09/14.
+//  Created by Taha Doğan Güneş on 01/10/14.
 //  Copyright (c) 2014 TDG. All rights reserved.
 //
 
 import UIKit
 import XCTest
 
-class OzU_CarpoolTests: XCTestCase {
+
+class SocivyAPILoginTests: XCTestCase, SocivyAPILoginDelegate {
+    
+    var socivyAPI:SocivyAPI?
     
     override func setUp() {
         super.setUp()
-
         // Put setup code here. This method is called before the invocation of each test method in the class.
+        self.socivyAPI?.loginAPI?.authenticate(<#email: String#>, password: <#String#>)
     }
     
     override func tearDown() {
@@ -33,5 +36,7 @@ class OzU_CarpoolTests: XCTestCase {
             // Put the code you want to measure the time of here.
         }
     }
+    
+    func
     
 }
