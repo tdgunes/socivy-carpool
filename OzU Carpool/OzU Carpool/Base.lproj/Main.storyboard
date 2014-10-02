@@ -2,46 +2,137 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="PBV-gk-hCF">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="fontawesome-webfont.ttf">
+            <string>FontAwesome</string>
+            <string>FontAwesome</string>
+            <string>FontAwesome</string>
+            <string>FontAwesome</string>
+            <string>FontAwesome</string>
+        </mutableArray>
+    </customFonts>
     <scenes>
-        <!--Yazıldığım Duraklar-->
+        <!--Kaydolduğum Rotalar-->
         <scene sceneID="Xn1-5K-I9q">
             <objects>
                 <tableViewController id="9xr-hx-W5R" customClass="RoutesViewController" customModule="OzU_Carpool" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="WfN-6e-PgQ">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="297" sectionHeaderHeight="10" sectionFooterHeight="10" id="WfN-6e-PgQ">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Route" textLabel="jqY-fL-VIa" detailTextLabel="fIE-uy-iBg" style="IBUITableViewCellStyleSubtitle" id="YVZ-I5-6lE">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RouteCell" rowHeight="297" id="YVZ-I5-6lE" customClass="RouteCell" customModule="OzU_Carpool" customModuleProvider="target">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YVZ-I5-6lE" id="1w3-a1-QQg">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="09:45 - Altunizade Durağı -> ÖzÜ" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="jqY-fL-VIa">
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZmZ-P0-vCP">
+                                            <rect key="frame" x="254" y="44" width="91.5" height="25.5"/>
+                                            <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="25"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Şoför: Taha Doğan Güneş" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="fIE-uy-iBg">
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  12 saat kaldı" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oVb-Yr-J8t">
+                                            <rect key="frame" x="28" y="14" width="119" height="18"/>
+                                            <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Yarın 00:00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j1d-Nu-lXd">
+                                            <rect key="frame" x="483" y="11" width="86" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="86" id="771-Ns-cKd"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4 " textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l87-22-JCM">
+                                            <rect key="frame" x="543" y="258" width="26" height="18"/>
+                                            <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" Taha Doğan Güneş" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="blW-LY-bqt">
+                                            <rect key="frame" x="28" y="261" width="149.5" height="16"/>
+                                            <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="15"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <tableView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Kd8-ff-pzf">
+                                            <rect key="frame" x="10" y="85" width="580" height="159"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="159" id="FBA-GC-gJa"/>
+                                            </constraints>
+                                            <prototypes>
+                                                <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="StopCell" textLabel="yb2-i9-9IC" style="IBUITableViewCellStyleDefault" id="bTB-pm-NY2">
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bTB-pm-NY2" id="fDf-tn-J4F">
+                                                        <autoresizingMask key="autoresizingMask"/>
+                                                        <subviews>
+                                                            <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text=" Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="yb2-i9-9IC">
+                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                <color key="backgroundColor" red="0.51086956520000004" green="0.51086956520000004" blue="0.51086956520000004" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="16"/>
+                                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                        <color key="backgroundColor" red="0.51086956521739135" green="0.51086956521739135" blue="0.51086956521739135" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </tableViewCellContentView>
+                                                    <color key="backgroundColor" red="0.51086956520000004" green="0.51086956520000004" blue="0.51086956520000004" alpha="1" colorSpace="calibratedRGB"/>
+                                                </tableViewCell>
+                                            </prototypes>
+                                            <sections/>
+                                            <connections>
+                                                <outlet property="dataSource" destination="YVZ-I5-6lE" id="jz9-CK-fEc"/>
+                                                <outlet property="delegate" destination="YVZ-I5-6lE" id="aGJ-fK-5kS"/>
+                                            </connections>
+                                        </tableView>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="oVb-Yr-J8t" firstAttribute="leading" secondItem="blW-LY-bqt" secondAttribute="leading" id="2Ya-Gh-MHP"/>
+                                        <constraint firstItem="Kd8-ff-pzf" firstAttribute="top" secondItem="oVb-Yr-J8t" secondAttribute="bottom" constant="53" id="5EQ-VM-9cM"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="l87-22-JCM" secondAttribute="bottom" constant="13" id="BFR-xo-3v7"/>
+                                        <constraint firstItem="oVb-Yr-J8t" firstAttribute="leading" secondItem="1w3-a1-QQg" secondAttribute="leadingMargin" constant="20" id="CGc-pW-WhU"/>
+                                        <constraint firstItem="Kd8-ff-pzf" firstAttribute="centerX" secondItem="ZmZ-P0-vCP" secondAttribute="centerX" constant="0.25" id="GMm-2e-yJS"/>
+                                        <constraint firstItem="j1d-Nu-lXd" firstAttribute="top" secondItem="1w3-a1-QQg" secondAttribute="topMargin" constant="3" id="Nfx-4h-4Vc"/>
+                                        <constraint firstItem="Kd8-ff-pzf" firstAttribute="top" secondItem="ZmZ-P0-vCP" secondAttribute="bottom" constant="19" id="NqV-1I-BcC"/>
+                                        <constraint firstItem="Kd8-ff-pzf" firstAttribute="top" secondItem="1w3-a1-QQg" secondAttribute="top" constant="85" id="PXK-3F-HU8"/>
+                                        <constraint firstItem="Kd8-ff-pzf" firstAttribute="top" secondItem="j1d-Nu-lXd" secondAttribute="bottom" constant="53" id="Xr6-l2-Rey"/>
+                                        <constraint firstAttribute="trailing" secondItem="Kd8-ff-pzf" secondAttribute="trailing" constant="10" id="eeK-dz-Q6L"/>
+                                        <constraint firstItem="l87-22-JCM" firstAttribute="trailing" secondItem="j1d-Nu-lXd" secondAttribute="trailing" id="fpQ-dA-QWo"/>
+                                        <constraint firstItem="Kd8-ff-pzf" firstAttribute="top" secondItem="ZmZ-P0-vCP" secondAttribute="bottom" constant="15.5" id="fyF-lu-Rie"/>
+                                        <constraint firstItem="Kd8-ff-pzf" firstAttribute="leading" secondItem="1w3-a1-QQg" secondAttribute="leading" constant="10" id="lGF-95-43N"/>
+                                        <constraint firstItem="Kd8-ff-pzf" firstAttribute="top" secondItem="ZmZ-P0-vCP" secondAttribute="bottom" constant="19.5" id="oTp-xp-qx9"/>
+                                        <constraint firstItem="l87-22-JCM" firstAttribute="trailing" secondItem="1w3-a1-QQg" secondAttribute="trailingMargin" constant="-23" id="olS-H1-SJ2"/>
+                                        <constraint firstItem="j1d-Nu-lXd" firstAttribute="top" secondItem="oVb-Yr-J8t" secondAttribute="top" constant="-3" id="p0T-hk-uRz"/>
+                                        <constraint firstItem="l87-22-JCM" firstAttribute="top" secondItem="Kd8-ff-pzf" secondAttribute="bottom" constant="14" id="qp0-eE-vfy"/>
+                                        <constraint firstItem="l87-22-JCM" firstAttribute="baseline" secondItem="blW-LY-bqt" secondAttribute="firstBaseline" constant="-1" id="ruD-eA-iKk"/>
+                                        <constraint firstItem="l87-22-JCM" firstAttribute="bottom" secondItem="blW-LY-bqt" secondAttribute="bottom" constant="-1" id="sqn-7j-sMt"/>
+                                    </constraints>
+                                    <variation key="default">
+                                        <mask key="constraints">
+                                            <exclude reference="NqV-1I-BcC"/>
+                                            <exclude reference="oTp-xp-qx9"/>
+                                        </mask>
+                                    </variation>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
+                        <sections/>
                         <connections>
                             <outlet property="dataSource" destination="9xr-hx-W5R" id="cVU-ne-UxJ"/>
                             <outlet property="delegate" destination="9xr-hx-W5R" id="mKp-Wv-ZXg"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Yazıldığım Duraklar" id="5st-Ve-IRB">
-                        <barButtonItem key="rightBarButtonItem" title="Ara" id="U1R-o4-Tbw">
+                    <navigationItem key="navigationItem" title="Kaydolduğum Rotalar" id="5st-Ve-IRB">
+                        <barButtonItem key="rightBarButtonItem" title="Ekle" id="U1R-o4-Tbw">
                             <connections>
                                 <action selector="showCategoryView" destination="9xr-hx-W5R" id="2AH-ru-Vce"/>
                                 <segue destination="Ope-g9-ohp" kind="show" id="O2u-6p-gV7"/>

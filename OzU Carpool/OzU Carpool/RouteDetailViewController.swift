@@ -69,7 +69,6 @@ class RouteDetailViewController: UITableViewController, MKMapViewDelegate {
                 
                 //details button
                 //            var rightButton = UIButton.buttonWithType(UIButtonType.DetailDisclosure) as UIButton
-                
                 //            newPinView.rightCalloutAccessoryView = rightButton
                 
                 

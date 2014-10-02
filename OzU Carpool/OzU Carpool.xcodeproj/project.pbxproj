@@ -27,6 +27,10 @@
 		3DABB0D519D25C9A005CE136 /* RouteDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DABB0D419D25C9A005CE136 /* RouteDetailViewController.swift */; };
 		3DABB0D719D25E4D005CE136 /* MapCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DABB0D619D25E4D005CE136 /* MapCell.swift */; };
 		3DABB0DF19D33B15005CE136 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3DABB0DD19D33B15005CE136 /* Main.storyboard */; };
+		3DCF4C3C19DD451400275CF5 /* fontawesome-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3DCF4C3B19DD451400275CF5 /* fontawesome-webfont.ttf */; };
+		3DCF4C3D19DD451400275CF5 /* fontawesome-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3DCF4C3B19DD451400275CF5 /* fontawesome-webfont.ttf */; };
+		3DCF4C3F19DD4F0400275CF5 /* RouteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCF4C3E19DD4F0400275CF5 /* RouteCell.swift */; };
+		3DCF4C4019DD4F0400275CF5 /* RouteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCF4C3E19DD4F0400275CF5 /* RouteCell.swift */; };
 		3DEA550E19D700D90026D4DC /* AddRouteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEA550D19D700D90026D4DC /* AddRouteViewController.swift */; };
 		3DEA551119D7066C0026D4DC /* AddRouteSecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEA551019D7066C0026D4DC /* AddRouteSecondViewController.swift */; };
 		3DEBA12B19D3626500C84094 /* DatePickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEBA12A19D3626500C84094 /* DatePickerCell.swift */; };
@@ -69,6 +73,8 @@
 		3DABB0D419D25C9A005CE136 /* RouteDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteDetailViewController.swift; sourceTree = "<group>"; };
 		3DABB0D619D25E4D005CE136 /* MapCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapCell.swift; sourceTree = "<group>"; };
 		3DABB0DE19D33B15005CE136 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		3DCF4C3B19DD451400275CF5 /* fontawesome-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "fontawesome-webfont.ttf"; sourceTree = "<group>"; };
+		3DCF4C3E19DD4F0400275CF5 /* RouteCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteCell.swift; sourceTree = "<group>"; };
 		3DEA550D19D700D90026D4DC /* AddRouteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddRouteViewController.swift; path = ../AddRouteViewController.swift; sourceTree = "<group>"; };
 		3DEA551019D7066C0026D4DC /* AddRouteSecondViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddRouteSecondViewController.swift; sourceTree = "<group>"; };
 		3DEBA12A19D3626500C84094 /* DatePickerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerCell.swift; sourceTree = "<group>"; };
@@ -125,6 +131,7 @@
 		3DABB09D19D22332005CE136 /* OzU Carpool */ = {
 			isa = PBXGroup;
 			children = (
+				3DCF4C3B19DD451400275CF5 /* fontawesome-webfont.ttf */,
 				3DEBA13019D3649B00C84094 /* CustomCells */,
 				3DABB0A019D22332005CE136 /* AppDelegate.swift */,
 				3DABB0A919D22332005CE136 /* Images.xcassets */,
@@ -195,6 +202,7 @@
 		3DEBA13019D3649B00C84094 /* CustomCells */ = {
 			isa = PBXGroup;
 			children = (
+				3DCF4C3E19DD4F0400275CF5 /* RouteCell.swift */,
 				3DABB0C819D23290005CE136 /* TextFieldCell.swift */,
 				3DEBA12A19D3626500C84094 /* DatePickerCell.swift */,
 				3DEBA12C19D362C000C84094 /* SegmentedControlCell.swift */,
@@ -289,6 +297,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3DABB0DF19D33B15005CE136 /* Main.storyboard in Resources */,
+				3DCF4C3C19DD451400275CF5 /* fontawesome-webfont.ttf in Resources */,
 				3DABB0AD19D22332005CE136 /* LaunchScreen.xib in Resources */,
 				3DABB0AA19D22332005CE136 /* Images.xcassets in Resources */,
 			);
@@ -298,6 +307,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3DCF4C3D19DD451400275CF5 /* fontawesome-webfont.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -317,6 +327,7 @@
 				3DEBA12D19D362C000C84094 /* SegmentedControlCell.swift in Sources */,
 				3DABB0A119D22332005CE136 /* AppDelegate.swift in Sources */,
 				3DABB0D719D25E4D005CE136 /* MapCell.swift in Sources */,
+				3DCF4C3F19DD4F0400275CF5 /* RouteCell.swift in Sources */,
 				3DABB0C719D22CA3005CE136 /* SocivyAPI.swift in Sources */,
 				3DEA551119D7066C0026D4DC /* AddRouteSecondViewController.swift in Sources */,
 				3DABB0D519D25C9A005CE136 /* RouteDetailViewController.swift in Sources */,
@@ -335,6 +346,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3D0A17F719DC8AAD00614B36 /* SocivyAPI.swift in Sources */,
+				3DCF4C4019DD4F0400275CF5 /* RouteCell.swift in Sources */,
 				3DABB0B919D22332005CE136 /* OzU_CarpoolTests.swift in Sources */,
 				3D0A17F619DC8A4100614B36 /* SocivyAPITests.swift in Sources */,
 			);

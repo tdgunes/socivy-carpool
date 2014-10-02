@@ -45,16 +45,20 @@ class RoutesViewController: UITableViewController {
         self.navigationController?.pushViewController(main, animated: true)
     }
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier("Route", forIndexPath:indexPath) as UITableViewCell
+        let cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier("RouteCell", forIndexPath:indexPath) as UITableViewCell
         var route = routes[indexPath.row]
-        if route.toOzu == true{
-            cell.detailTextLabel?.text = "\(route.selectedStop!.name!) -> ÖzÜ, \(route.driver!.name)"
-        }
-        else if route.toOzu == false {
-            cell.detailTextLabel?.text = "ÖzÜ -> \(route.selectedStop!.name!) \(route.driver!.name)"
-
-        }
-        cell.textLabel?.text = "\(route.getTime()!)"
+        
+        cell.contentView.layer.cornerRadius = 20
+        cell.contentView.layer.masksToBounds = true
+      
+//        if route.toOzu == true{
+//            cell.detailTextLabel?.text = "\(route.selectedStop!.name!) -> ÖzÜ, \(route.driver!.name)"
+//        }
+//        else if route.toOzu == false {
+//            cell.detailTextLabel?.text = "ÖzÜ -> \(route.selectedStop!.name!) \(route.driver!.name)"
+//
+//        }
+//        cell.textLabel?.text = "\(route.getTime()!)"
        
         
         return cell
@@ -66,6 +70,57 @@ class RoutesViewController: UITableViewController {
     }
     
     @IBAction func showCategoryView(){
+        
+    }
+    
+    
+    override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        if cell.respondsToSelector("tintColor") {
+            if tableView == self.tableView {
+                var cornerRadius:CGFloat = 5.0
+                cell.backgroundColor = UIColor.clearColor()
+                var layer:CAShapeLayer = CAShapeLayer()
+                var pathRef = CGPathCreateMutable()
+                var bounds = CGRectInset(cell.bounds, 10, 0)
+                var addLine = false
+                
+                if indexPath.row == 0 && indexPath.row == tableView.numberOfRowsInSection(indexPath.section)-1 {
+                    CGPathAddRoundedRect(pathRef, nil, bounds, cornerRadius, cornerRadius)
+                }
+                else if indexPath.row == 0 {
+                    CGPathMoveToPoint(pathRef, nil, CGRectGetMinX(bounds), CGRectGetMaxY(bounds))
+                    CGPathAddArcToPoint(pathRef, nil, CGRectGetMinX(bounds), CGRectGetMinY(bounds), CGRectGetMidX(bounds), CGRectGetMinY(bounds), cornerRadius)
+                    CGPathAddArcToPoint(pathRef, nil, CGRectGetMaxX(bounds), CGRectGetMinY(bounds), CGRectGetMaxX(bounds), CGRectGetMidY(bounds), cornerRadius)
+                    CGPathAddLineToPoint(pathRef, nil, CGRectGetMaxX(bounds), CGRectGetMaxY(bounds))
+                }
+                else if indexPath.row == tableView.numberOfRowsInSection(indexPath.section)-1 {
+                    CGPathMoveToPoint(pathRef, nil, CGRectGetMinX(bounds), CGRectGetMinY(bounds))
+                    CGPathAddArcToPoint(pathRef, nil, CGRectGetMinX(bounds), CGRectGetMaxY(bounds), CGRectGetMidX(bounds), CGRectGetMaxY(bounds), cornerRadius)
+                    CGPathAddArcToPoint(pathRef, nil, CGRectGetMaxX(bounds), CGRectGetMaxY(bounds), CGRectGetMaxX(bounds), CGRectGetMidY(bounds), cornerRadius)
+                    CGPathAddLineToPoint(pathRef, nil, CGRectGetMaxX(bounds), CGRectGetMinY(bounds))
+                }
+                else {
+                    CGPathAddRect(pathRef, nil, bounds);
+                    addLine = true
+                }
+                
+                layer.path = pathRef
+                layer.fillColor = UIColor(white: 1.0, alpha: 0.8).CGColor
+                
+                if addLine == true {
+                    var lineLayer = CALayer()
+                    var lineHeight = (1.0/UIScreen.mainScreen().scale)
+                    lineLayer.frame = CGRectMake(CGRectGetMinX(bounds)+10, bounds.size.height-lineHeight, bounds.size.width-10, lineHeight)
+                    lineLayer.backgroundColor = tableView.separatorColor.CGColor
+                    layer.addSublayer(lineLayer)
+                }
+                
+                var testView = UIView(frame: bounds)
+                testView.layer.insertSublayer(layer, atIndex: 0)
+                testView.backgroundColor = UIColor.clearColor()
+                cell.backgroundView = testView
+            }
+        }
         
     }
     

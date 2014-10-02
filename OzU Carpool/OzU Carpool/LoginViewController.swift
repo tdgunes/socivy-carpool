@@ -57,11 +57,13 @@ class LoginViewController: UITableViewController, SocivyAPILoginDelegate {
             self.view.alpha = 0.4
             self.navigationController?.navigationBar.alpha = 0.3
             self.activityIndicator.startAnimating()
+            self.tableView.userInteractionEnabled = false
         }
         else {
             self.view.alpha = 1.0
             self.navigationController?.navigationBar.alpha = 1.0
             self.activityIndicator.stopAnimating()
+            self.tableView.userInteractionEnabled = true
         }
         
     }
