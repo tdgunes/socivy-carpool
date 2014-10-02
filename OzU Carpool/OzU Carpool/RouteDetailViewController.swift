@@ -31,8 +31,8 @@ class RouteDetailViewController: UITableViewController, MKMapViewDelegate {
         self.navigationItem.title = route?.selectedStop!.name!
         self.nameCell?.detailTextLabel?.text = route?.selectedStop!.name!
         self.timeDateCell?.detailTextLabel?.text = route!.getTime()
-        self.driverCell?.detailTextLabel?.text = route?.driver?.name
-        self.descriptionCell?.detailTextLabel?.text = route?.description!
+        self.driverCell?.detailTextLabel?.text = route?.driver.name
+        self.descriptionCell?.detailTextLabel?.text = route?.description
 
         self.handleMapView()
         self.mapCell?.mapView?.delegate = self
@@ -89,7 +89,7 @@ class RouteDetailViewController: UITableViewController, MKMapViewDelegate {
     }
     
     func callDriver() {
-        if let cellphone = self.route?.driver?.cellphone{
+        if let cellphone = self.route?.driver.cellphone{
             println("[peek] tel:\(cellphone)")
             UIApplication.sharedApplication().openURL(NSURL(string: "tel:\(cellphone)"))
         }

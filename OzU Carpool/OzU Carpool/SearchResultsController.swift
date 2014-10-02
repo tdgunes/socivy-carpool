@@ -26,7 +26,7 @@ class SearchResultsController: UITableViewController{
         var driver = User(name: "Taha Doğan Güneş", cellphone: "05378764948")
         
         
-        var example1: Route = Route(stops: [stop], timestamp: 1322486053, description: "Arabamiz tupludur, sigara icmeyin!", toOzu: true, driver: driver)
+        var example1: Route = Route(stops: [stop], timestamp: 1322486053, description: "Arabamiz tupludur, sigara icmeyin!", toOzu: true, driver: driver, seatLeft:4)
         example1.selectedStop = stop
         
         routes.append(example1)
@@ -52,10 +52,10 @@ class SearchResultsController: UITableViewController{
         let cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier("Route", forIndexPath:indexPath) as UITableViewCell
         var route = routes[indexPath.row]
         if route.toOzu == true{
-            cell.detailTextLabel?.text = "\(route.selectedStop!.name!) -> ÖzÜ, \(route.driver!.name)"
+            cell.detailTextLabel?.text = "\(route.selectedStop!.name!) -> ÖzÜ, \(route.driver.name)"
         }
         else if route.toOzu == false {
-            cell.detailTextLabel?.text = "ÖzÜ -> \(route.selectedStop!.name!) \(route.driver!.name)"
+            cell.detailTextLabel?.text = "ÖzÜ -> \(route.selectedStop!.name!) \(route.driver.name)"
             
         }
         cell.textLabel?.text = "\(route.getTime()!)"

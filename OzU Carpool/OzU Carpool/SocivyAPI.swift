@@ -75,7 +75,7 @@ class AsyncHTTPRequest: NSObject, NSURLConnectionDelegate, NSURLConnectionDataDe
         }
     }
     func connection(connection: NSURLConnection, didFailWithError error: NSError) {
-        println(error.description)
+        self.delegate?.requestFailWithError(self, error: error)
     }
     
     func reportUnknownError(){
@@ -84,7 +84,6 @@ class AsyncHTTPRequest: NSObject, NSURLConnectionDelegate, NSURLConnectionDataDe
         let suggestion: String = "Have you tried turning it off and on again?"
         
         let userInfo: NSDictionary = [ NSLocalizedDescriptionKey: description, NSLocalizedFailureReasonErrorKey: reason,NSLocalizedRecoverySuggestionErrorKey: suggestion]
-        
         let error = NSError(domain:"com.tdg.dilixiri", code:-57, userInfo:userInfo)
         self.delegate?.requestFailWithError(self, error: error)
     }
@@ -106,6 +105,7 @@ class SocivyLoginAPI: AsyncHTTPRequestDelegate{
     
     unowned var api: SocivyAPI
     
+    
     init(api:SocivyAPI) {
         self.api = api
 
@@ -120,7 +120,6 @@ class SocivyLoginAPI: AsyncHTTPRequestDelegate{
     }
     
     func requestFailWithError(asyncHTTPRequest:AsyncHTTPRequest, error:NSError){
-        println(error)
         self.delegate?.loginDidFailWithError(self, error: error
         )
     }
@@ -129,7 +128,6 @@ class SocivyLoginAPI: AsyncHTTPRequestDelegate{
         println("[login] requestDidFinish")
         println(NSString(data: response, encoding: NSASCIIStringEncoding))
         self.delegate?.loginDidFinish(self)
-        
     }
     
     

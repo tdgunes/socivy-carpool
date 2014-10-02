@@ -22,15 +22,17 @@ class RoutesViewController: UITableViewController {
         let umraniye = CLLocationCoordinate2D(latitude:41.030420 , longitude: 29.122009)
         var stop = Stop(name:"Bostancı Lunapark", location:umraniye)
         var stop1 = Stop(name:"Ataşehir Migros", location:umraniye)
+        
+        var bahadir = User(name: "Bahadır Kırdan", cellphone: "05325624216")
         var driver = User(name: "Taha Doğan Güneş", cellphone: "05378764948")
         
         
-        var example1: Route = Route(stops: [stop, stop1], timestamp: 1322486053, description: "Arabamiz tupludur, sigara icmeyin!", toOzu: true, driver: driver)
+        var example1: Route = Route(stops: [stop, stop1], timestamp: 1322486053, description: "Arabamiz tupludur, sigara icmeyin!", toOzu: true, driver: driver, seatLeft:4)
         
         example1.selectedStop = stop
         
         
-        var example2: Route = Route(stops: [stop, stop1,stop,stop,stop], timestamp: 1322486053, description: "Arabamiz tupludur, sigara icmeyin!", toOzu: true, driver: driver)
+        var example2: Route = Route(stops: [stop, stop1,stop,stop,stop], timestamp: 1322486053, description: "Arabamiz tupludur, sigara icmeyin!", toOzu: false, driver: bahadir, seatLeft:3)
 
         routes.append(example2)
         routes.append(example1)
@@ -58,8 +60,9 @@ class RoutesViewController: UITableViewController {
         
         cell.contentView.layer.cornerRadius = 20
         cell.contentView.layer.masksToBounds = true
-        cell.stops = route.stops
+        cell.route = route
 
+        cell.configureCell()
 //        if route.toOzu == true{
 //            cell.detailTextLabel?.text = "\(route.selectedStop!.name!) -> ÖzÜ, \(route.driver!.name)"
 //        }

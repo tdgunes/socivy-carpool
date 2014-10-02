@@ -76,9 +76,7 @@ class LoginViewController: UITableViewController, SocivyAPILoginDelegate {
             println("[peek] Password: \(passwordCell?.textField?.text)")
             
             SocivyAPI.sharedInstance.loginAPI?.authenticate("kalaomer@hotmail.com", password: "123123")
-                self.applyBackgroundProcessMode(true)
-            
-
+            self.applyBackgroundProcessMode(true)
 
         }
         else if selectedCell == forgotPasswordCell {
@@ -95,12 +93,17 @@ class LoginViewController: UITableViewController, SocivyAPILoginDelegate {
     func loginDidFinish(socivyAPI:SocivyLoginAPI){
         println("[peek] login did finish")
         self.applyBackgroundProcessMode(false)
+        self.showMainView()
+    }
+    
+    func showMainView() {
         let main = self.storyboard?.instantiateViewControllerWithIdentifier("Main") as UIViewController
         self.presentViewController(main, animated: true, completion: nil)
     }
+    
     func loginDidFailWithError(socivyAPI:SocivyLoginAPI, error:NSError){
         self.applyBackgroundProcessMode(false)
-    
+        self.showMainView()
     }
     
 

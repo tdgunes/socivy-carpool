@@ -129,6 +129,14 @@
                                         </mask>
                                     </variation>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="directionLabel" destination="ZmZ-P0-vCP" id="kgI-0I-die"/>
+                                    <outlet property="driverLabel" destination="blW-LY-bqt" id="beb-3b-HB7"/>
+                                    <outlet property="explicitTimeLabel" destination="j1d-Nu-lXd" id="5xM-7z-bcn"/>
+                                    <outlet property="seatLeftLabel" destination="l87-22-JCM" id="T5j-AI-9sM"/>
+                                    <outlet property="tableView" destination="Kd8-ff-pzf" id="0T9-OX-eKz"/>
+                                    <outlet property="timeLeftLabel" destination="oVb-Yr-J8t" id="N2g-Pg-JhO"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <sections/>

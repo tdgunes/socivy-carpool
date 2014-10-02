@@ -35,28 +35,34 @@ class Stop {
 
 class Route {
 
-    var stops:[Stop];
-    var selectedStop:Stop?;
-    var timestamp:Int?
-    var description: String?
-    var toOzu:Bool?
-    var driver:User?
+    var stops:[Stop]
+    var selectedStop:Stop?
+    var timestamp:Int
+    var description: String
+    var toOzu:Bool
+    var driver:User
+    var seatLeft: Int
     
-    init(stops:[Stop], timestamp:Int?, description:String?, toOzu:Bool, driver:User?){
+    init(stops:[Stop], timestamp:Int, description:String, toOzu:Bool, driver:User, seatLeft:Int){
         self.stops = stops
         self.timestamp = timestamp
         self.description = description
         self.toOzu = toOzu
         self.driver = driver
+        self.seatLeft = seatLeft
     }
     
     
     func getTime()->String?{
-        let date:NSDate = NSDate(timeIntervalSince1970: NSTimeInterval(self.timestamp!))
+        let date:NSDate = NSDate(timeIntervalSince1970: NSTimeInterval(self.timestamp))
         var dateFormatter:NSDateFormatter = NSDateFormatter()
         dateFormatter.dateStyle = .ShortStyle
         dateFormatter.timeStyle = .ShortStyle
         
         return dateFormatter.stringFromDate(date)
+    }
+    
+    func getFancyTime()->String{
+        return "fancy"
     }
 }
