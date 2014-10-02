@@ -31,6 +31,7 @@
 		3DCF4C3D19DD451400275CF5 /* fontawesome-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3DCF4C3B19DD451400275CF5 /* fontawesome-webfont.ttf */; };
 		3DCF4C3F19DD4F0400275CF5 /* RouteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCF4C3E19DD4F0400275CF5 /* RouteCell.swift */; };
 		3DCF4C4019DD4F0400275CF5 /* RouteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCF4C3E19DD4F0400275CF5 /* RouteCell.swift */; };
+		3DCF4C4119DD5DA900275CF5 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DABB0D019D24D4A005CE136 /* Route.swift */; };
 		3DEA550E19D700D90026D4DC /* AddRouteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEA550D19D700D90026D4DC /* AddRouteViewController.swift */; };
 		3DEA551119D7066C0026D4DC /* AddRouteSecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEA551019D7066C0026D4DC /* AddRouteSecondViewController.swift */; };
 		3DEBA12B19D3626500C84094 /* DatePickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEBA12A19D3626500C84094 /* DatePickerCell.swift */; };
@@ -348,6 +349,7 @@
 				3D0A17F719DC8AAD00614B36 /* SocivyAPI.swift in Sources */,
 				3DCF4C4019DD4F0400275CF5 /* RouteCell.swift in Sources */,
 				3DABB0B919D22332005CE136 /* OzU_CarpoolTests.swift in Sources */,
+				3DCF4C4119DD5DA900275CF5 /* Route.swift in Sources */,
 				3D0A17F619DC8A4100614B36 /* SocivyAPITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

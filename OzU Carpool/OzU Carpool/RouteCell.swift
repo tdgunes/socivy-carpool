@@ -13,6 +13,8 @@ import UIKit
 class RouteCell: UITableViewCell, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var tableView:UITableView?
     
+    var stops:[Stop]?
+    
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
@@ -28,17 +30,17 @@ class RouteCell: UITableViewCell, UITableViewDataSource, UITableViewDelegate {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier("StopCell", forIndexPath:indexPath) as UITableViewCell
 
-        
-        cell.textLabel?.text = " Ataşehir Migros"
+        var stop = stops![indexPath.row]
+        cell.textLabel?.text = " "+stop.name!
         
         return cell
-        
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        if let correctStops = stops {
+                return correctStops.count
+        }
+        return 0
     }
-
-    
     
 }

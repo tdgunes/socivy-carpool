@@ -31,7 +31,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZmZ-P0-vCP">
-                                            <rect key="frame" x="254" y="44" width="91.5" height="25.5"/>
+                                            <rect key="frame" x="254" y="44" width="92" height="26"/>
                                             <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="25"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
@@ -58,7 +58,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" Taha Doğan Güneş" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="blW-LY-bqt">
-                                            <rect key="frame" x="28" y="261" width="149.5" height="16"/>
+                                            <rect key="frame" x="28" y="261" width="150" height="16"/>
                                             <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="15"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
@@ -70,7 +70,7 @@
                                                 <constraint firstAttribute="height" constant="159" id="FBA-GC-gJa"/>
                                             </constraints>
                                             <prototypes>
-                                                <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="StopCell" textLabel="yb2-i9-9IC" style="IBUITableViewCellStyleDefault" id="bTB-pm-NY2">
+                                                <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="StopCell" textLabel="yb2-i9-9IC" rowHeight="40" style="IBUITableViewCellStyleDefault" id="bTB-pm-NY2">
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bTB-pm-NY2" id="fDf-tn-J4F">
                                                         <autoresizingMask key="autoresizingMask"/>
@@ -89,6 +89,11 @@
                                                 </tableViewCell>
                                             </prototypes>
                                             <sections/>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="FBA-GC-gJa"/>
+                                                </mask>
+                                            </variation>
                                             <connections>
                                                 <outlet property="dataSource" destination="YVZ-I5-6lE" id="jz9-CK-fEc"/>
                                                 <outlet property="delegate" destination="YVZ-I5-6lE" id="aGJ-fK-5kS"/>
@@ -96,8 +101,8 @@
                                         </tableView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="oVb-Yr-J8t" firstAttribute="leading" secondItem="blW-LY-bqt" secondAttribute="leading" id="2Ya-Gh-MHP"/>
                                         <constraint firstItem="Kd8-ff-pzf" firstAttribute="top" secondItem="oVb-Yr-J8t" secondAttribute="bottom" constant="53" id="5EQ-VM-9cM"/>
+                                        <constraint firstItem="l87-22-JCM" firstAttribute="top" secondItem="Kd8-ff-pzf" secondAttribute="bottom" constant="14" id="83u-wN-58B"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="l87-22-JCM" secondAttribute="bottom" constant="13" id="BFR-xo-3v7"/>
                                         <constraint firstItem="oVb-Yr-J8t" firstAttribute="leading" secondItem="1w3-a1-QQg" secondAttribute="leadingMargin" constant="20" id="CGc-pW-WhU"/>
                                         <constraint firstItem="Kd8-ff-pzf" firstAttribute="centerX" secondItem="ZmZ-P0-vCP" secondAttribute="centerX" constant="0.25" id="GMm-2e-yJS"/>
@@ -106,20 +111,21 @@
                                         <constraint firstItem="Kd8-ff-pzf" firstAttribute="top" secondItem="1w3-a1-QQg" secondAttribute="top" constant="85" id="PXK-3F-HU8"/>
                                         <constraint firstItem="Kd8-ff-pzf" firstAttribute="top" secondItem="j1d-Nu-lXd" secondAttribute="bottom" constant="53" id="Xr6-l2-Rey"/>
                                         <constraint firstAttribute="trailing" secondItem="Kd8-ff-pzf" secondAttribute="trailing" constant="10" id="eeK-dz-Q6L"/>
-                                        <constraint firstItem="l87-22-JCM" firstAttribute="trailing" secondItem="j1d-Nu-lXd" secondAttribute="trailing" id="fpQ-dA-QWo"/>
                                         <constraint firstItem="Kd8-ff-pzf" firstAttribute="top" secondItem="ZmZ-P0-vCP" secondAttribute="bottom" constant="15.5" id="fyF-lu-Rie"/>
                                         <constraint firstItem="Kd8-ff-pzf" firstAttribute="leading" secondItem="1w3-a1-QQg" secondAttribute="leading" constant="10" id="lGF-95-43N"/>
                                         <constraint firstItem="Kd8-ff-pzf" firstAttribute="top" secondItem="ZmZ-P0-vCP" secondAttribute="bottom" constant="19.5" id="oTp-xp-qx9"/>
                                         <constraint firstItem="l87-22-JCM" firstAttribute="trailing" secondItem="1w3-a1-QQg" secondAttribute="trailingMargin" constant="-23" id="olS-H1-SJ2"/>
                                         <constraint firstItem="j1d-Nu-lXd" firstAttribute="top" secondItem="oVb-Yr-J8t" secondAttribute="top" constant="-3" id="p0T-hk-uRz"/>
-                                        <constraint firstItem="l87-22-JCM" firstAttribute="top" secondItem="Kd8-ff-pzf" secondAttribute="bottom" constant="14" id="qp0-eE-vfy"/>
                                         <constraint firstItem="l87-22-JCM" firstAttribute="baseline" secondItem="blW-LY-bqt" secondAttribute="firstBaseline" constant="-1" id="ruD-eA-iKk"/>
-                                        <constraint firstItem="l87-22-JCM" firstAttribute="bottom" secondItem="blW-LY-bqt" secondAttribute="bottom" constant="-1" id="sqn-7j-sMt"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="blW-LY-bqt" secondAttribute="bottom" constant="12" id="ugf-Ci-kx7"/>
+                                        <constraint firstItem="blW-LY-bqt" firstAttribute="leading" secondItem="1w3-a1-QQg" secondAttribute="leadingMargin" constant="20" id="vYN-R3-Sis"/>
+                                        <constraint firstItem="j1d-Nu-lXd" firstAttribute="trailing" secondItem="l87-22-JCM" secondAttribute="trailing" id="wT4-CB-fD4"/>
                                     </constraints>
                                     <variation key="default">
                                         <mask key="constraints">
                                             <exclude reference="NqV-1I-BcC"/>
                                             <exclude reference="oTp-xp-qx9"/>
+                                            <exclude reference="ruD-eA-iKk"/>
                                         </mask>
                                     </variation>
                                 </tableViewCellContentView>

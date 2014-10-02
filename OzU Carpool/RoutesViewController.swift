@@ -20,13 +20,19 @@ class RoutesViewController: UITableViewController {
         // Do any additional setup after loading the view, typically from a nib.
 
         let umraniye = CLLocationCoordinate2D(latitude:41.030420 , longitude: 29.122009)
-        var stop = Stop(name:"Ümraniye", location:umraniye)
+        var stop = Stop(name:"Bostancı Lunapark", location:umraniye)
+        var stop1 = Stop(name:"Ataşehir Migros", location:umraniye)
         var driver = User(name: "Taha Doğan Güneş", cellphone: "05378764948")
         
         
-        var example1: Route = Route(stops: [stop], timestamp: 1322486053, description: "Arabamiz tupludur, sigara icmeyin!", toOzu: true, driver: driver)
+        var example1: Route = Route(stops: [stop, stop1], timestamp: 1322486053, description: "Arabamiz tupludur, sigara icmeyin!", toOzu: true, driver: driver)
+        
         example1.selectedStop = stop
+        
+        
+        var example2: Route = Route(stops: [stop, stop1,stop,stop,stop], timestamp: 1322486053, description: "Arabamiz tupludur, sigara icmeyin!", toOzu: true, driver: driver)
 
+        routes.append(example2)
         routes.append(example1)
         
     }
@@ -45,12 +51,15 @@ class RoutesViewController: UITableViewController {
         self.navigationController?.pushViewController(main, animated: true)
     }
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier("RouteCell", forIndexPath:indexPath) as UITableViewCell
-        var route = routes[indexPath.row]
+        let cell: RouteCell = tableView.dequeueReusableCellWithIdentifier("RouteCell", forIndexPath:indexPath) as RouteCell
+
+        println("section:\(indexPath.section) row:\(indexPath.row)")
+        var route = routes[indexPath.section]
         
         cell.contentView.layer.cornerRadius = 20
         cell.contentView.layer.masksToBounds = true
-      
+        cell.stops = route.stops
+
 //        if route.toOzu == true{
 //            cell.detailTextLabel?.text = "\(route.selectedStop!.name!) -> ÖzÜ, \(route.driver!.name)"
 //        }
@@ -66,13 +75,27 @@ class RoutesViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return routes.count
+        return 1
     }
+    
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return self.routes.count
+    }
+ 
     
     @IBAction func showCategoryView(){
         
     }
     
+    
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        var route = routes[indexPath.section]
+        
+        let height:CGFloat =  CGFloat(140+route.stops.count*45)
+        return height
+    }
+    
+
     
     override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         if cell.respondsToSelector("tintColor") {

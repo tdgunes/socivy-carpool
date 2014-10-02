@@ -1,3 +1,4 @@
+
 //
 //  RouteDetailViewController.swift
 //  OzU Carpool
@@ -9,6 +10,7 @@
 import Foundation
 import UIKit
 import MapKit
+
 class RouteDetailViewController: UITableViewController, MKMapViewDelegate {
     
     @IBOutlet weak var nameCell:UITableViewCell?
@@ -23,7 +25,9 @@ class RouteDetailViewController: UITableViewController, MKMapViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         // Do any additional setup after loading the view, typically from a nib.
+        
         self.navigationItem.title = route?.selectedStop!.name!
         self.nameCell?.detailTextLabel?.text = route?.selectedStop!.name!
         self.timeDateCell?.detailTextLabel?.text = route!.getTime()
@@ -31,9 +35,7 @@ class RouteDetailViewController: UITableViewController, MKMapViewDelegate {
         self.descriptionCell?.detailTextLabel?.text = route?.description!
 
         self.handleMapView()
-        
         self.mapCell?.mapView?.delegate = self
-        
     }
     
     
@@ -45,9 +47,7 @@ class RouteDetailViewController: UITableViewController, MKMapViewDelegate {
     }
     
     func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
-        
         var optionalPinView:MKPinAnnotationView? = mapView.dequeueReusableAnnotationViewWithIdentifier("pinView") as MKPinAnnotationView?
-        
         if var pinView = optionalPinView {
             pinView.annotation = annotation
             return pinView
@@ -67,24 +67,13 @@ class RouteDetailViewController: UITableViewController, MKMapViewDelegate {
                 newPinView.animatesDrop = false
                 newPinView.canShowCallout = true
                 
-                //details button
-                //            var rightButton = UIButton.buttonWithType(UIButtonType.DetailDisclosure) as UIButton
-                //            newPinView.rightCalloutAccessoryView = rightButton
-                
-                
             }
             return newPinView
         }
-        
-        
-      
-        
     }
 
     
     func handleMapView() {
-        
-    
         let loc = route?.selectedStop?.location!
         let region = MKCoordinateRegion(center: loc!, span: MKCoordinateSpan(latitudeDelta: 0.3, longitudeDelta: 0.3))
         self.mapCell?.mapView?.setRegion(region, animated: true)
@@ -96,15 +85,10 @@ class RouteDetailViewController: UITableViewController, MKMapViewDelegate {
         annotation.title = self.route?.selectedStop?.name
 
         self.mapCell?.mapView?.addAnnotation(annotation)
-        
         self.mapCell?.mapView?.addAnnotations(LocationStorage.sharedInstance.getAll())
-
-        
-        
     }
     
     func callDriver() {
-        
         if let cellphone = self.route?.driver?.cellphone{
             println("[peek] tel:\(cellphone)")
             UIApplication.sharedApplication().openURL(NSURL(string: "tel:\(cellphone)"))
@@ -118,7 +102,6 @@ class RouteDetailViewController: UITableViewController, MKMapViewDelegate {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
 }
