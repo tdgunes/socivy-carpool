@@ -13,6 +13,9 @@
             <string>FontAwesome</string>
             <string>FontAwesome</string>
             <string>FontAwesome</string>
+            <string>FontAwesome</string>
+            <string>FontAwesome</string>
+            <string>FontAwesome</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -794,11 +797,11 @@
             </objects>
             <point key="canvasLocation" x="2537" y="-420"/>
         </scene>
-        <!--Arabam Yok-->
+        <!--Don't Have a Car-->
         <scene sceneID="6pU-V1-Xfy">
             <objects>
                 <navigationController id="yFz-DC-9sT" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Arabam Yok" image="103-map" id="Kd8-0p-nlA"/>
+                    <tabBarItem key="tabBarItem" title="Don't Have a Car" image="103-map" id="Kd8-0p-nlA"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="hDI-As-bqw">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -844,11 +847,11 @@
             </objects>
             <point key="canvasLocation" x="1809" y="-410"/>
         </scene>
-        <!--Arabam Var-->
+        <!--Have a Car-->
         <scene sceneID="DqZ-Nl-0jC">
             <objects>
                 <navigationController id="myY-OX-Feb" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Arabam Var" image="16-car" id="zIR-Qn-BMT"/>
+                    <tabBarItem key="tabBarItem" title="Have a Car" image="16-car" id="zIR-Qn-BMT"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="fuQ-fx-xQF">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -996,7 +999,7 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Kayıt ol - Socivy Carpool" id="Pu6-L1-XfF">
+                            <tableViewSection headerTitle="Register - Socivy Carpool" id="Pu6-L1-XfF">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="50" id="PNo-qj-gg5" customClass="TextFieldCell" customModule="OzU_Carpool" customModuleProvider="target">
                                         <autoresizingMask key="autoresizingMask"/>
@@ -1185,10 +1188,10 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Y4N-lx-8LA" id="ioS-Zs-81f">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="ÖzÜ Email " textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uRY-wq-YjK">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder=" Email" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uRY-wq-YjK">
                                                     <rect key="frame" x="8" y="8" width="584" height="34"/>
                                                     <nil key="textColor"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                             </subviews>
@@ -1208,9 +1211,9 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ccH-XJ-czZ" id="KDA-c4-7k4">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Şifre" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="D17-0E-CeN">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder=" Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="D17-0E-CeN">
                                                     <rect key="frame" x="8" y="8" width="584" height="34"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                                 </textField>
                                             </subviews>
@@ -1230,7 +1233,7 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dWR-m2-RaF" id="kKd-pW-ySX">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Giriş Yap" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hbb-rF-TcW">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Log in" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hbb-rF-TcW">
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" red="0.1007598851" green="0.44303433520000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -1246,7 +1249,7 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ha9-0D-Wc0" id="6Ab-uM-tdN">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Şifremi Unuttum" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8kr-ux-shW">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Lost My Password" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8kr-ux-shW">
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" red="0.1007598851" green="0.44303433520000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -1256,13 +1259,16 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.1007598851" green="0.44303433520000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <segue destination="NRu-fM-fM5" kind="show" id="3k5-FO-YIL"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="a5t-jx-3jA" style="IBUITableViewCellStyleDefault" id="YO6-4J-IFe">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YO6-4J-IFe" id="uO5-d4-MlK">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Kayıt Ol" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="a5t-jx-3jA">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Sign Up" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="a5t-jx-3jA">
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" red="0.1007598851" green="0.44303433520000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -1354,6 +1360,66 @@
                 </tableViewCell>
             </objects>
             <point key="canvasLocation" x="45" y="1726"/>
+        </scene>
+        <!--Lost My Password-->
+        <scene sceneID="Quf-Li-mDd">
+            <objects>
+                <tableViewController id="NRu-fM-fM5" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="Xmu-I5-gB7">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <sections>
+                            <tableViewSection id="2Z3-gh-GDE">
+                                <string key="footerTitle">If you have forgotten your password, please enter your registered e-mail above and we will send you the necessary instructions to your e-mail for you to reset your password.</string>
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="50" id="bdZ-gP-UHP" customClass="TextFieldCell" customModule="OzU_Carpool" customModuleProvider="target">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bdZ-gP-UHP" id="CeP-Jt-Ffs">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder=" Email (john.appleseed@youruniversity.edu.tr)" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="baa-SI-qGc">
+                                                    <rect key="frame" x="8" y="8" width="584" height="42"/>
+                                                    <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="baa-SI-qGc" firstAttribute="top" secondItem="CeP-Jt-Ffs" secondAttribute="topMargin" id="1L9-ur-8Wj"/>
+                                                <constraint firstItem="baa-SI-qGc" firstAttribute="trailing" secondItem="CeP-Jt-Ffs" secondAttribute="trailingMargin" id="LDk-WG-a8r"/>
+                                                <constraint firstItem="baa-SI-qGc" firstAttribute="leading" secondItem="CeP-Jt-Ffs" secondAttribute="leadingMargin" id="dwh-32-LTi"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="baa-SI-qGc" secondAttribute="bottom" constant="-8" id="y9W-jn-jlx"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" textLabel="6U8-Ap-dEo" style="IBUITableViewCellStyleDefault" id="DXS-k6-cdT">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DXS-k6-cdT" id="jFI-3M-9IE">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Reset Password" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6U8-Ap-dEo">
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="NRu-fM-fM5" id="tAu-Ee-jR2"/>
+                            <outlet property="delegate" destination="NRu-fM-fM5" id="iTn-1W-F5X"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Lost My Password" id="lHr-OH-Ay5"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FBa-5c-MNs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="760" y="1726"/>
         </scene>
     </scenes>
     <resources>

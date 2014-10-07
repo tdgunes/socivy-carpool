@@ -75,7 +75,7 @@ class LoginViewController: UITableViewController, SocivyAPILoginDelegate {
             println("[peek] Email: \(emailCell?.textField?.text)")
             println("[peek] Password: \(passwordCell?.textField?.text)")
             
-            SocivyAPI.sharedInstance.loginAPI?.authenticate("kalaomer@hotmail.com", password: "123123")
+            SocivyAPI.sharedInstance.loginAPI?.authenticate(self.emailCell!.textField!.text, password: self.passwordCell!.textField!.text)
             self.applyBackgroundProcessMode(true)
 
         }

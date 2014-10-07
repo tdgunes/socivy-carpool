@@ -8,7 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		3D0A17F619DC8A4100614B36 /* SocivyAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0A17F519DC8A4100614B36 /* SocivyAPITests.swift */; };
-		3D0A17F719DC8AAD00614B36 /* SocivyAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DABB0C619D22CA3005CE136 /* SocivyAPI.swift */; };
+		3D1F47A919E4925500DAED2F /* APITools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1F47A819E4925500DAED2F /* APITools.swift */; };
+		3D1F47AB19E4930A00DAED2F /* APITools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1F47A819E4925500DAED2F /* APITools.swift */; };
+		3D1F47AC19E4930C00DAED2F /* SocivyAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DABB0C619D22CA3005CE136 /* SocivyAPI.swift */; };
 		3D5FE79219D4D828003745AB /* LocationStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5FE79119D4D828003745AB /* LocationStorage.swift */; };
 		3D5FE79419D4E807003745AB /* SearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5FE79319D4E807003745AB /* SearchResultViewController.swift */; };
 		3DABB0A119D22332005CE136 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DABB0A019D22332005CE136 /* AppDelegate.swift */; };
@@ -52,6 +54,7 @@
 
 /* Begin PBXFileReference section */
 		3D0A17F519DC8A4100614B36 /* SocivyAPITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocivyAPITests.swift; sourceTree = "<group>"; };
+		3D1F47A819E4925500DAED2F /* APITools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APITools.swift; sourceTree = "<group>"; };
 		3D5FE79119D4D828003745AB /* LocationStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationStorage.swift; sourceTree = "<group>"; };
 		3D5FE79319D4E807003745AB /* SearchResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultViewController.swift; sourceTree = "<group>"; };
 		3DABB09B19D22332005CE136 /* OzU Carpool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "OzU Carpool.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -107,6 +110,7 @@
 			isa = PBXGroup;
 			children = (
 				3DABB0C619D22CA3005CE136 /* SocivyAPI.swift */,
+				3D1F47A819E4925500DAED2F /* APITools.swift */,
 			);
 			name = SocivyAPI;
 			sourceTree = "<group>";
@@ -329,6 +333,7 @@
 				3DABB0A119D22332005CE136 /* AppDelegate.swift in Sources */,
 				3DABB0D719D25E4D005CE136 /* MapCell.swift in Sources */,
 				3DCF4C3F19DD4F0400275CF5 /* RouteCell.swift in Sources */,
+				3D1F47A919E4925500DAED2F /* APITools.swift in Sources */,
 				3DABB0C719D22CA3005CE136 /* SocivyAPI.swift in Sources */,
 				3DEA551119D7066C0026D4DC /* AddRouteSecondViewController.swift in Sources */,
 				3DABB0D519D25C9A005CE136 /* RouteDetailViewController.swift in Sources */,
@@ -346,9 +351,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3D0A17F719DC8AAD00614B36 /* SocivyAPI.swift in Sources */,
 				3DCF4C4019DD4F0400275CF5 /* RouteCell.swift in Sources */,
+				3D1F47AB19E4930A00DAED2F /* APITools.swift in Sources */,
 				3DABB0B919D22332005CE136 /* OzU_CarpoolTests.swift in Sources */,
+				3D1F47AC19E4930C00DAED2F /* SocivyAPI.swift in Sources */,
 				3DCF4C4119DD5DA900275CF5 /* Route.swift in Sources */,
 				3D0A17F619DC8A4100614B36 /* SocivyAPITests.swift in Sources */,
 			);

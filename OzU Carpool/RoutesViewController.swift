@@ -14,11 +14,16 @@ import MapKit
 class RoutesViewController: UITableViewController {
     
     var routes:[Route] = []
+    var tableRefreshControl = UIRefreshControl()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
 
+        self.tableRefreshControl.addTarget(self, action: "refreshControlRequest", forControlEvents: UIControlEvents.ValueChanged)
+        self.tableView.addSubview(self.tableRefreshControl)
+        
         let umraniye = CLLocationCoordinate2D(latitude:41.030420 , longitude: 29.122009)
         var stop = Stop(name:"Bostancı Lunapark", location:umraniye)
         var stop1 = Stop(name:"Ataşehir Migros", location:umraniye)
@@ -39,6 +44,17 @@ class RoutesViewController: UITableViewController {
         
     }
     
+    func refreshControlRequest(){
+        self.updateTableView()
+    }
+    
+    func updateTableView(){
+//        var formatter = NSDateFormatter()
+//        formatter.dateFormat = "MMM-d, h,:mm:ss-a"
+//        let lastUpdated = "Last updated on \(formatter.stringFromDate(NSDate()))"
+//        self.tableRefreshControl.attributedTitle = NSAttributedString(string: lastUpdated)
+        self.tableRefreshControl.endRefreshing()
+    }
 
     
     override func didReceiveMemoryWarning() {

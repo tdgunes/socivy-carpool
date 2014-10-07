@@ -27,13 +27,16 @@ class AsyncHTTPRequest: NSObject, NSURLConnectionDelegate, NSURLConnectionDataDe
     var delegate : AsyncHTTPRequestDelegate?
     var responseData : NSMutableData? = NSMutableData()
     var url:NSURL
+    var httpType:String
     var headerDictionary:[String:String]
+    var postData:String
     
-    
-    init(url:String, headerDictionary:[String:String]){
+    init(url:String, headerDictionary:[String:String], postData:String, httpType:String){
         println("[async] \(url)")
         self.url = NSURL(string: url)
         self.headerDictionary = headerDictionary
+        self.postData = postData
+        self.httpType = httpType
     }
     
     func start(){
@@ -46,7 +49,9 @@ class AsyncHTTPRequest: NSObject, NSURLConnectionDelegate, NSURLConnectionDataDe
     
     func prepareHTTPRequest(urlRequest:NSMutableURLRequest) -> NSMutableURLRequest {
         urlRequest.timeoutInterval = timeoutInterval
-        urlRequest.HTTPMethod = "POST"
+        urlRequest.HTTPMethod = self.httpType
+        println("HTTP BODY \(self.postData)")
+        urlRequest.HTTPBody = self.postData.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
         println("[async] HTTPMethod: POST")
         for (key,value) in self.headerDictionary {
             println("[async] $POST['\(key)'] = \(value)")
@@ -90,6 +95,26 @@ class AsyncHTTPRequest: NSObject, NSURLConnectionDelegate, NSURLConnectionDataDe
     
 }
 
+class SocivyRouteAPI: AsyncHTTPRequestDelegate{
+    
+    unowned var api: SocivyAPI
+    
+    
+    init(api:SocivyAPI) {
+        self.api = api
+        
+    }
+    
+    func requestFailWithError(asyncHTTPRequest:AsyncHTTPRequest, error:NSError){
+        
+    }
+    
+    func requestDidFinish(asyncHTTPRequest: AsyncHTTPRequest, _ response: NSMutableData) {
+
+        
+    }
+
+}
 
 class SocivyLoginAPI: AsyncHTTPRequestDelegate{
     
@@ -103,6 +128,7 @@ class SocivyLoginAPI: AsyncHTTPRequestDelegate{
         }
     }
     
+    
     unowned var api: SocivyAPI
     
     
@@ -112,22 +138,40 @@ class SocivyLoginAPI: AsyncHTTPRequestDelegate{
     }
     
     func authenticate(email:String, password:String) {
-        let headerDictionary:[String:String] = ["email":email, "password":password, "publicKey": api.publicKey]
+        let payload:[String:String] = ["email":email, "password":password, "public_key": api.public_key]
+        let postData = JSON(payload).toString(pretty: false)
 
-        self.asyncRequest = AsyncHTTPRequest(url: self.url, headerDictionary: headerDictionary)
+
+        self.asyncRequest = AsyncHTTPRequest(url: self.url, headerDictionary:["Content-Type":"application/json"], postData:postData, httpType:"POST")
         self.asyncRequest?.delegate = self
         self.asyncRequest?.start()
     }
     
     func requestFailWithError(asyncHTTPRequest:AsyncHTTPRequest, error:NSError){
-        self.delegate?.loginDidFailWithError(self, error: error
-        )
+        self.delegate?.loginDidFailWithError(self, error: error)
     }
 
     func requestDidFinish(asyncHTTPRequest: AsyncHTTPRequest, _ response: NSMutableData) {
         println("[login] requestDidFinish")
-        println(NSString(data: response, encoding: NSASCIIStringEncoding))
-        self.delegate?.loginDidFinish(self)
+
+        let json = JSON.parse(NSString(data: response, encoding: NSASCIIStringEncoding))
+        println("[login] \n \(json.toString(pretty: true))")
+     
+        
+        if json.isNull == false && json.isError == false {
+            if json["info"]["status_code"].asInt == 1 {
+                self.api.user_secret = json["result"]["user_secret"].asString
+                self.api.acess_token = json["result"]["access_token"].asString
+                self.delegate?.loginDidFinish(self)
+            }
+        }
+
+        println("parse err")
+
+      
+
+        
+        
     }
     
     
@@ -135,9 +179,16 @@ class SocivyLoginAPI: AsyncHTTPRequestDelegate{
 
 
 class SocivyAPI {
-    let publicKey = "1234"
+    let public_key:String = "$2y$10$9sI0wpjalK9B1tdDrdWyPe9PGvJquJ08l0UwSfgNgf3Aa6hvVJRmW"
+
     let url = "http://development.socivy.com/api/v1"
+    
+    
+    var user_secret:String?
+    var acess_token:String?
+    
     var loginAPI:SocivyLoginAPI?
+    var routeAPI:SocivyRouteAPI?
 
     
     class var sharedInstance : SocivyAPI {
@@ -146,6 +197,7 @@ class SocivyAPI {
     
     init(){
         self.loginAPI = SocivyLoginAPI(api: self)
+        self.routeAPI = SocivyRouteAPI(api: self)
     }
     
 }
