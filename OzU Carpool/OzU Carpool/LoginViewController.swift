@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class LoginViewController: UITableViewController, SocivyAPILoginDelegate {
+class LoginViewController: UITableViewController, SocivyAuthenticateAPIDelegate {
     
     
     @IBOutlet weak var emailCell: TextFieldCell?
@@ -21,7 +21,7 @@ class LoginViewController: UITableViewController, SocivyAPILoginDelegate {
     
     
     var activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.WhiteLarge)
-    
+    var alert = UIAlertView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +33,7 @@ class LoginViewController: UITableViewController, SocivyAPILoginDelegate {
         forgotPasswordCell?.selectionStyle = .None
         signupCell?.selectionStyle = .None
         
-        SocivyAPI.sharedInstance.loginAPI?.delegate = self
+        SocivyAPI.sharedInstance.authenticateAPI?.delegate = self
         
         var tapRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
         tapRecognizer.cancelsTouchesInView = true
@@ -75,7 +75,7 @@ class LoginViewController: UITableViewController, SocivyAPILoginDelegate {
             println("[peek] Email: \(emailCell?.textField?.text)")
             println("[peek] Password: \(passwordCell?.textField?.text)")
             
-            SocivyAPI.sharedInstance.loginAPI?.authenticate(self.emailCell!.textField!.text, password: self.passwordCell!.textField!.text)
+            SocivyAPI.sharedInstance.authenticateAPI?.authenticate(self.emailCell!.textField!.text, password: self.passwordCell!.textField!.text)
             self.applyBackgroundProcessMode(true)
 
         }
@@ -90,20 +90,29 @@ class LoginViewController: UITableViewController, SocivyAPILoginDelegate {
         
     }
     
-    func loginDidFinish(socivyAPI:SocivyLoginAPI){
-        println("[peek] login did finish")
-        self.applyBackgroundProcessMode(false)
-        self.showMainView()
-    }
+
     
     func showMainView() {
         let main = self.storyboard?.instantiateViewControllerWithIdentifier("Main") as UIViewController
         self.presentViewController(main, animated: true, completion: nil)
     }
     
-    func loginDidFailWithError(socivyAPI:SocivyLoginAPI, error:NSError){
+    
+    func authenticateDidFinish(socivyAPI:SocivyAuthenticateAPI){
+        println("[peek] login did finish")
         self.applyBackgroundProcessMode(false)
         self.showMainView()
+    }
+    
+    func authenticateDidFailWithError(socivyAPI:SocivyAuthenticateAPI, error:NSError){
+        self.applyBackgroundProcessMode(false)
+        
+        var alertView = UIAlertView()
+        alert.title = "Error"
+        alert.message = error.localizedDescription
+        alert.addButtonWithTitle("OK")
+        alert.show()
+        
     }
     
 

@@ -1,8 +1,8 @@
 //
-//  RoutesViewController.swift
+//  MyRoutesViewController.swift
 //  OzU Carpool
 //
-//  Created by Taha Doğan Güneş on 24/09/14.
+//  Created by Taha Doğan Güneş on 08/10/14.
 //  Copyright (c) 2014 TDG. All rights reserved.
 //
 
@@ -11,80 +11,52 @@ import UIKit
 import MapKit
 
 
-class RoutesViewController: UITableViewController, SocivyIndexRouteAPIDelegate {
+class MyRoutesViewController: UITableViewController {
     
-    var indexRouteAPI = SocivyAPI.sharedInstance.indexRouteAPI
     var routes:[Route] = []
     var tableRefreshControl = UIRefreshControl()
-    
-    func routesDidReturn(socivyRouteAPI:SocivyIndexRouteAPI, routes:JSON){
-        self.routes = []
-        let routeArray = routes.asArray! as [JSON]
-        var index:Int = 0
-        for route in routeArray {
-            let placeArray = route["places"].asArray! as [JSON]
-            
-            
-            var stops:[Stop] = []
-            for place in placeArray{
-                var stop = Stop(name: place["name"].asString!, location: CLLocationCoordinate2D(latitude:12.0 , longitude: 12.0))
-                stops.append(stop)
-            }
-            let driverName = route["user"]["name"].asString
-            var driver:User = User(name: driverName, cellphone: nil)
-            
-            var toOzu:Bool = false
-            
-            if route["plan"].asString! == "toSchool" {
-                toOzu = true
-            }
-            
-            var route: Route = Route(id: route["id"].asString!, stops: stops, timestamp: 1322486053, description: route["description"].asString!, toOzu: toOzu, driver: driver, seatLeft:route["seats"].asInt!)
-            
-            self.routes.append(route)
-            println("\(index). \(route)")
-            
-            for stop in stops{
-                println("  - \(stop.name!)")
-            }
-            index += 1
-        }
-        println("[RoutesVC] self.routes.count = \(self.routes.count) ")
-        self.tableView.reloadData()
-        self.tableRefreshControl.endRefreshing()
-    }
-    func routesDidFailWithError(socivyRouteAPI:SocivyIndexRouteAPI, error:NSError){
-        
-        self.tableRefreshControl.endRefreshing()
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-
+        
         self.tableRefreshControl.addTarget(self, action: "refreshControlRequest", forControlEvents: UIControlEvents.ValueChanged)
-        
         self.tableView.addSubview(self.tableRefreshControl)
-        self.indexRouteAPI?.delegate = self
         
+        let umraniye = CLLocationCoordinate2D(latitude:41.030420 , longitude: 29.122009)
+        var stop = Stop(name:"Bostancı Lunapark", location:umraniye)
+        var stop1 = Stop(name:"Ataşehir Migros", location:umraniye)
+        
+        var bahadir = User(name: "Bahadır Kırdan", cellphone: "05325624216")
+        var driver = User(name: "Taha Doğan Güneş", cellphone: "05378764948")
+        
+        
+        var example1: Route = Route(id:"1", stops: [stop, stop1], timestamp: 1322486053, description: "Arabamiz tupludur, sigara icmeyin!", toOzu: true, driver: driver, seatLeft:4)
+        
+        example1.selectedStop = stop
+        
+        
+        var example2: Route = Route(id:"2", stops: [stop, stop1,stop,stop,stop], timestamp: 1322486053, description: "Arabamiz tupludur, sigara icmeyin!", toOzu: false, driver: bahadir, seatLeft:3)
+        
+        routes.append(example2)
+        routes.append(example1)
         
 
-        
-        self.updateTableView()
     }
     
     func refreshControlRequest(){
-        self.indexRouteAPI?.requestIndexRoutes()
+        self.updateTableView()
     }
     
     func updateTableView(){
-
-        self.tableRefreshControl.beginRefreshing()
-        self.tableView.setContentOffset(CGPointMake(0, self.tableView.contentOffset.y-self.tableRefreshControl.frame.size.height), animated:true)
-        self.indexRouteAPI?.requestIndexRoutes()
+        //        var formatter = NSDateFormatter()
+        //        formatter.dateFormat = "MMM-d, h,:mm:ss-a"
+        //        let lastUpdated = "Last updated on \(formatter.stringFromDate(NSDate()))"
+        //        self.tableRefreshControl.attributedTitle = NSAttributedString(string: lastUpdated)
+        self.tableRefreshControl.endRefreshing()
     }
-
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -99,21 +71,29 @@ class RoutesViewController: UITableViewController, SocivyIndexRouteAPIDelegate {
     }
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell: RouteCell = tableView.dequeueReusableCellWithIdentifier("RouteCell", forIndexPath:indexPath) as RouteCell
-
+        
         println("section:\(indexPath.section) row:\(indexPath.row)")
         var route = routes[indexPath.section]
         
         cell.contentView.layer.cornerRadius = 20
         cell.contentView.layer.masksToBounds = true
         cell.route = route
-
+        
         cell.configureCell()
-
+        //        if route.toOzu == true{
+        //            cell.detailTextLabel?.text = "\(route.selectedStop!.name!) -> ÖzÜ, \(route.driver!.name)"
+        //        }
+        //        else if route.toOzu == false {
+        //            cell.detailTextLabel?.text = "ÖzÜ -> \(route.selectedStop!.name!) \(route.driver!.name)"
+        //
+        //        }
+        //        cell.textLabel?.text = "\(route.getTime()!)"
+        
         
         return cell
         
     }
-
+    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
@@ -122,6 +102,12 @@ class RoutesViewController: UITableViewController, SocivyIndexRouteAPIDelegate {
         return self.routes.count
     }
     
+    
+    @IBAction func showCategoryView(){
+        
+    }
+    
+    
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         var route = routes[indexPath.section]
         
@@ -129,7 +115,7 @@ class RoutesViewController: UITableViewController, SocivyIndexRouteAPIDelegate {
         return height
     }
     
-
+    
     
     override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         if cell.respondsToSelector("tintColor") {

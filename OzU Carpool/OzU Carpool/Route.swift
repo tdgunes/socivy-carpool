@@ -12,10 +12,10 @@ import MapKit
 
 class User {
     
-    var name:String
-    var cellphone:String
+    var name:String?
+    var cellphone:String?
     
-    init(name:String, cellphone:String){
+    init(name:String?, cellphone:String?){
         self.name = name
         self.cellphone = cellphone
     }
@@ -33,20 +33,26 @@ class Stop {
     }
 }
 
-class Route {
+class Route: Printable {
 
     var stops:[Stop]
     var selectedStop:Stop?
     var timestamp:Int
-    var description: String
+    var details: String
     var toOzu:Bool
     var driver:User
     var seatLeft: Int
+    var id: String
     
-    init(stops:[Stop], timestamp:Int, description:String, toOzu:Bool, driver:User, seatLeft:Int){
+    var description: String {
+        return "Route: \(self.driver.name!) - stops: \(self.stops.count)"
+    }
+    
+    init(id:String, stops:[Stop], timestamp:Int, description:String, toOzu:Bool, driver:User, seatLeft:Int){
+        self.id = id
         self.stops = stops
         self.timestamp = timestamp
-        self.description = description
+        self.details = description
         self.toOzu = toOzu
         self.driver = driver
         self.seatLeft = seatLeft
@@ -65,4 +71,8 @@ class Route {
     func getFancyTime()->String{
         return "fancy"
     }
+    
+
+        
+
 }
