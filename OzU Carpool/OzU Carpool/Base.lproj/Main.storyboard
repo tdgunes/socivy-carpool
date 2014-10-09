@@ -131,8 +131,8 @@
                                     </constraints>
                                     <variation key="default">
                                         <mask key="constraints">
-                                            <exclude reference="zdh-tR-Ftf"/>
                                             <exclude reference="6Cl-hh-1Wk"/>
+                                            <exclude reference="zdh-tR-Ftf"/>
                                             <exclude reference="yg1-Fk-aeW"/>
                                         </mask>
                                     </variation>
@@ -159,7 +159,7 @@
             </objects>
             <point key="canvasLocation" x="2530" y="-1804"/>
         </scene>
-        <!--Kaydolduğum Rotalar-->
+        <!--Enrolled Routes-->
         <scene sceneID="Xn1-5K-I9q">
             <objects>
                 <tableViewController id="9xr-hx-W5R" customClass="MyRoutesViewController" customModule="OzU_Carpool" customModuleProvider="target" sceneMemberID="viewController">
@@ -288,8 +288,8 @@
                             <outlet property="delegate" destination="9xr-hx-W5R" id="mKp-Wv-ZXg"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Kaydolduğum Rotalar" id="5st-Ve-IRB">
-                        <barButtonItem key="rightBarButtonItem" title="Ekle" id="U1R-o4-Tbw">
+                    <navigationItem key="navigationItem" title="Enrolled Routes" id="5st-Ve-IRB">
+                        <barButtonItem key="rightBarButtonItem" title="Add" id="U1R-o4-Tbw">
                             <connections>
                                 <action selector="showCategoryView" destination="9xr-hx-W5R" id="2AH-ru-Vce"/>
                                 <segue destination="h5s-9h-DWj" kind="show" id="rmf-gP-Y3o"/>
@@ -681,7 +681,7 @@
             </objects>
             <point key="canvasLocation" x="989" y="-1098"/>
         </scene>
-        <!--Sağladığım Rotalar-->
+        <!--My Routes -->
         <scene sceneID="f58-k2-zKh">
             <objects>
                 <tableViewController id="dyJ-TH-FhF" sceneMemberID="viewController">
@@ -702,8 +702,8 @@
                             <outlet property="delegate" destination="dyJ-TH-FhF" id="XeV-IH-bSi"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Sağladığım Rotalar" id="zEh-4a-oda">
-                        <barButtonItem key="rightBarButtonItem" title="Ekle" id="AiL-Mk-kEr">
+                    <navigationItem key="navigationItem" title="My Routes " id="zEh-4a-oda">
+                        <barButtonItem key="rightBarButtonItem" title="Add" id="AiL-Mk-kEr">
                             <connections>
                                 <segue destination="GCr-ty-48Y" kind="showDetail" id="R5i-9P-6EH"/>
                             </connections>
