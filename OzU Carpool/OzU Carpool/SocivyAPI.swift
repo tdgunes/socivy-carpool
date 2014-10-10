@@ -8,19 +8,69 @@
 
 import Foundation
 
+let DEBUG:Bool = true
+
+class SocivyBaseAPI: AsyncHTTPRequestDelegate {
+    var asyncRequest:AsyncHTTPRequest?
+  
+    unowned var api: SocivyAPI
+    
+    var url:String {
+        get{
+            return api.url + path
+        }
+    }
+    
+    let path:String
+    
+    init(path:String, api:SocivyAPI){
+        self.path = path
+        self.api = api
+    }
+    func log(string:String){
+        if DEBUG {
+            println("[\(self.path)] \(string)")
+        }
+    }
+    
+
+    func requestFailWithError(asyncHTTPRequest:AsyncHTTPRequest, error:NSError){
+        fatalError("requestFailWithError(asyncHTTPRequest:, error:) has not been implemented")
+    }
+    func requestDidFinish(asyncHTTPRequest:AsyncHTTPRequest, _ response:NSMutableData){
+        fatalError("requestDidFinish(asyncHTTPRequest:, _ response:) has not been implemented")
+    }
+}
+
+class SocivyBaseLoginAPI: SocivyBaseAPI, SocivyLoginAPIDelegate{
+
+    var loginAPI:SocivyLoginAPI?
+    
+    override init(path:String, api:SocivyAPI){
+        super.init(path: path , api: api)
+        self.loginAPI = SocivyLoginAPI(api:self.api)
+        self.loginAPI?.delegate = self
+    }
+
+    func loginDidFinish(socivyAPI:SocivyLoginAPI){
+        fatalError("loginDidFinish(socivyAPI:) has not been implemented")
+    }
+    func loginDidFailWithError(socivyAPI:SocivyLoginAPI, error:NSError){
+        fatalError("loginDidFailWithError(socivyAPI:SocivyLoginAPI, error:) has not been implemented")
+    }
+}
 
 class SocivyAPI {
     let public_key:String = "$2y$10$9sI0wpjalK9B1tdDrdWyPe9PGvJquJ08l0UwSfgNgf3Aa6hvVJRmW"
 
     let url = "http://development.socivy.com/api/v1"
     
-    
     var user_secret:String?
     var access_token:String?
     
     var authenticateAPI:SocivyAuthenticateAPI?
     var indexRouteAPI:SocivyIndexRouteAPI?
-
+    var placeAPI: SocivyPlaceAPI?
 
     var expireTime:Int?
     
@@ -31,10 +81,9 @@ class SocivyAPI {
     init(){
         self.authenticateAPI = SocivyAuthenticateAPI(api: self)
         self.indexRouteAPI = SocivyIndexRouteAPI(api: self)
-
-
+        self.placeAPI = SocivyPlaceAPI(api: self)
     }
-    
+
 }
 
 let _SingletonSocivyAPI = SocivyAPI()

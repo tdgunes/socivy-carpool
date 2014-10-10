@@ -13,7 +13,7 @@ import MapKit
 
 class RoutesViewController: UITableViewController, SocivyIndexRouteAPIDelegate {
     
-    var indexRouteAPI = SocivyAPI.sharedInstance.indexRouteAPI
+    weak var indexRouteAPI = SocivyAPI.sharedInstance.indexRouteAPI
     var routes:[Route] = []
     var tableRefreshControl = UIRefreshControl()
     
@@ -27,7 +27,7 @@ class RoutesViewController: UITableViewController, SocivyIndexRouteAPIDelegate {
             
             var stops:[Stop] = []
             for place in placeArray{
-                var stop = Stop(name: place["name"].asString!, location: CLLocationCoordinate2D(latitude:12.0 , longitude: 12.0))
+                var stop = Stop(id:"ad", name: place["name"].asString!, location: CLLocationCoordinate2D(latitude:12.0 , longitude: 12.0))
                 stops.append(stop)
             }
             let driverName = route["user"]["name"].asString
@@ -45,7 +45,7 @@ class RoutesViewController: UITableViewController, SocivyIndexRouteAPIDelegate {
             println("\(index). \(route)")
             
             for stop in stops{
-                println("  - \(stop.name!)")
+                println("  - \(stop.name)")
             }
             index += 1
         }

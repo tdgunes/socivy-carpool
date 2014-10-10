@@ -16,6 +16,8 @@ class MyRoutesViewController: UITableViewController {
     var routes:[Route] = []
     var tableRefreshControl = UIRefreshControl()
     
+    @IBOutlet weak var helpLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -24,28 +26,11 @@ class MyRoutesViewController: UITableViewController {
         self.tableRefreshControl.addTarget(self, action: "refreshControlRequest", forControlEvents: UIControlEvents.ValueChanged)
         self.tableView.addSubview(self.tableRefreshControl)
         
-        let umraniye = CLLocationCoordinate2D(latitude:41.030420 , longitude: 29.122009)
-        var stop = Stop(name:"Bostancı Lunapark", location:umraniye)
-        var stop1 = Stop(name:"Ataşehir Migros", location:umraniye)
-        
-        var bahadir = User(name: "Bahadır Kırdan", cellphone: "05325624216")
-        var driver = User(name: "Taha Doğan Güneş", cellphone: "05378764948")
-        
-        
-        var example1: Route = Route(id:"1", stops: [stop, stop1], timestamp: 1322486053, description: "Arabamiz tupludur, sigara icmeyin!", toOzu: true, driver: driver, seatLeft:4)
-        
-        example1.selectedStop = stop
-        
-        
-        var example2: Route = Route(id:"2", stops: [stop, stop1,stop,stop,stop], timestamp: 1322486053, description: "Arabamiz tupludur, sigara icmeyin!", toOzu: false, driver: bahadir, seatLeft:3)
-        
-        routes.append(example2)
-        routes.append(example1)
-        
 
     }
     
     func refreshControlRequest(){
+        helpLabel.hidden = true
         self.updateTableView()
     }
     
@@ -54,6 +39,8 @@ class MyRoutesViewController: UITableViewController {
         //        formatter.dateFormat = "MMM-d, h,:mm:ss-a"
         //        let lastUpdated = "Last updated on \(formatter.stringFromDate(NSDate()))"
         //        self.tableRefreshControl.attributedTitle = NSAttributedString(string: lastUpdated)
+        
+        helpLabel.hidden = false
         self.tableRefreshControl.endRefreshing()
     }
     

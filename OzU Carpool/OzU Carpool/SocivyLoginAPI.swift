@@ -13,24 +13,12 @@ protocol SocivyLoginAPIDelegate {
     func loginDidFailWithError(socivyAPI:SocivyLoginAPI, error:NSError)
 }
 
-class SocivyLoginAPI: AsyncHTTPRequestDelegate {
+class SocivyLoginAPI: SocivyBaseAPI {
     
     var delegate: SocivyLoginAPIDelegate?
-    var asyncRequest:AsyncHTTPRequest?
-    let path = "/login"
-    
-    
-    unowned var api: SocivyAPI
-    var url:String {
-        get{
-            return api.url + path
-        }
-    }
-    
-    
     
     init(api:SocivyAPI) {
-        self.api = api
+        super.init(path: "/login", api: api)
     }
     
 
@@ -43,15 +31,15 @@ class SocivyLoginAPI: AsyncHTTPRequestDelegate {
     }
     
     
-    func requestFailWithError(asyncHTTPRequest:AsyncHTTPRequest, error:NSError){
+    override func requestFailWithError(asyncHTTPRequest:AsyncHTTPRequest, error:NSError){
         self.delegate?.loginDidFailWithError(self, error: error)
     }
     
-    func requestDidFinish(asyncHTTPRequest: AsyncHTTPRequest, _ response: NSMutableData) {
-        println("[login] requestDidFinish")
+    override func requestDidFinish(asyncHTTPRequest: AsyncHTTPRequest, _ response: NSMutableData) {
+        self.log("requestDidFinish")
         
         let json = JSON.parse(NSString(data: response, encoding: NSASCIIStringEncoding))
-        println("[login] \n \(json.toString(pretty: true))")
+        self.log("\n \(json.toString(pretty: true))")
         
         
         if json.isNull == false && json.isError == false {
@@ -60,7 +48,7 @@ class SocivyLoginAPI: AsyncHTTPRequestDelegate {
             self.delegate?.loginDidFinish(self)
         }
         else {
-            println("parse err")
+            self.log("parse error")
         }
         
 

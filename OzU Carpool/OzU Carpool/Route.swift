@@ -23,13 +23,14 @@ class User {
 }
 
 class Stop {
-    var location:CLLocationCoordinate2D?
-    var name:String?
-
+    var location:CLLocationCoordinate2D
+    var name:String
+    var id:String
     
-    init (name:String?, location:CLLocationCoordinate2D?){
+    init (id:String, name:String, location:CLLocationCoordinate2D){
         self.location = location
         self.name = name
+        self.id = id
     }
 }
 

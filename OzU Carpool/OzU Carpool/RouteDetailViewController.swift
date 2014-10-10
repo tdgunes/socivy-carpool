@@ -28,8 +28,8 @@ class RouteDetailViewController: UITableViewController, MKMapViewDelegate {
         
         // Do any additional setup after loading the view, typically from a nib.
         
-        self.navigationItem.title = route?.selectedStop!.name!
-        self.nameCell?.detailTextLabel?.text = route?.selectedStop!.name!
+        self.navigationItem.title = route?.selectedStop!.name
+        self.nameCell?.detailTextLabel?.text = route?.selectedStop!.name
         self.timeDateCell?.detailTextLabel?.text = route!.getTime()
         self.driverCell?.detailTextLabel?.text = route?.driver.name
         self.descriptionCell?.detailTextLabel?.text = route?.description
@@ -74,7 +74,7 @@ class RouteDetailViewController: UITableViewController, MKMapViewDelegate {
 
     
     func handleMapView() {
-        let loc = route?.selectedStop?.location!
+        let loc = route?.selectedStop?.location
         let region = MKCoordinateRegion(center: loc!, span: MKCoordinateSpan(latitudeDelta: 0.3, longitudeDelta: 0.3))
         self.mapCell?.mapView?.setRegion(region, animated: true)
     

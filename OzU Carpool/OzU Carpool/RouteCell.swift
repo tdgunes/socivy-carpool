@@ -35,18 +35,18 @@ class RouteCell: UITableViewCell, UITableViewDataSource, UITableViewDelegate {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
 
     }
-
+    
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-
     }
- 
+    
+
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier("StopCell", forIndexPath:indexPath) as UITableViewCell
 
         if let stop = route?.stops[indexPath.row]{
-            cell.textLabel?.text = " "+stop.name!
+            cell.textLabel?.text = " "+stop.name
         }
         var stop = route?.stops[indexPath.row]
 

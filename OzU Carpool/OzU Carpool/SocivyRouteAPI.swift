@@ -18,62 +18,46 @@ protocol SocivyStoreRouteAPIDelegate {
     func storeDidFail(storeRouteApi:SocivyStoreRouteAPI)
 }
 
-class SocivyStoreRouteAPI: AsyncHTTPRequestDelegate, SocivyLoginAPIDelegate {
-    unowned var api: SocivyAPI
-    
-    
-    var delegate: SocivyStoreRouteAPIDelegate?
-    var asyncRequest:AsyncHTTPRequest?
-    var loginAPI:SocivyLoginAPI?
-    
-    let path = "/route"
+class SocivyStoreRouteAPI: SocivyBaseLoginAPI {
 
     var rawPayload:[String:AnyObject] = [:]
-    
-    var url:String {
-        get{
-            return api.url + path
-        }
-    }
-    
+    var delegate: SocivyStoreRouteAPIDelegate?
     
     init(api:SocivyAPI) {
-        self.api = api
-        self.loginAPI = SocivyLoginAPI(api:self.api)
-        self.loginAPI?.delegate = self
+        super.init(path: "/route", api:api)
     }
     
     func requestStoreRoute(routeObject:[String:AnyObject]){
-        println("[store-route] storeIndex")
+        self.log("[store] storeIndex")
         self.rawPayload = routeObject
         let json = JSON(routeObject).toString(pretty: false)
 
-        
         self.asyncRequest = AsyncHTTPRequest(url: self.url,
             headerDictionary:["Access-token":self.api.access_token!],
             postData:json,
             httpType:"POST")
+        
         self.asyncRequest?.delegate = self
         self.asyncRequest?.start()
     }
     
-    func requestFailWithError(asyncHTTPRequest:AsyncHTTPRequest, error:NSError){
+    override func requestFailWithError(asyncHTTPRequest:AsyncHTTPRequest, error:NSError){
         
     }
     
-    func requestDidFinish(asyncHTTPRequest: AsyncHTTPRequest, _ response: NSMutableData) {
-        println("[store-route] requestDidFinish")
+    override func requestDidFinish(asyncHTTPRequest: AsyncHTTPRequest, _ response: NSMutableData) {
+        self.log("[store] requestDidFinish")
         
         let json = JSON.parse(NSString(data: response, encoding: NSASCIIStringEncoding))
         let info = json["info"].toString(pretty: true)
-        println("[store-route] info: \(info)")
+        self.log("[store] info: \(info)")
         
-        println("[store-route] raw: \(json.toString(pretty: true))")
+        self.log("[store] raw: \(json.toString(pretty: true))")
         
         if json.isNull == false && json.isError == false {
             
             if json["info"]["status_code"].asInt == 2 {
-                println("[store-route] self.loginAPI?.login()")
+                self.log("[store] self.loginAPI?.login()")
                 self.loginAPI?.login()
             }
             else{
@@ -82,17 +66,17 @@ class SocivyStoreRouteAPI: AsyncHTTPRequestDelegate, SocivyLoginAPIDelegate {
             }
         }
         else {
-            println("parse err")
+            self.log("parse error")
         }
         
         
     }
     
-    func loginDidFinish(socivyAPI:SocivyLoginAPI){
+    override func loginDidFinish(socivyAPI:SocivyLoginAPI){
         self.requestStoreRoute(self.rawPayload)
     }
     
-    func loginDidFailWithError(socivyAPI:SocivyLoginAPI, error:NSError){
+    override func loginDidFailWithError(socivyAPI:SocivyLoginAPI, error:NSError){
         println("[route] loginDidFailWithError")
     }
     
