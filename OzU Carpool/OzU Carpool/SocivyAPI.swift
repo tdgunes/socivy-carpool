@@ -70,7 +70,9 @@ class SocivyAPI {
     
     var authenticateAPI:SocivyAuthenticateAPI?
     var indexRouteAPI:SocivyIndexRouteAPI?
+    var storeRouteAPI:SocivyStoreRouteAPI?
     var placeAPI: SocivyPlaceAPI?
+
 
     var expireTime:Int?
     
@@ -80,7 +82,11 @@ class SocivyAPI {
     
     init(){
         self.authenticateAPI = SocivyAuthenticateAPI(api: self)
+
+        //route related
         self.indexRouteAPI = SocivyIndexRouteAPI(api: self)
+        self.storeRouteAPI = SocivyStoreRouteAPI(api: self)
+        
         self.placeAPI = SocivyPlaceAPI(api: self)
     }
 

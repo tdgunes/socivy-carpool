@@ -9,10 +9,12 @@
 import Foundation
 import UIKit
 import MapKit
-class AddRouteSecondViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, SocivyPlaceAPIDelegate {
+class AddRouteSecondViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, SocivyPlaceAPIDelegate, SocivyStoreRouteAPIDelegate {
     
     @IBOutlet weak var tableView: UITableView!
 
+    
+    var payload:Dictionary<String,AnyObject> = [:]
     
     let lightFont =  UIFont(name:"FontAwesome",size:17)
     let boldFont = UIFont(name:"HelveticaNeue-Bold",size:17)
@@ -20,9 +22,38 @@ class AddRouteSecondViewController: UIViewController, UITableViewDataSource, UIT
     var tableRefreshControl = UIRefreshControl()
 
     weak var placeAPI = SocivyAPI.sharedInstance.placeAPI
+    weak var storeAPI = SocivyAPI.sharedInstance.storeRouteAPI
+    
     
     var places:[Stop] = []
     var selectedPlaces:[String:Stop] = [:]
+    
+    var activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.WhiteLarge)
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view, typically from a nib.
+        
+        self.tableRefreshControl.addTarget(self, action: "refreshControlRequest", forControlEvents: UIControlEvents.ValueChanged)
+        self.tableView.addSubview(self.tableRefreshControl)
+        
+        self.placeAPI?.delegate = self
+        self.storeAPI?.delegate = self
+        
+        
+        self.tableRefreshControl.beginRefreshing()
+        self.tableView.setContentOffset(CGPointMake(0, self.tableView.contentOffset.y-self.tableRefreshControl.frame.size.height), animated:true)
+        
+        
+        self.placeAPI?.requestPlaces()
+        
+        self.activityIndicator.center = self.navigationController!.view.center
+        self.activityIndicator.stopAnimating()
+        self.activityIndicator.hidesWhenStopped = true
+        
+    }
+
     
     func placesDidReturn(indexRouteAPI:SocivyPlaceAPI, places:JSON){
         self.places = []
@@ -41,26 +72,52 @@ class AddRouteSecondViewController: UIViewController, UITableViewDataSource, UIT
         }
         self.tableView.reloadData()
         self.tableRefreshControl.endRefreshing()
+        
+        self.navigationController?.view.addSubview(self.activityIndicator)
+        
+        
+        
     }
+    
+    func applyBackgroundProcessMode(mode:Bool){
+        if mode == true {
+            self.view.alpha = 0.4
+            self.navigationController?.navigationBar.alpha = 0.3
+            self.activityIndicator.startAnimating()
+            self.tableView.userInteractionEnabled = false
+            self.navigationController?.navigationBar.userInteractionEnabled = false
+        }
+        else {
+            self.view.alpha = 1.0
+            self.navigationController?.navigationBar.alpha = 1.0
+            self.activityIndicator.stopAnimating()
+            self.tableView.userInteractionEnabled = true
+            self.navigationController?.navigationBar.userInteractionEnabled = true
+        }
+        
+    }
+ 
+    
     func placesDidFailWithError(indexRouteAPI:SocivyPlaceAPI, error:NSError){
         
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        
-        self.tableRefreshControl.addTarget(self, action: "refreshControlRequest", forControlEvents: UIControlEvents.ValueChanged)
-        self.tableView.addSubview(self.tableRefreshControl)
-        
-        self.placeAPI?.delegate = self
-
-        self.tableRefreshControl.beginRefreshing()
-        self.tableView.setContentOffset(CGPointMake(0, self.tableView.contentOffset.y-self.tableRefreshControl.frame.size.height), animated:true)
-        
-        
-        self.placeAPI?.requestPlaces()
+    
+    
+    func storeDidFinish(storeRouteApi:SocivyStoreRouteAPI){
+        self.dismissView()
     }
+    
+    func storeDidFail(storeRouteApi:SocivyStoreRouteAPI){
+        var alertView = UIAlertView()
+        alertView.title = "Unable to Store"
+        alertView.message = "Please try sending your route again!"
+        alertView.addButtonWithTitle("OK")
+        alertView.show()
+        
+        self.applyBackgroundProcessMode(false)
+    }
+    
     
     func refreshControlRequest(){
         self.placeAPI?.requestPlaces()
@@ -69,13 +126,36 @@ class AddRouteSecondViewController: UIViewController, UITableViewDataSource, UIT
     
     
     @IBAction func saveTouched(sender: UIBarButtonItem) {
+        
+        
         var selectedPlacesArray = Array(self.selectedPlaces.values)
         
-        println("saveTouched")
-        for place in selectedPlacesArray{
-            println(place.name)
+        if selectedPlacesArray.count == 0 {
+            var alertView = UIAlertView()
+            alertView.title = "No Stops?"
+            alertView.message = "Please select more than one stops!"
+            alertView.addButtonWithTitle("OK")
+            alertView.show()
+            
         }
-        
+        else {
+            var payloadPlaces:Array = []
+            
+            
+            for place in selectedPlacesArray{
+                payloadPlaces.append(["id":(place.id as NSString).integerValue])
+            }
+            
+            payload["points"] = payloadPlaces
+            
+            for (key,value) in payload{
+                println("\(key) = \(value)")
+            }
+            
+            
+            self.storeAPI?.requestStoreRoute(payload)
+            self.applyBackgroundProcessMode(true)
+        }
     }
  
     
@@ -120,10 +200,7 @@ class AddRouteSecondViewController: UIViewController, UITableViewDataSource, UIT
         }
         
     }
-    
-//    func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
-//        self.tableView.cellForRowAtIndexPath(indexPath)?.accessoryType = UITableViewCellAccessoryType.None
-//    }
+
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier("PlaceCell", forIndexPath:indexPath) as UITableViewCell
@@ -146,13 +223,7 @@ class AddRouteSecondViewController: UIViewController, UITableViewDataSource, UIT
         return 1
     }
     
-//    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-//        var route = routes[indexPath.section]
-//        
-//        let height:CGFloat =  CGFloat(140+route.stops.count*45)
-//        return height
-//    }
-    
+
     
     
 }

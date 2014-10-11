@@ -33,7 +33,7 @@ class SocivyStoreRouteAPI: SocivyBaseLoginAPI {
         let json = JSON(routeObject).toString(pretty: false)
 
         self.asyncRequest = AsyncHTTPRequest(url: self.url,
-            headerDictionary:["Access-token":self.api.access_token!],
+            headerDictionary:["Access-token":self.api.access_token!,"Content-Type":"application/json"],
             postData:json,
             httpType:"POST")
         
@@ -56,13 +56,16 @@ class SocivyStoreRouteAPI: SocivyBaseLoginAPI {
         
         if json.isNull == false && json.isError == false {
             
-            if json["info"]["status_code"].asInt == 2 {
+            if json["info"]["status_code"].asInt == 2 && json["info"]["error_code"].asInt  == 4 {
                 self.log("[store] self.loginAPI?.login()")
                 self.loginAPI?.login()
             }
-            else{
+            else if json["info"]["status_code"].asInt == 1 {
                 var routes = json["result"]
                 self.delegate?.storeDidFinish(self)
+            }
+            else {
+                self.delegate?.storeDidFail(self)
             }
         }
         else {

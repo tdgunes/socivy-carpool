@@ -61,19 +61,30 @@ class SocivyDatePicker: UITableViewCell, UIPickerViewDataSource, UIPickerViewDel
         var index: Int
         var hours:[String] = []
         var minutes:[String] = []
-        for index = currentComponents.hour; index < 24; ++index {
-            var string:NSString = "\(index)"
-            if string.length == 1 {
-                string = "0\(string)"
-            }
-            hours.append(string)
+
+        var start_minute:Int = (currentComponents.minute - currentComponents.minute % 5)+5
+        var start_hour:Int = currentComponents.hour
+
+        if start_minute == 60 {
+            start_minute = 0
+            start_hour = start_hour + 1
         }
-        for index = (currentComponents.minute - currentComponents.minute % 5)+5; index < 60; index = index + 5{
+        
+        for index = start_minute; index < 60; index = index + 5{
             var string:NSString = "\(index)"
             if string.length == 1 {
                 string = "0\(string)"
             }
             minutes.append(string)
+        }
+        
+        
+        for index = start_hour; index < 24; ++index {
+            var string:NSString = "\(index)"
+            if string.length == 1 {
+                string = "0\(string)"
+            }
+            hours.append(string)
         }
         
         self.pickerData = [hours, minutes, ["Today","Tomorrow"]]

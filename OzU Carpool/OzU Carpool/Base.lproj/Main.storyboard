@@ -611,7 +611,7 @@
                                             <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="eeX-y0-ybx" kind="show" id="gdq-Pk-GU2"/>
+                                            <segue destination="eeX-y0-ybx" kind="show" identifier="specifyMyStops" id="Jg2-xf-SSz"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -630,9 +630,11 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="datePickerCell" destination="7Jh-Ea-FlX" id="d0g-JK-nFH"/>
-                        <outlet property="notesCell" destination="MxU-xh-SPl" id="7V1-HR-xJN"/>
+                        <outlet property="additionalCell" destination="ssO-PI-0Ge" id="J1N-SV-rD3"/>
+                        <outlet property="seatPicker" destination="4cy-3W-4fa" id="bjR-1F-dm0"/>
                         <outlet property="segmentedCell" destination="heA-d1-674" id="9me-zy-mUK"/>
+                        <outlet property="socivyDatePicker" destination="7Jh-Ea-FlX" id="bwO-Xf-KTw"/>
+                        <outlet property="specifyCell" destination="9AD-6C-qj2" id="wQP-MH-mx4"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0CH-bR-dyr" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -765,7 +767,7 @@
             </objects>
             <point key="canvasLocation" x="989" y="-410"/>
         </scene>
-        <!--Ayarlar-->
+        <!--Settings-->
         <scene sceneID="Mhj-Iv-qfq">
             <objects>
                 <tableViewController id="PUE-dF-gu8" customClass="SettingsViewController" customModule="OzU_Carpool" customModuleProvider="target" sceneMemberID="viewController">
@@ -774,7 +776,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
-                            <tableViewSection headerTitle="Ekstra" id="fek-Td-2iD">
+                            <tableViewSection headerTitle="Extra" id="fek-Td-2iD">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="Ctu-wE-wLd" style="IBUITableViewCellStyleDefault" id="ybM-Vm-CKV">
                                         <autoresizingMask key="autoresizingMask"/>
@@ -795,7 +797,7 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vb2-pW-VI9" id="5D3-aT-yJQ">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Hakkında" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4eO-to-2Le">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="About" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4eO-to-2Le">
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -806,28 +808,14 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Hesabım" id="gGI-AA-eT2">
+                            <tableViewSection headerTitle="My Account" id="gGI-AA-eT2">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" textLabel="m0c-dT-gQi" style="IBUITableViewCellStyleDefault" id="lJG-d7-d0N">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lJG-d7-d0N" id="vu2-L8-rO2">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Kullanıcı: Taha Doğan Güneş" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="m0c-dT-gQi">
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" textLabel="7ny-fF-DMe" style="IBUITableViewCellStyleDefault" id="lcW-ZA-9hI">
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lcW-ZA-9hI" id="Hk2-Gb-dF5">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Email: taha.gunes@ozu.edu.tr" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="7ny-fF-DMe">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text=" Taha Doğan Güneş" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="m0c-dT-gQi">
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -841,7 +829,7 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ojm-pJ-cpD" id="YfY-Rj-UTL">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Çıkış Yap" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="JN0-7w-Mlt">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Log out" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="JN0-7w-Mlt">
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -861,7 +849,7 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Ayarlar" id="jww-FD-QoQ"/>
-                    <navigationItem key="navigationItem" title="Ayarlar" id="1hv-cW-k2Y"/>
+                    <navigationItem key="navigationItem" title="Settings" id="1hv-cW-k2Y"/>
                     <connections>
                         <outlet property="logoutCell" destination="ojm-pJ-cpD" id="dTc-jn-Uax"/>
                     </connections>
