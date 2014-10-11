@@ -19,20 +19,20 @@ class AddRouteViewController: UITableViewController {
     @IBOutlet weak var notesCell: UITextField!
     @IBOutlet weak var seatCell: TextFieldCell!
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "specifyMyStops" {
-            var routeSecondController = segue.destinationViewController as AddRouteSecondViewController
-            var selectedComponents = NSCalendar.currentCalendar().components(NSCalendarUnit.DayCalendarUnit | NSCalendarUnit.HourCalendarUnit | NSCalendarUnit.MinuteCalendarUnit, fromDate: self.datePickerCell.datePicker!.date)
-            var currentComponents = NSCalendar.currentCalendar().components(NSCalendarUnit.DayCalendarUnit | NSCalendarUnit.HourCalendarUnit | NSCalendarUnit.MinuteCalendarUnit, fromDate: NSDate.date())
-
-            var action_day = selectedComponents.day - currentComponents.day
-            var action_hour = selectedComponents.hour
-            var action_minute = selectedComponents.minute
-            
-            println("action_day: \(action_day)")
-            println("action_hour: \(action_hour)")
-            println("action_minute: \(action_minute)")
-            
-        }
+//        if segue.identifier == "specifyMyStops" {
+//            var routeSecondController = segue.destinationViewController as AddRouteSecondViewController
+//            var selectedComponents = NSCalendar.currentCalendar().components(NSCalendarUnit.DayCalendarUnit | NSCalendarUnit.HourCalendarUnit | NSCalendarUnit.MinuteCalendarUnit, fromDate: self.datePickerCell.datePicker!.date)
+//            var currentComponents = NSCalendar.currentCalendar().components(NSCalendarUnit.DayCalendarUnit | NSCalendarUnit.HourCalendarUnit | NSCalendarUnit.MinuteCalendarUnit, fromDate: NSDate.date())
+//
+//            var action_day = selectedComponents.day - currentComponents.day
+//            var action_hour = selectedComponents.hour
+//            var action_minute = selectedComponents.minute
+//            
+//            println("action_day: \(action_day)")
+//            println("action_hour: \(action_hour)")
+//            println("action_minute: \(action_minute)")
+//            
+//        }
 
     }
     
@@ -43,24 +43,24 @@ class AddRouteViewController: UITableViewController {
         var currentComponents = NSCalendar.currentCalendar().components(NSCalendarUnit.DayCalendarUnit | NSCalendarUnit.HourCalendarUnit | NSCalendarUnit.MonthCalendarUnit | NSCalendarUnit.MinuteCalendarUnit | NSCalendarUnit.YearCalendarUnit, fromDate: NSDate.date())
         
 
-        
-        self.configureDatePicker(currentComponents)
+//        
+//        self.configureDatePicker(currentComponents)
     }
     
     
-    func configureDatePicker(currentComponents:NSDateComponents){
-        var calendar = NSCalendar(identifier:NSGregorianCalendar)
-        var components = NSDateComponents()
-        components.year = currentComponents.year
-        components.month = currentComponents.month
-        components.day = currentComponents.day + 1
-        components.hour = 23
-        components.minute = 59
-    
-        self.datePickerCell?.datePicker?.minimumDate = NSDate.date()
-        self.datePickerCell?.datePicker?.maximumDate = calendar.dateFromComponents(components)
-    }
-    
+//    func configureDatePicker(currentComponents:NSDateComponents){
+//        var calendar = NSCalendar(identifier:NSGregorianCalendar)
+//        var components = NSDateComponents()
+//        components.year = currentComponents.year
+//        components.month = currentComponents.month
+//        components.day = currentComponents.day + 1
+//        components.hour = 23
+//        components.minute = 59
+//    
+//        self.datePickerCell?.datePicker?.minimumDate = NSDate.date()
+//        self.datePickerCell?.datePicker?.maximumDate = calendar.dateFromComponents(components)
+//    }
+//    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

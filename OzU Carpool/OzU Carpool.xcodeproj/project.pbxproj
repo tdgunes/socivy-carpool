@@ -39,6 +39,8 @@
 		3DABB0D719D25E4D005CE136 /* MapCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DABB0D619D25E4D005CE136 /* MapCell.swift */; };
 		3DABB0DF19D33B15005CE136 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3DABB0DD19D33B15005CE136 /* Main.storyboard */; };
 		3DCAB33219E8688A000F7FE1 /* AddRouteSecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEA551019D7066C0026D4DC /* AddRouteSecondViewController.swift */; };
+		3DCAB33419E8A439000F7FE1 /* PickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCAB33319E8A439000F7FE1 /* PickerCell.swift */; };
+		3DCAB33619E8A500000F7FE1 /* SocivyDatePickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCAB33519E8A500000F7FE1 /* SocivyDatePickerCell.swift */; };
 		3DCF4C3C19DD451400275CF5 /* fontawesome-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3DCF4C3B19DD451400275CF5 /* fontawesome-webfont.ttf */; };
 		3DCF4C3D19DD451400275CF5 /* fontawesome-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3DCF4C3B19DD451400275CF5 /* fontawesome-webfont.ttf */; };
 		3DCF4C3F19DD4F0400275CF5 /* RouteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCF4C3E19DD4F0400275CF5 /* RouteCell.swift */; };
@@ -90,6 +92,8 @@
 		3DABB0D419D25C9A005CE136 /* RouteDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteDetailViewController.swift; sourceTree = "<group>"; };
 		3DABB0D619D25E4D005CE136 /* MapCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapCell.swift; sourceTree = "<group>"; };
 		3DABB0DE19D33B15005CE136 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		3DCAB33319E8A439000F7FE1 /* PickerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerCell.swift; sourceTree = "<group>"; };
+		3DCAB33519E8A500000F7FE1 /* SocivyDatePickerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocivyDatePickerCell.swift; sourceTree = "<group>"; };
 		3DCF4C3B19DD451400275CF5 /* fontawesome-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "fontawesome-webfont.ttf"; sourceTree = "<group>"; };
 		3DCF4C3E19DD4F0400275CF5 /* RouteCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteCell.swift; sourceTree = "<group>"; };
 		3DEA550D19D700D90026D4DC /* AddRouteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddRouteViewController.swift; path = ../AddRouteViewController.swift; sourceTree = "<group>"; };
@@ -235,6 +239,8 @@
 				3DEBA12A19D3626500C84094 /* DatePickerCell.swift */,
 				3DEBA12C19D362C000C84094 /* SegmentedControlCell.swift */,
 				3DABB0D619D25E4D005CE136 /* MapCell.swift */,
+				3DCAB33319E8A439000F7FE1 /* PickerCell.swift */,
+				3DCAB33519E8A500000F7FE1 /* SocivyDatePickerCell.swift */,
 			);
 			name = CustomCells;
 			sourceTree = "<group>";
@@ -288,6 +294,7 @@
 				TargetAttributes = {
 					3DABB09A19D22332005CE136 = {
 						CreatedOnToolsVersion = 6.0.1;
+						DevelopmentTeam = 24V92ZVQKB;
 						SystemCapabilities = {
 							com.apple.Maps.iOS = {
 								enabled = 1;
@@ -352,6 +359,7 @@
 				3DABB0CB19D23A7C005CE136 /* MainTabBarController.swift in Sources */,
 				3DEBA12F19D3646100C84094 /* RouteSearchViewController.swift in Sources */,
 				3DABB0C519D22765005CE136 /* SignupViewController.swift in Sources */,
+				3DCAB33619E8A500000F7FE1 /* SocivyDatePickerCell.swift in Sources */,
 				3D21179F19E8066600CC9067 /* SocivyPlaceAPI.swift in Sources */,
 				3DEBA12D19D362C000C84094 /* SegmentedControlCell.swift in Sources */,
 				3DABB0A119D22332005CE136 /* AppDelegate.swift in Sources */,
@@ -367,6 +375,7 @@
 				3DABB0CF19D24CCC005CE136 /* RoutesViewController.swift in Sources */,
 				3D1F47EE19E5C4BE00DAED2F /* MyRoutesViewController.swift in Sources */,
 				3DABB0CD19D23F30005CE136 /* SettingsViewController.swift in Sources */,
+				3DCAB33419E8A439000F7FE1 /* PickerCell.swift in Sources */,
 				3D5FE79219D4D828003745AB /* LocationStorage.swift in Sources */,
 				3DEA550E19D700D90026D4DC /* AddRouteViewController.swift in Sources */,
 				3DEBA12B19D3626500C84094 /* DatePickerCell.swift in Sources */,
@@ -503,6 +512,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = "OzU Carpool/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -513,6 +523,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = "OzU Carpool/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
