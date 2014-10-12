@@ -1,0 +1,555 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3DFD3CA719EA9390008C6B73 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3DFD3CA519EA9390008C6B73 /* Main.storyboard */; };
+		3DFD3CA919EA9390008C6B73 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3DFD3CA819EA9390008C6B73 /* Images.xcassets */; };
+		3DFD3CAC19EA9390008C6B73 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DFD3CAA19EA9390008C6B73 /* LaunchScreen.xib */; };
+		3DFD3CB819EA9390008C6B73 /* SocivyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFD3CB719EA9390008C6B73 /* SocivyTests.swift */; };
+		3DFD3CC219EA93A7008C6B73 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DFD3CC119EA93A7008C6B73 /* MapKit.framework */; };
+		3DFD3CC419EA93E4008C6B73 /* fontawesome-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3DFD3CC319EA93E4008C6B73 /* fontawesome-webfont.ttf */; };
+		3DFD3D3019EA9554008C6B73 /* AddRouteSecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFD3D1419EA9554008C6B73 /* AddRouteSecondViewController.swift */; };
+		3DFD3D3119EA9554008C6B73 /* APITools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFD3D1519EA9554008C6B73 /* APITools.swift */; };
+		3DFD3D3219EA9554008C6B73 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFD3D1619EA9554008C6B73 /* AppDelegate.swift */; };
+		3DFD3D3319EA9554008C6B73 /* AsyncHTTPRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFD3D1719EA9554008C6B73 /* AsyncHTTPRequest.swift */; };
+		3DFD3D3419EA9554008C6B73 /* DatePickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFD3D1819EA9554008C6B73 /* DatePickerCell.swift */; };
+		3DFD3D3519EA9554008C6B73 /* LocationStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFD3D1919EA9554008C6B73 /* LocationStorage.swift */; };
+		3DFD3D3619EA9554008C6B73 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFD3D1A19EA9554008C6B73 /* LoginViewController.swift */; };
+		3DFD3D3719EA9554008C6B73 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFD3D1B19EA9554008C6B73 /* MainTabBarController.swift */; };
+		3DFD3D3819EA9554008C6B73 /* MapCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFD3D1C19EA9554008C6B73 /* MapCell.swift */; };
+		3DFD3D3919EA9554008C6B73 /* MyRoutesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFD3D1D19EA9554008C6B73 /* MyRoutesViewController.swift */; };
+		3DFD3D3A19EA9554008C6B73 /* AddRouteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFD3D1E19EA9554008C6B73 /* AddRouteViewController.swift */; };
+		3DFD3D3B19EA9554008C6B73 /* RoutesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFD3D1F19EA9554008C6B73 /* RoutesViewController.swift */; };
+		3DFD3D3C19EA9554008C6B73 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFD3D2019EA9554008C6B73 /* SettingsViewController.swift */; };
+		3DFD3D3D19EA9554008C6B73 /* TextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFD3D2119EA9554008C6B73 /* TextFieldCell.swift */; };
+		3DFD3D3E19EA9554008C6B73 /* SocivyLoginAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFD3D2219EA9554008C6B73 /* SocivyLoginAPI.swift */; };
+		3DFD3D3F19EA9554008C6B73 /* SocivyAuthenticateAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFD3D2319EA9554008C6B73 /* SocivyAuthenticateAPI.swift */; };
+		3DFD3D4019EA9554008C6B73 /* SocivyDatePickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFD3D2419EA9554008C6B73 /* SocivyDatePickerCell.swift */; };
+		3DFD3D4119EA9554008C6B73 /* SocivyRouteAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFD3D2519EA9554008C6B73 /* SocivyRouteAPI.swift */; };
+		3DFD3D4219EA9554008C6B73 /* SocivyPlaceAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFD3D2619EA9554008C6B73 /* SocivyPlaceAPI.swift */; };
+		3DFD3D4319EA9554008C6B73 /* SocivyAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFD3D2719EA9554008C6B73 /* SocivyAPI.swift */; };
+		3DFD3D4419EA9554008C6B73 /* PickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFD3D2819EA9554008C6B73 /* PickerCell.swift */; };
+		3DFD3D4519EA9554008C6B73 /* RouteSearchViewController 13-52-46-304.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFD3D2919EA9554008C6B73 /* RouteSearchViewController 13-52-46-304.swift */; };
+		3DFD3D4619EA9554008C6B73 /* RouteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFD3D2A19EA9554008C6B73 /* RouteCell.swift */; };
+		3DFD3D4719EA9554008C6B73 /* RouteDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFD3D2B19EA9554008C6B73 /* RouteDetailViewController.swift */; };
+		3DFD3D4819EA9554008C6B73 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFD3D2C19EA9554008C6B73 /* Route.swift */; };
+		3DFD3D4A19EA9554008C6B73 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFD3D2E19EA9554008C6B73 /* SignupViewController.swift */; };
+		3DFD3D4F19EA9580008C6B73 /* RouteSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFD3D4C19EA9580008C6B73 /* RouteSearchViewController.swift */; };
+		3DFD3D5019EA9580008C6B73 /* SegmentedControlCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFD3D4D19EA9580008C6B73 /* SegmentedControlCell.swift */; };
+		3DFD3D5119EA9580008C6B73 /* RouteCategoryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFD3D4E19EA9580008C6B73 /* RouteCategoryDetailViewController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3DFD3CB219EA9390008C6B73 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3DFD3C9419EA9390008C6B73 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3DFD3C9B19EA9390008C6B73;
+			remoteInfo = Socivy;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		3DFD3C9C19EA9390008C6B73 /* Socivy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Socivy.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3DFD3CA019EA9390008C6B73 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3DFD3CA619EA9390008C6B73 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		3DFD3CA819EA9390008C6B73 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		3DFD3CAB19EA9390008C6B73 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		3DFD3CB119EA9390008C6B73 /* SocivyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SocivyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3DFD3CB619EA9390008C6B73 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3DFD3CB719EA9390008C6B73 /* SocivyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocivyTests.swift; sourceTree = "<group>"; };
+		3DFD3CC119EA93A7008C6B73 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		3DFD3CC319EA93E4008C6B73 /* fontawesome-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "fontawesome-webfont.ttf"; sourceTree = "<group>"; };
+		3DFD3D1319EA9554008C6B73 /* Socivy-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Socivy-Bridging-Header.h"; sourceTree = "<group>"; };
+		3DFD3D1419EA9554008C6B73 /* AddRouteSecondViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddRouteSecondViewController.swift; sourceTree = "<group>"; };
+		3DFD3D1519EA9554008C6B73 /* APITools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APITools.swift; sourceTree = "<group>"; };
+		3DFD3D1619EA9554008C6B73 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		3DFD3D1719EA9554008C6B73 /* AsyncHTTPRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncHTTPRequest.swift; sourceTree = "<group>"; };
+		3DFD3D1819EA9554008C6B73 /* DatePickerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerCell.swift; sourceTree = "<group>"; };
+		3DFD3D1919EA9554008C6B73 /* LocationStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationStorage.swift; sourceTree = "<group>"; };
+		3DFD3D1A19EA9554008C6B73 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		3DFD3D1B19EA9554008C6B73 /* MainTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		3DFD3D1C19EA9554008C6B73 /* MapCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapCell.swift; sourceTree = "<group>"; };
+		3DFD3D1D19EA9554008C6B73 /* MyRoutesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyRoutesViewController.swift; sourceTree = "<group>"; };
+		3DFD3D1E19EA9554008C6B73 /* AddRouteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddRouteViewController.swift; sourceTree = "<group>"; };
+		3DFD3D1F19EA9554008C6B73 /* RoutesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutesViewController.swift; sourceTree = "<group>"; };
+		3DFD3D2019EA9554008C6B73 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		3DFD3D2119EA9554008C6B73 /* TextFieldCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldCell.swift; sourceTree = "<group>"; };
+		3DFD3D2219EA9554008C6B73 /* SocivyLoginAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocivyLoginAPI.swift; sourceTree = "<group>"; };
+		3DFD3D2319EA9554008C6B73 /* SocivyAuthenticateAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocivyAuthenticateAPI.swift; sourceTree = "<group>"; };
+		3DFD3D2419EA9554008C6B73 /* SocivyDatePickerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocivyDatePickerCell.swift; sourceTree = "<group>"; };
+		3DFD3D2519EA9554008C6B73 /* SocivyRouteAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocivyRouteAPI.swift; sourceTree = "<group>"; };
+		3DFD3D2619EA9554008C6B73 /* SocivyPlaceAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocivyPlaceAPI.swift; sourceTree = "<group>"; };
+		3DFD3D2719EA9554008C6B73 /* SocivyAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocivyAPI.swift; sourceTree = "<group>"; };
+		3DFD3D2819EA9554008C6B73 /* PickerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerCell.swift; sourceTree = "<group>"; };
+		3DFD3D2919EA9554008C6B73 /* RouteSearchViewController 13-52-46-304.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RouteSearchViewController 13-52-46-304.swift"; sourceTree = "<group>"; };
+		3DFD3D2A19EA9554008C6B73 /* RouteCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteCell.swift; sourceTree = "<group>"; };
+		3DFD3D2B19EA9554008C6B73 /* RouteDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteDetailViewController.swift; sourceTree = "<group>"; };
+		3DFD3D2C19EA9554008C6B73 /* Route.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
+		3DFD3D2E19EA9554008C6B73 /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		3DFD3D4C19EA9580008C6B73 /* RouteSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteSearchViewController.swift; sourceTree = "<group>"; };
+		3DFD3D4D19EA9580008C6B73 /* SegmentedControlCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentedControlCell.swift; sourceTree = "<group>"; };
+		3DFD3D4E19EA9580008C6B73 /* RouteCategoryDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteCategoryDetailViewController.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3DFD3C9919EA9390008C6B73 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3DFD3CC219EA93A7008C6B73 /* MapKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3DFD3CAE19EA9390008C6B73 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3DFD3C9319EA9390008C6B73 = {
+			isa = PBXGroup;
+			children = (
+				3DFD3C9E19EA9390008C6B73 /* Socivy */,
+				3DFD3CB419EA9390008C6B73 /* SocivyTests */,
+				3DFD3C9D19EA9390008C6B73 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		3DFD3C9D19EA9390008C6B73 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3DFD3C9C19EA9390008C6B73 /* Socivy.app */,
+				3DFD3CB119EA9390008C6B73 /* SocivyTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3DFD3C9E19EA9390008C6B73 /* Socivy */ = {
+			isa = PBXGroup;
+			children = (
+				3DFD3D4C19EA9580008C6B73 /* RouteSearchViewController.swift */,
+				3DFD3D4D19EA9580008C6B73 /* SegmentedControlCell.swift */,
+				3DFD3D4E19EA9580008C6B73 /* RouteCategoryDetailViewController.swift */,
+				3DFD3D1419EA9554008C6B73 /* AddRouteSecondViewController.swift */,
+				3DFD3D1519EA9554008C6B73 /* APITools.swift */,
+				3DFD3D1619EA9554008C6B73 /* AppDelegate.swift */,
+				3DFD3D1719EA9554008C6B73 /* AsyncHTTPRequest.swift */,
+				3DFD3D1819EA9554008C6B73 /* DatePickerCell.swift */,
+				3DFD3D1919EA9554008C6B73 /* LocationStorage.swift */,
+				3DFD3D1A19EA9554008C6B73 /* LoginViewController.swift */,
+				3DFD3D1B19EA9554008C6B73 /* MainTabBarController.swift */,
+				3DFD3D1C19EA9554008C6B73 /* MapCell.swift */,
+				3DFD3D1D19EA9554008C6B73 /* MyRoutesViewController.swift */,
+				3DFD3D1E19EA9554008C6B73 /* AddRouteViewController.swift */,
+				3DFD3D1F19EA9554008C6B73 /* RoutesViewController.swift */,
+				3DFD3D2019EA9554008C6B73 /* SettingsViewController.swift */,
+				3DFD3D2119EA9554008C6B73 /* TextFieldCell.swift */,
+				3DFD3D2219EA9554008C6B73 /* SocivyLoginAPI.swift */,
+				3DFD3D2319EA9554008C6B73 /* SocivyAuthenticateAPI.swift */,
+				3DFD3D2419EA9554008C6B73 /* SocivyDatePickerCell.swift */,
+				3DFD3D2519EA9554008C6B73 /* SocivyRouteAPI.swift */,
+				3DFD3D2619EA9554008C6B73 /* SocivyPlaceAPI.swift */,
+				3DFD3D2719EA9554008C6B73 /* SocivyAPI.swift */,
+				3DFD3D2819EA9554008C6B73 /* PickerCell.swift */,
+				3DFD3D2919EA9554008C6B73 /* RouteSearchViewController 13-52-46-304.swift */,
+				3DFD3D2A19EA9554008C6B73 /* RouteCell.swift */,
+				3DFD3D2B19EA9554008C6B73 /* RouteDetailViewController.swift */,
+				3DFD3D2C19EA9554008C6B73 /* Route.swift */,
+				3DFD3D2E19EA9554008C6B73 /* SignupViewController.swift */,
+				3DFD3CC319EA93E4008C6B73 /* fontawesome-webfont.ttf */,
+				3DFD3CA519EA9390008C6B73 /* Main.storyboard */,
+				3DFD3CA819EA9390008C6B73 /* Images.xcassets */,
+				3DFD3CAA19EA9390008C6B73 /* LaunchScreen.xib */,
+				3DFD3CC119EA93A7008C6B73 /* MapKit.framework */,
+				3DFD3C9F19EA9390008C6B73 /* Supporting Files */,
+				3DFD3D1319EA9554008C6B73 /* Socivy-Bridging-Header.h */,
+			);
+			path = Socivy;
+			sourceTree = "<group>";
+		};
+		3DFD3C9F19EA9390008C6B73 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3DFD3CA019EA9390008C6B73 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3DFD3CB419EA9390008C6B73 /* SocivyTests */ = {
+			isa = PBXGroup;
+			children = (
+				3DFD3CB719EA9390008C6B73 /* SocivyTests.swift */,
+				3DFD3CB519EA9390008C6B73 /* Supporting Files */,
+			);
+			path = SocivyTests;
+			sourceTree = "<group>";
+		};
+		3DFD3CB519EA9390008C6B73 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3DFD3CB619EA9390008C6B73 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3DFD3C9B19EA9390008C6B73 /* Socivy */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3DFD3CBB19EA9390008C6B73 /* Build configuration list for PBXNativeTarget "Socivy" */;
+			buildPhases = (
+				3DFD3C9819EA9390008C6B73 /* Sources */,
+				3DFD3C9919EA9390008C6B73 /* Frameworks */,
+				3DFD3C9A19EA9390008C6B73 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Socivy;
+			productName = Socivy;
+			productReference = 3DFD3C9C19EA9390008C6B73 /* Socivy.app */;
+			productType = "com.apple.product-type.application";
+		};
+		3DFD3CB019EA9390008C6B73 /* SocivyTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3DFD3CBE19EA9390008C6B73 /* Build configuration list for PBXNativeTarget "SocivyTests" */;
+			buildPhases = (
+				3DFD3CAD19EA9390008C6B73 /* Sources */,
+				3DFD3CAE19EA9390008C6B73 /* Frameworks */,
+				3DFD3CAF19EA9390008C6B73 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3DFD3CB319EA9390008C6B73 /* PBXTargetDependency */,
+			);
+			name = SocivyTests;
+			productName = SocivyTests;
+			productReference = 3DFD3CB119EA9390008C6B73 /* SocivyTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3DFD3C9419EA9390008C6B73 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0600;
+				ORGANIZATIONNAME = TDG;
+				TargetAttributes = {
+					3DFD3C9B19EA9390008C6B73 = {
+						CreatedOnToolsVersion = 6.0.1;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+						};
+					};
+					3DFD3CB019EA9390008C6B73 = {
+						CreatedOnToolsVersion = 6.0.1;
+						TestTargetID = 3DFD3C9B19EA9390008C6B73;
+					};
+				};
+			};
+			buildConfigurationList = 3DFD3C9719EA9390008C6B73 /* Build configuration list for PBXProject "Socivy" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 3DFD3C9319EA9390008C6B73;
+			productRefGroup = 3DFD3C9D19EA9390008C6B73 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3DFD3C9B19EA9390008C6B73 /* Socivy */,
+				3DFD3CB019EA9390008C6B73 /* SocivyTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3DFD3C9A19EA9390008C6B73 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3DFD3CA719EA9390008C6B73 /* Main.storyboard in Resources */,
+				3DFD3CC419EA93E4008C6B73 /* fontawesome-webfont.ttf in Resources */,
+				3DFD3CAC19EA9390008C6B73 /* LaunchScreen.xib in Resources */,
+				3DFD3CA919EA9390008C6B73 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3DFD3CAF19EA9390008C6B73 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3DFD3C9819EA9390008C6B73 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3DFD3D4A19EA9554008C6B73 /* SignupViewController.swift in Sources */,
+				3DFD3D5119EA9580008C6B73 /* RouteCategoryDetailViewController.swift in Sources */,
+				3DFD3D5019EA9580008C6B73 /* SegmentedControlCell.swift in Sources */,
+				3DFD3D3619EA9554008C6B73 /* LoginViewController.swift in Sources */,
+				3DFD3D3519EA9554008C6B73 /* LocationStorage.swift in Sources */,
+				3DFD3D4619EA9554008C6B73 /* RouteCell.swift in Sources */,
+				3DFD3D3E19EA9554008C6B73 /* SocivyLoginAPI.swift in Sources */,
+				3DFD3D4119EA9554008C6B73 /* SocivyRouteAPI.swift in Sources */,
+				3DFD3D4519EA9554008C6B73 /* RouteSearchViewController 13-52-46-304.swift in Sources */,
+				3DFD3D3A19EA9554008C6B73 /* AddRouteViewController.swift in Sources */,
+				3DFD3D4419EA9554008C6B73 /* PickerCell.swift in Sources */,
+				3DFD3D3819EA9554008C6B73 /* MapCell.swift in Sources */,
+				3DFD3D3719EA9554008C6B73 /* MainTabBarController.swift in Sources */,
+				3DFD3D4019EA9554008C6B73 /* SocivyDatePickerCell.swift in Sources */,
+				3DFD3D3D19EA9554008C6B73 /* TextFieldCell.swift in Sources */,
+				3DFD3D4319EA9554008C6B73 /* SocivyAPI.swift in Sources */,
+				3DFD3D3319EA9554008C6B73 /* AsyncHTTPRequest.swift in Sources */,
+				3DFD3D4219EA9554008C6B73 /* SocivyPlaceAPI.swift in Sources */,
+				3DFD3D3219EA9554008C6B73 /* AppDelegate.swift in Sources */,
+				3DFD3D3119EA9554008C6B73 /* APITools.swift in Sources */,
+				3DFD3D4F19EA9580008C6B73 /* RouteSearchViewController.swift in Sources */,
+				3DFD3D3019EA9554008C6B73 /* AddRouteSecondViewController.swift in Sources */,
+				3DFD3D3919EA9554008C6B73 /* MyRoutesViewController.swift in Sources */,
+				3DFD3D4719EA9554008C6B73 /* RouteDetailViewController.swift in Sources */,
+				3DFD3D3F19EA9554008C6B73 /* SocivyAuthenticateAPI.swift in Sources */,
+				3DFD3D3C19EA9554008C6B73 /* SettingsViewController.swift in Sources */,
+				3DFD3D3B19EA9554008C6B73 /* RoutesViewController.swift in Sources */,
+				3DFD3D4819EA9554008C6B73 /* Route.swift in Sources */,
+				3DFD3D3419EA9554008C6B73 /* DatePickerCell.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3DFD3CAD19EA9390008C6B73 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3DFD3CB819EA9390008C6B73 /* SocivyTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3DFD3CB319EA9390008C6B73 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3DFD3C9B19EA9390008C6B73 /* Socivy */;
+			targetProxy = 3DFD3CB219EA9390008C6B73 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		3DFD3CA519EA9390008C6B73 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3DFD3CA619EA9390008C6B73 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		3DFD3CAA19EA9390008C6B73 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3DFD3CAB19EA9390008C6B73 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		3DFD3CB919EA9390008C6B73 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		3DFD3CBA19EA9390008C6B73 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		3DFD3CBC19EA9390008C6B73 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				INFOPLIST_FILE = Socivy/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Socivy/Socivy-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		3DFD3CBD19EA9390008C6B73 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				INFOPLIST_FILE = Socivy/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Socivy/Socivy-Bridging-Header.h";
+			};
+			name = Release;
+		};
+		3DFD3CBF19EA9390008C6B73 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = SocivyTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Socivy.app/Socivy";
+			};
+			name = Debug;
+		};
+		3DFD3CC019EA9390008C6B73 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = SocivyTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Socivy.app/Socivy";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3DFD3C9719EA9390008C6B73 /* Build configuration list for PBXProject "Socivy" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3DFD3CB919EA9390008C6B73 /* Debug */,
+				3DFD3CBA19EA9390008C6B73 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3DFD3CBB19EA9390008C6B73 /* Build configuration list for PBXNativeTarget "Socivy" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3DFD3CBC19EA9390008C6B73 /* Debug */,
+				3DFD3CBD19EA9390008C6B73 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3DFD3CBE19EA9390008C6B73 /* Build configuration list for PBXNativeTarget "SocivyTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3DFD3CBF19EA9390008C6B73 /* Debug */,
+				3DFD3CC019EA9390008C6B73 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3DFD3C9419EA9390008C6B73 /* Project object */;
+}
