@@ -52,7 +52,7 @@ class SocivyAuthenticateAPI: SocivyBaseAPI{
                 self.delegate?.authenticateDidFinish(self)
             }
             else if json["info"]["status_code"].asInt == 2 {
-                let description:String = "Something terrible happened! \nFailed to login :("
+                let description:String = "Something terrible happened! \nFailed to login."
                 let reason: String = "The operation timed out."
                 let suggestion: String = "Have you tried turning it off and on again?"
                 

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3D82E0D719EB00B200A22CA1 /* JoinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D82E0D619EB00B200A22CA1 /* JoinViewController.swift */; };
 		3DFD3CA719EA9390008C6B73 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3DFD3CA519EA9390008C6B73 /* Main.storyboard */; };
 		3DFD3CA919EA9390008C6B73 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3DFD3CA819EA9390008C6B73 /* Images.xcassets */; };
 		3DFD3CAC19EA9390008C6B73 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DFD3CAA19EA9390008C6B73 /* LaunchScreen.xib */; };
@@ -34,14 +35,11 @@
 		3DFD3D4219EA9554008C6B73 /* SocivyPlaceAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFD3D2619EA9554008C6B73 /* SocivyPlaceAPI.swift */; };
 		3DFD3D4319EA9554008C6B73 /* SocivyAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFD3D2719EA9554008C6B73 /* SocivyAPI.swift */; };
 		3DFD3D4419EA9554008C6B73 /* PickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFD3D2819EA9554008C6B73 /* PickerCell.swift */; };
-		3DFD3D4519EA9554008C6B73 /* RouteSearchViewController 13-52-46-304.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFD3D2919EA9554008C6B73 /* RouteSearchViewController 13-52-46-304.swift */; };
 		3DFD3D4619EA9554008C6B73 /* RouteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFD3D2A19EA9554008C6B73 /* RouteCell.swift */; };
 		3DFD3D4719EA9554008C6B73 /* RouteDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFD3D2B19EA9554008C6B73 /* RouteDetailViewController.swift */; };
 		3DFD3D4819EA9554008C6B73 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFD3D2C19EA9554008C6B73 /* Route.swift */; };
 		3DFD3D4A19EA9554008C6B73 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFD3D2E19EA9554008C6B73 /* SignupViewController.swift */; };
-		3DFD3D4F19EA9580008C6B73 /* RouteSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFD3D4C19EA9580008C6B73 /* RouteSearchViewController.swift */; };
 		3DFD3D5019EA9580008C6B73 /* SegmentedControlCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFD3D4D19EA9580008C6B73 /* SegmentedControlCell.swift */; };
-		3DFD3D5119EA9580008C6B73 /* RouteCategoryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFD3D4E19EA9580008C6B73 /* RouteCategoryDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +53,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3D82E0D619EB00B200A22CA1 /* JoinViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoinViewController.swift; sourceTree = "<group>"; };
 		3DFD3C9C19EA9390008C6B73 /* Socivy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Socivy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DFD3CA019EA9390008C6B73 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3DFD3CA619EA9390008C6B73 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -87,14 +86,11 @@
 		3DFD3D2619EA9554008C6B73 /* SocivyPlaceAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocivyPlaceAPI.swift; sourceTree = "<group>"; };
 		3DFD3D2719EA9554008C6B73 /* SocivyAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocivyAPI.swift; sourceTree = "<group>"; };
 		3DFD3D2819EA9554008C6B73 /* PickerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerCell.swift; sourceTree = "<group>"; };
-		3DFD3D2919EA9554008C6B73 /* RouteSearchViewController 13-52-46-304.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RouteSearchViewController 13-52-46-304.swift"; sourceTree = "<group>"; };
 		3DFD3D2A19EA9554008C6B73 /* RouteCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteCell.swift; sourceTree = "<group>"; };
 		3DFD3D2B19EA9554008C6B73 /* RouteDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteDetailViewController.swift; sourceTree = "<group>"; };
 		3DFD3D2C19EA9554008C6B73 /* Route.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		3DFD3D2E19EA9554008C6B73 /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
-		3DFD3D4C19EA9580008C6B73 /* RouteSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteSearchViewController.swift; sourceTree = "<group>"; };
 		3DFD3D4D19EA9580008C6B73 /* SegmentedControlCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentedControlCell.swift; sourceTree = "<group>"; };
-		3DFD3D4E19EA9580008C6B73 /* RouteCategoryDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteCategoryDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +112,80 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3D82E0CF19EAAC3300A22CA1 /* CustomCells */ = {
+			isa = PBXGroup;
+			children = (
+				3DFD3D4D19EA9580008C6B73 /* SegmentedControlCell.swift */,
+				3DFD3D1819EA9554008C6B73 /* DatePickerCell.swift */,
+				3DFD3D1C19EA9554008C6B73 /* MapCell.swift */,
+				3DFD3D2119EA9554008C6B73 /* TextFieldCell.swift */,
+				3DFD3D2419EA9554008C6B73 /* SocivyDatePickerCell.swift */,
+				3DFD3D2819EA9554008C6B73 /* PickerCell.swift */,
+				3DFD3D2A19EA9554008C6B73 /* RouteCell.swift */,
+			);
+			name = CustomCells;
+			sourceTree = "<group>";
+		};
+		3D82E0D019EAACC400A22CA1 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				3D82E0D519EAADDF00A22CA1 /* Essentials */,
+				3DFD3D2719EA9554008C6B73 /* SocivyAPI.swift */,
+				3DFD3D2219EA9554008C6B73 /* SocivyLoginAPI.swift */,
+				3DFD3D2319EA9554008C6B73 /* SocivyAuthenticateAPI.swift */,
+				3DFD3D2519EA9554008C6B73 /* SocivyRouteAPI.swift */,
+				3DFD3D2619EA9554008C6B73 /* SocivyPlaceAPI.swift */,
+			);
+			name = API;
+			sourceTree = "<group>";
+		};
+		3D82E0D119EAAD1500A22CA1 /* HaveACar Tab */ = {
+			isa = PBXGroup;
+			children = (
+				3DFD3D1D19EA9554008C6B73 /* MyRoutesViewController.swift */,
+				3DFD3D1E19EA9554008C6B73 /* AddRouteViewController.swift */,
+				3DFD3D1419EA9554008C6B73 /* AddRouteSecondViewController.swift */,
+			);
+			name = "HaveACar Tab";
+			sourceTree = "<group>";
+		};
+		3D82E0D219EAAD4900A22CA1 /* BeforeLogin Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				3DFD3D1A19EA9554008C6B73 /* LoginViewController.swift */,
+				3DFD3D2E19EA9554008C6B73 /* SignupViewController.swift */,
+			);
+			name = "BeforeLogin Scenes";
+			sourceTree = "<group>";
+		};
+		3D82E0D319EAAD6D00A22CA1 /* Settings Tab */ = {
+			isa = PBXGroup;
+			children = (
+				3DFD3D2019EA9554008C6B73 /* SettingsViewController.swift */,
+			);
+			name = "Settings Tab";
+			sourceTree = "<group>";
+		};
+		3D82E0D419EAAD7B00A22CA1 /* DontHaveACar Tab */ = {
+			isa = PBXGroup;
+			children = (
+				3DFD3D1F19EA9554008C6B73 /* RoutesViewController.swift */,
+				3D82E0D619EB00B200A22CA1 /* JoinViewController.swift */,
+			);
+			name = "DontHaveACar Tab";
+			sourceTree = "<group>";
+		};
+		3D82E0D519EAADDF00A22CA1 /* Essentials */ = {
+			isa = PBXGroup;
+			children = (
+				3DFD3D1719EA9554008C6B73 /* AsyncHTTPRequest.swift */,
+				3DFD3D1919EA9554008C6B73 /* LocationStorage.swift */,
+				3DFD3D2C19EA9554008C6B73 /* Route.swift */,
+				3DFD3D1519EA9554008C6B73 /* APITools.swift */,
+			);
+			name = Essentials;
+			sourceTree = "<group>";
+		};
 		3DFD3C9319EA9390008C6B73 = {
 			isa = PBXGroup;
 			children = (
@@ -137,35 +207,15 @@
 		3DFD3C9E19EA9390008C6B73 /* Socivy */ = {
 			isa = PBXGroup;
 			children = (
-				3DFD3D4C19EA9580008C6B73 /* RouteSearchViewController.swift */,
-				3DFD3D4D19EA9580008C6B73 /* SegmentedControlCell.swift */,
-				3DFD3D4E19EA9580008C6B73 /* RouteCategoryDetailViewController.swift */,
-				3DFD3D1419EA9554008C6B73 /* AddRouteSecondViewController.swift */,
-				3DFD3D1519EA9554008C6B73 /* APITools.swift */,
 				3DFD3D1619EA9554008C6B73 /* AppDelegate.swift */,
-				3DFD3D1719EA9554008C6B73 /* AsyncHTTPRequest.swift */,
-				3DFD3D1819EA9554008C6B73 /* DatePickerCell.swift */,
-				3DFD3D1919EA9554008C6B73 /* LocationStorage.swift */,
-				3DFD3D1A19EA9554008C6B73 /* LoginViewController.swift */,
+				3D82E0CF19EAAC3300A22CA1 /* CustomCells */,
 				3DFD3D1B19EA9554008C6B73 /* MainTabBarController.swift */,
-				3DFD3D1C19EA9554008C6B73 /* MapCell.swift */,
-				3DFD3D1D19EA9554008C6B73 /* MyRoutesViewController.swift */,
-				3DFD3D1E19EA9554008C6B73 /* AddRouteViewController.swift */,
-				3DFD3D1F19EA9554008C6B73 /* RoutesViewController.swift */,
-				3DFD3D2019EA9554008C6B73 /* SettingsViewController.swift */,
-				3DFD3D2119EA9554008C6B73 /* TextFieldCell.swift */,
-				3DFD3D2219EA9554008C6B73 /* SocivyLoginAPI.swift */,
-				3DFD3D2319EA9554008C6B73 /* SocivyAuthenticateAPI.swift */,
-				3DFD3D2419EA9554008C6B73 /* SocivyDatePickerCell.swift */,
-				3DFD3D2519EA9554008C6B73 /* SocivyRouteAPI.swift */,
-				3DFD3D2619EA9554008C6B73 /* SocivyPlaceAPI.swift */,
-				3DFD3D2719EA9554008C6B73 /* SocivyAPI.swift */,
-				3DFD3D2819EA9554008C6B73 /* PickerCell.swift */,
-				3DFD3D2919EA9554008C6B73 /* RouteSearchViewController 13-52-46-304.swift */,
-				3DFD3D2A19EA9554008C6B73 /* RouteCell.swift */,
+				3D82E0D419EAAD7B00A22CA1 /* DontHaveACar Tab */,
+				3D82E0D119EAAD1500A22CA1 /* HaveACar Tab */,
+				3D82E0D219EAAD4900A22CA1 /* BeforeLogin Scenes */,
+				3D82E0D319EAAD6D00A22CA1 /* Settings Tab */,
+				3D82E0D019EAACC400A22CA1 /* API */,
 				3DFD3D2B19EA9554008C6B73 /* RouteDetailViewController.swift */,
-				3DFD3D2C19EA9554008C6B73 /* Route.swift */,
-				3DFD3D2E19EA9554008C6B73 /* SignupViewController.swift */,
 				3DFD3CC319EA93E4008C6B73 /* fontawesome-webfont.ttf */,
 				3DFD3CA519EA9390008C6B73 /* Main.storyboard */,
 				3DFD3CA819EA9390008C6B73 /* Images.xcassets */,
@@ -312,26 +362,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				3DFD3D4A19EA9554008C6B73 /* SignupViewController.swift in Sources */,
-				3DFD3D5119EA9580008C6B73 /* RouteCategoryDetailViewController.swift in Sources */,
 				3DFD3D5019EA9580008C6B73 /* SegmentedControlCell.swift in Sources */,
 				3DFD3D3619EA9554008C6B73 /* LoginViewController.swift in Sources */,
 				3DFD3D3519EA9554008C6B73 /* LocationStorage.swift in Sources */,
 				3DFD3D4619EA9554008C6B73 /* RouteCell.swift in Sources */,
 				3DFD3D3E19EA9554008C6B73 /* SocivyLoginAPI.swift in Sources */,
 				3DFD3D4119EA9554008C6B73 /* SocivyRouteAPI.swift in Sources */,
-				3DFD3D4519EA9554008C6B73 /* RouteSearchViewController 13-52-46-304.swift in Sources */,
 				3DFD3D3A19EA9554008C6B73 /* AddRouteViewController.swift in Sources */,
 				3DFD3D4419EA9554008C6B73 /* PickerCell.swift in Sources */,
 				3DFD3D3819EA9554008C6B73 /* MapCell.swift in Sources */,
 				3DFD3D3719EA9554008C6B73 /* MainTabBarController.swift in Sources */,
 				3DFD3D4019EA9554008C6B73 /* SocivyDatePickerCell.swift in Sources */,
 				3DFD3D3D19EA9554008C6B73 /* TextFieldCell.swift in Sources */,
+				3D82E0D719EB00B200A22CA1 /* JoinViewController.swift in Sources */,
 				3DFD3D4319EA9554008C6B73 /* SocivyAPI.swift in Sources */,
 				3DFD3D3319EA9554008C6B73 /* AsyncHTTPRequest.swift in Sources */,
 				3DFD3D4219EA9554008C6B73 /* SocivyPlaceAPI.swift in Sources */,
 				3DFD3D3219EA9554008C6B73 /* AppDelegate.swift in Sources */,
 				3DFD3D3119EA9554008C6B73 /* APITools.swift in Sources */,
-				3DFD3D4F19EA9580008C6B73 /* RouteSearchViewController.swift in Sources */,
 				3DFD3D3019EA9554008C6B73 /* AddRouteSecondViewController.swift in Sources */,
 				3DFD3D3919EA9554008C6B73 /* MyRoutesViewController.swift in Sources */,
 				3DFD3D4719EA9554008C6B73 /* RouteDetailViewController.swift in Sources */,

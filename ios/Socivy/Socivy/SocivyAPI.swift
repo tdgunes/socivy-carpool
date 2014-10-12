@@ -61,7 +61,7 @@ class SocivyBaseLoginAPI: SocivyBaseAPI, SocivyLoginAPIDelegate{
 }
 
 class SocivyAPI {
-    let public_key:String = "$2y$10$9sI0wpjalK9B1tdDrdWyPe9PGvJquJ08l0UwSfgNgf3Aa6hvVJRmW"
+    let public_key:String = "$2y$10$EABJx.UPPrTRCbn.nR34geK6HJOZWvEQFRFVQzCV2hW7aI13jn16G"
 
     let url = "http://development.socivy.com/api/v1"
     
@@ -71,8 +71,9 @@ class SocivyAPI {
     var authenticateAPI:SocivyAuthenticateAPI?
     var indexRouteAPI:SocivyIndexRouteAPI?
     var storeRouteAPI:SocivyStoreRouteAPI?
+    var selfRouteAPI:SocivyRouteSelfAPI?
     var placeAPI: SocivyPlaceAPI?
-
+    
 
     var expireTime:Int?
     
@@ -86,8 +87,9 @@ class SocivyAPI {
         //route related
         self.indexRouteAPI = SocivyIndexRouteAPI(api: self)
         self.storeRouteAPI = SocivyStoreRouteAPI(api: self)
-        
+        self.selfRouteAPI = SocivyRouteSelfAPI(api:self)
         self.placeAPI = SocivyPlaceAPI(api: self)
+        
     }
 
 }

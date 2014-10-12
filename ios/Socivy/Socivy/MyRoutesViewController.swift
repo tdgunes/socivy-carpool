@@ -11,8 +11,9 @@ import UIKit
 import MapKit
 
 
-class MyRoutesViewController: UITableViewController {
+class MyRoutesViewController: UITableViewController, SocivyRouteSelfAPIDelegate  {
     
+    weak var selfRouteAPI = SocivyAPI.sharedInstance.selfRouteAPI
     var routes:[Route] = []
     var tableRefreshControl = UIRefreshControl()
     
@@ -22,15 +23,67 @@ class MyRoutesViewController: UITableViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        
         self.tableRefreshControl.addTarget(self, action: "refreshControlRequest", forControlEvents: UIControlEvents.ValueChanged)
         self.tableView.addSubview(self.tableRefreshControl)
         
-
+        self.selfRouteAPI?.delegate = self
+        self.tableRefreshControl.beginRefreshing()
+        self.tableView.setContentOffset(CGPointMake(0, self.tableView.contentOffset.y-self.tableRefreshControl.frame.size.height), animated:true)
+        self.selfRouteAPI?.fetch()
+        
+    }
+    
+    func fetchDidFinish(storeRouteApi:SocivyRouteSelfAPI, routes:JSON){
+        self.routes = []
+        let routeArray = routes.asArray! as [JSON]
+        var index:Int = 0
+        for route in routeArray {
+            let placeArray = route["places"].asArray! as [JSON]
+            
+            var stops:[Stop] = []
+            for place in placeArray{
+                var stop = Stop(id:"ad", name: place["name"].asString!, location: CLLocationCoordinate2D(latitude:12.0 , longitude: 12.0))
+                stops.append(stop)
+            }
+            let driverName = route["user"]["name"].asString
+            var driver:User = User(name: driverName, cellphone: nil)
+            
+            var toOzu:Bool = false
+            
+            if route["plan"].asString! == "toSchool" {
+                toOzu = true
+            }
+            
+            var route: Route = Route(id: route["id"].asString!, stops: stops, timestamp: 1322486053, description: route["description"].asString!, toOzu: toOzu, driver: driver, seatLeft:route["seats"].asInt!)
+            
+            self.routes.append(route)
+            println("\(index). \(route)")
+            
+            for stop in stops{
+                println("  - \(stop.name)")
+            }
+            index += 1
+            
+        }
+        
+        if self.routes.count == 0 {
+            helpLabel.hidden = false
+        }
+        else {
+            helpLabel.hidden = true
+        }
+        
+        println("[MyRoutesVC] self.routes.count = \(self.routes.count) ")
+        self.tableView.reloadData()
+        self.tableRefreshControl.endRefreshing()
+    }
+    func fetchDidFail(storeRouteApi:SocivyRouteSelfAPI, error:NSError){
+        
     }
     
     func refreshControlRequest(){
         helpLabel.hidden = true
+        self.selfRouteAPI?.fetch()
         self.updateTableView()
     }
     
@@ -40,8 +93,7 @@ class MyRoutesViewController: UITableViewController {
         //        let lastUpdated = "Last updated on \(formatter.stringFromDate(NSDate()))"
         //        self.tableRefreshControl.attributedTitle = NSAttributedString(string: lastUpdated)
         
-        helpLabel.hidden = false
-        self.tableRefreshControl.endRefreshing()
+
     }
     
     

@@ -28,13 +28,8 @@ class RouteDetailViewController: UITableViewController, MKMapViewDelegate {
         
         // Do any additional setup after loading the view, typically from a nib.
         
-        self.navigationItem.title = route?.selectedStop!.name
-        self.nameCell?.detailTextLabel?.text = route?.selectedStop!.name
-        self.timeDateCell?.detailTextLabel?.text = route!.getTime()
-        self.driverCell?.detailTextLabel?.text = route?.driver.name
-        self.descriptionCell?.detailTextLabel?.text = route?.description
 
-        self.handleMapView()
+//        self.handleMapView()
         self.mapCell?.mapView?.delegate = self
     }
     
@@ -72,22 +67,22 @@ class RouteDetailViewController: UITableViewController, MKMapViewDelegate {
         }
     }
 
-    
-    func handleMapView() {
-        let loc = route?.selectedStop?.location
-        let region = MKCoordinateRegion(center: loc!, span: MKCoordinateSpan(latitudeDelta: 0.3, longitudeDelta: 0.3))
-        self.mapCell?.mapView?.setRegion(region, animated: true)
-    
-        // point annotation
-        var annotation = MKPointAnnotation()
-
-        annotation.setCoordinate(loc!)
-        annotation.title = self.route?.selectedStop?.name
-
-        self.mapCell?.mapView?.addAnnotation(annotation)
-        self.mapCell?.mapView?.addAnnotations(LocationStorage.sharedInstance.getAll())
-    }
-    
+//    
+//    func handleMapView() {
+//        let loc = route?.selectedStop?.location
+//        let region = MKCoordinateRegion(center: loc!, span: MKCoordinateSpan(latitudeDelta: 0.3, longitudeDelta: 0.3))
+//        self.mapCell?.mapView?.setRegion(region, animated: true)
+//    
+//        // point annotation
+//        var annotation = MKPointAnnotation()
+//
+//        annotation.setCoordinate(loc!)
+//        annotation.title = self.route?.selectedStop?.name
+//
+//        self.mapCell?.mapView?.addAnnotation(annotation)
+//        self.mapCell?.mapView?.addAnnotations(LocationStorage.sharedInstance.getAll())
+//    }
+//    
     func callDriver() {
         if let cellphone = self.route?.driver.cellphone{
             println("[peek] tel:\(cellphone)")
