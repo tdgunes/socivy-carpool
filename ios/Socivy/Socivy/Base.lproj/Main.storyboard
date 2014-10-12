@@ -495,13 +495,13 @@
                         <sections>
                             <tableViewSection headerTitle="Where to ?" id="w5g-qj-OKO">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="heA-d1-674" customClass="SegmentedControlCell" customModule="Socivy" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="29" id="heA-d1-674" customClass="SegmentedControlCell" customModule="Socivy" customModuleProvider="target">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="heA-d1-674" id="Rgk-Zn-JJL">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="hAx-hr-2Te">
-                                                    <rect key="frame" x="0.0" y="-1" width="600" height="44.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="29"/>
                                                     <segments>
                                                         <segment title="From ÖzÜ to Stop"/>
                                                         <segment title="From Stop to ÖzÜ"/>
@@ -509,10 +509,9 @@
                                                 </segmentedControl>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="hAx-hr-2Te" firstAttribute="trailing" secondItem="Rgk-Zn-JJL" secondAttribute="trailing" id="Au8-YL-St1"/>
-                                                <constraint firstItem="hAx-hr-2Te" firstAttribute="top" secondItem="Rgk-Zn-JJL" secondAttribute="top" constant="-1" id="NuI-dM-wG2"/>
-                                                <constraint firstItem="hAx-hr-2Te" firstAttribute="leading" secondItem="Rgk-Zn-JJL" secondAttribute="leading" id="YaV-5U-6Ph"/>
-                                                <constraint firstAttribute="bottom" secondItem="hAx-hr-2Te" secondAttribute="bottom" constant="1" id="e4u-cI-KrX"/>
+                                                <constraint firstItem="hAx-hr-2Te" firstAttribute="leading" secondItem="Rgk-Zn-JJL" secondAttribute="leading" id="Eok-ab-a0a"/>
+                                                <constraint firstItem="hAx-hr-2Te" firstAttribute="top" secondItem="Rgk-Zn-JJL" secondAttribute="top" id="JQG-nO-eg7"/>
+                                                <constraint firstAttribute="trailing" secondItem="hAx-hr-2Te" secondAttribute="trailing" id="iSE-c6-fAg"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -545,33 +544,7 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Additional Information" id="KXK-IR-vIU">
-                                <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="50" id="ssO-PI-0Ge" customClass="TextFieldCell" customModule="Socivy" customModuleProvider="target">
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ssO-PI-0Ge" id="hSc-LL-eKz">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Licence plate, cookies, coffee" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MxU-xh-SPl">
-                                                    <rect key="frame" x="0.0" y="-8" width="600" height="65.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                </textField>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="MxU-xh-SPl" firstAttribute="leading" secondItem="hSc-LL-eKz" secondAttribute="leading" id="OJr-iL-fbm"/>
-                                                <constraint firstItem="MxU-xh-SPl" firstAttribute="top" secondItem="hSc-LL-eKz" secondAttribute="top" constant="-8" id="e1p-xB-yIC"/>
-                                                <constraint firstAttribute="bottom" secondItem="MxU-xh-SPl" secondAttribute="bottom" constant="-8" id="eqW-Qe-Fna"/>
-                                                <constraint firstItem="MxU-xh-SPl" firstAttribute="trailing" secondItem="hSc-LL-eKz" secondAttribute="trailing" id="zib-gf-gX0"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                            <tableViewSection headerTitle="Seats" id="DAN-2x-lIw">
-                                <cells/>
-                            </tableViewSection>
-                            <tableViewSection headerTitle="" id="iXT-WL-LDI">
+                            <tableViewSection headerTitle="Seats" id="iXT-WL-LDI">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="129" id="4cy-3W-4fa" customClass="PickerCell" customModule="Socivy" customModuleProvider="target">
                                         <autoresizingMask key="autoresizingMask"/>
@@ -583,34 +556,48 @@
                                                 </pickerView>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="aKx-NX-AKP" secondAttribute="bottom" constant="17.5" id="3AR-KF-iQQ"/>
                                                 <constraint firstItem="aKx-NX-AKP" firstAttribute="leading" secondItem="wa5-ii-OAb" secondAttribute="leading" constant="-8" id="5to-GO-Wde"/>
+                                                <constraint firstAttribute="trailing" secondItem="aKx-NX-AKP" secondAttribute="trailing" constant="-8" id="6Xo-5U-ciG"/>
                                                 <constraint firstAttribute="trailing" secondItem="aKx-NX-AKP" secondAttribute="trailing" constant="-8" id="7ox-ad-se3"/>
-                                                <constraint firstAttribute="bottom" secondItem="aKx-NX-AKP" secondAttribute="bottom" constant="-25.5" id="dNJ-zV-Kxz"/>
-                                                <constraint firstItem="aKx-NX-AKP" firstAttribute="top" secondItem="wa5-ii-OAb" secondAttribute="top" constant="-24" id="pj0-Re-uCm"/>
+                                                <constraint firstItem="aKx-NX-AKP" firstAttribute="leading" secondItem="wa5-ii-OAb" secondAttribute="leading" constant="8" id="9vH-2d-fqE"/>
+                                                <constraint firstAttribute="bottom" secondItem="aKx-NX-AKP" secondAttribute="bottom" constant="-17.5" id="dNJ-zV-Kxz"/>
+                                                <constraint firstItem="aKx-NX-AKP" firstAttribute="top" secondItem="wa5-ii-OAb" secondAttribute="top" constant="-16" id="wRn-So-8r5"/>
                                             </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="3AR-KF-iQQ"/>
+                                                    <exclude reference="7ox-ad-se3"/>
+                                                    <exclude reference="9vH-2d-fqE"/>
+                                                </mask>
+                                            </variation>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="picker" destination="aKx-NX-AKP" id="QgV-GS-j65"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" textLabel="qwU-3x-B4f" style="IBUITableViewCellStyleDefault" id="9AD-6C-qj2">
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="Additional Information" id="KXK-IR-vIU">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="50" id="ssO-PI-0Ge" customClass="TextFieldCell" customModule="Socivy" customModuleProvider="target">
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9AD-6C-qj2" id="b94-oo-3fd">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ssO-PI-0Ge" id="hSc-LL-eKz">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Specify My Stops" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qwU-3x-B4f">
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Licence plate, cookies, coffee" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MxU-xh-SPl">
+                                                    <rect key="frame" x="8" y="-8" width="592" height="65.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
                                             </subviews>
-                                            <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstItem="MxU-xh-SPl" firstAttribute="leading" secondItem="hSc-LL-eKz" secondAttribute="leading" constant="8" id="OJr-iL-fbm"/>
+                                                <constraint firstItem="MxU-xh-SPl" firstAttribute="top" secondItem="hSc-LL-eKz" secondAttribute="top" constant="-8" id="e1p-xB-yIC"/>
+                                                <constraint firstAttribute="bottom" secondItem="MxU-xh-SPl" secondAttribute="bottom" constant="-8" id="eqW-Qe-Fna"/>
+                                                <constraint firstItem="MxU-xh-SPl" firstAttribute="trailing" secondItem="hSc-LL-eKz" secondAttribute="trailing" id="zib-gf-gX0"/>
+                                            </constraints>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="eeX-y0-ybx" kind="show" identifier="specifyMyStops" id="Jg2-xf-SSz"/>
-                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -621,9 +608,14 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Add Route" id="7Wi-z6-vIC">
-                        <barButtonItem key="rightBarButtonItem" title="Cancel" id="hdY-1l-zQc">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="hdY-1l-zQc">
                             <connections>
                                 <action selector="dismissView" destination="Pa6-lG-I9y" id="Med-dY-1Q7"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Next" id="GXE-dI-A5N">
+                            <connections>
+                                <segue destination="eeX-y0-ybx" kind="show" identifier="specifyMyStops" id="hrT-de-ZlU"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -632,14 +624,13 @@
                         <outlet property="seatPicker" destination="4cy-3W-4fa" id="bjR-1F-dm0"/>
                         <outlet property="segmentedCell" destination="heA-d1-674" id="9me-zy-mUK"/>
                         <outlet property="socivyDatePicker" destination="7Jh-Ea-FlX" id="bwO-Xf-KTw"/>
-                        <outlet property="specifyCell" destination="9AD-6C-qj2" id="wQP-MH-mx4"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0CH-bR-dyr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3308" y="-418.5"/>
+            <point key="canvasLocation" x="3308" y="-420.25"/>
         </scene>
-        <!--Specify My Stops-->
+        <!--My Stops-->
         <scene sceneID="7Id-va-QSG">
             <objects>
                 <viewController id="eeX-y0-ybx" customClass="AddRouteSecondViewController" customModule="Socivy" customModuleProvider="target" sceneMemberID="viewController">
@@ -651,19 +642,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NVv-xe-WzZ">
-                                <rect key="frame" x="-16" y="556.5" width="632" height="44"/>
-                                <items>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="CFR-rE-Mt2"/>
-                                    <barButtonItem title=" Save" style="plain" id="ZNp-IR-W5o">
-                                        <connections>
-                                            <action selector="saveTouched:" destination="eeX-y0-ybx" id="XHJ-Sv-1VI"/>
-                                        </connections>
-                                    </barButtonItem>
-                                </items>
-                            </toolbar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="crL-9X-3xB">
-                                <rect key="frame" x="-16" y="64" width="632" height="491"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell alpha="0.59999999999999964" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PlaceCell" textLabel="2ix-qR-os8" style="IBUITableViewCellStyleDefault" id="if2-IP-ogl">
@@ -689,21 +669,18 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.51086956520000004" green="0.51086956520000004" blue="0.51086956520000004" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="NVv-xe-WzZ" firstAttribute="leading" secondItem="8Qb-JV-2qI" secondAttribute="leading" constant="-16" id="8Ei-sO-hiB"/>
-                            <constraint firstItem="crL-9X-3xB" firstAttribute="leading" secondItem="8Qb-JV-2qI" secondAttribute="leading" constant="-16" id="CBc-1g-sRd"/>
-                            <constraint firstItem="NVv-xe-WzZ" firstAttribute="top" secondItem="crL-9X-3xB" secondAttribute="bottom" constant="2" id="JNW-LH-IG6"/>
-                            <constraint firstAttribute="bottom" secondItem="NVv-xe-WzZ" secondAttribute="bottom" constant="-0.5" id="azh-MO-3SY"/>
-                            <constraint firstAttribute="trailing" secondItem="crL-9X-3xB" secondAttribute="trailing" constant="-16" id="mC2-Pq-MfP"/>
-                            <constraint firstItem="crL-9X-3xB" firstAttribute="top" secondItem="KIb-hG-AeQ" secondAttribute="bottom" id="wcw-9w-gRy"/>
-                            <constraint firstAttribute="trailing" secondItem="NVv-xe-WzZ" secondAttribute="trailing" constant="-16" id="y5Z-TV-DR5"/>
+                            <constraint firstItem="crL-9X-3xB" firstAttribute="leading" secondItem="8Qb-JV-2qI" secondAttribute="leading" id="3fO-LQ-sTg"/>
+                            <constraint firstAttribute="trailing" secondItem="crL-9X-3xB" secondAttribute="trailing" id="Dzi-zB-thO"/>
+                            <constraint firstItem="crL-9X-3xB" firstAttribute="top" secondItem="KIb-hG-AeQ" secondAttribute="bottom" constant="-64" id="IlI-72-FJg"/>
+                            <constraint firstItem="b0e-zE-CMu" firstAttribute="top" secondItem="crL-9X-3xB" secondAttribute="bottom" id="lQf-KB-j4N"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Specify My Stops" id="lif-o0-hr6">
-                        <barButtonItem key="rightBarButtonItem" title="Cancel" id="rlb-9b-LVq">
+                    <navigationItem key="navigationItem" title="My Stops" id="lif-o0-hr6">
+                        <barButtonItem key="rightBarButtonItem" title="Publish" id="rlb-9b-LVq">
                             <connections>
-                                <action selector="dismissView" destination="eeX-y0-ybx" id="mnp-4z-8JG"/>
+                                <action selector="saveTouched:" destination="eeX-y0-ybx" id="yOE-Be-NSz"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -713,7 +690,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7fY-x7-CEm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4119" y="-425"/>
+            <point key="canvasLocation" x="4099" y="-425"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="mVq-0V-DdN">
@@ -1448,7 +1425,7 @@
                         <barButtonItem key="rightBarButtonItem" title="Add" id="1TP-eC-cOf">
                             <connections>
                                 <action selector="showCategoryView" destination="zYe-er-6au" id="OMw-0E-V3s"/>
-                                <segue destination="GCr-ty-48Y" kind="showDetail" id="vvE-ej-Ub0"/>
+                                <segue destination="GCr-ty-48Y" kind="presentation" id="vvE-ej-Ub0"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
