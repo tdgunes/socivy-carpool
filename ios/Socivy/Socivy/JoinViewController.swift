@@ -17,7 +17,7 @@ class JoinViewController: UITableViewController, UIActionSheetDelegate {
     let lightFont =  UIFont(name:"FontAwesome",size:17)
     let boldFont = UIFont(name:"HelveticaNeue-Bold",size:17)
     
-    var details = [ ["Driver:","Taha Dogan Gunes"], ["Time:","12.05.2014"], ["Seat Left:","1"], ["Description:","Arabamiz tupludur"]]
+    var details = [ ["Driver:","Taha Dogan Gunes"], ["Time:","12.05.2014"], ["Seat Left:","1"], ["Description:","Arabamiz tupludur"], ["Contact",""], ["Join",""]]
     
     var stops = ["Istanbul", "Izmir", "Antalya"]
     var route: Route? {
@@ -51,7 +51,7 @@ class JoinViewController: UITableViewController, UIActionSheetDelegate {
         self.details[3][1] = "\(self.route!.details)"
 
         if self.route!.details == "" {
-            self.details.removeLast()
+            self.details.removeAtIndex(3)
         }
 
         self.stops = []
@@ -95,33 +95,33 @@ class JoinViewController: UITableViewController, UIActionSheetDelegate {
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        println("s:\(indexPath.section) r:\(indexPath.row)")
+
         
         
         var selectedCell = self.tableView.cellForRowAtIndexPath(indexPath)
         
         
-        if self.route!.details == ""  && indexPath.section == 0 && indexPath.row == 4 {
+        if indexPath.section == 0 {
             
-
+            let values:Array = self.details[indexPath.row] as Array
+            
+            
+            switch values[0] {
                 
+            case "Contact":
                 var actionSheet = UIActionSheet(title: "Contact the Driver", delegate: self, cancelButtonTitle: "Cancel", destructiveButtonTitle: nil, otherButtonTitles: "Send Message","Send Mail","Call", "SMS" )
                 
                 actionSheet.showInView(self.view)
                 
-
-            
-        }
-        else if self.route!.details != ""  &&  indexPath.section == 0 && indexPath.row == 5 {
-                
-                var actionSheet = UIActionSheet(title: "Contact the Driver", delegate: self, cancelButtonTitle: "Cancel", destructiveButtonTitle: nil, otherButtonTitles: "Send Message","Send Mail","Call", "SMS" )
-                
-                actionSheet.showInView(self.view)
-                
-            
+            case "Join":
+                println("join pressed")
+            default:
+                println("Another cell pressed, s:\(indexPath.section) r:\(indexPath.row)")
+            }
             
             
         }
+ 
 
 
         
@@ -132,23 +132,23 @@ class JoinViewController: UITableViewController, UIActionSheetDelegate {
         let cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier("InfoCell", forIndexPath:indexPath) as UITableViewCell
         if indexPath.section == 0{
             
-        
+    
+            let values:Array = self.details[indexPath.row] as Array
             
-
-            if indexPath.row == self.details.count {
-                let cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier("JoinCell", forIndexPath:indexPath) as UITableViewCell
-            }
-            else if indexPath.row == self.details.count+1 {
+    
+            switch values[0] {
+            
+            case "Contact":
                 let cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier("ContactCell", forIndexPath:indexPath) as UITableViewCell
-            }
-            else {
-                let values:Array = self.details[indexPath.row] as Array
-                
+            case "Join":
+                let cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier("JoinCell", forIndexPath:indexPath) as UITableViewCell
+            default:
                 cell.detailTextLabel?.text = values[1]
                 cell.textLabel?.text = values[0]
-                
             }
             
+            
+        
             return cell
         }
         
@@ -168,7 +168,7 @@ class JoinViewController: UITableViewController, UIActionSheetDelegate {
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
-            return self.details.count+2
+            return self.details.count
         }
         else if section == 1{
             return self.stops.count
