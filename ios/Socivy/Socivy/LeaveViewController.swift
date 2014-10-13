@@ -47,6 +47,7 @@ class LeaveViewController: UITableViewController, UIActionSheetDelegate, SocivyR
     func requestDidFinish(routeCancelAPI:SocivyRouteCancelAPI){
         
         self.applyBackgroundProcessMode(false)
+
         self.navigationController?.popToRootViewControllerAnimated(true)
     }
     

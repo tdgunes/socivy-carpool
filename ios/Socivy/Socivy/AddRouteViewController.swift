@@ -29,17 +29,10 @@ class AddRouteViewController: UITableViewController {
 
             let hour_index = self.socivyDatePicker.picker.selectedRowInComponent(0)
             let minute_index = self.socivyDatePicker.picker.selectedRowInComponent(1)
-            let today_tomorrow_index = self.socivyDatePicker.picker.selectedRowInComponent(2)
+            let action_day  = self.socivyDatePicker.picker.selectedRowInComponent(2)
             
-            let hour = (self.socivyDatePicker.pickerView(self.socivyDatePicker.picker , titleForRow: hour_index, forComponent: 0) as NSString).integerValue
-            let minute = (self.socivyDatePicker.pickerView(self.socivyDatePicker.picker , titleForRow: minute_index, forComponent: 1) as NSString).integerValue
-            
-            
-            
-            var action_day =  today_tomorrow_index
-            var action_hour = hour
-            var action_minute = minute
-            
+            let action_hour = (self.socivyDatePicker.pickerView(self.socivyDatePicker.picker , titleForRow: hour_index, forComponent: 0) as NSString)
+            let action_minute = (self.socivyDatePicker.pickerView(self.socivyDatePicker.picker , titleForRow: minute_index, forComponent: 1) as NSString)
 
             
             let index = self.seatPicker.picker.selectedRowInComponent(0)
@@ -84,24 +77,10 @@ class AddRouteViewController: UITableViewController {
         var currentComponents = NSCalendar.currentCalendar().components(NSCalendarUnit.DayCalendarUnit | NSCalendarUnit.HourCalendarUnit | NSCalendarUnit.MonthCalendarUnit | NSCalendarUnit.MinuteCalendarUnit | NSCalendarUnit.YearCalendarUnit, fromDate: NSDate.date())
         
 
-//        
-//        self.configureDatePicker(currentComponents)
     }
     
     
-//    func configureDatePicker(currentComponents:NSDateComponents){
-//        var calendar = NSCalendar(identifier:NSGregorianCalendar)
-//        var components = NSDateComponents()
-//        components.year = currentComponents.year
-//        components.month = currentComponents.month
-//        components.day = currentComponents.day + 1
-//        components.hour = 23
-//        components.minute = 59
-//    
-//        self.datePickerCell?.datePicker?.minimumDate = NSDate.date()
-//        self.datePickerCell?.datePicker?.maximumDate = calendar.dateFromComponents(components)
-//    }
-//    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

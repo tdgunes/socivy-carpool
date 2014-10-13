@@ -11,13 +11,13 @@ import UIKit
 import MapKit
 
 
-class RoutesViewController: UITableViewController, SocivyIndexRouteAPIDelegate {
+class RoutesViewController: UITableViewController, SocivyAvailableRouteAPIDelegate {
     
-    weak var indexRouteAPI = SocivyAPI.sharedInstance.indexRouteAPI
+    weak var indexRouteAPI = SocivyAPI.sharedInstance.availableRouteAPI
     var routes:[Route] = []
     var tableRefreshControl = UIRefreshControl()
     
-    func routesDidReturn(socivyRouteAPI:SocivyIndexRouteAPI, routes:JSON){
+    func routesDidReturn(socivyRouteAPI:SocivyAvailableRouteAPI, routes:JSON){
         self.routes = []
         let routeArray = routes.asArray! as [JSON]
         var index:Int = 0
@@ -57,7 +57,7 @@ class RoutesViewController: UITableViewController, SocivyIndexRouteAPIDelegate {
         self.tableView.reloadData()
         self.tableRefreshControl.endRefreshing()
     }
-    func routesDidFailWithError(socivyRouteAPI:SocivyIndexRouteAPI, error:NSError){
+    func routesDidFailWithError(socivyRouteAPI:SocivyAvailableRouteAPI, error:NSError){
         
         self.tableRefreshControl.endRefreshing()
     }
@@ -79,14 +79,14 @@ class RoutesViewController: UITableViewController, SocivyIndexRouteAPIDelegate {
     }
     
     func refreshControlRequest(){
-        self.indexRouteAPI?.requestIndexRoutes()
+        self.indexRouteAPI?.request()
     }
     
     func updateTableView(){
 
         self.tableRefreshControl.beginRefreshing()
         self.tableView.setContentOffset(CGPointMake(0, self.tableView.contentOffset.y-self.tableRefreshControl.frame.size.height), animated:true)
-        self.indexRouteAPI?.requestIndexRoutes()
+        self.indexRouteAPI?.request()
     }
 
     

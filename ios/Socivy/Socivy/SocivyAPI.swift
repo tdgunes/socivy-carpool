@@ -40,6 +40,16 @@ class SocivyBaseAPI: AsyncHTTPRequestDelegate {
     func requestDidFinish(asyncHTTPRequest:AsyncHTTPRequest, _ response:NSMutableData){
         fatalError("requestDidFinish(asyncHTTPRequest:, _ response:) has not been implemented")
     }
+    
+    func generateError() -> NSError{
+        let description:String = "Something terrible happened! \nFailed to login."
+        let reason: String = "The operation timed out."
+        let suggestion: String = "Have you tried turning it off and on again?"
+        
+        let userInfo: NSDictionary = [ NSLocalizedDescriptionKey: description, NSLocalizedFailureReasonErrorKey: reason,NSLocalizedRecoverySuggestionErrorKey: suggestion]
+        let error = NSError(domain:"com.tdg.dilixiri", code:-57, userInfo:userInfo)
+        return error
+    }
 }
 
 class SocivyBaseLoginAPI: SocivyBaseAPI, SocivyLoginAPIDelegate{
@@ -64,18 +74,20 @@ class SocivyAPI {
     let public_key:String = "$2y$10$EABJx.UPPrTRCbn.nR34geK6HJOZWvEQFRFVQzCV2hW7aI13jn16G"
 
     let url = "http://development.socivy.com/api/v1"
+    //let url = "https://socivy.com/api/v1"
     
     var user_secret:String?
     var access_token:String?
     
     var authenticateAPI:SocivyAuthenticateAPI?
-    var indexRouteAPI:SocivyIndexRouteAPI?
+    var availableRouteAPI:SocivyAvailableRouteAPI?
     var storeRouteAPI:SocivyStoreRouteAPI?
     var selfRouteAPI:SocivyRouteSelfAPI?
     var placeAPI: SocivyPlaceAPI?
     var enrolledRouteAPI:SocivyRouteEnrolledAPI?
     var requestRouteAPI:SocivyRouteRequestAPI?
     var cancelRouteAPI:SocivyRouteCancelAPI?
+    var loginAPI:SocivyLoginAPI?
     
     var expireTime:Int?
     
@@ -85,9 +97,10 @@ class SocivyAPI {
     
     init(){
         self.authenticateAPI = SocivyAuthenticateAPI(api: self)
-
+        self.loginAPI = SocivyLoginAPI(api: self)
+            
         //route related
-        self.indexRouteAPI = SocivyIndexRouteAPI(api: self)
+        self.availableRouteAPI = SocivyAvailableRouteAPI(api: self)
         self.storeRouteAPI = SocivyStoreRouteAPI(api: self)
         self.enrolledRouteAPI = SocivyRouteEnrolledAPI(api: self)
         self.requestRouteAPI = SocivyRouteRequestAPI(api: self)
@@ -99,6 +112,22 @@ class SocivyAPI {
         
     }
 
+
+    func saveUserSecret(){
+        KeychainService.setString(user_secret!, forKey: "user_secret")
+    }
+    func isUserSecretSaved()->Bool{
+        if let value = KeychainService.stringForKey("user_secret"){
+            if value.isEqualToString("") == false {
+                return true
+            }
+        }
+        return  false
+    }
+    
+    func loadUserSecret(){
+        self.user_secret = KeychainService.stringForKey("user_secret")
+    }
 }
 
 let _SingletonSocivyAPI = SocivyAPI()

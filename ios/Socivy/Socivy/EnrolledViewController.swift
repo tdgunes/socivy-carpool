@@ -73,7 +73,11 @@ class EnrolledViewController: UITableViewController, SocivyRouteEnrolledAPIDeleg
 
     
     
-    override func viewDidAppear(animated: Bool) {
+//    override func viewDidAppear(animated: Bool) {
+//         self.updateTableView()
+//    }
+    
+    override func viewWillAppear(animated: Bool) {
          self.updateTableView()
     }
     override func viewDidLoad() {

@@ -18,9 +18,11 @@ class SocivyLoginAPI: SocivyBaseAPI {
     
     init(api:SocivyAPI) {
         super.init(path: "/login", api: api)
+
     }
 
     func login() {
+        self.log("login()")
         let payload:[String:String] = ["user_secret":self.api.user_secret!]
         let postData = JSON(payload).toString(pretty: false)
         self.asyncRequest = AsyncHTTPRequest(url: self.url, headerDictionary:["Content-Type":"application/json"], postData:postData, httpType:"POST")
@@ -42,9 +44,14 @@ class SocivyLoginAPI: SocivyBaseAPI {
        
 
         if json.isNull == false && json.isError == false {
-            self.api.access_token = json["result"]["access_token"].asString
-            self.api.expireTime = json["result"]["expire_time"].asInt
-            self.delegate?.loginDidFinish(self)
+            if json["info"]["status_code"].asInt == 2 {
+                self.delegate?.loginDidFailWithError(self, error: self.generateError())
+            }
+            else {
+                self.api.access_token = json["result"]["access_token"].asString
+                self.api.expireTime = json["result"]["expire_time"].asInt
+                self.delegate?.loginDidFinish(self)
+            }
         }
         else {
             self.log("parse error")

@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class LoginViewController: UITableViewController, SocivyAuthenticateAPIDelegate {
+class LoginViewController: UITableViewController, SocivyAuthenticateAPIDelegate, SocivyLoginAPIDelegate {
     
     
     @IBOutlet weak var emailCell: TextFieldCell?
@@ -19,6 +19,8 @@ class LoginViewController: UITableViewController, SocivyAuthenticateAPIDelegate 
     @IBOutlet weak var forgotPasswordCell:UITableViewCell?
     @IBOutlet weak var signupCell: UITableViewCell?
     
+    weak var authenticateAPI = SocivyAPI.sharedInstance.authenticateAPI
+    weak var loginAPI =  SocivyAPI.sharedInstance.loginAPI
     
     var activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.WhiteLarge)
     var alert = UIAlertView()
@@ -27,13 +29,19 @@ class LoginViewController: UITableViewController, SocivyAuthenticateAPIDelegate 
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        self.authenticateAPI?.delegate = self
+        self.loginAPI?.delegate = self
+        
+
+        
+        
         emailCell?.selectionStyle = .None
         passwordCell?.selectionStyle = .None
         loginCell?.selectionStyle = .None
         forgotPasswordCell?.selectionStyle = .None
         signupCell?.selectionStyle = .None
         
-        SocivyAPI.sharedInstance.authenticateAPI?.delegate = self
+
         
         var tapRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
         tapRecognizer.cancelsTouchesInView = true
@@ -43,6 +51,13 @@ class LoginViewController: UITableViewController, SocivyAuthenticateAPIDelegate 
         self.activityIndicator.hidesWhenStopped = true
         
         self.navigationController?.view.addSubview(self.activityIndicator)
+        
+        if self.authenticateAPI!.api.isUserSecretSaved()  {
+            self.authenticateAPI?.api.loadUserSecret()
+            self.loginAPI?.login()
+            self.applyBackgroundProcessMode(true)
+        }
+        
     }
     
     
@@ -90,6 +105,20 @@ class LoginViewController: UITableViewController, SocivyAuthenticateAPIDelegate 
         
     }
     
+    func loginDidFinish(socivyAPI:SocivyLoginAPI){
+        self.applyBackgroundProcessMode(false)
+        self.showMainView()
+
+    }
+    func loginDidFailWithError(socivyAPI:SocivyLoginAPI, error:NSError){
+        self.applyBackgroundProcessMode(false)
+        
+        var alertView = UIAlertView()
+        alert.title = "Error"
+        alert.message = error.localizedDescription
+        alert.addButtonWithTitle("OK")
+        alert.show()
+    }
 
     
     func showMainView() {
@@ -100,6 +129,8 @@ class LoginViewController: UITableViewController, SocivyAuthenticateAPIDelegate 
     
     func authenticateDidFinish(socivyAPI:SocivyAuthenticateAPI){
         println("[peek] login did finish")
+        
+        self.authenticateAPI?.api.saveUserSecret()
         self.applyBackgroundProcessMode(false)
         self.showMainView()
     }

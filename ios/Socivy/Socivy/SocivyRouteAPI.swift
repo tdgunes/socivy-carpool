@@ -322,24 +322,21 @@ class SocivyStoreRouteAPI: SocivyBaseLoginAPI {
 
 
 
-protocol SocivyIndexRouteAPIDelegate {
-    func routesDidReturn(indexRouteAPI:SocivyIndexRouteAPI, routes:JSON)
-    func routesDidFailWithError(indexRouteAPI:SocivyIndexRouteAPI, error:NSError)
+protocol SocivyAvailableRouteAPIDelegate {
+    func routesDidReturn(indexRouteAPI:SocivyAvailableRouteAPI, routes:JSON)
+    func routesDidFailWithError(indexRouteAPI:SocivyAvailableRouteAPI, error:NSError)
 }
 
-class SocivyIndexRouteAPI: SocivyBaseLoginAPI{
+class SocivyAvailableRouteAPI: SocivyBaseLoginAPI{
     
-
-    
-    
-    var delegate: SocivyIndexRouteAPIDelegate?
+    var delegate: SocivyAvailableRouteAPIDelegate?
 
     
     init(api:SocivyAPI) {
-        super.init(path: "/route", api: api)
+        super.init(path: "/me/route/available", api: api)
     }
     
-    func requestIndexRoutes(){
+    func request(){
         self.log("requestIndexRoutes")
         self.asyncRequest = AsyncHTTPRequest(url: self.url,
                                              headerDictionary:["Access-token":self.api.access_token!],
@@ -381,7 +378,7 @@ class SocivyIndexRouteAPI: SocivyBaseLoginAPI{
     }
     
     override func loginDidFinish(socivyAPI:SocivyLoginAPI){
-        self.requestIndexRoutes()
+        self.request()
     }
     
     override func loginDidFailWithError(socivyAPI:SocivyLoginAPI, error:NSError){
