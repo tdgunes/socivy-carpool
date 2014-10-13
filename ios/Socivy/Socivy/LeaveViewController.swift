@@ -1,23 +1,23 @@
 //
-//  JoinViewController.swift
+//  LeaveViewController.swift
 //  Socivy
 //
-//  Created by Taha Doğan Güneş on 12/10/14.
+//  Created by Taha Doğan Güneş on 13/10/14.
 //  Copyright (c) 2014 TDG. All rights reserved.
 //
 
 import Foundation
 import UIKit
 
-class JoinViewController: UITableViewController, UIActionSheetDelegate, SocivyRouteRequestAPIDelegate {
+class LeaveViewController: UITableViewController, UIActionSheetDelegate, SocivyRouteCancelAPIDelegate {
     
-
+    
     var activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.WhiteLarge)
     var alert = UIAlertView()
     let lightFont =  UIFont(name:"FontAwesome",size:17)
     let boldFont = UIFont(name:"HelveticaNeue-Bold",size:17)
     
-    var details = [ ["Driver:","Taha Dogan Gunes"], ["Time:","12.05.2014"], ["Seat Left:","1"], ["Description:","Arabamiz tupludur"], ["Contact",""], ["Join",""]]
+    var details = [ ["Driver:","Taha Dogan Gunes"], ["Time:","12.05.2014"], ["Seat Left:","1"], ["Description:","Arabamiz tupludur"], ["Contact",""], ["Leave",""]]
     
     var stops = ["Istanbul", "Izmir", "Antalya"]
     var route: Route? {
@@ -25,47 +25,47 @@ class JoinViewController: UITableViewController, UIActionSheetDelegate, SocivyRo
             self.configureTableView()
         }
     }
-
-    weak var requestRouteAPI = SocivyAPI.sharedInstance.requestRouteAPI
     
-
+    weak var cancelRouteAPI = SocivyAPI.sharedInstance.cancelRouteAPI
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-
         
-
+        
+        
         self.activityIndicator.center = self.view.center
         self.activityIndicator.stopAnimating()
         self.activityIndicator.hidesWhenStopped = true
         
         self.navigationController?.view.addSubview(self.activityIndicator)
-
-        self.requestRouteAPI?.delegate = self
+        
+        self.cancelRouteAPI?.delegate = self
     }
     
-    func requestDidFinish(routeRequestAPI:SocivyRouteRequestAPI){
-      
+    func requestDidFinish(routeCancelAPI:SocivyRouteCancelAPI){
+        
         self.applyBackgroundProcessMode(false)
         self.navigationController?.popToRootViewControllerAnimated(true)
     }
     
-    func requestDidFail(routeRequestAPI:SocivyRouteRequestAPI, error:NSError){
+    func requestDidFail(routeCancelAPI:SocivyRouteCancelAPI, error:NSError){
         self.applyBackgroundProcessMode(false)
     }
     
     func configureTableView() {
-
+        
         self.details[0][1] = self.route!.driver.name!
         self.details[1][1] = "\(self.route!.getTime()!)"
         self.details[2][1] = "\(self.route!.seatLeft)"
-
+        
         self.details[3][1] = "\(self.route!.details)"
-
+        
         if self.route!.details == "" {
             self.details.removeAtIndex(3)
         }
-
+        
         self.stops = []
         
         var stopArray = self.route!.stops
@@ -79,7 +79,7 @@ class JoinViewController: UITableViewController, UIActionSheetDelegate, SocivyRo
         else {
             self.navigationItem.title = "Departs From ÖzÜ"
         }
-
+        
         self.tableView.reloadData()
     }
     
@@ -107,7 +107,7 @@ class JoinViewController: UITableViewController, UIActionSheetDelegate, SocivyRo
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-
+        
         
         
         var selectedCell = self.tableView.cellForRowAtIndexPath(indexPath)
@@ -125,8 +125,8 @@ class JoinViewController: UITableViewController, UIActionSheetDelegate, SocivyRo
                 
                 actionSheet.showInView(self.view)
                 
-            case "Join":
-                self.requestRouteAPI?.request(route!.id)
+            case "Leave":
+                self.cancelRouteAPI?.request(route!.id)
                 self.applyBackgroundProcessMode(true)
             default:
                 println("Another cell pressed, s:\(indexPath.section) r:\(indexPath.row)")
@@ -134,9 +134,9 @@ class JoinViewController: UITableViewController, UIActionSheetDelegate, SocivyRo
             
             
         }
- 
-
-
+        
+        
+        
         
     }
     
@@ -145,37 +145,37 @@ class JoinViewController: UITableViewController, UIActionSheetDelegate, SocivyRo
         let cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier("InfoCell", forIndexPath:indexPath) as UITableViewCell
         if indexPath.section == 0{
             
-    
+            
             let values:Array = self.details[indexPath.row] as Array
             
-    
-            switch values[0] {
             
+            switch values[0] {
+                
             case "Contact":
                 let cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier("ContactCell", forIndexPath:indexPath) as UITableViewCell
-            case "Join":
-                let cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier("JoinCell", forIndexPath:indexPath) as UITableViewCell
+            case "Leave":
+                let cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier("LeaveCell", forIndexPath:indexPath) as UITableViewCell
             default:
                 cell.detailTextLabel?.text = values[1]
                 cell.textLabel?.text = values[0]
             }
             
             
-        
+            
             return cell
         }
-        
+            
         else if indexPath.section == 1 {
-             let cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier("PlaceCell", forIndexPath:indexPath) as UITableViewCell
-                var string:NSMutableAttributedString = NSMutableAttributedString(string: "  \(self.stops[indexPath.row])")
-                
-                string.addAttribute(NSFontAttributeName, value: self.lightFont, range: NSMakeRange(0, string.length))
-                cell.textLabel?.attributedText = string
-                cell.backgroundColor = UIColor.grayColor()
-                cell.accessoryType = UITableViewCellAccessoryType.None
+            let cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier("PlaceCell", forIndexPath:indexPath) as UITableViewCell
+            var string:NSMutableAttributedString = NSMutableAttributedString(string: "  \(self.stops[indexPath.row])")
+            
+            string.addAttribute(NSFontAttributeName, value: self.lightFont, range: NSMakeRange(0, string.length))
+            cell.textLabel?.attributedText = string
+            cell.backgroundColor = UIColor.grayColor()
+            cell.accessoryType = UITableViewCellAccessoryType.None
         }
-
-
+        
+        
         return cell
     }
     
@@ -192,7 +192,7 @@ class JoinViewController: UITableViewController, UIActionSheetDelegate, SocivyRo
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-
+        
         return 2
     }
     
@@ -208,18 +208,18 @@ class JoinViewController: UITableViewController, UIActionSheetDelegate, SocivyRo
         }
     }
     
-
-//    
-//    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-//        
-//        if indexPath.section == 0 {
-//            
-//        }
-//        
-//        let height:CGFloat =  CGFloat(44)
-//        return height
-//    }
-//    
+    
+    //
+    //    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    //
+    //        if indexPath.section == 0 {
+    //
+    //        }
+    //
+    //        let height:CGFloat =  CGFloat(44)
+    //        return height
+    //    }
+    //
     
     func actionSheet(actionSheet: UIActionSheet!, clickedButtonAtIndex buttonIndex: Int)
     {
@@ -244,6 +244,6 @@ class JoinViewController: UITableViewController, UIActionSheetDelegate, SocivyRo
             
         }
     }
- 
-
+    
+    
 }

@@ -72,6 +72,10 @@ class EnrolledViewController: UITableViewController, SocivyRouteEnrolledAPIDeleg
     }
 
     
+    
+    override func viewDidAppear(animated: Bool) {
+         self.updateTableView()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -108,14 +112,16 @@ class EnrolledViewController: UITableViewController, SocivyRouteEnrolledAPIDeleg
     
     
     
-//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-//        if segue.identifier == "joinDetail"{
-//            var nextViewController: JoinViewController = segue.destinationViewController as JoinViewController
-//            var routeCell:RouteCell = sender as RouteCell
-//            nextViewController.route = routeCell.route
-//            
-//        }
-//    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+
+        if segue.identifier == "leaveDetail"{
+            var nextViewController: LeaveViewController = segue.destinationViewController as LeaveViewController
+            var routeCell:RouteCell = sender as RouteCell
+            nextViewController.route = routeCell.route
+            
+        }
+    }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell: RouteCell = tableView.dequeueReusableCellWithIdentifier("RouteCell", forIndexPath:indexPath) as RouteCell

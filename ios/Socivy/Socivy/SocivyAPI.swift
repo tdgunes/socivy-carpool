@@ -74,8 +74,9 @@ class SocivyAPI {
     var selfRouteAPI:SocivyRouteSelfAPI?
     var placeAPI: SocivyPlaceAPI?
     var enrolledRouteAPI:SocivyRouteEnrolledAPI?
+    var requestRouteAPI:SocivyRouteRequestAPI?
+    var cancelRouteAPI:SocivyRouteCancelAPI?
     
-
     var expireTime:Int?
     
     class var sharedInstance : SocivyAPI {
@@ -89,6 +90,8 @@ class SocivyAPI {
         self.indexRouteAPI = SocivyIndexRouteAPI(api: self)
         self.storeRouteAPI = SocivyStoreRouteAPI(api: self)
         self.enrolledRouteAPI = SocivyRouteEnrolledAPI(api: self)
+        self.requestRouteAPI = SocivyRouteRequestAPI(api: self)
+        self.cancelRouteAPI = SocivyRouteCancelAPI(api:self)
         
         self.selfRouteAPI = SocivyRouteSelfAPI(api:self)
         self.placeAPI = SocivyPlaceAPI(api: self)

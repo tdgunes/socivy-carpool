@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3D31F58B19EC500B0066A033 /* LeaveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D31F58A19EC500B0066A033 /* LeaveViewController.swift */; };
 		3D82E0D719EB00B200A22CA1 /* JoinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D82E0D619EB00B200A22CA1 /* JoinViewController.swift */; };
 		3D8D941719EBF84A00EDF76E /* EnrolledViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8D941619EBF84A00EDF76E /* EnrolledViewController.swift */; };
 		3DFD3CA719EA9390008C6B73 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3DFD3CA519EA9390008C6B73 /* Main.storyboard */; };
@@ -54,6 +55,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3D31F58A19EC500B0066A033 /* LeaveViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeaveViewController.swift; sourceTree = "<group>"; };
 		3D82E0D619EB00B200A22CA1 /* JoinViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoinViewController.swift; sourceTree = "<group>"; };
 		3D8D941619EBF84A00EDF76E /* EnrolledViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnrolledViewController.swift; sourceTree = "<group>"; };
 		3DFD3C9C19EA9390008C6B73 /* Socivy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Socivy.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -174,6 +176,7 @@
 				3D8D941619EBF84A00EDF76E /* EnrolledViewController.swift */,
 				3DFD3D1F19EA9554008C6B73 /* RoutesViewController.swift */,
 				3D82E0D619EB00B200A22CA1 /* JoinViewController.swift */,
+				3D31F58A19EC500B0066A033 /* LeaveViewController.swift */,
 			);
 			name = "DontHaveACar Tab";
 			sourceTree = "<group>";
@@ -392,6 +395,7 @@
 				3DFD3D3B19EA9554008C6B73 /* RoutesViewController.swift in Sources */,
 				3DFD3D4819EA9554008C6B73 /* Route.swift in Sources */,
 				3DFD3D3419EA9554008C6B73 /* DatePickerCell.swift in Sources */,
+				3D31F58B19EC500B0066A033 /* LeaveViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
