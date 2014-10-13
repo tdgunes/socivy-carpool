@@ -55,6 +55,10 @@ class RouteCell: UITableViewCell, UITableViewDataSource, UITableViewDelegate {
     }
     
     func configureCell() {
+        
+        self.explicitTimeLabel?.text = self.route?.getRight()
+        self.timeLeftLabel?.text = self.route?.getLeft()
+        
         if route?.toOzu == true {
             self.directionLabel?.text = fromStopToOzuSymbol
         }

@@ -183,7 +183,7 @@ class SocivyIndexRouteAPI: SocivyBaseLoginAPI{
         let info = json["info"].toString(pretty: true)
         self.log("[index] info: \(info)")
         
-        //self.log("[index] raw: \(json.toString(pretty: true))")
+//        self.log("[index] raw: \(json.toString(pretty: true))")
         
         if json.isNull == false && json.isError == false {
             

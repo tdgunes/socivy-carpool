@@ -12,18 +12,14 @@ import UIKit
 class JoinViewController: UITableViewController, UIActionSheetDelegate {
     
 
-    @IBOutlet weak var driverCell: UITableViewCell!
-    @IBOutlet weak var timeCell: UITableViewCell!
-    @IBOutlet weak var seatLeftCell: UITableViewCell!
-    @IBOutlet weak var descriptionCell: UITableViewCell!
-    @IBOutlet weak var joinCell: UITableViewCell!
-    @IBOutlet weak var contactCell: UITableViewCell!
-    @IBOutlet weak var mapCell: MapCell!
-    
-    
     var activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.WhiteLarge)
     var alert = UIAlertView()
+    let lightFont =  UIFont(name:"FontAwesome",size:17)
+    let boldFont = UIFont(name:"HelveticaNeue-Bold",size:17)
     
+    var details = [ ["Driver:","Taha Dogan Gunes"], ["Time:","12.05.2014"], ["Seat Left:","1"], ["Description:","Arabamiz tupludur"]]
+    
+    var stops = ["Istanbul", "Izmir", "Antalya"]
     var route: Route? {
         didSet {
             self.configureTableView()
@@ -37,15 +33,42 @@ class JoinViewController: UITableViewController, UIActionSheetDelegate {
 
         
 
-        self.activityIndicator.center = self.navigationController!.view.center
+        self.activityIndicator.center = self.view.center
         self.activityIndicator.stopAnimating()
         self.activityIndicator.hidesWhenStopped = true
         
         self.navigationController?.view.addSubview(self.activityIndicator)
+
+     
     }
     
     func configureTableView() {
+
+        self.details[0][1] = self.route!.driver.name!
+        self.details[1][1] = "\(self.route!.timestamp)"
+        self.details[2][1] = "\(self.route!.seatLeft)"
+
+        self.details[3][1] = "\(self.route!.details)"
+
+        if self.route!.details == "" {
+            self.details.removeLast()
+        }
+
+        self.stops = []
         
+        var stopArray = self.route!.stops
+        for stop in stopArray {
+            self.stops.append(stop.name)
+        }
+        
+        if self.route!.toOzu {
+            self.navigationItem.title = "Goes To ÖzÜ"
+        }
+        else {
+            self.navigationItem.title = "Departs From ÖzÜ"
+        }
+
+        self.tableView.reloadData()
     }
     
     
@@ -71,23 +94,104 @@ class JoinViewController: UITableViewController, UIActionSheetDelegate {
         
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        var selectedCell = self.tableView.cellForRowAtIndexPath(indexPath)
-        
-        if selectedCell == contactCell {
-            var actionSheet = UIActionSheet(title: "Contact the Driver", delegate: self, cancelButtonTitle: "Cancel", destructiveButtonTitle: nil, otherButtonTitles: "Send Message","Send Mail","Call", "SMS" )
+//    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+//        var selectedCell = self.tableView.cellForRowAtIndexPath(indexPath)
+//        
+//        if selectedCell == contactCell {
+//            var actionSheet = UIActionSheet(title: "Contact the Driver", delegate: self, cancelButtonTitle: "Cancel", destructiveButtonTitle: nil, otherButtonTitles: "Send Message","Send Mail","Call", "SMS" )
+//            
+//            actionSheet.showInView(self.view)
+//        
+//        }
+//        else if selectedCell == joinCell {
+//
+//            println("Join touched")
+//        }
+//
+//        
+//        
+//    }
+//    
+    
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier("InfoCell", forIndexPath:indexPath) as UITableViewCell
+        if indexPath.section == 0{
             
-            actionSheet.showInView(self.view)
         
-        }
-        else if selectedCell == joinCell {
+            
 
-            println("Join touched")
+            if indexPath.row == self.details.count {
+                let cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier("JoinCell", forIndexPath:indexPath) as UITableViewCell
+            }
+            else if indexPath.row == self.details.count+1 {
+                let cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier("ContactCell", forIndexPath:indexPath) as UITableViewCell
+            }
+            else {
+                let values:Array = self.details[indexPath.row] as Array
+                
+                cell.detailTextLabel?.text = values[1]
+                cell.textLabel?.text = values[0]
+                
+            }
+            
+            return cell
+        }
+        
+        else if indexPath.section == 1 {
+             let cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier("PlaceCell", forIndexPath:indexPath) as UITableViewCell
+                var string:NSMutableAttributedString = NSMutableAttributedString(string: "  \(self.stops[indexPath.row])")
+                
+                string.addAttribute(NSFontAttributeName, value: self.lightFont, range: NSMakeRange(0, string.length))
+                cell.textLabel?.attributedText = string
+                cell.backgroundColor = UIColor.grayColor()
+                cell.accessoryType = UITableViewCellAccessoryType.None
         }
 
-        
-        
+
+        return cell
     }
+    
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if section == 0 {
+            return self.details.count+2
+        }
+        else if section == 1{
+            return self.stops.count
+        }
+        else {
+            return 0
+        }
+    }
+    
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+
+        return 2
+    }
+    
+    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if section == 0{
+            return "Details"
+        }
+        else if section == 1{
+            return "Stops"
+        }
+        else {
+            return ""
+        }
+    }
+    
+
+//    
+//    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+//        
+//        if indexPath.section == 0 {
+//            
+//        }
+//        
+//        let height:CGFloat =  CGFloat(44)
+//        return height
+//    }
+//    
     
     func actionSheet(actionSheet: UIActionSheet!, clickedButtonAtIndex buttonIndex: Int)
     {

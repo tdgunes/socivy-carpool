@@ -10,6 +10,7 @@ import Foundation
 import MapKit
 
 
+
 class User {
     
     var name:String?
@@ -38,7 +39,7 @@ class Route: Printable {
 
     var stops:[Stop]
     var selectedStop:Stop?
-    var timestamp:Int
+    var timestamp:Double
     var details: String
     var toOzu:Bool
     var driver:User
@@ -49,7 +50,7 @@ class Route: Printable {
         return "Route: \(self.driver.name!) - stops: \(self.stops.count)"
     }
     
-    init(id:String, stops:[Stop], timestamp:Int, description:String, toOzu:Bool, driver:User, seatLeft:Int){
+    init(id:String, stops:[Stop], timestamp:Double, description:String, toOzu:Bool, driver:User, seatLeft:Int){
         self.id = id
         self.stops = stops
         self.timestamp = timestamp
@@ -57,6 +58,7 @@ class Route: Printable {
         self.toOzu = toOzu
         self.driver = driver
         self.seatLeft = seatLeft
+
     }
     
     
@@ -73,7 +75,56 @@ class Route: Printable {
         return "fancy"
     }
     
-
+     func getLeft()->String{
+        let now = NSDate()
+//        println("Now: \(now) - \(now.timeIntervalSince1970)")
+        let then = NSDate(timeIntervalSince1970: NSTimeInterval(self.timestamp))
+//        println("Then: \(then) - \(self.timestamp)")
         
+        let interval = self.timestamp - now.timeIntervalSince1970
+        
+        let diffMinute = Int(floor(interval/60))
+//        println("diffMinute: \(diffMinute)")
+        let diffHour:Int =  Int( floor(interval/3600) )
+//        println("diffHour: \(diffHour)")
+        
+        var text = ""
+        if diffMinute <= 0 {
+            text = "On road"
+        }
+        else if diffHour > 0 {
+            text = "\(diffHour) hours left"
+            if diffHour == 1 {
+                text = "\(diffHour) hour left"
+            }
+        }
+        else {
+            text = "\(diffMinute) minutes left"
+        }
+        
+        return text
+    }
+    
+    func getRight()->String{
+        let now = NSDate()
+        let then = NSDate(timeIntervalSince1970: NSTimeInterval(self.timestamp))
+        var dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "HH:mm"
+        let interval = self.timestamp - now.timeIntervalSince1970
+
+        var text = ""
+        
+        let diffDay = Int(floor(interval/(3600*24)))
+//        println(diffDay)
+        if(diffDay == 1)
+        {
+            text = "Tom. ";
+        }
+        
+        text = text + dateFormatter.stringFromDate(then)
+        
+        return text
+        
+    }
 
 }

@@ -40,7 +40,10 @@ class RoutesViewController: UITableViewController, SocivyIndexRouteAPIDelegate {
                     toOzu = true
                 }
                 
-                var route: Route = Route(id: route["id"].asString!, stops: stops, timestamp: 1322486053, description: route["description"].asString!, toOzu: toOzu, driver: driver, seatLeft:route["seats"].asInt!)
+                let timestampStr = route["action_time"].asString!
+                let timestamp: Double = (timestampStr as NSString).doubleValue as Double
+                
+                var route: Route = Route(id: route["id"].asString!, stops: stops, timestamp: timestamp, description: route["description"].asString!, toOzu: toOzu, driver: driver, seatLeft:route["seats"].asInt!)
                 
                 self.routes.append(route)
                 println("\(index). \(route)")
@@ -93,13 +96,16 @@ class RoutesViewController: UITableViewController, SocivyIndexRouteAPIDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-//    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-//        var route = routes[indexPath.row]
-//        let main = self.storyboard?.instantiateViewControllerWithIdentifier("RouteDetail") as RouteDetailViewController
-//        main.route = route
-//        self.navigationController?.pushViewController(main, animated: true)
-//    }
+
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "joinDetail"{
+            var nextViewController: JoinViewController = segue.destinationViewController as JoinViewController
+            var routeCell:RouteCell = sender as RouteCell
+            nextViewController.route = routeCell.route
+            
+        }
+    }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell: RouteCell = tableView.dequeueReusableCellWithIdentifier("RouteCell", forIndexPath:indexPath) as RouteCell

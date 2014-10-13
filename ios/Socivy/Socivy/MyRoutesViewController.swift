@@ -54,7 +54,10 @@ class MyRoutesViewController: UITableViewController, SocivyRouteSelfAPIDelegate 
                 toOzu = true
             }
             
-            var route: Route = Route(id: route["id"].asString!, stops: stops, timestamp: 1322486053, description: route["description"].asString!, toOzu: toOzu, driver: driver, seatLeft:route["seats"].asInt!)
+            let timestampStr = route["action_time"].asString!
+            let timestamp: Double = (timestampStr as NSString).doubleValue as Double
+            
+            var route: Route = Route(id: route["id"].asString!, stops: stops, timestamp: timestamp, description: route["description"].asString!, toOzu: toOzu, driver: driver, seatLeft:route["seats"].asInt!)
             
             self.routes.append(route)
             println("\(index). \(route)")

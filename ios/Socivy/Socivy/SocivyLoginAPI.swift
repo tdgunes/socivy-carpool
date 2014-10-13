@@ -35,10 +35,12 @@ class SocivyLoginAPI: SocivyBaseAPI {
     override func requestDidFinish(asyncHTTPRequest: AsyncHTTPRequest, _ response: NSMutableData) {
         self.log("requestDidFinish")
         
+        self.log("\n \( NSString(data: response, encoding: NSASCIIStringEncoding))")
+        
         let json = JSON.parse(NSString(data: response, encoding: NSASCIIStringEncoding))
         self.log("\n \(json.toString(pretty: true))")
-        
-        
+       
+
         if json.isNull == false && json.isError == false {
             self.api.access_token = json["result"]["access_token"].asString
             self.api.expireTime = json["result"]["expire_time"].asInt
