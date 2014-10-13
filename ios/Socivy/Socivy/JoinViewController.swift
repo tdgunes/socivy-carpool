@@ -45,7 +45,7 @@ class JoinViewController: UITableViewController, UIActionSheetDelegate {
     func configureTableView() {
 
         self.details[0][1] = self.route!.driver.name!
-        self.details[1][1] = "\(self.route!.timestamp)"
+        self.details[1][1] = "\(self.route!.getTime()!)"
         self.details[2][1] = "\(self.route!.seatLeft)"
 
         self.details[3][1] = "\(self.route!.details)"
@@ -94,24 +94,39 @@ class JoinViewController: UITableViewController, UIActionSheetDelegate {
         
     }
     
-//    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-//        var selectedCell = self.tableView.cellForRowAtIndexPath(indexPath)
-//        
-//        if selectedCell == contactCell {
-//            var actionSheet = UIActionSheet(title: "Contact the Driver", delegate: self, cancelButtonTitle: "Cancel", destructiveButtonTitle: nil, otherButtonTitles: "Send Message","Send Mail","Call", "SMS" )
-//            
-//            actionSheet.showInView(self.view)
-//        
-//        }
-//        else if selectedCell == joinCell {
-//
-//            println("Join touched")
-//        }
-//
-//        
-//        
-//    }
-//    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        println("s:\(indexPath.section) r:\(indexPath.row)")
+        
+        
+        var selectedCell = self.tableView.cellForRowAtIndexPath(indexPath)
+        
+        
+        if self.route!.details == ""  && indexPath.section == 0 && indexPath.row == 4 {
+            
+
+                
+                var actionSheet = UIActionSheet(title: "Contact the Driver", delegate: self, cancelButtonTitle: "Cancel", destructiveButtonTitle: nil, otherButtonTitles: "Send Message","Send Mail","Call", "SMS" )
+                
+                actionSheet.showInView(self.view)
+                
+
+            
+        }
+        else if self.route!.details != ""  &&  indexPath.section == 0 && indexPath.row == 5 {
+                
+                var actionSheet = UIActionSheet(title: "Contact the Driver", delegate: self, cancelButtonTitle: "Cancel", destructiveButtonTitle: nil, otherButtonTitles: "Send Message","Send Mail","Call", "SMS" )
+                
+                actionSheet.showInView(self.view)
+                
+            
+            
+            
+        }
+
+
+        
+    }
+    
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier("InfoCell", forIndexPath:indexPath) as UITableViewCell

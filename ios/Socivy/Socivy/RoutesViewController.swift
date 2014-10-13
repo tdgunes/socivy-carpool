@@ -25,7 +25,6 @@ class RoutesViewController: UITableViewController, SocivyIndexRouteAPIDelegate {
             if route["isOwner"].asBool == false {
                 
                 let placeArray = route["places"].asArray! as [JSON]
-                
                 var stops:[Stop] = []
                 for place in placeArray{
                     var stop = Stop(id:"ad", name: place["name"].asString!, location: CLLocationCoordinate2D(latitude:12.0 , longitude: 12.0))

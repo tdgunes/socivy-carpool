@@ -1,8 +1,8 @@
+    //
+//  EnrolledViewController.swift
+//  Socivy
 //
-//  MyRoutesViewController.swift
-//  OzU Carpool
-//
-//  Created by Taha Doğan Güneş on 08/10/14.
+//  Created by Taha Doğan Güneş on 13/10/14.
 //  Copyright (c) 2014 TDG. All rights reserved.
 //
 
@@ -10,65 +10,51 @@ import Foundation
 import UIKit
 import MapKit
 
-
-class MyRoutesViewController: UITableViewController, SocivyRouteSelfAPIDelegate  {
+class EnrolledViewController: UITableViewController, SocivyRouteEnrolledAPIDelegate {
     
-    weak var selfRouteAPI = SocivyAPI.sharedInstance.selfRouteAPI
+    weak var enrolledRouteAPI = SocivyAPI.sharedInstance.enrolledRouteAPI
     var routes:[Route] = []
     var tableRefreshControl = UIRefreshControl()
-    
     @IBOutlet weak var helpLabel: UILabel!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        
-        self.tableRefreshControl.addTarget(self, action: "refreshControlRequest", forControlEvents: UIControlEvents.ValueChanged)
-        self.tableView.addSubview(self.tableRefreshControl)
-        
-        self.selfRouteAPI?.delegate = self
-        self.tableRefreshControl.beginRefreshing()
-        self.tableView.setContentOffset(CGPointMake(0, self.tableView.contentOffset.y-self.tableRefreshControl.frame.size.height), animated:true)
-        self.selfRouteAPI?.fetch()
-        
-    }
+    func fetchDidFinish(routeEnrolledApi: SocivyRouteEnrolledAPI, routes: JSON) {
     
-    func fetchDidFinish(storeRouteApi:SocivyRouteSelfAPI, routes:JSON){
         self.routes = []
         let routeArray = routes.asArray! as [JSON]
         var index:Int = 0
         for route in routeArray {
-            let placeArray = route["places"].asArray! as [JSON]
-            
-            var stops:[Stop] = []
-            for place in placeArray{
-                var stop = Stop(id:"ad", name: place["name"].asString!, location: CLLocationCoordinate2D(latitude:12.0 , longitude: 12.0))
-                stops.append(stop)
+            if route["isOwner"].asBool == false {
+                
+                let placeArray = route["places"].asArray! as [JSON]
+                var stops:[Stop] = []
+                for place in placeArray{
+                    var stop = Stop(id:"ad", name: place["name"].asString!, location: CLLocationCoordinate2D(latitude:12.0 , longitude: 12.0))
+                    stops.append(stop)
+                }
+                let driverName = route["user"]["name"].asString
+                var driver:User = User(name: driverName, cellphone: nil)
+                
+                var toOzu:Bool = false
+                
+                if route["plan"].asString! == "toSchool" {
+                    toOzu = true
+                }
+                
+                let timestampStr = route["action_time"].asString!
+                let timestamp: Double = (timestampStr as NSString).doubleValue as Double
+                
+                var route: Route = Route(id: route["id"].asString!, stops: stops, timestamp: timestamp, description: route["description"].asString!, toOzu: toOzu, driver: driver, seatLeft:route["seats"].asInt!)
+                
+                self.routes.append(route)
+                println("\(index). \(route)")
+                
+                for stop in stops{
+                    println("  - \(stop.name)")
+                }
+                index += 1
             }
-            let driverName = route["user"]["name"].asString
-            var driver:User = User(name: driverName, cellphone: nil)
-            
-            var toOzu:Bool = false
-            
-            if route["plan"].asString! == "toSchool" {
-                toOzu = true
-            }
-            
-            let timestampStr = route["action_time"].asString!
-            let timestamp: Double = (timestampStr as NSString).doubleValue as Double
-            
-            var route: Route = Route(id: route["id"].asString!, stops: stops, timestamp: timestamp, description: route["description"].asString!, toOzu: toOzu, driver: driver, seatLeft:route["seats"].asInt!)
-            
-            self.routes.append(route)
-            println("\(index). \(route)")
-            
-            for stop in stops{
-                println("  - \(stop.name)")
-            }
-            index += 1
-            
         }
-        
+        println("[EnrolledVC] self.routes.count = \(self.routes.count) ")
         if self.routes.count == 0 {
             helpLabel.hidden = false
         }
@@ -76,27 +62,42 @@ class MyRoutesViewController: UITableViewController, SocivyRouteSelfAPIDelegate 
             helpLabel.hidden = true
         }
         
-        println("[MyRoutesVC] self.routes.count = \(self.routes.count) ")
+        
         self.tableView.reloadData()
         self.tableRefreshControl.endRefreshing()
     }
-    func fetchDidFail(storeRouteApi:SocivyRouteSelfAPI, error:NSError){
+    
+    func fetchDidFail(routeEnrolledApi: SocivyRouteEnrolledAPI, error: NSError) {
+        self.tableRefreshControl.endRefreshing()
+    }
+
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view, typically from a nib.
         
+        
+        self.tableRefreshControl.addTarget(self, action: "refreshControlRequest", forControlEvents: UIControlEvents.ValueChanged)
+        
+        self.tableView.addSubview(self.tableRefreshControl)
+        self.enrolledRouteAPI?.delegate = self
+        
+        
+        
+        
+        self.updateTableView()
     }
     
     func refreshControlRequest(){
         helpLabel.hidden = true
-        self.selfRouteAPI?.fetch()
-        self.updateTableView()
+        self.enrolledRouteAPI?.fetch()
     }
     
     func updateTableView(){
-        //        var formatter = NSDateFormatter()
-        //        formatter.dateFormat = "MMM-d, h,:mm:ss-a"
-        //        let lastUpdated = "Last updated on \(formatter.stringFromDate(NSDate()))"
-        //        self.tableRefreshControl.attributedTitle = NSAttributedString(string: lastUpdated)
         
-
+        self.tableRefreshControl.beginRefreshing()
+        self.tableView.setContentOffset(CGPointMake(0, self.tableView.contentOffset.y-self.tableRefreshControl.frame.size.height), animated:true)
+        self.enrolledRouteAPI?.fetch()
     }
     
     
@@ -105,11 +106,16 @@ class MyRoutesViewController: UITableViewController, SocivyRouteSelfAPIDelegate 
         // Dispose of any resources that can be recreated.
     }
     
-
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        
-    }
+    
+//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+//        if segue.identifier == "joinDetail"{
+//            var nextViewController: JoinViewController = segue.destinationViewController as JoinViewController
+//            var routeCell:RouteCell = sender as RouteCell
+//            nextViewController.route = routeCell.route
+//            
+//        }
+//    }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell: RouteCell = tableView.dequeueReusableCellWithIdentifier("RouteCell", forIndexPath:indexPath) as RouteCell
@@ -135,12 +141,6 @@ class MyRoutesViewController: UITableViewController, SocivyRouteSelfAPIDelegate 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return self.routes.count
     }
-    
-    
-    @IBAction func showCategoryView(){
-        
-    }
-    
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         var route = routes[indexPath.section]

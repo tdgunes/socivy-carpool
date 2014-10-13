@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3D82E0D719EB00B200A22CA1 /* JoinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D82E0D619EB00B200A22CA1 /* JoinViewController.swift */; };
+		3D8D941719EBF84A00EDF76E /* EnrolledViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8D941619EBF84A00EDF76E /* EnrolledViewController.swift */; };
 		3DFD3CA719EA9390008C6B73 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3DFD3CA519EA9390008C6B73 /* Main.storyboard */; };
 		3DFD3CA919EA9390008C6B73 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3DFD3CA819EA9390008C6B73 /* Images.xcassets */; };
 		3DFD3CAC19EA9390008C6B73 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DFD3CAA19EA9390008C6B73 /* LaunchScreen.xib */; };
@@ -54,6 +55,7 @@
 
 /* Begin PBXFileReference section */
 		3D82E0D619EB00B200A22CA1 /* JoinViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoinViewController.swift; sourceTree = "<group>"; };
+		3D8D941619EBF84A00EDF76E /* EnrolledViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnrolledViewController.swift; sourceTree = "<group>"; };
 		3DFD3C9C19EA9390008C6B73 /* Socivy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Socivy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DFD3CA019EA9390008C6B73 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3DFD3CA619EA9390008C6B73 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -169,6 +171,7 @@
 		3D82E0D419EAAD7B00A22CA1 /* DontHaveACar Tab */ = {
 			isa = PBXGroup;
 			children = (
+				3D8D941619EBF84A00EDF76E /* EnrolledViewController.swift */,
 				3DFD3D1F19EA9554008C6B73 /* RoutesViewController.swift */,
 				3D82E0D619EB00B200A22CA1 /* JoinViewController.swift */,
 			);
@@ -372,6 +375,7 @@
 				3DFD3D4419EA9554008C6B73 /* PickerCell.swift in Sources */,
 				3DFD3D3819EA9554008C6B73 /* MapCell.swift in Sources */,
 				3DFD3D3719EA9554008C6B73 /* MainTabBarController.swift in Sources */,
+				3D8D941719EBF84A00EDF76E /* EnrolledViewController.swift in Sources */,
 				3DFD3D4019EA9554008C6B73 /* SocivyDatePickerCell.swift in Sources */,
 				3DFD3D3D19EA9554008C6B73 /* TextFieldCell.swift in Sources */,
 				3D82E0D719EB00B200A22CA1 /* JoinViewController.swift in Sources */,

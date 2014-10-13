@@ -73,6 +73,7 @@ class SocivyAPI {
     var storeRouteAPI:SocivyStoreRouteAPI?
     var selfRouteAPI:SocivyRouteSelfAPI?
     var placeAPI: SocivyPlaceAPI?
+    var enrolledRouteAPI:SocivyRouteEnrolledAPI?
     
 
     var expireTime:Int?
@@ -87,8 +88,11 @@ class SocivyAPI {
         //route related
         self.indexRouteAPI = SocivyIndexRouteAPI(api: self)
         self.storeRouteAPI = SocivyStoreRouteAPI(api: self)
+        self.enrolledRouteAPI = SocivyRouteEnrolledAPI(api: self)
+        
         self.selfRouteAPI = SocivyRouteSelfAPI(api:self)
         self.placeAPI = SocivyPlaceAPI(api: self)
+
         
     }
 
