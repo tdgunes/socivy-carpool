@@ -23,36 +23,15 @@ class EnrolledViewController: UITableViewController, SocivyRouteEnrolledAPIDeleg
         let routeArray = routes.asArray! as [JSON]
         var index:Int = 0
         for route in routeArray {
-            if route["isOwner"].asBool == false {
-                
-                let placeArray = route["places"].asArray! as [JSON]
-                var stops:[Stop] = []
-                for place in placeArray{
-                    var stop = Stop(id:"ad", name: place["name"].asString!, location: CLLocationCoordinate2D(latitude:12.0 , longitude: 12.0))
-                    stops.append(stop)
-                }
-                let driverName = route["user"]["name"].asString
-                var driver:User = User(name: driverName, cellphone: nil)
-                
-                var toOzu:Bool = false
-                
-                if route["plan"].asString! == "toSchool" {
-                    toOzu = true
-                }
-                
-                let timestampStr = route["action_time"].asString!
-                let timestamp: Double = (timestampStr as NSString).doubleValue as Double
-                
-                var route: Route = Route(id: route["id"].asString!, stops: stops, timestamp: timestamp, description: route["description"].asString!, toOzu: toOzu, driver: driver, seatLeft:route["seats"].asInt!)
+
+            
+                var route: Route = Route(routeJson: route)
                 
                 self.routes.append(route)
                 println("\(index). \(route)")
                 
-                for stop in stops{
-                    println("  - \(stop.name)")
-                }
                 index += 1
-            }
+
         }
         println("[EnrolledVC] self.routes.count = \(self.routes.count) ")
         if self.routes.count == 0 {

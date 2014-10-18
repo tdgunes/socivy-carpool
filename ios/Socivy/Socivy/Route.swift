@@ -11,17 +11,33 @@ import MapKit
 
 
 
+
 class User {
     
-    var name:String?
-    var cellphone:String?
+    var id:String
+    var email:String
+    var name:String
+    var isPhoneVisible:Bool
+    var phone:String
     
-    init(name:String?, cellphone:String?){
+    init(id:String, name:String, email:String,  showPhone:Bool, phone:String){
+        self.id = id
         self.name = name
-        self.cellphone = cellphone
+        self.isPhoneVisible = showPhone
+        self.phone = phone
+        self.email = email
     }
     
+    convenience init(jsonUser:JSON){
+        let driverID = jsonUser["id"].asString!
+        let driverName = jsonUser["name"].asString!
+        let driverEmail = jsonUser["email"].asString!
+        let driverPhone = jsonUser["information"]["phone"].asString!
+        let driverShowPhone = jsonUser["information"]["showPhone"].asBool!
+        self.init(id: driverID, name: driverName, email: driverEmail, showPhone: driverShowPhone, phone: driverPhone)
+    }
 }
+
 
 class Stop {
     var location:CLLocationCoordinate2D
@@ -45,12 +61,12 @@ class Route: Printable {
     var driver:User
     var seatLeft: Int
     var id: String
-    
+    var passengers: [User]
     var description: String {
-        return "Route: \(self.driver.name!) - stops: \(self.stops.count)"
+        return "Route: \(self.driver.name) - stops: \(self.stops.count)"
     }
     
-    init(id:String, stops:[Stop], timestamp:Double, description:String, toOzu:Bool, driver:User, seatLeft:Int){
+    init(id:String, stops:[Stop], timestamp:Double, description:String, toOzu:Bool, driver:User, seatLeft:Int, passengers:[User]){
         self.id = id
         self.stops = stops
         self.timestamp = timestamp
@@ -58,6 +74,44 @@ class Route: Printable {
         self.toOzu = toOzu
         self.driver = driver
         self.seatLeft = seatLeft
+        self.passengers = passengers
+    }
+    
+    convenience init (routeJson:JSON){
+        
+        let placeArray = routeJson["places"].asArray! as [JSON]
+        var places:[Stop] = []
+        for place in placeArray{
+            var stop = Stop(id:place["id"].asString!, name: place["name"].asString!, location: CLLocationCoordinate2D(latitude:12.0 , longitude: 12.0))
+            places.append(stop)
+        }
+        
+    
+        var driver:User = User(jsonUser: routeJson["user"])
+        
+        let passengerArray = routeJson["companions"].asArray! as [JSON]
+        var passengers:[User] = []
+        for passenger in passengerArray{
+            passengers.append(User(jsonUser: passenger))
+        }
+        
+        var toOzu:Bool = false
+        if routeJson["plan"].asString! == "toSchool" {
+            toOzu = true
+        }
+        
+        let timestampStr = routeJson["action_time"].asString!
+        let timestamp: Double = (timestampStr as NSString).doubleValue as Double
+        
+
+        
+        self.init(id: routeJson["id"].asString!, stops: places,
+            timestamp: timestamp,
+            description: routeJson["description"].asString!,
+            toOzu: toOzu,
+            driver: driver,
+            seatLeft:routeJson["seats"].asInt!,
+            passengers:passengers)
 
     }
     

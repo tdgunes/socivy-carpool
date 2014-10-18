@@ -57,7 +57,7 @@ class LeaveViewController: UITableViewController, UIActionSheetDelegate, SocivyR
     
     func configureTableView() {
         
-        self.details[0][1] = self.route!.driver.name!
+        self.details[0][1] = self.route!.driver.name
         self.details[1][1] = "\(self.route!.getTime()!)"
         self.details[2][1] = "\(self.route!.seatLeft)"
         

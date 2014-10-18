@@ -66,7 +66,7 @@ class RouteCell: UITableViewCell, UITableViewDataSource, UITableViewDelegate {
             self.directionLabel?.text = fromOzuToStopSymbol
         }
         
-        self.driverLabel?.text = " \(self.route!.driver.name!)"
+        self.driverLabel?.text = " \(self.route!.driver.name)"
         self.seatLeftLabel?.text = "\(self.route!.seatLeft) "
         
         

@@ -19,6 +19,24 @@ class MyRoutesViewController: UITableViewController, SocivyRouteSelfAPIDelegate 
     
     @IBOutlet weak var helpLabel: UILabel!
     
+    
+    override func viewWillAppear(animated: Bool) {
+        self.tableRefreshControl.beginRefreshing()
+        self.tableView.setContentOffset(CGPointMake(0, self.tableView.contentOffset.y-self.tableRefreshControl.frame.size.height), animated:true)
+        self.selfRouteAPI?.fetch()
+    }
+    
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "myDetail"{
+            var nextViewController: DetailViewController = segue.destinationViewController as DetailViewController
+            var routeCell:RouteCell = sender as RouteCell
+            nextViewController.route = routeCell.route
+            
+        }
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -27,6 +45,7 @@ class MyRoutesViewController: UITableViewController, SocivyRouteSelfAPIDelegate 
         self.tableView.addSubview(self.tableRefreshControl)
         
         self.selfRouteAPI?.delegate = self
+
         self.tableRefreshControl.beginRefreshing()
         self.tableView.setContentOffset(CGPointMake(0, self.tableView.contentOffset.y-self.tableRefreshControl.frame.size.height), animated:true)
         self.selfRouteAPI?.fetch()
@@ -38,37 +57,16 @@ class MyRoutesViewController: UITableViewController, SocivyRouteSelfAPIDelegate 
         let routeArray = routes.asArray! as [JSON]
         var index:Int = 0
         for route in routeArray {
-            let placeArray = route["places"].asArray! as [JSON]
             
-            var stops:[Stop] = []
-            for place in placeArray{
-                var stop = Stop(id:"ad", name: place["name"].asString!, location: CLLocationCoordinate2D(latitude:12.0 , longitude: 12.0))
-                stops.append(stop)
-            }
-            let driverName = route["user"]["name"].asString
-            var driver:User = User(name: driverName, cellphone: nil)
             
-            var toOzu:Bool = false
-            
-            if route["plan"].asString! == "toSchool" {
-                toOzu = true
-            }
-            
-            let timestampStr = route["action_time"].asString!
-            let timestamp: Double = (timestampStr as NSString).doubleValue as Double
-            
-            var route: Route = Route(id: route["id"].asString!, stops: stops, timestamp: timestamp, description: route["description"].asString!, toOzu: toOzu, driver: driver, seatLeft:route["seats"].asInt!)
+            var route: Route = Route(routeJson: route)
             
             self.routes.append(route)
             println("\(index). \(route)")
             
-            for stop in stops{
-                println("  - \(stop.name)")
-            }
             index += 1
             
         }
-        
         if self.routes.count == 0 {
             helpLabel.hidden = false
         }
@@ -106,10 +104,7 @@ class MyRoutesViewController: UITableViewController, SocivyRouteSelfAPIDelegate 
     }
     
 
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        
-    }
+
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell: RouteCell = tableView.dequeueReusableCellWithIdentifier("RouteCell", forIndexPath:indexPath) as RouteCell
