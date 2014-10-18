@@ -49,12 +49,6 @@ class EnrolledViewController: UITableViewController, SocivyRouteEnrolledAPIDeleg
     func fetchDidFail(routeEnrolledApi: SocivyRouteEnrolledAPI, error: NSError) {
         self.tableRefreshControl.endRefreshing()
     }
-
-    
-    
-//    override func viewDidAppear(animated: Bool) {
-//         self.updateTableView()
-//    }
     
     override func viewWillAppear(animated: Bool) {
          self.updateTableView()
@@ -69,10 +63,8 @@ class EnrolledViewController: UITableViewController, SocivyRouteEnrolledAPIDeleg
         self.tableView.addSubview(self.tableRefreshControl)
         self.enrolledRouteAPI?.delegate = self
         
-        
-        
-        
-        self.updateTableView()
+        //  not necessary since viewWillAppear is trigger before viewDidLoad()
+        //  self.updateTableView()
     }
     
     func refreshControlRequest(){
@@ -81,23 +73,17 @@ class EnrolledViewController: UITableViewController, SocivyRouteEnrolledAPIDeleg
     }
     
     func updateTableView(){
-        
         self.tableRefreshControl.beginRefreshing()
         self.tableView.setContentOffset(CGPointMake(0, self.tableView.contentOffset.y-self.tableRefreshControl.frame.size.height), animated:true)
         self.enrolledRouteAPI?.fetch()
     }
-    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    
-    
-    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-
         if segue.identifier == "leaveDetail"{
             var nextViewController: LeaveViewController = segue.destinationViewController as LeaveViewController
             var routeCell:RouteCell = sender as RouteCell
@@ -108,19 +94,15 @@ class EnrolledViewController: UITableViewController, SocivyRouteEnrolledAPIDeleg
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell: RouteCell = tableView.dequeueReusableCellWithIdentifier("RouteCell", forIndexPath:indexPath) as RouteCell
-        
         println("section:\(indexPath.section) row:\(indexPath.row)")
         var route = routes[indexPath.section]
         
         cell.contentView.layer.cornerRadius = 20
         cell.contentView.layer.masksToBounds = true
         cell.route = route
-        
         cell.configureCell()
         
-        
         return cell
-        
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -133,12 +115,9 @@ class EnrolledViewController: UITableViewController, SocivyRouteEnrolledAPIDeleg
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         var route = routes[indexPath.section]
-        
         let height:CGFloat =  CGFloat(140+route.stops.count*45)
         return height
     }
-    
-    
     
     override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         if cell.respondsToSelector("tintColor") {
@@ -187,7 +166,5 @@ class EnrolledViewController: UITableViewController, SocivyRouteEnrolledAPIDeleg
                 cell.backgroundView = testView
             }
         }
-        
     }
-    
 }

@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class LoginViewController: UITableViewController, SocivyAuthenticateAPIDelegate, SocivyLoginAPIDelegate {
+class LoginViewController: UITableViewController, SocivyAuthenticateAPIDelegate, SocivyLoginAPIDelegate, SocivyDeviceStoreAPIDelegate {
     
     
     @IBOutlet weak var emailCell: TextFieldCell?
@@ -21,6 +21,7 @@ class LoginViewController: UITableViewController, SocivyAuthenticateAPIDelegate,
     
     weak var authenticateAPI = SocivyAPI.sharedInstance.authenticateAPI
     weak var loginAPI =  SocivyAPI.sharedInstance.loginAPI
+    weak var deviceStoreAPI = SocivyAPI.sharedInstance.deviceStoreAPI
     
     var activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.WhiteLarge)
     var alert = UIAlertView()
@@ -31,7 +32,7 @@ class LoginViewController: UITableViewController, SocivyAuthenticateAPIDelegate,
         
         self.authenticateAPI?.delegate = self
         self.loginAPI?.delegate = self
-        
+        self.deviceStoreAPI?.delegate = self
 
         
         
@@ -96,17 +97,26 @@ class LoginViewController: UITableViewController, SocivyAuthenticateAPIDelegate,
         }
         else if selectedCell == forgotPasswordCell {
             println("[peek] forgotPasswordCell touched")
-            
+
         }
         else if selectedCell == signupCell {
             println("[peek] signupCell touched")
-        
         }
         
     }
     
+    func storeDeviceToken() {
+        if let deviceToken = socivyDeviceToken {
+            self.deviceStoreAPI?.request(deviceToken)
+        }
+    }
+
+    
     func loginDidFinish(socivyAPI:SocivyLoginAPI){
         self.applyBackgroundProcessMode(false)
+        
+        self.storeDeviceToken()
+        
         self.showMainView()
 
     }
@@ -132,6 +142,7 @@ class LoginViewController: UITableViewController, SocivyAuthenticateAPIDelegate,
         
         self.authenticateAPI?.api.saveUserSecret()
         self.applyBackgroundProcessMode(false)
+        self.storeDeviceToken()
         self.showMainView()
     }
     
@@ -146,5 +157,11 @@ class LoginViewController: UITableViewController, SocivyAuthenticateAPIDelegate,
         
     }
     
+    func storeDidFinish(deviceStoreAPI:SocivyDeviceStoreAPI){
+        println("[loginView] storeDidFinish")
+    }
+    func storeDidFail(deviceStoreAPI:SocivyDeviceStoreAPI){
+        
+    }
 
 }

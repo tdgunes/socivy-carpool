@@ -33,7 +33,6 @@ class SocivyBaseAPI: AsyncHTTPRequestDelegate {
         }
     }
     
-
     func requestFailWithError(asyncHTTPRequest:AsyncHTTPRequest, error:NSError){
         fatalError("requestFailWithError(asyncHTTPRequest:, error:) has not been implemented")
     }
@@ -89,6 +88,7 @@ class SocivyAPI {
     var requestRouteAPI:SocivyRouteRequestAPI?
     var cancelRouteAPI:SocivyRouteCancelAPI?
     var loginAPI:SocivyLoginAPI?
+    var deviceStoreAPI:SocivyDeviceStoreAPI?
     
     var expireTime:Int?
     
@@ -111,7 +111,7 @@ class SocivyAPI {
         self.selfRouteAPI = SocivyRouteSelfAPI(api:self)
         self.placeAPI = SocivyPlaceAPI(api: self)
 
-        
+        self.deviceStoreAPI = SocivyDeviceStoreAPI(api:self)
     }
 
 

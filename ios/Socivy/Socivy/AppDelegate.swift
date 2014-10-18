@@ -8,6 +8,8 @@
 
 import UIKit
 
+var socivyDeviceToken:String?
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -70,7 +72,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
  
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
-        println("My token is \(deviceToken)")
+        var token = deviceToken.description.stringByTrimmingCharactersInSet(NSCharacterSet(charactersInString: "<>"))
+//        NSString *token = [[deviceToken description] stringByTrimmingCharactersInSet: [NSCharacterSet characterSetWithCharactersInString:@"<>"]];
+        token = token.stringByReplacingOccurrencesOfString(" ", withString:"", options:nil, range:nil)
+        
+        socivyDeviceToken = token
+        
+        
     }
     
     func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
