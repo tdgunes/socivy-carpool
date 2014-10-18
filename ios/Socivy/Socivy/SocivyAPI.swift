@@ -73,8 +73,9 @@ class SocivyBaseLoginAPI: SocivyBaseAPI, SocivyLoginAPIDelegate{
 class SocivyAPI {
     let public_key:String = "$2y$10$EABJx.UPPrTRCbn.nR34geK6HJOZWvEQFRFVQzCV2hW7aI13jn16G"
 
-    let url = "http://development.socivy.com/api/v1"
-    //let url = "https://socivy.com/api/v1"
+    let domain = "http://development.socivy.com"
+    let url:String
+
     
     var user_secret:String?
     var access_token:String?
@@ -96,6 +97,7 @@ class SocivyAPI {
     }
     
     init(){
+        url = "\(domain)/api/v1"
         self.authenticateAPI = SocivyAuthenticateAPI(api: self)
         self.loginAPI = SocivyLoginAPI(api: self)
             

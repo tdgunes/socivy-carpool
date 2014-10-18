@@ -173,8 +173,7 @@
 			isa = PBXGroup;
 			children = (
 				3DFD3D1D19EA9554008C6B73 /* MyRoutesViewController.swift */,
-				3DFD3D1E19EA9554008C6B73 /* AddRouteViewController.swift */,
-				3DFD3D1419EA9554008C6B73 /* AddRouteSecondViewController.swift */,
+				3DB20B3119F2E39D0077BE96 /* AddRoute */,
 				3D159F6E19EDC7BE003B61AB /* DetailViewController.swift */,
 			);
 			name = "HaveACar Tab";
@@ -200,10 +199,8 @@
 		3D82E0D419EAAD7B00A22CA1 /* DontHaveACar Tab */ = {
 			isa = PBXGroup;
 			children = (
-				3D8D941619EBF84A00EDF76E /* EnrolledViewController.swift */,
-				3DFD3D1F19EA9554008C6B73 /* RoutesViewController.swift */,
-				3D82E0D619EB00B200A22CA1 /* JoinViewController.swift */,
-				3D31F58A19EC500B0066A033 /* LeaveViewController.swift */,
+				3DB20B3319F2E3BB0077BE96 /* EnrolledView */,
+				3DB20B3219F2E3AE0077BE96 /* AvailableRoutes */,
 			);
 			name = "DontHaveACar Tab";
 			sourceTree = "<group>";
@@ -217,6 +214,33 @@
 				3DFD3D1519EA9554008C6B73 /* APITools.swift */,
 			);
 			name = Essentials;
+			sourceTree = "<group>";
+		};
+		3DB20B3119F2E39D0077BE96 /* AddRoute */ = {
+			isa = PBXGroup;
+			children = (
+				3DFD3D1E19EA9554008C6B73 /* AddRouteViewController.swift */,
+				3DFD3D1419EA9554008C6B73 /* AddRouteSecondViewController.swift */,
+			);
+			name = AddRoute;
+			sourceTree = "<group>";
+		};
+		3DB20B3219F2E3AE0077BE96 /* AvailableRoutes */ = {
+			isa = PBXGroup;
+			children = (
+				3D82E0D619EB00B200A22CA1 /* JoinViewController.swift */,
+				3DFD3D1F19EA9554008C6B73 /* RoutesViewController.swift */,
+			);
+			name = AvailableRoutes;
+			sourceTree = "<group>";
+		};
+		3DB20B3319F2E3BB0077BE96 /* EnrolledView */ = {
+			isa = PBXGroup;
+			children = (
+				3D8D941619EBF84A00EDF76E /* EnrolledViewController.swift */,
+				3D31F58A19EC500B0066A033 /* LeaveViewController.swift */,
+			);
+			name = EnrolledView;
 			sourceTree = "<group>";
 		};
 		3DFD3C9319EA9390008C6B73 = {

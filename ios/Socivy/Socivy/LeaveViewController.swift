@@ -8,8 +8,9 @@
 
 import Foundation
 import UIKit
+import MessageUI
 
-class LeaveViewController: UITableViewController, UIActionSheetDelegate, SocivyRouteCancelAPIDelegate {
+class LeaveViewController: UITableViewController, UIActionSheetDelegate, SocivyRouteCancelAPIDelegate, MFMailComposeViewControllerDelegate, MFMessageComposeViewControllerDelegate {
     
     
     var activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.WhiteLarge)
@@ -122,9 +123,7 @@ class LeaveViewController: UITableViewController, UIActionSheetDelegate, SocivyR
             switch values[0] {
                 
             case "Contact":
-                var actionSheet = UIActionSheet(title: "Contact the Driver", delegate: self, cancelButtonTitle: "Cancel", destructiveButtonTitle: nil, otherButtonTitles: "Send Message","Send Mail","Call", "SMS" )
-                
-                actionSheet.showInView(self.view)
+                self.showContactSheet(indexPath)
                 
             case "Leave":
                 self.cancelRouteAPI?.request(route!.id)
@@ -224,27 +223,132 @@ class LeaveViewController: UITableViewController, UIActionSheetDelegate, SocivyR
     
     func actionSheet(actionSheet: UIActionSheet!, clickedButtonAtIndex buttonIndex: Int)
     {
-        switch buttonIndex{
+        let possibleButton = ContactSheet.fromRaw(buttonIndex)!
+        
+        switch possibleButton{
             
-        case 0:
-            NSLog("Done");
-            break;
-        case 1:
-            NSLog("Cancel");
-            break;
-        case 2:
-            NSLog("Yes");
-            break;
-        case 3:
-            NSLog("No");
-            break;
+        case .Cancel:
+            NSLog("Cancel")
+            break
+            
+        case .SendMessage:
+            NSLog("SendMessage")
+            
+            break
+            
+        case .SendMail:
+            NSLog("SendMail");
+            self.showEmail()
+            break
+            
+        case .Call:
+            NSLog("Call")
+            self.call()
+            break
+            
+        case .SMS:
+            NSLog("SMS")
+            self.sendSMS()
+            break
+            
         default:
-            NSLog("Default");
-            break;
-            //Some code here..
+            NSLog("Default")
+            break
             
         }
+        
     }
     
+    func showContactSheet(indexPath: NSIndexPath){
+
+        
+
+        
+        var actionSheet = UIActionSheet(title: "Contact \(self.route!.driver.name)", delegate: self, cancelButtonTitle: "Cancel", destructiveButtonTitle: nil, otherButtonTitles: "Send Message","Send Mail","Call", "SMS" )
+        
+        if self.route!.driver.isPhoneVisible == false {
+            actionSheet = UIActionSheet(title: "Contact \(self.route!.driver.name)", delegate: self, cancelButtonTitle: "Cancel", destructiveButtonTitle: nil, otherButtonTitles: "Send Message","Send Mail" )
+            
+            
+        }
+        
+
+        
+        actionSheet.showInView(self.view)
+    }
+    
+    func messageComposeViewController(controller: MFMessageComposeViewController!, didFinishWithResult result: MessageComposeResult) {
+        
+        switch (result.value) {
+        case MessageComposeResultCancelled.value:
+            break;
+            
+        case MessageComposeResultFailed.value:
+            //
+            //                UIAlertView *warningAlert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Failed to send SMS!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            //                [warningAlert show];
+            break;
+            
+        case MessageComposeResultSent.value:
+            break;
+            
+        default:
+            break;
+        }
+        
+        self.dismissViewControllerAnimated(true, completion:nil)
+    }
+    
+    func call(){
+        println("tel://\(self.route!.driver.phone)")
+        UIApplication.sharedApplication().openURL(NSURL(string: "tel://\(self.route!.driver.phone)"))
+    }
+    
+    func sendSMS(){
+        
+        var message = "Hello \(self.route!.driver.name),\n" +
+        "\n\(SocivyAPI.sharedInstance.domain)/route/\(self.route!.id)"
+        var toRecipents = [self.route!.driver.phone]
+        
+        var messageComposeVC: MFMessageComposeViewController = MFMessageComposeViewController()
+        
+        messageComposeVC.body = message
+        messageComposeVC.recipients = toRecipents
+        messageComposeVC.messageComposeDelegate = self
+        
+        self.presentViewController(messageComposeVC, animated: true, completion: nil)
+    }
+    
+    func showEmail() {
+        var emailTitle = "Socivy - Passenger"
+        var messageBody = "Hello \(self.route!.driver.name)," +
+        "</br></br>  </br></br><hr></br>Mentioned <a href='\(SocivyAPI.sharedInstance.domain)/route/\(self.route!.id)'>route</a>.</br>Send with <a href='\(SocivyAPI.sharedInstance.domain)'>Socivy.</a>"
+        var toRecipents = [self.route!.driver.email]
+        var mc: MFMailComposeViewController = MFMailComposeViewController()
+        mc.mailComposeDelegate = self
+        mc.setSubject(emailTitle)
+        mc.setMessageBody(messageBody, isHTML: true)
+        mc.setToRecipients(toRecipents)
+        
+        self.presentViewController(mc, animated: true, completion: nil)
+    }
+    
+    
+    func mailComposeController(controller:MFMailComposeViewController, didFinishWithResult result:MFMailComposeResult, error:NSError) {
+        
+        switch result.value {
+        case MFMailComposeResultCancelled.value:
+            NSLog("Mail cancelled")
+        case MFMailComposeResultSaved.value:
+            NSLog("Mail saved")
+        case MFMailComposeResultSent.value:
+            NSLog("Mail sent")
+        case MFMailComposeResultFailed.value:
+            NSLog("Mail sent failure: %@", [error.localizedDescription])
+        default:
+            break
+        }
+        self.dismissViewControllerAnimated(false, completion: nil)
+    }
     
 }
