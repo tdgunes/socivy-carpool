@@ -68,8 +68,6 @@
                     android:id="@+id/textView6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentTop="true"
                     android:text="İsim"
                     android:textAppearance="?android:attr/textAppearanceMedium" />
             </LinearLayout>
@@ -100,23 +98,19 @@
     <ListView
         android:id="@+id/stoplist"
         android:layout_width="match_parent"
-        android:layout_height="fill_parent"
+        android:layout_height="0dp"
         android:layout_weight="1" >
+
     </ListView>
 
-    <fragment
-        android:id="@+id/map"
-        android:layout_width="match_parent"
-        android:layout_height="fill_parent"
-        android:layout_weight="0.75"
-        class="com.google.android.gms.maps.SupportMapFragment" />
+    
 
     <Button
         android:id="@+id/button1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/custom_button"
-        android:text="Birlikte Git"
+        android:text="@string/string_join"
         android:textColor="#fff" />
 
 </LinearLayout>

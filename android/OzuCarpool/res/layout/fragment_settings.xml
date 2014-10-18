@@ -1,24 +1,115 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:paddingLeft="0dp"
-    android:paddingRight="0dp"
-    tools:context="${relativePackage}.${activityClass}" >
-	<TextView
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="25dp"
-        android:background="#dddddd"
-        android:padding="3dp"
-        android:text="HESABIM" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingLeft="0dp"
+        android:paddingRight="0dp" >
 
-	<Button
-	    android:id="@+id/button1"
-	    android:layout_width="match_parent"
-	    android:layout_height="wrap_content"
-	    android:background="@drawable/custom_button"
-	    android:textColor="#fff"
-	    android:text="Çıkış Yap" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:background="#dddddd"
+            android:padding="3dp"
+            android:text="My Settings" />
 
-</LinearLayout>
+        <CheckBox
+            android:id="@+id/checkBox1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Oluşturduğum rotalarda telefon numaramı göster"
+            android:textColor="#4456aa"
+            android:textSize="14sp"  />
+        
+        <CheckBox
+            android:id="@+id/checkBox2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="GPS konumlarıma izin ver"
+            android:textColor="#4456aa"
+            android:textSize="14sp"  />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:background="#dddddd"
+            android:padding="3dp"
+            android:text="@string/string_account" />
+
+        <EditText
+            android:id="@+id/editname"
+            android:layout_width="match_parent"
+            android:layout_height="40dip"
+            android:layout_marginTop="0dp"
+            android:background="@drawable/register_edittext"
+            android:drawableLeft="@drawable/user"
+            android:hint="@string/string_name"
+            android:inputType="textPersonName"
+            android:padding="10dp"
+            android:textColor="#778BB0"
+            android:textColorHint="#778BB0"
+            android:textSize="14sp" />
+
+        <EditText
+            android:id="@+id/editpass"
+            android:layout_width="match_parent"
+            android:layout_height="40dip"
+            android:layout_marginTop="1dp"
+            android:background="@drawable/register_edittext"
+            android:drawableLeft="@drawable/password"
+            android:hint="@string/string_pass"
+            android:inputType="textPassword"
+            android:padding="10dp"
+            android:textColor="#778BB0"
+            android:textColorHint="#778BB0"
+            android:textSize="14sp" />
+
+        <EditText
+            android:id="@+id/editpass2"
+            android:layout_width="match_parent"
+            android:layout_height="40dip"
+            android:layout_marginTop="1dp"
+            android:background="@drawable/register_edittext"
+            android:drawableLeft="@drawable/password"
+            android:hint="@string/string_pass"
+            android:inputType="textPassword"
+            android:padding="10dp"
+            android:textColor="#778BB0"
+            android:textColorHint="#778BB0"
+            android:textSize="14sp" />
+
+        <EditText
+            android:id="@+id/edittel"
+            android:layout_width="match_parent"
+            android:layout_height="40dip"
+            android:layout_marginTop="1dp"
+            android:background="@drawable/register_edittext"
+            android:drawableLeft="@drawable/user"
+            android:hint="@string/string_phone"
+            android:inputType="phone"
+            android:padding="10dp"
+            android:textColor="#778BB0"
+            android:textColorHint="#778BB0"
+            android:textSize="14sp" />
+
+        <Button
+            android:id="@+id/updatebutton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/custom_button"
+            android:text="@string/string_update"
+            android:textColor="#fff" />
+
+        <Button
+            android:id="@+id/signoutbutton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/custom_button"
+            android:text="@string/string_signout"
+            android:textColor="#fff" />
+    </LinearLayout>
+
+</ScrollView>
