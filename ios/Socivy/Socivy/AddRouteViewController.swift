@@ -55,9 +55,9 @@ class AddRouteViewController: UITableViewController {
             println("available_seat: \(available_seat)")
             println("plan: \(plan)")
             
-            var info = ""
-            if self.additionalCell.textField?.text != nil {
-                info = self.additionalCell.textField!.text
+            var info = self.additionalCell.textField!.text
+            if info == nil {
+                info = ""
             }
             
             println("description: \(info)")

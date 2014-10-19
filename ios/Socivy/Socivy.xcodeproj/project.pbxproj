@@ -18,6 +18,7 @@
 		3D82E0D719EB00B200A22CA1 /* JoinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D82E0D619EB00B200A22CA1 /* JoinViewController.swift */; };
 		3D8D941719EBF84A00EDF76E /* EnrolledViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8D941619EBF84A00EDF76E /* EnrolledViewController.swift */; };
 		3DB20B3519F2EDDE0077BE96 /* SocivyDeviceStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB20B3419F2EDDE0077BE96 /* SocivyDeviceStore.swift */; };
+		3DB20B3719F32C0C0077BE96 /* SocivyLogoutAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB20B3619F32C0C0077BE96 /* SocivyLogoutAPI.swift */; };
 		3DFD3CA719EA9390008C6B73 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3DFD3CA519EA9390008C6B73 /* Main.storyboard */; };
 		3DFD3CA919EA9390008C6B73 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3DFD3CA819EA9390008C6B73 /* Images.xcassets */; };
 		3DFD3CAC19EA9390008C6B73 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DFD3CAA19EA9390008C6B73 /* LaunchScreen.xib */; };
@@ -73,6 +74,7 @@
 		3D82E0D619EB00B200A22CA1 /* JoinViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoinViewController.swift; sourceTree = "<group>"; };
 		3D8D941619EBF84A00EDF76E /* EnrolledViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnrolledViewController.swift; sourceTree = "<group>"; };
 		3DB20B3419F2EDDE0077BE96 /* SocivyDeviceStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocivyDeviceStore.swift; sourceTree = "<group>"; };
+		3DB20B3619F32C0C0077BE96 /* SocivyLogoutAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocivyLogoutAPI.swift; sourceTree = "<group>"; };
 		3DFD3C9C19EA9390008C6B73 /* Socivy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Socivy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DFD3CA019EA9390008C6B73 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3DFD3CA619EA9390008C6B73 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -164,6 +166,7 @@
 				3D82E0D519EAADDF00A22CA1 /* Essentials */,
 				3DFD3D2719EA9554008C6B73 /* SocivyAPI.swift */,
 				3DFD3D2219EA9554008C6B73 /* SocivyLoginAPI.swift */,
+				3DB20B3619F32C0C0077BE96 /* SocivyLogoutAPI.swift */,
 				3DFD3D2319EA9554008C6B73 /* SocivyAuthenticateAPI.swift */,
 				3D5D005519F1E12900A6ADD3 /* SocivyRouteAPI */,
 				3DFD3D2619EA9554008C6B73 /* SocivyPlaceAPI.swift */,
@@ -455,6 +458,7 @@
 				3DFD3D3C19EA9554008C6B73 /* SettingsViewController.swift in Sources */,
 				3DFD3D3B19EA9554008C6B73 /* RoutesViewController.swift in Sources */,
 				3DFD3D4819EA9554008C6B73 /* Route.swift in Sources */,
+				3DB20B3719F32C0C0077BE96 /* SocivyLogoutAPI.swift in Sources */,
 				3DFD3D3419EA9554008C6B73 /* DatePickerCell.swift in Sources */,
 				3D31F58B19EC500B0066A033 /* LeaveViewController.swift in Sources */,
 			);

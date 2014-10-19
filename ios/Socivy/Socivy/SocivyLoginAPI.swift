@@ -54,7 +54,8 @@ class SocivyLoginAPI: SocivyBaseAPI {
             }
         }
         else {
-            self.log("parse error")
+            self.api.clearUserSecret()
+            self.delegate?.loginDidFailWithError(self, error: self.generateError())
         }
     }
 }

@@ -88,6 +88,7 @@ class SocivyAPI {
     var requestRouteAPI:SocivyRouteRequestAPI?
     var cancelRouteAPI:SocivyRouteCancelAPI?
     var loginAPI:SocivyLoginAPI?
+    var logoutAPI:SocivyLogoutAPI?
     var deviceStoreAPI:SocivyDeviceStoreAPI?
     
     var expireTime:Int?
@@ -112,9 +113,13 @@ class SocivyAPI {
         self.placeAPI = SocivyPlaceAPI(api: self)
 
         self.deviceStoreAPI = SocivyDeviceStoreAPI(api:self)
+        self.logoutAPI = SocivyLogoutAPI(api:self)
     }
 
 
+    func clearUserSecret(){
+        KeychainService.setString("", forKey: "user_secret")
+    }
     func saveUserSecret(){
         KeychainService.setString(user_secret!, forKey: "user_secret")
     }

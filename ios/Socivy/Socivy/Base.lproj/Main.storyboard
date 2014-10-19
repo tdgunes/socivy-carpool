@@ -722,6 +722,9 @@
                                                 <constraint firstItem="MxU-xh-SPl" firstAttribute="trailing" secondItem="hSc-LL-eKz" secondAttribute="trailing" id="zib-gf-gX0"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="textField" destination="MxU-xh-SPl" id="Rqn-3z-iP1"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -882,7 +885,7 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ybM-Vm-CKV" id="SkZ-ss-XfB">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Apple Store'da Yorumlayın" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Ctu-wE-wLd">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Rate Socivy in Apple Store" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Ctu-wE-wLd">
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -909,12 +912,12 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="My Account" id="gGI-AA-eT2">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" textLabel="m0c-dT-gQi" style="IBUITableViewCellStyleDefault" id="lJG-d7-d0N">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="m0c-dT-gQi" style="IBUITableViewCellStyleDefault" id="lJG-d7-d0N">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lJG-d7-d0N" id="vu2-L8-rO2">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text=" Taha Doğan Güneş" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="m0c-dT-gQi">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Account Settings" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="m0c-dT-gQi">
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -922,6 +925,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="Fvc-oi-Qvr" kind="show" id="mCx-ag-B72"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" textLabel="JN0-7w-Mlt" style="IBUITableViewCellStyleDefault" id="ojm-pJ-cpD">
                                         <autoresizingMask key="autoresizingMask"/>
@@ -956,6 +962,129 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GYy-Fa-iBP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1809" y="272"/>
+        </scene>
+        <!--Account Settings-->
+        <scene sceneID="omr-oc-2mM">
+            <objects>
+                <tableViewController id="Fvc-oi-Qvr" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="n9L-Iv-xPz">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="SettingCell" rowHeight="50" id="XdS-Wd-G7C" customClass="TextFieldCell" customModule="Socivy" customModuleProvider="target">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XdS-Wd-G7C" id="1fO-sf-6cn">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Name Surname:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pV0-ak-IuS">
+                                            <rect key="frame" x="8" y="8" width="124" height="34"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="124" id="hOK-VY-dcS"/>
+                                                <constraint firstAttribute="height" constant="34" id="u8L-Cg-zRu"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Taha Doğan Güneş" placeholder="Name Surname" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DxT-A4-Qna">
+                                            <rect key="frame" x="140" y="8" width="460" height="34"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="DxT-A4-Qna" secondAttribute="trailing" id="27G-n3-KeV"/>
+                                        <constraint firstItem="pV0-ak-IuS" firstAttribute="top" secondItem="1fO-sf-6cn" secondAttribute="top" constant="8" id="D8m-OH-Bjq"/>
+                                        <constraint firstItem="pV0-ak-IuS" firstAttribute="leading" secondItem="1fO-sf-6cn" secondAttribute="leading" constant="8" id="R7a-wC-zP5"/>
+                                        <constraint firstItem="DxT-A4-Qna" firstAttribute="leading" secondItem="pV0-ak-IuS" secondAttribute="trailing" constant="8" id="TW7-E0-p1e"/>
+                                        <constraint firstAttribute="bottom" secondItem="pV0-ak-IuS" secondAttribute="bottom" constant="8" id="mhW-CV-A5d"/>
+                                        <constraint firstItem="DxT-A4-Qna" firstAttribute="top" secondItem="1fO-sf-6cn" secondAttribute="top" constant="8" id="rxn-DJ-cvZ"/>
+                                        <constraint firstAttribute="bottom" secondItem="DxT-A4-Qna" secondAttribute="bottom" constant="8" id="wpy-Uf-xMI"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="SegmentedCell" rowHeight="50" id="Vfo-Rs-eZf" customClass="TextFieldCell" customModule="Socivy" customModuleProvider="target">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Vfo-Rs-eZf" id="qvL-WG-GB5">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="My Phone is:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Iv-56-4G3">
+                                            <rect key="frame" x="8" y="8" width="124" height="34"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="124" id="G3v-Bm-Rfx"/>
+                                                <constraint firstAttribute="height" constant="34" id="K5x-x0-wUM"/>
+                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="34" id="mWh-BN-CLh"/>
+                                                <constraint firstAttribute="width" constant="124" id="zaU-RE-IlK"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="6Dw-5L-1PN">
+                                            <rect key="frame" x="140" y="11" width="174" height="29"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="174" id="8OV-Wb-jkS"/>
+                                                <constraint firstAttribute="height" constant="28" id="QvS-wi-vG3"/>
+                                            </constraints>
+                                            <segments>
+                                                <segment title="Visible "/>
+                                                <segment title="Hidden"/>
+                                            </segments>
+                                        </segmentedControl>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="for other users." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cTY-pl-auJ">
+                                            <rect key="frame" x="322" y="8" width="117" height="34"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="117" id="KtH-k7-08L"/>
+                                                <constraint firstAttribute="height" constant="34" id="ZHm-f8-TAm"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <color key="textColor" red="0.1007598851" green="0.44303433520000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="cTY-pl-auJ" firstAttribute="top" secondItem="qvL-WG-GB5" secondAttribute="top" constant="8" id="0sD-dw-u1I"/>
+                                        <constraint firstItem="1Iv-56-4G3" firstAttribute="top" secondItem="qvL-WG-GB5" secondAttribute="top" constant="8" id="3rx-Fd-dTi"/>
+                                        <constraint firstAttribute="bottom" secondItem="cTY-pl-auJ" secondAttribute="bottom" constant="8" id="F8S-dF-kp1"/>
+                                        <constraint firstItem="6Dw-5L-1PN" firstAttribute="top" secondItem="qvL-WG-GB5" secondAttribute="top" constant="11" id="HXp-xt-fgi"/>
+                                        <constraint firstAttribute="bottom" secondItem="1Iv-56-4G3" secondAttribute="bottom" constant="8" id="JWA-5V-Z18"/>
+                                        <constraint firstAttribute="bottom" secondItem="6Dw-5L-1PN" secondAttribute="bottom" constant="11" id="MEp-pj-rDF"/>
+                                        <constraint firstItem="1Iv-56-4G3" firstAttribute="top" secondItem="qvL-WG-GB5" secondAttribute="top" constant="8" id="OWg-vH-Qkf"/>
+                                        <constraint firstItem="1Iv-56-4G3" firstAttribute="leading" secondItem="qvL-WG-GB5" secondAttribute="leading" constant="8" id="QfA-aW-epc"/>
+                                        <constraint firstItem="cTY-pl-auJ" firstAttribute="leading" secondItem="6Dw-5L-1PN" secondAttribute="trailing" constant="8" id="WqJ-gA-EsR"/>
+                                        <constraint firstItem="1Iv-56-4G3" firstAttribute="leading" secondItem="qvL-WG-GB5" secondAttribute="leading" constant="8" id="aZK-Mn-FV5"/>
+                                        <constraint firstItem="6Dw-5L-1PN" firstAttribute="leading" secondItem="1Iv-56-4G3" secondAttribute="trailing" constant="8" symbolic="YES" id="h5U-Fy-pmL"/>
+                                        <constraint firstAttribute="bottom" secondItem="1Iv-56-4G3" secondAttribute="bottom" constant="8" id="lBQ-IU-nOB"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="UpdateCell" textLabel="04G-2D-Jwz" style="IBUITableViewCellStyleDefault" id="9JB-Kd-LHf">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9JB-Kd-LHf" id="auE-nh-SWK">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Update" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="04G-2D-Jwz">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" red="0.038492003089999997" green="0.75002122959999995" blue="0.14119250850000001" alpha="1" colorSpace="calibratedRGB"/>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Fvc-oi-Qvr" id="15d-Xw-lHT"/>
+                            <outlet property="delegate" destination="Fvc-oi-Qvr" id="yFM-Yr-WFd"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Account Settings" id="Ynn-ur-5O4"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pCL-Mv-C3P" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2479" y="272"/>
         </scene>
         <!--Register-->
         <scene sceneID="4bD-I2-fan">
@@ -1159,7 +1288,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="600" height="50"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="16"/>
-                                                    <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
+                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress"/>
                                                 </textField>
                                             </subviews>
                                             <constraints>
