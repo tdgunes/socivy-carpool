@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class LoginViewController: UITableViewController, SocivyAuthenticateAPIDelegate, SocivyLoginAPIDelegate, SocivyDeviceStoreAPIDelegate {
+class LoginViewController: UITableViewController, SocivyAuthenticateAPIDelegate, SocivyLoginAPIDelegate, SocivyDeviceStoreAPIDelegate, UITextFieldDelegate {
     
     
     @IBOutlet weak var emailCell: TextFieldCell?
@@ -25,6 +25,25 @@ class LoginViewController: UITableViewController, SocivyAuthenticateAPIDelegate,
     
     var activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.WhiteLarge)
     var alert = UIAlertView()
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        if emailCell?.textField == textField {
+            textField.resignFirstResponder()
+            passwordCell!.textField!.becomeFirstResponder()        }
+        else if passwordCell?.textField == textField {
+            passwordCell?.textField!.resignFirstResponder()
+            
+            println("[peek] loginCell touched")
+            println("[peek] Email: \(emailCell?.textField?.text)")
+            println("[peek] Password: \(passwordCell?.textField?.text)")
+            
+            SocivyAPI.sharedInstance.authenticateAPI?.authenticate(self.emailCell!.textField!.text, password: self.passwordCell!.textField!.text)
+            self.applyBackgroundProcessMode(true)
+            
+        }
+        
+        return true
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

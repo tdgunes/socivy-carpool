@@ -13,7 +13,7 @@ protocol SocivyLogoutAPIDelegate {
     func logoutDidFailWithError(socivyAPI:SocivyLogoutAPI, error:NSError)
 }
 
-class SocivyLogoutAPI: SocivyBaseAPI {
+class SocivyLogoutAPI: SocivyBaseLoginAPI {
     var delegate: SocivyLogoutAPIDelegate?
     
     init(api:SocivyAPI) {
@@ -43,7 +43,10 @@ class SocivyLogoutAPI: SocivyBaseAPI {
         
         
         if json.isNull == false && json.isError == false {
-            if json["info"]["status_code"].asInt == 2 {
+            if json["info"]["status_code"].asInt == 2  {
+                if json["info"]["error_code"].asInt == 4 {
+                    self.loginAPI?.login()
+                }
                 self.delegate?.logoutDidFailWithError(self, error: self.generateError())
             }
             else {
@@ -54,5 +57,13 @@ class SocivyLogoutAPI: SocivyBaseAPI {
         else {
             self.log("parse error")
         }
+    }
+    
+    override func loginDidFinish(socivyAPI:SocivyLoginAPI){
+        self.logout()
+    
+    }
+    override  func loginDidFailWithError(socivyAPI:SocivyLoginAPI, error:NSError){
+    
     }
 }
