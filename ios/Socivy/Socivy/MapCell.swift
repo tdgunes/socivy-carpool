@@ -11,7 +11,7 @@ import UIKit
 import MapKit
 
 class MapCell: UITableViewCell {
-    @IBOutlet var mapView: MKMapView?
+    @IBOutlet weak var mapView: MKMapView?
     
     
 }

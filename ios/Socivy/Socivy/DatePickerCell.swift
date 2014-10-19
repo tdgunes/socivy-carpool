@@ -10,5 +10,5 @@ import Foundation
 import UIKit
 
 class DatePickerCell: UITableViewCell {
-    @IBOutlet var datePicker: UIDatePicker?
+    @IBOutlet weak var datePicker: UIDatePicker?
 }

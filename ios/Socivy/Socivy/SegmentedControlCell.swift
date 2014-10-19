@@ -10,5 +10,5 @@ import Foundation
 import UIKit
 
 class SegmentedControlCell: UITableViewCell {
-    @IBOutlet var segmentedControl: UISegmentedControl?
+    @IBOutlet weak var segmentedControl: UISegmentedControl?
 }

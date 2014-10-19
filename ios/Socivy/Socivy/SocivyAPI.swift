@@ -91,6 +91,9 @@ class SocivyAPI {
     var logoutAPI:SocivyLogoutAPI?
     var deviceStoreAPI:SocivyDeviceStoreAPI?
     
+    var settingIndexAPI:SocivySettingIndexAPI?
+    var settingStoreAPI:SocivySettingStoreAPI?
+    
     var expireTime:Int?
     
     class var sharedInstance : SocivyAPI {
@@ -114,6 +117,10 @@ class SocivyAPI {
 
         self.deviceStoreAPI = SocivyDeviceStoreAPI(api:self)
         self.logoutAPI = SocivyLogoutAPI(api:self)
+        
+        self.settingIndexAPI = SocivySettingIndexAPI(api:self)
+        self.settingStoreAPI = SocivySettingStoreAPI(api:self)
+        
     }
 
 
