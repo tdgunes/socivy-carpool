@@ -26,16 +26,6 @@
             android:padding="3dp"
             android:text="@string/string_vehicle" />
         
-        <Button
-            android:id="@+id/button_find"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/custom_button"
-            android:text="@string/string_findroute"
-            android:textColor="#fff" />
-
-        
-
         <ProgressBar
             android:id="@+id/progressBar1"
             style="?android:attr/progressBarStyleLarge"
@@ -46,11 +36,20 @@
         <ListView
             android:id="@+id/routeslist"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
             android:paddingBottom="15dp"
             android:paddingLeft="15dp"
+            android:layout_weight="1"
             android:paddingRight="15dp" >
         </ListView>
+        
+        <Button
+            android:id="@+id/button_find"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/custom_button"
+            android:text="@string/string_findroute"
+            android:textColor="#fff" />
     </LinearLayout>
 
 </android.support.v4.widget.SwipeRefreshLayout>

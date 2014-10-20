@@ -75,7 +75,7 @@
         <activity
             android:name="com.socivy.ozucarpool.InfoActivity"
             android:label="@string/title_activity_info"
-            android:theme="@style/Theme.AppCompat.Light" >
+            android:theme="@style/AppBaseTheme" >
         </activity>
         <activity
             android:name="com.socivy.ozucarpool.UserActivity"
@@ -101,7 +101,8 @@
         </activity>
         <activity
             android:name="com.socivy.ozucarpool.FindRouteActivity"
-            android:label="@string/title_activity_find_route" >
+            android:label="@string/title_activity_find_route"
+            android:theme="@style/AppBaseTheme" >
         </activity>
     </application>
 

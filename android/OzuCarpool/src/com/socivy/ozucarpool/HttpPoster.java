@@ -9,6 +9,7 @@ import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpVersion;
 import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpDelete;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.conn.ClientConnectionManager;
@@ -87,6 +88,32 @@ public class HttpPoster {
 
 		return builder.toString();
 	}
+	
+	public static String deleteRequest(String address, Context context) throws Exception{
+		StringBuilder builder = new StringBuilder();
+		HttpClient client = new DefaultHttpClient();
+		HttpDelete httpDelete = new HttpDelete(address);
+		httpDelete.addHeader("Access-token", AppCredintals.getAccessToken(context));
+		HttpResponse response = client.execute(httpDelete);
+
+		HttpEntity entity = response.getEntity();
+		InputStream content = entity.getContent();
+		BufferedReader reader = new BufferedReader(new InputStreamReader(content));
+		String line;
+		while((line = reader.readLine()) != null){
+			builder.append(line);
+		}
+
+		JSONObject json = new JSONObject(builder.toString());
+		JSONObject info = json.getJSONObject("info");
+		int error = info.getInt("error_code");
+		if (error == 4 || error == 3) { //expire olduysak bi daha baðlan ve tekrar çaðýr
+			new ExpiredAuthenticator().tryLogin(context);
+			return deleteRequest(address, context);
+		}
+		
+		return builder.toString();
+	}
 
 	public static String postJSON(String address, Context context, String jsonData) throws Exception{
 		StringBuilder builder = new StringBuilder();
@@ -95,7 +122,7 @@ public class HttpPoster {
 		httpPost.addHeader("Access-token", AppCredintals.getAccessToken(context));
 		httpPost.setHeader("Accept", "application/json");
 		httpPost.addHeader("Content-type", "application/json");
-		StringEntity sendEntity = new StringEntity(jsonData);
+		StringEntity sendEntity = new StringEntity(jsonData, "UTF-8");
 		httpPost.setEntity(sendEntity);
 
 		HttpResponse response = client.execute(httpPost);

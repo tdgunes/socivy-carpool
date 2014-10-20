@@ -17,8 +17,6 @@ import android.widget.RadioButton;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
-import com.socivy.ozucarpool.R;
-
 public class AddRouteActivity extends Activity {
 
 
@@ -78,13 +76,28 @@ public class AddRouteActivity extends Activity {
 						stopsArray.put(new JSONObject().accumulate("id", stopId));
 					}
 					postJson.accumulate("points", stopsArray);
-					
+
 
 					new ContextTask<String, Void, String>(AddRouteActivity.this) {
 
 						@Override
 						protected void onPostExecute(String result) {
-							Toast.makeText(context, "Route added", Toast.LENGTH_LONG).show();
+							try {
+								JSONObject json = new JSONObject(result);
+								System.out.println(json.toString());
+								JSONObject info = json.getJSONObject("info");
+								int error = info.getInt("error_code");
+								
+								if (error == 0) {
+									Toast.makeText(context, "Route added", Toast.LENGTH_LONG).show();
+									finish();
+								} 
+								else {
+									Toast.makeText(context, "Some problem occured", Toast.LENGTH_LONG).show();
+								}
+							} catch(Exception ex) {
+								Toast.makeText(context, "Some problem occured", Toast.LENGTH_LONG).show();
+							}
 							super.onPostExecute(result);
 						}
 
@@ -125,7 +138,7 @@ public class AddRouteActivity extends Activity {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.add_route, menu);
+		//getMenuInflater().inflate(R.menu.add_route, menu);
 		return false;
 	}
 

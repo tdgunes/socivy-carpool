@@ -18,6 +18,7 @@ public class RouteInfo implements Parcelable{
 	public int seats;
 	public boolean toSchool;
 	public String description;
+	public boolean joined;
 	
 	public String jsonData;
 

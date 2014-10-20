@@ -8,6 +8,13 @@
         android:orientation="vertical"
         android:paddingLeft="0dp"
         android:paddingRight="0dp" >
+        
+        <ProgressBar
+            android:id="@+id/progressBar3"
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:indeterminate="true" />
 
         <TextView
             android:layout_width="match_parent"
@@ -17,20 +24,21 @@
             android:text="My Settings" />
 
         <CheckBox
-            android:id="@+id/checkBox1"
+            android:id="@+id/checktel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Oluşturduğum rotalarda telefon numaramı göster"
             android:textColor="#4456aa"
             android:textSize="14sp"  />
         
-        <CheckBox
-            android:id="@+id/checkBox2"
+        <!--  CheckBox
+            android:id="@+id/checkgps"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="GPS konumlarıma izin ver"
             android:textColor="#4456aa"
             android:textSize="14sp"  />
+            -->
 
         <TextView
             android:layout_width="match_parent"

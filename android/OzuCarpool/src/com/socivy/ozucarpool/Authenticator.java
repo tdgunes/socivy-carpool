@@ -49,10 +49,13 @@ public class Authenticator extends AsyncTask<String, String, String> {
 				AppCredintals.userSecret = resultObject.getString("user_secret");
 				AppCredintals.expireTime = Long.parseLong(resultObject.getString("expire_time"));
 				
+				
 				Intent intent = new Intent(current, UserActivity.class);
 				intent.putExtra("accessToken", AppCredintals.accessToken);
 				intent.putExtra("userSecret", AppCredintals.userSecret);
-				AppCredintals.getPrefs(current).edit().putString("accessToken", AppCredintals.accessToken).putString("userSecret", AppCredintals.userSecret).commit();
+				AppCredintals.getPrefs(current).edit().putString("accessToken", resultObject.getString("access_token")).putString("userSecret", resultObject.getString("user_secret")).commit();
+
+				System.out.println("token: "+ AppCredintals.getUserSecret(current));
 				current.startActivity(intent);
 				((Activity)current).finish();
 			}

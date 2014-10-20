@@ -50,7 +50,7 @@ public class AppCredintals {
 
 
 	public static SharedPreferences getPrefs(Context context) {
-		return context.getSharedPreferences("settings", 0);
+		return context.getSharedPreferences("socivysettings", 0);
 	}
 
 	public static String getAccessToken(Context context) {
@@ -101,8 +101,7 @@ public class AppCredintals {
 
 
 	public static SharedPreferences getGCMPreferences(Context context) {
-		return context.getSharedPreferences(UserActivity.class.getSimpleName(),
-				Context.MODE_PRIVATE);
+		return getPrefs(context); //context.getSharedPreferences(UserActivity.class.getSimpleName(),Context.MODE_PRIVATE);
 	}
 
 	public static void registerInBackground(Context context) {

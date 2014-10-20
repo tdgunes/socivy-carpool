@@ -6,8 +6,24 @@
     -->
     <style name="AppBaseTheme" parent="Theme.AppCompat.Light">
         <!-- API 11 theme customizations can go here. -->
+        <item name="android:actionBarStyle">@style/Widget.Styled.ActionBar</item>
+        <item name="android:actionMenuTextColor">@color/blue25</item>
     </style>
     
+     <style name="Widget.Styled.ActionBar" parent="@style/Widget.AppCompat.Light.ActionBar">
+        <item name="android:titleTextStyle">@style/ActionBarTitleText</item>
+        <item name="android:subtitleTextStyle">@style/ActionBarSubTitleText</item>
+        <item name="android:background">@color/blue25</item>
+    </style>
 
+    <style name="ActionBarTitleText" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:textColor">#FF000000</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="ActionBarSubTitleText" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Subtitle">
+        <item name="android:textColor">#FF000000</item>
+        <item name="android:textSize">20sp</item>
+    </style>
 
 </resources>

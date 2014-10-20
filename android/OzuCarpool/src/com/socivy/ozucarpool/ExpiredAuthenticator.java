@@ -45,13 +45,15 @@ public class ExpiredAuthenticator {
 			JSONObject jObject = new JSONObject(result);
 			JSONObject status = jObject.getJSONObject("info");
 			int resultStr = status.getInt("status_code");
+			System.out.println("success1\n"+AppCredintals.getUserSecret(context)+"\n"+result);
 			if (resultStr == 1) {
 				JSONObject resultObject = jObject.getJSONObject("result");
 				AppCredintals.accessToken = resultObject.getString("access_token");
 				AppCredintals.expireTime = Long.parseLong(resultObject.getString("expire_time"));
-				AppCredintals.getPrefs(context).edit().putString("accessToken", AppCredintals.accessToken).putLong("expireTime", AppCredintals.expireTime).commit();
-
+				AppCredintals.getPrefs(context).edit().putString("accessToken", resultObject.getString("access_token")).putLong("expireTime", AppCredintals.expireTime).commit();
+				
                 AppCredintals.sendRegistrationIdToBackend(context);
+                System.out.println("success2");
 				return true;
 			}
 
