@@ -90,6 +90,43 @@ class SocivyDatePicker: UITableViewCell, UIPickerViewDataSource, UIPickerViewDel
         self.pickerData = [hours, minutes, ["Today","Tomorrow"]]
     }
     
+    
+    func makePickerDataForLaterToday() {
+        var currentComponents = NSCalendar.currentCalendar().components(NSCalendarUnit.DayCalendarUnit | NSCalendarUnit.HourCalendarUnit | NSCalendarUnit.MonthCalendarUnit | NSCalendarUnit.MinuteCalendarUnit | NSCalendarUnit.YearCalendarUnit, fromDate: NSDate.date())
+        
+        var index: Int
+        var hours:[String] = []
+        var minutes:[String] = []
+        
+        var start_minute:Int = (currentComponents.minute - currentComponents.minute % 5)+5
+        var start_hour:Int = currentComponents.hour
+        
+        if start_minute == 60 {
+            start_minute = 0
+            start_hour = start_hour + 1
+        }
+        
+        for index = 0; index < 60; index = index + 5{
+            var string:NSString = "\(index)"
+            if string.length == 1 {
+                string = "0\(string)"
+            }
+            minutes.append(string)
+        }
+        
+        
+        for index = start_hour; index < 24; ++index {
+            var string:NSString = "\(index)"
+            if string.length == 1 {
+                string = "0\(string)"
+            }
+            hours.append(string)
+        }
+        
+        self.pickerData = [hours, minutes, ["Today","Tomorrow"]]
+    }
+
+    
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
 
@@ -115,7 +152,7 @@ class SocivyDatePicker: UITableViewCell, UIPickerViewDataSource, UIPickerViewDel
     }
 
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String! {
-        return pickerData[component][row];
+        return pickerData[component][row]
     }
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
@@ -125,6 +162,18 @@ class SocivyDatePicker: UITableViewCell, UIPickerViewDataSource, UIPickerViewDel
         else if  component == 2 && row == 0 {
             self.makePickerDataForToday()
         }
+        
+        
+        if self.pickerView(self.picker , titleForRow: self.picker.selectedRowInComponent(2), forComponent: 2) == "Today"{
+            if component == 0 && row > 0 {
+                self.makePickerDataForLaterToday()
+            }
+            else if component == 0 && row == 0{
+                self.makePickerDataForToday()
+            }
+        }
+        
+        
         self.picker.reloadAllComponents()
     }
 

@@ -17,6 +17,8 @@ class RoutesViewController: UITableViewController, SocivyAvailableRouteAPIDelega
     var routes:[Route] = []
     var tableRefreshControl = UIRefreshControl()
     
+    @IBOutlet weak var infoLabel: UILabel!
+    
     func routesDidReturn(socivyRouteAPI:SocivyAvailableRouteAPI, routes:JSON){
         self.routes = []
         let routeArray = routes.asArray! as [JSON]
@@ -32,6 +34,14 @@ class RoutesViewController: UITableViewController, SocivyAvailableRouteAPIDelega
             index += 1
             
         }
+        
+        if self.routes.count == 0 {
+            infoLabel.hidden = false
+        }
+        else {
+            infoLabel.hidden = true
+        }
+        
         
         println("[RoutesVC] self.routes.count = \(self.routes.count) ")
         self.tableView.reloadData()
@@ -114,7 +124,7 @@ class RoutesViewController: UITableViewController, SocivyAvailableRouteAPIDelega
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         var route = routes[indexPath.section]
         
-        let height:CGFloat =  CGFloat(140+route.stops.count*45)
+        let height:CGFloat =  CGFloat(126+route.stops.count*45)
         return height
     }
     

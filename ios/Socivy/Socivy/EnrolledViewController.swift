@@ -115,7 +115,7 @@ class EnrolledViewController: UITableViewController, SocivyRouteEnrolledAPIDeleg
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         var route = routes[indexPath.section]
-        let height:CGFloat =  CGFloat(140+route.stops.count*45)
+        let height:CGFloat =  CGFloat(126+route.stops.count*45)
         return height
     }
     

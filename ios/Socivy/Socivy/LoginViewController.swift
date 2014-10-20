@@ -63,8 +63,7 @@ class LoginViewController: UITableViewController, SocivyAuthenticateAPIDelegate,
         
 
         
-        var tapRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
-        tapRecognizer.cancelsTouchesInView = true
+
         
         self.activityIndicator.center = self.navigationController!.view.center
         self.activityIndicator.stopAnimating()
@@ -81,7 +80,6 @@ class LoginViewController: UITableViewController, SocivyAuthenticateAPIDelegate,
         }
         
     }
-    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

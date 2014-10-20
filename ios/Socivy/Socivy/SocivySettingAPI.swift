@@ -56,7 +56,7 @@ class SocivySettingIndexAPI: SocivyBaseLoginAPI {
             self.log("parse error")
         }
     }
-    
+
     override  func loginDidFinish(socivyAPI:SocivyLoginAPI){
         self.fetch()
     }
@@ -66,9 +66,6 @@ class SocivySettingIndexAPI: SocivyBaseLoginAPI {
     }
     
 }
-
-
-
 
 protocol SocivySettingStoreAPIDelegate {
     func storeDidFinish(ettingStoreAPI:SocivySettingStoreAPI)
@@ -86,11 +83,11 @@ class SocivySettingStoreAPI: SocivyBaseLoginAPI {
     
     func store(name:String, password:String, phone:String, showPhone:Bool) {
         self.log("fetch")
-        var postData = ["name":name, "information":["phone":phone],
+        var postData:Dictionary = ["name":name, "information":["phone":phone],
             "route_settings":["show_phone":showPhone] ]
             
         if password != ""{
-           postData.setValue(password, forKey: "password")
+           postData["password"] = password
         }
         
         self.storedPost = JSON(postData).toString(pretty: false)
@@ -105,7 +102,7 @@ class SocivySettingStoreAPI: SocivyBaseLoginAPI {
     }
     
     override func requestFailWithError(asyncHTTPRequest:AsyncHTTPRequest, error:NSError){
-        
+        self.delegate?.storeDidFail(self, error:self.generateError())
     }
     
     override func requestDidFinish(asyncHTTPRequest: AsyncHTTPRequest, _ response: NSMutableData) {

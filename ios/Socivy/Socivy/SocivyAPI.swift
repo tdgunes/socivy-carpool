@@ -33,6 +33,14 @@ class SocivyBaseAPI: AsyncHTTPRequestDelegate {
         }
     }
     
+    func makePOST(payload:[String:String]){
+        self.log("makePOST:")
+        let postData = JSON(payload).toString(pretty: false)
+        self.asyncRequest = AsyncHTTPRequest(url: self.url, headerDictionary:["Content-Type":"application/json"], postData:postData, httpType:"POST")
+        self.asyncRequest?.delegate = self
+        self.asyncRequest?.start()
+    }
+    
     func requestFailWithError(asyncHTTPRequest:AsyncHTTPRequest, error:NSError){
         fatalError("requestFailWithError(asyncHTTPRequest:, error:) has not been implemented")
     }
@@ -89,10 +97,12 @@ class SocivyAPI {
     var cancelRouteAPI:SocivyRouteCancelAPI?
     var loginAPI:SocivyLoginAPI?
     var logoutAPI:SocivyLogoutAPI?
-    var deviceStoreAPI:SocivyDeviceStoreAPI?
     
+    var deviceStoreAPI:SocivyDeviceStoreAPI?
     var settingIndexAPI:SocivySettingIndexAPI?
     var settingStoreAPI:SocivySettingStoreAPI?
+    
+    var registerAPI:SocivyRegisterAPI?
     
     var expireTime:Int?
     
@@ -120,7 +130,7 @@ class SocivyAPI {
         
         self.settingIndexAPI = SocivySettingIndexAPI(api:self)
         self.settingStoreAPI = SocivySettingStoreAPI(api:self)
-        
+        self.registerAPI = SocivyRegisterAPI(api:self)
     }
 
 
