@@ -12,10 +12,10 @@ import Foundation
 protocol SocivySettingIndexAPIDelegate {
     func fetchDidFinish(settingIndexAPI:SocivySettingIndexAPI, user:JSON)
     func fetchDidFail(settingIndexAPI:SocivySettingIndexAPI, error:NSError)
+    func authDidFail()
 }
 
 class SocivySettingIndexAPI: SocivyBaseLoginAPI {
-    
     var delegate: SocivySettingIndexAPIDelegate?
     
     init(api:SocivyAPI){
@@ -24,37 +24,34 @@ class SocivySettingIndexAPI: SocivyBaseLoginAPI {
     
     func fetch() {
         self.log("fetch")
-        self.asyncRequest = AsyncHTTPRequest(url: self.url, headerDictionary: ["Access-token":self.api.access_token!], postData: "", httpType: "GET")
-        self.asyncRequest?.delegate = self
-        self.asyncRequest?.start()
+        self.makeGETAuth()
     }
     
     override func requestFailWithError(asyncHTTPRequest:AsyncHTTPRequest, error:NSError){
-        
+        self.delegate?.fetchDidFail(self, error: error)
     }
     
     override func requestDidFinish(asyncHTTPRequest: AsyncHTTPRequest, _ response: NSMutableData) {
         self.log("requestDidFinish")
-        
         let json = JSON.parse(NSString(data: response, encoding: NSASCIIStringEncoding))
-        let info = json["info"].toString(pretty: true)
+        let validationResult = SocivyErrorHandler(json:json).validate()
         
-        self.log(" raw: \(json.toString(pretty: true))")
-        
-        if json.isNull == false && json.isError == false {
-            
-            if json["info"]["status_code"].asInt == 2 && json["info"]["error_code"].asInt == 4{
-                println("[route] self.loginAPI?.login()")
-                self.loginAPI?.login()
-            }
-            else if json["info"]["status_code"].asInt == 1 {
-                var user = json["result"]
-                self.delegate?.fetchDidFinish(self,user: user)
-            }
+        switch validationResult{
+        case .Success:
+            var user = json["result"]
+            self.delegate?.fetchDidFinish(self,user: user)
+            break
+        case .InvalidAccessToken:
+            self.loginAPI?.login()
+            break
+        case .InvalidUserSecret:
+            self.delegate?.authDidFail()
+            break
+        default:
+            var error = SocivyErrorFactory().create(validationResult)
+            self.delegate?.fetchDidFail(self, error: error)
         }
-        else {
-            self.log("parse error")
-        }
+
     }
 
     override  func loginDidFinish(socivyAPI:SocivyLoginAPI){
@@ -62,7 +59,7 @@ class SocivySettingIndexAPI: SocivyBaseLoginAPI {
     }
     
     override  func loginDidFailWithError(socivyAPI:SocivyLoginAPI, error:NSError){
-        self.log("loginDidFailWithError")
+        self.delegate?.authDidFail()
     }
     
 }
@@ -70,12 +67,13 @@ class SocivySettingIndexAPI: SocivyBaseLoginAPI {
 protocol SocivySettingStoreAPIDelegate {
     func storeDidFinish(ettingStoreAPI:SocivySettingStoreAPI)
     func storeDidFail(settingStoreAPI:SocivySettingStoreAPI, error:NSError)
+    func authDidFail()
 }
 
 class SocivySettingStoreAPI: SocivyBaseLoginAPI {
     
     var delegate: SocivySettingStoreAPIDelegate?
-    var storedPost:String?
+    var storedPost:[String:AnyObject]?
     
     init(api:SocivyAPI){
         super.init(path: "/me/setting", api: api)
@@ -83,50 +81,47 @@ class SocivySettingStoreAPI: SocivyBaseLoginAPI {
     
     func store(name:String, password:String, phone:String, showPhone:Bool) {
         self.log("fetch")
-        var postData:Dictionary = ["name":name, "information":["phone":phone],
+        var postData:[String:AnyObject] = ["name":name, "information":["phone":phone],
             "route_settings":["show_phone":showPhone] ]
             
         if password != ""{
            postData["password"] = password
         }
+        self.storedPost = postData
         
-        self.storedPost = JSON(postData).toString(pretty: false)
         self.request()
     }
     
     func request(){
-        self.asyncRequest = AsyncHTTPRequest(url: self.url, headerDictionary: ["Access-token":self.api.access_token!,"Content-Type":"application/json"], postData:self.storedPost!, httpType: "POST")
-
-        self.asyncRequest?.delegate = self
-        self.asyncRequest?.start()
+        self.makePOSTAuth(self.storedPost!)
     }
     
     override func requestFailWithError(asyncHTTPRequest:AsyncHTTPRequest, error:NSError){
-        self.delegate?.storeDidFail(self, error:self.generateError())
+        self.delegate?.storeDidFail(self, error:error)
     }
     
     override func requestDidFinish(asyncHTTPRequest: AsyncHTTPRequest, _ response: NSMutableData) {
         self.log("requestDidFinish")
         
         let json = JSON.parse(NSString(data: response, encoding: NSASCIIStringEncoding))
-        let info = json["info"].toString(pretty: true)
+        let validationResult = SocivyErrorHandler(json:json).validate()
         
-        self.log(" raw: \(json.toString(pretty: true))")
+        switch validationResult{
+        case .Success:
+            var routes = json["result"]
+            self.delegate?.storeDidFinish(self)
+            break
+        case .InvalidAccessToken:
+            self.loginAPI?.login()
+            break
+        case .InvalidUserSecret:
+            self.delegate?.authDidFail()
+            break
+        default:
+            var error = SocivyErrorFactory().create(validationResult)
+            self.delegate?.storeDidFail(self, error: error)
+        }
         
-        if json.isNull == false && json.isError == false {
-            
-            if json["info"]["status_code"].asInt == 2 && json["info"]["error_code"].asInt == 4{
-                println("[route] self.loginAPI?.login()")
-                self.loginAPI?.login()
-            }
-            else if json["info"]["status_code"].asInt == 1 {
-                var user = json["result"]
-                self.delegate?.storeDidFinish(self)
-            }
-        }
-        else {
-            self.log("parse error")
-        }
     }
     
     override  func loginDidFinish(socivyAPI:SocivyLoginAPI){
@@ -134,7 +129,7 @@ class SocivySettingStoreAPI: SocivyBaseLoginAPI {
     }
     
     override  func loginDidFailWithError(socivyAPI:SocivyLoginAPI, error:NSError){
-        self.log("loginDidFailWithError")
+        self.delegate?.authDidFail()
     }
     
 }

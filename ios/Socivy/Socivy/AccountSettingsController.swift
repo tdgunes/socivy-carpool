@@ -92,9 +92,12 @@ class AccountSettingsController: UITableViewController, SocivySettingIndexAPIDel
     }
     func storeDidFail(settingStoreAPI:SocivySettingStoreAPI, error:NSError){
         self.applyBackgroundProcessMode(false)
+        self.settingStoreAPI?.showError(error)
     }
     
-
+    func authDidFail() {
+        // TODO, dismissView twice needed
+    }
     
     func fetchDidFinish(settingIndexAPI:SocivySettingIndexAPI, user:JSON){
         var email = user["email"].asString!
@@ -116,7 +119,7 @@ class AccountSettingsController: UITableViewController, SocivySettingIndexAPIDel
 
     }
     func fetchDidFail(settingIndexAPI:SocivySettingIndexAPI, error:NSError){
-
+        self.settingIndexAPI?.showError(error)
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {

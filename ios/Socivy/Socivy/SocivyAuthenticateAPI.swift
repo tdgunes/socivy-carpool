@@ -24,12 +24,7 @@ class SocivyAuthenticateAPI: SocivyBaseAPI{
     
     func authenticate(email:String, password:String) {
         let payload:[String:String] = ["email":email, "password":password, "public_key": api.public_key]
-        let postData = JSON(payload).toString(pretty: false)
-        
-        
-        self.asyncRequest = AsyncHTTPRequest(url: self.url, headerDictionary:["Content-Type":"application/json"], postData:postData, httpType:"POST")
-        self.asyncRequest?.delegate = self
-        self.asyncRequest?.start()
+        self.makePOST(payload)
     }
     
     override func requestFailWithError(asyncHTTPRequest:AsyncHTTPRequest, error:NSError){
@@ -38,35 +33,24 @@ class SocivyAuthenticateAPI: SocivyBaseAPI{
     
     override func requestDidFinish(asyncHTTPRequest: AsyncHTTPRequest, _ response: NSMutableData) {
         self.log("requestDidFinish")
-        
         let json = JSON.parse(NSString(data: response, encoding: NSASCIIStringEncoding))
-        self.log("\n \(json.toString(pretty: true))")
+        let validationResult = SocivyErrorHandler(json:json).validate()
         
-        
-        if json.isNull == false && json.isError == false {
-            if json["info"]["status_code"].asInt == 1 {
-                self.api.user_secret = json["result"]["user_secret"].asString
-                self.api.access_token = json["result"]["access_token"].asString
-                self.api.expireTime = json["result"]["expire_time"].asInt
-                
-                self.delegate?.authenticateDidFinish(self)
-            }
-            else if json["info"]["status_code"].asInt == 2 {
-                let description:String = "Something terrible happened! \nFailed to login."
-                let reason: String = "The operation timed out."
-                let suggestion: String = "Have you tried turning it off and on again?"
-                
-                let userInfo: NSDictionary = [ NSLocalizedDescriptionKey: description, NSLocalizedFailureReasonErrorKey: reason,NSLocalizedRecoverySuggestionErrorKey: suggestion]
-                let error = NSError(domain:"com.tdg.dilixiri", code:-57, userInfo:userInfo)
-                
-                self.delegate?.authenticateDidFailWithError(self, error: error)
-            }
+        switch validationResult{
+        case .Success:
+            
+            self.api.user_secret = json["result"]["user_secret"].asString
+            self.api.access_token = json["result"]["access_token"].asString
+            self.api.expireTime = json["result"]["expire_time"].asInt
+            self.delegate?.authenticateDidFinish(self)
+            break
+        default:
+            var error = SocivyErrorFactory().create(validationResult)
+            self.delegate?.authenticateDidFailWithError(self, error:error)
         }
-        else {
-            self.log("parse error")
-        }
+
         
-   
+
         
     }
     

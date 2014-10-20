@@ -78,8 +78,22 @@ class MyRoutesViewController: UITableViewController, SocivyRouteSelfAPIDelegate 
         self.tableView.reloadData()
         self.tableRefreshControl.endRefreshing()
     }
+    
     func fetchDidFail(storeRouteApi:SocivyRouteSelfAPI, error:NSError){
-        
+        var alert = UIAlertView()
+        alert.title = "Error"
+        alert.message = error.localizedDescription
+        alert.addButtonWithTitle("OK")
+        alert.show()
+    }
+    
+    func authDidFail() {
+        var alert = UIAlertView()
+        alert.title = "Error"
+        alert.message = "Your session is expired."
+        alert.addButtonWithTitle("OK")
+        alert.show()
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     func refreshControlRequest(){

@@ -168,11 +168,7 @@ class LoginViewController: UITableViewController, SocivyAuthenticateAPIDelegate,
     func authenticateDidFailWithError(socivyAPI:SocivyAuthenticateAPI, error:NSError){
         self.applyBackgroundProcessMode(false)
         
-        var alertView = UIAlertView()
-        alert.title = "Error"
-        alert.message = error.localizedDescription
-        alert.addButtonWithTitle("OK")
-        alert.show()
+
         
     }
     

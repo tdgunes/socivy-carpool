@@ -147,10 +147,10 @@
 		3D5D005519F1E12900A6ADD3 /* SocivyRouteAPI */ = {
 			isa = PBXGroup;
 			children = (
+				3D5D005A19F1E19B00A6ADD3 /* RouteSelfAPI.swift */,
 				3DFD3D2519EA9554008C6B73 /* RouteDestoryAPI.swift */,
 				3D5D005619F1E14300A6ADD3 /* RouteAvailableAPI.swift */,
 				3D5D005819F1E16F00A6ADD3 /* RouteStoreAPI.swift */,
-				3D5D005A19F1E19B00A6ADD3 /* RouteSelfAPI.swift */,
 				3D5D005C19F1E21600A6ADD3 /* RouteEnrolledAPI.swift */,
 				3D5D005E19F1E23B00A6ADD3 /* RouteRequestAPI.swift */,
 				3D5D006019F1E25600A6ADD3 /* RouteCancelAPI.swift */,

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 let DEBUG:Bool = true
 
@@ -32,6 +33,8 @@ class SocivyBaseAPI: AsyncHTTPRequestDelegate {
             println("[\(self.path)] \(string)")
         }
     }
+    
+
     
     func makePOST(payload:[String:String]){
         self.log("makePOST:")
@@ -68,12 +71,30 @@ class SocivyBaseLoginAPI: SocivyBaseAPI, SocivyLoginAPIDelegate{
         self.loginAPI = SocivyLoginAPI(api:self.api)
         self.loginAPI?.delegate = self
     }
+    
+    func makeGETAuth(){
+        self.asyncRequest = AsyncHTTPRequest(url: self.url, headerDictionary: ["Access-token":self.api.access_token!], postData: "", httpType: "GET")
+        self.asyncRequest?.delegate = self
+        self.asyncRequest?.start()
+    }
+    
+    func makePOSTAuth(payload:[String:AnyObject]){
+        self.log("makeAuthPOST:")
+        let postData = JSON(payload).toString(pretty: false)
+        self.asyncRequest = AsyncHTTPRequest(url: self.url, headerDictionary:["Content-Type":"application/json","Access-token":self.api.access_token!], postData:postData, httpType:"POST")
+        self.asyncRequest?.delegate = self
+        self.asyncRequest?.start()
+    }
 
     func loginDidFinish(socivyAPI:SocivyLoginAPI){
         fatalError("loginDidFinish(socivyAPI:) has not been implemented")
     }
     func loginDidFailWithError(socivyAPI:SocivyLoginAPI, error:NSError){
         fatalError("loginDidFailWithError(socivyAPI:SocivyLoginAPI, error:) has not been implemented")
+    }
+    
+    func showError(error:NSError){
+        self.api.showError(error)
     }
 }
 
@@ -151,6 +172,14 @@ class SocivyAPI {
     
     func loadUserSecret(){
         self.user_secret = KeychainService.stringForKey("user_secret")
+    }
+    
+    func showError(error:NSError){
+        var alert = UIAlertView()
+        alert.title = "Error"
+        alert.message = error.localizedDescription
+        alert.addButtonWithTitle("OK")
+        alert.show()
     }
 }
 
