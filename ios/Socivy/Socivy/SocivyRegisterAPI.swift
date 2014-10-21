@@ -5,6 +5,7 @@
 //  Created by Taha Doğan Güneş on 20/10/14.
 //  Copyright (c) 2014 TDG. All rights reserved.
 //
+//  error-handling: done
 
 import Foundation
 

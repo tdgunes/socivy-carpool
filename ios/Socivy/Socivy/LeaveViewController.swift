@@ -29,6 +29,10 @@ class LeaveViewController: UITableViewController, UIActionSheetDelegate, SocivyR
     
     weak var cancelRouteAPI = SocivyAPI.sharedInstance.cancelRouteAPI
     
+    func authDidFail(){
+        
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()

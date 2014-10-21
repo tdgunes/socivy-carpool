@@ -529,7 +529,13 @@
                             <outlet property="delegate" destination="sbH-eV-oY9" id="jSj-RO-Egr"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="5ch-cd-2Fb"/>
+                    <navigationItem key="navigationItem" id="5ch-cd-2Fb">
+                        <barButtonItem key="rightBarButtonItem" title="Share" id="OFy-Rp-nxW">
+                            <connections>
+                                <action selector="share:" destination="sbH-eV-oY9" id="tYP-hR-Q0r"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sbt-lA-mGb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

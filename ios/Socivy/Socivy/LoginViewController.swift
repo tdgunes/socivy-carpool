@@ -26,6 +26,8 @@ class LoginViewController: UITableViewController, SocivyAuthenticateAPIDelegate,
     var activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.WhiteLarge)
     var alert = UIAlertView()
     
+    
+    
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         if emailCell?.textField == textField {
             textField.resignFirstResponder()
@@ -77,6 +79,7 @@ class LoginViewController: UITableViewController, SocivyAuthenticateAPIDelegate,
 
             self.loginAPI?.login()
             self.applyBackgroundProcessMode(true)
+            self.storeDeviceToken()
         }
         
     }
@@ -147,6 +150,10 @@ class LoginViewController: UITableViewController, SocivyAuthenticateAPIDelegate,
         alert.message = error.localizedDescription
         alert.addButtonWithTitle("OK")
         alert.show()
+    }
+    
+    func authDidFail(){
+        
     }
 
     

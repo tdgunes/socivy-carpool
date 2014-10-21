@@ -29,6 +29,11 @@ class JoinViewController: UITableViewController, UIActionSheetDelegate, SocivyRo
 
     weak var requestRouteAPI = SocivyAPI.sharedInstance.requestRouteAPI
     
+    
+    func authDidFail(){
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.

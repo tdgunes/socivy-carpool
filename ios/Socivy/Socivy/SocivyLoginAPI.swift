@@ -18,7 +18,6 @@ class SocivyLoginAPI: SocivyBaseAPI {
     
     init(api:SocivyAPI) {
         super.init(path: "/login", api: api)
-
     }
 
     func login() {

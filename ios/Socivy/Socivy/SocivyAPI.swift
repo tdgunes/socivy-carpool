@@ -11,6 +11,7 @@ import UIKit
 
 let DEBUG:Bool = true
 
+
 class SocivyBaseAPI: AsyncHTTPRequestDelegate {
     var asyncRequest:AsyncHTTPRequest?
   
@@ -65,6 +66,9 @@ class SocivyBaseAPI: AsyncHTTPRequestDelegate {
     }
 
 }
+protocol SocivyBaseLoginAPIDelegate {
+    func authDidFail()
+}
 
 class SocivyBaseLoginAPI: SocivyBaseAPI, SocivyLoginAPIDelegate{
 
@@ -76,7 +80,16 @@ class SocivyBaseLoginAPI: SocivyBaseAPI, SocivyLoginAPIDelegate{
         self.loginAPI?.delegate = self
     }
     
+    
+    func makeGETAuth(customURL:String){
+        self.log("makeGETPOST:")
+        self.asyncRequest = AsyncHTTPRequest(url: customURL, headerDictionary: ["Access-token":self.api.access_token!], postData: "", httpType: "GET")
+        self.asyncRequest?.delegate = self
+        self.asyncRequest?.start()
+    }
+    
     func makeGETAuth(){
+        self.log("makeGETPOST:")
         self.asyncRequest = AsyncHTTPRequest(url: self.url, headerDictionary: ["Access-token":self.api.access_token!], postData: "", httpType: "GET")
         self.asyncRequest?.delegate = self
         self.asyncRequest?.start()
@@ -86,6 +99,20 @@ class SocivyBaseLoginAPI: SocivyBaseAPI, SocivyLoginAPIDelegate{
         self.log("makeAuthPOST:")
         let postData = JSON(payload).toString(pretty: false)
         self.asyncRequest = AsyncHTTPRequest(url: self.url, headerDictionary:["Content-Type":"application/json","Access-token":self.api.access_token!], postData:postData, httpType:"POST")
+        self.asyncRequest?.delegate = self
+        self.asyncRequest?.start()
+    }
+    
+    func makePOSTAuth(payload:[String:AnyObject], customURL:String){
+        self.log("makeAuthPOST:")
+        let postData = JSON(payload).toString(pretty: false)
+        self.asyncRequest = AsyncHTTPRequest(url: customURL, headerDictionary:["Content-Type":"application/json","Access-token":self.api.access_token!], postData:postData, httpType:"POST")
+        self.asyncRequest?.delegate = self
+        self.asyncRequest?.start()
+    }
+    
+    func makeDELETEAuth(customURL:String){
+        self.asyncRequest = AsyncHTTPRequest(url: customURL, headerDictionary: ["Access-token":self.api.access_token!], postData: "", httpType: "DELETE")
         self.asyncRequest?.delegate = self
         self.asyncRequest?.start()
     }

@@ -17,6 +17,10 @@ class EnrolledViewController: UITableViewController, SocivyRouteEnrolledAPIDeleg
     var tableRefreshControl = UIRefreshControl()
     @IBOutlet weak var helpLabel: UILabel!
     
+    
+    func authDidFail(){
+        
+    }
     func fetchDidFinish(routeEnrolledApi: SocivyRouteEnrolledAPI, routes: JSON) {
     
         self.routes = []

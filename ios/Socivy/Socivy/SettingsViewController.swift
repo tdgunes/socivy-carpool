@@ -18,6 +18,11 @@ class SettingsViewController: UITableViewController, SocivyLogoutAPIDelegate{
     
     weak var logoutAPI = SocivyAPI.sharedInstance.logoutAPI
     
+    
+    func authDidFail(){
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.

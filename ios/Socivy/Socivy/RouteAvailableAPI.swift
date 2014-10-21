@@ -8,16 +8,14 @@
 
 import Foundation
 
-protocol SocivyAvailableRouteAPIDelegate {
+protocol SocivyAvailableRouteAPIDelegate : SocivyBaseLoginAPIDelegate {
     func routesDidReturn(indexRouteAPI:SocivyAvailableRouteAPI, routes:JSON)
     func routesDidFailWithError(indexRouteAPI:SocivyAvailableRouteAPI, error:NSError)
-    func authDidFail()
 }
 
 class SocivyAvailableRouteAPI: SocivyBaseLoginAPI{
     
     var delegate: SocivyAvailableRouteAPIDelegate?
-    
     
     init(api:SocivyAPI) {
         super.init(path: "/me/route/available", api: api)
@@ -29,7 +27,7 @@ class SocivyAvailableRouteAPI: SocivyBaseLoginAPI{
     }
     
     override func requestFailWithError(asyncHTTPRequest:AsyncHTTPRequest, error:NSError){
-        
+        self.delegate?.routesDidFailWithError(self, error: error)
     }
     
     override func requestDidFinish(asyncHTTPRequest: AsyncHTTPRequest, _ response: NSMutableData) {
@@ -60,7 +58,4 @@ class SocivyAvailableRouteAPI: SocivyBaseLoginAPI{
     override func loginDidFailWithError(socivyAPI:SocivyLoginAPI, error:NSError){
         self.delegate?.authDidFail()
     }
-    
-    
-    
 }

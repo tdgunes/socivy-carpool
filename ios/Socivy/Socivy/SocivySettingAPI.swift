@@ -5,14 +5,14 @@
 //  Created by Taha Doğan Güneş on 19/10/14.
 //  Copyright (c) 2014 TDG. All rights reserved.
 //
+//  error-handling: done
 
 import Foundation
 
 
-protocol SocivySettingIndexAPIDelegate {
+protocol SocivySettingIndexAPIDelegate : SocivyBaseLoginAPIDelegate {
     func fetchDidFinish(settingIndexAPI:SocivySettingIndexAPI, user:JSON)
     func fetchDidFail(settingIndexAPI:SocivySettingIndexAPI, error:NSError)
-    func authDidFail()
 }
 
 class SocivySettingIndexAPI: SocivyBaseLoginAPI {
@@ -64,10 +64,9 @@ class SocivySettingIndexAPI: SocivyBaseLoginAPI {
     
 }
 
-protocol SocivySettingStoreAPIDelegate {
+protocol SocivySettingStoreAPIDelegate  : SocivyBaseLoginAPIDelegate{
     func storeDidFinish(ettingStoreAPI:SocivySettingStoreAPI)
     func storeDidFail(settingStoreAPI:SocivySettingStoreAPI, error:NSError)
-    func authDidFail()
 }
 
 class SocivySettingStoreAPI: SocivyBaseLoginAPI {
@@ -77,6 +76,7 @@ class SocivySettingStoreAPI: SocivyBaseLoginAPI {
     
     init(api:SocivyAPI){
         super.init(path: "/me/setting", api: api)
+
     }
     
     func store(name:String, password:String, phone:String, showPhone:Bool) {
@@ -108,7 +108,6 @@ class SocivySettingStoreAPI: SocivyBaseLoginAPI {
         
         switch validationResult{
         case .Success:
-            var routes = json["result"]
             self.delegate?.storeDidFinish(self)
             break
         case .InvalidAccessToken:

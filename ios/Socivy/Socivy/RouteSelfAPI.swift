@@ -8,10 +8,9 @@
 
 import Foundation
 
-protocol SocivyRouteSelfAPIDelegate {
+protocol SocivyRouteSelfAPIDelegate:SocivyBaseLoginAPIDelegate{
     func fetchDidFinish(routeSelfAPI:SocivyRouteSelfAPI, routes:JSON)
     func fetchDidFail(routeSelfAPI:SocivyRouteSelfAPI, error:NSError)
-    func authDidFail()
 }
 
 

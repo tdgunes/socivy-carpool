@@ -60,6 +60,8 @@ class DetailViewController: UITableViewController, UIActionSheetDelegate, Socivy
         self.navigationController?.popToRootViewControllerAnimated(true)
     }
     
+    @IBAction func share(sender: AnyObject) {
+    }
     func requestDidFail(routeDestoryAPI:SocivyRouteDestoryAPI, error:NSError){
          self.applyBackgroundProcessMode(false)
     }
@@ -114,6 +116,10 @@ class DetailViewController: UITableViewController, UIActionSheetDelegate, Socivy
             self.activityIndicator.stopAnimating()
             self.tableView.userInteractionEnabled = true
         }
+        
+    }
+    
+    func authDidFail(){
         
     }
     

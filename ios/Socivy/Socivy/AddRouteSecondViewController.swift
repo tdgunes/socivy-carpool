@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import MapKit
+
 class AddRouteSecondViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, SocivyPlaceAPIDelegate, SocivyStoreRouteAPIDelegate {
     
     @IBOutlet weak var tableView: UITableView!
@@ -30,6 +31,14 @@ class AddRouteSecondViewController: UIViewController, UITableViewDataSource, UIT
     
     var activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.WhiteLarge)
     
+    
+    func authDidFail(){
+        
+    }
+
+    func storeDidFail(storeRouteApi: SocivyStoreRouteAPI, error: NSError) {
+        self.storeAPI?.showError(error)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

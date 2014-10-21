@@ -50,8 +50,6 @@ class SocivyAuthenticateAPI: SocivyBaseAPI{
         }
 
         
-
-        
     }
     
     
