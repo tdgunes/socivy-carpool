@@ -60,6 +60,10 @@ class SocivyBaseAPI: AsyncHTTPRequestDelegate {
         let error = NSError(domain:"com.tdg.dilixiri", code:-57, userInfo:userInfo)
         return error
     }
+    func showError(error:NSError){
+        self.api.showError(error)
+    }
+
 }
 
 class SocivyBaseLoginAPI: SocivyBaseAPI, SocivyLoginAPIDelegate{
@@ -92,10 +96,10 @@ class SocivyBaseLoginAPI: SocivyBaseAPI, SocivyLoginAPIDelegate{
     func loginDidFailWithError(socivyAPI:SocivyLoginAPI, error:NSError){
         fatalError("loginDidFailWithError(socivyAPI:SocivyLoginAPI, error:) has not been implemented")
     }
-    
-    func showError(error:NSError){
-        self.api.showError(error)
+    func showSessionExpired(){
+        self.api.showSessionExpired()
     }
+
 }
 
 class SocivyAPI {
@@ -178,6 +182,14 @@ class SocivyAPI {
         var alert = UIAlertView()
         alert.title = "Error"
         alert.message = error.localizedDescription
+        alert.addButtonWithTitle("OK")
+        alert.show()
+    }
+    
+    func showSessionExpired(){
+        var alert = UIAlertView()
+        alert.title = "Error"
+        alert.message = "Your session is expired."
         alert.addButtonWithTitle("OK")
         alert.show()
     }

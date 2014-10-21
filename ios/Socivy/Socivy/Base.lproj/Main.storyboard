@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="PBV-gk-hCF">
     <dependencies>
+        <deployment defaultVersion="1808" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <customFonts key="customFonts">
         <mutableArray key="fontawesome-webfont.ttf">
+            <string>FontAwesome</string>
+            <string>FontAwesome</string>
+            <string>FontAwesome</string>
+            <string>FontAwesome</string>
+            <string>FontAwesome</string>
             <string>FontAwesome</string>
             <string>FontAwesome</string>
             <string>FontAwesome</string>
@@ -887,52 +893,6 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
-                            <tableViewSection headerTitle="Extra" id="fek-Td-2iD">
-                                <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="4eO-to-2Le" style="IBUITableViewCellStyleDefault" id="vb2-pW-VI9">
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vb2-pW-VI9" id="5D3-aT-yJQ">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="About" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4eO-to-2Le">
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="Ctu-wE-wLd" style="IBUITableViewCellStyleDefault" id="ybM-Vm-CKV">
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ybM-Vm-CKV" id="SkZ-ss-XfB">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Socivy Blog" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Ctu-wE-wLd">
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="6B6-Te-Jww" style="IBUITableViewCellStyleDefault" id="2ug-ca-Igf">
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2ug-ca-Igf" id="kRC-tA-nhe">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Rate Socivy in Apple Store" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6B6-Te-Jww">
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
                             <tableViewSection headerTitle="My Account" id="gGI-AA-eT2">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="m0c-dT-gQi" style="IBUITableViewCellStyleDefault" id="lJG-d7-d0N">
@@ -949,7 +909,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="Ov0-0i-T7j" kind="presentation" id="aHZ-9W-YNX"/>
+                                            <segue destination="Ov0-0i-T7j" kind="presentation" identifier="settings" id="aHZ-9W-YNX"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="JN0-7w-Mlt" style="IBUITableViewCellStyleDefault" id="ojm-pJ-cpD">
@@ -967,6 +927,95 @@
                                             <color key="backgroundColor" red="0.1007598851" green="0.44303433520000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.1007598851" green="0.44303433520000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="Extra" id="fek-Td-2iD">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="4eO-to-2Le" style="IBUITableViewCellStyleDefault" id="vb2-pW-VI9">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vb2-pW-VI9" id="5D3-aT-yJQ">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="  About" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4eO-to-2Le">
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="16"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="vUM-db-0Nd" kind="show" identifier="about" id="jBQ-Om-cBu"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="Ctu-wE-wLd" style="IBUITableViewCellStyleDefault" id="ybM-Vm-CKV">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ybM-Vm-CKV" id="SkZ-ss-XfB">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="  Rate Socivy" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Ctu-wE-wLd">
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="16"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="vUM-db-0Nd" kind="show" identifier="rate" id="KHk-fW-Dx6"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="6B6-Te-Jww" style="IBUITableViewCellStyleDefault" id="2ug-ca-Igf">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2ug-ca-Igf" id="kRC-tA-nhe">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text=" Blog" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6B6-Te-Jww">
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="16"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="vUM-db-0Nd" kind="show" identifier="blog" id="Geu-UK-LEz"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="hes-Ix-I2c" style="IBUITableViewCellStyleDefault" id="DQd-ML-tfY">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DQd-ML-tfY" id="SHI-Zw-TNT">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="  Twitter" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hes-Ix-I2c">
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="16"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="vUM-db-0Nd" kind="show" identifier="twitter" id="lIJ-dT-v8A"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="5vM-dV-AyX" style="IBUITableViewCellStyleDefault" id="bV6-AT-4VJ">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bV6-AT-4VJ" id="UQu-Ul-R7T">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="  Facebook" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5vM-dV-AyX">
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="16"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="vUM-db-0Nd" kind="show" identifier="facebook" id="Kl2-Nw-sTK"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -1452,7 +1501,41 @@
             </objects>
             <point key="canvasLocation" x="760" y="1032"/>
         </scene>
-        <!--Lost My Password-->
+        <!--IETT hours-->
+        <scene sceneID="9vc-2E-smf">
+            <objects>
+                <viewController id="mMf-4Z-BKs" customClass="IETTViewController" customModule="Socivy" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="j3C-dr-yCb"/>
+                        <viewControllerLayoutGuide type="bottom" id="XnT-Pf-oKw"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="bLW-Hj-lJZ">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jqm-Id-Tfi">
+                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Jqm-Id-Tfi" firstAttribute="top" secondItem="bLW-Hj-lJZ" secondAttribute="top" constant="20" id="5Va-ci-cfo"/>
+                            <constraint firstItem="Jqm-Id-Tfi" firstAttribute="leading" secondItem="bLW-Hj-lJZ" secondAttribute="leading" id="Qcb-0M-qbi"/>
+                            <constraint firstAttribute="trailing" secondItem="Jqm-Id-Tfi" secondAttribute="trailing" id="hNc-7x-stu"/>
+                            <constraint firstAttribute="bottom" secondItem="Jqm-Id-Tfi" secondAttribute="bottom" id="mZa-ax-uP2"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="IETT hours" image="15-bus" id="5gg-RM-sxe"/>
+                    <connections>
+                        <outlet property="webView" destination="Jqm-Id-Tfi" id="THK-BS-jZT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9rA-g7-6kd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="997" y="-1978"/>
+        </scene>
+        <!--#ToDo-->
         <scene sceneID="1XD-DR-ogd">
             <objects>
                 <viewController id="vUM-db-0Nd" customClass="WebViewController" customModule="Socivy" customModuleProvider="target" sceneMemberID="viewController">
@@ -1465,7 +1548,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GVe-GK-YOY">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <dataDetectorType key="dataDetectorTypes"/>
                             </webView>
@@ -1478,14 +1561,20 @@
                             <constraint firstItem="GVe-GK-YOY" firstAttribute="top" secondItem="l5v-8s-wYf" secondAttribute="top" id="vTb-JS-BQt"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Lost My Password" id="iSU-Mf-Lxn"/>
+                    <navigationItem key="navigationItem" title="#ToDo" id="iSU-Mf-Lxn">
+                        <barButtonItem key="rightBarButtonItem" title="Open in Safari" id="u3X-P3-98E">
+                            <connections>
+                                <action selector="openInSafari:" destination="vUM-db-0Nd" id="sVN-57-Fej"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="webView" destination="GVe-GK-YOY" id="J7g-Yr-Xhl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CV6-4x-5ZN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="760" y="1726"/>
+            <point key="canvasLocation" x="1804" y="1034"/>
         </scene>
         <!--Main Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -1500,6 +1589,7 @@
                     <connections>
                         <segue destination="yFz-DC-9sT" kind="relationship" relationship="viewControllers" id="Keg-80-gFs"/>
                         <segue destination="myY-OX-Feb" kind="relationship" relationship="viewControllers" id="I36-8E-tkI"/>
+                        <segue destination="mMf-4Z-BKs" kind="relationship" relationship="viewControllers" id="alF-WU-XNC"/>
                         <segue destination="WMG-9w-GKN" kind="relationship" relationship="viewControllers" id="YAz-0J-sMW"/>
                     </connections>
                 </tabBarController>
@@ -1902,8 +1992,12 @@
     </scenes>
     <resources>
         <image name="103-map" width="26" height="21"/>
+        <image name="15-bus" width="22" height="28"/>
         <image name="16-car" width="34" height="19"/>
         <image name="19-gear" width="26" height="26"/>
         <image name="Socivy-Logo" width="815" height="510"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="jBQ-Om-cBu"/>
+    </inferredMetricsTieBreakers>
 </document>

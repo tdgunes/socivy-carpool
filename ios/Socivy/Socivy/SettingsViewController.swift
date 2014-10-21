@@ -27,6 +27,36 @@ class SettingsViewController: UITableViewController, SocivyLogoutAPIDelegate{
         
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+
+        if segue.identifier == "twitter"{
+            var destinationController = segue.destinationViewController as WebViewController
+            destinationController.navTitle = "Twitter"
+            destinationController.url = "http://twitter.com/socivy"
+        }
+        else if segue.identifier == "facebook"{
+            var destinationController = segue.destinationViewController as WebViewController
+            destinationController.navTitle = "Facebook"
+            destinationController.url = "http://facebook.com/socivycom"
+        }
+        else if segue.identifier == "blog"{
+            var destinationController = segue.destinationViewController as WebViewController
+            destinationController.navTitle = "Blog"
+            destinationController.url = "http://blog.socivy.com"
+        }
+        else if segue.identifier == "rate" {
+            var destinationController = segue.destinationViewController as WebViewController
+            destinationController.navTitle = "Rate Us"
+            destinationController.url = "http://ios.socivy.com"
+        }
+        else if segue.identifier == "about" {
+            var destinationController = segue.destinationViewController as WebViewController
+            destinationController.navTitle = "About"
+            destinationController.url = "http://socivy.com"
+        }
+        
+    }
+    
     
     func logoutDidFinish(socivyAPI:SocivyLogoutAPI){
         self.applyBackgroundProcessMode(false)

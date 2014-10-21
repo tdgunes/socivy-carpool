@@ -72,7 +72,6 @@ class SocivyErrorHandler{
     
     func validate()->SocivyErrorCode{
         let jsonCode = self.validateJSON()
-        var factory = SocivyErrorFactory()
         
         switch jsonCode {
         case .ParseSuccessful:

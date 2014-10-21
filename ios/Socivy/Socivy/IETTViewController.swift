@@ -1,5 +1,5 @@
 //
-//  WebViewController.swift
+//  IETTViewController.swift
 //  Socivy
 //
 //  Created by Taha Doğan Güneş on 21/10/14.
@@ -7,35 +7,36 @@
 //
 
 import Foundation
+
 import UIKit
 
-class WebViewController : UIViewController {
+class IETTViewController : UIViewController {
     
     @IBOutlet weak var webView: UIWebView!
     
+    
+    
 
     
-    var navTitle:String?
+    var url:String = "https://docs.google.com/spreadsheets/d/1zhzQ8bQlyiQMvM5r731jzMu697JmhK3Y3CdiqR9SV78/edit?usp=sharing"
     
-    var url:String? {
-        didSet{
-//            self.loadURL()
-        }
-    }
     
     func loadURL(){
-//[webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://i.wrightscs.com"]]];
-        var request = NSURLRequest(URL: NSURL(string: self.url!))
+        //[webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://i.wrightscs.com"]]];
+        var request = NSURLRequest(URL: NSURL(string: self.url))
         self.webView.loadRequest(request)
     }
     
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.loadURL()
+    }
     override func viewDidAppear(animated: Bool) {
-
-
+        
+        
     }
-    @IBAction func openInSafari(sender: UIBarButtonItem){
-        UIApplication.sharedApplication().openURL(NSURL(string: self.url!))
-    }
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,7 +44,7 @@ class WebViewController : UIViewController {
         
         
         self.loadURL()
-        self.navigationItem.title = navTitle!
+
         
     }
     

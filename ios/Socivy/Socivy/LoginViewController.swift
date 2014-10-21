@@ -166,10 +166,8 @@ class LoginViewController: UITableViewController, SocivyAuthenticateAPIDelegate,
     }
     
     func authenticateDidFailWithError(socivyAPI:SocivyAuthenticateAPI, error:NSError){
+        self.authenticateAPI?.showError(error)
         self.applyBackgroundProcessMode(false)
-        
-
-        
     }
     
     func storeDidFinish(deviceStoreAPI:SocivyDeviceStoreAPI){
