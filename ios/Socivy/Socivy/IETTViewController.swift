@@ -15,10 +15,8 @@ class IETTViewController : UIViewController {
     @IBOutlet weak var webView: UIWebView!
     
     
-    
 
-    
-    var url:String = "https://docs.google.com/spreadsheets/d/1zhzQ8bQlyiQMvM5r731jzMu697JmhK3Y3CdiqR9SV78/edit?usp=sharing"
+    var url:String = "http://tdgunes.org/iett/"
     
     
     func loadURL(){

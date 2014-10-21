@@ -35,9 +35,12 @@ class LoginViewController: UITableViewController, SocivyAuthenticateAPIDelegate,
         else if passwordCell?.textField == textField {
             passwordCell?.textField!.resignFirstResponder()
             
-            println("[peek] loginCell touched")
-            println("[peek] Email: \(emailCell?.textField?.text)")
-            println("[peek] Password: \(passwordCell?.textField?.text)")
+            if DEBUG {
+                println("[peek] loginCell touched")
+                println("[peek] Email: \(emailCell?.textField?.text)")
+                println("[peek] Password: \(passwordCell?.textField?.text)")
+            }
+
             
             SocivyAPI.sharedInstance.authenticateAPI?.authenticate(self.emailCell!.textField!.text, password: self.passwordCell!.textField!.text)
             self.applyBackgroundProcessMode(true)
@@ -109,20 +112,26 @@ class LoginViewController: UITableViewController, SocivyAuthenticateAPIDelegate,
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         var selectedCell = self.tableView.cellForRowAtIndexPath(indexPath)
         if selectedCell == loginCell {
-            println("[peek] loginCell touched")
-            println("[peek] Email: \(emailCell?.textField?.text)")
-            println("[peek] Password: \(passwordCell?.textField?.text)")
+            
+            if DEBUG {
+                println("[peek] loginCell touched")
+                println("[peek] Email: \(emailCell?.textField?.text)")
+                println("[peek] Password: \(passwordCell?.textField?.text)")
+            }
             
             SocivyAPI.sharedInstance.authenticateAPI?.authenticate(self.emailCell!.textField!.text, password: self.passwordCell!.textField!.text)
             self.applyBackgroundProcessMode(true)
 
         }
         else if selectedCell == forgotPasswordCell {
-            println("[peek] forgotPasswordCell touched")
-
+            if DEBUG {
+                println("[peek] forgotPasswordCell touched")
+            }
         }
         else if selectedCell == signupCell {
-            println("[peek] signupCell touched")
+            if DEBUG {
+                println("[peek] signupCell touched")
+            }
         }
         
     }
@@ -162,9 +171,21 @@ class LoginViewController: UITableViewController, SocivyAuthenticateAPIDelegate,
         self.presentViewController(main, animated: true, completion: nil)
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "lostPassword"{
+            var destinationController = segue.destinationViewController as WebViewController
+            destinationController.navTitle = "Lost Password"
+            destinationController.url = SocivyAPI.sharedInstance.forgotPassword
+        }
+    }
+
+    
     
     func authenticateDidFinish(socivyAPI:SocivyAuthenticateAPI){
-        println("[peek] login did finish")
+        if DEBUG {
+            println("[peek] login did finish")
+        }
+
         
         self.authenticateAPI?.api.saveUserSecret()
         self.applyBackgroundProcessMode(false)
@@ -178,7 +199,9 @@ class LoginViewController: UITableViewController, SocivyAuthenticateAPIDelegate,
     }
     
     func storeDidFinish(deviceStoreAPI:SocivyDeviceStoreAPI){
-        println("[loginView] storeDidFinish")
+        if DEBUG {
+            println("[loginView] storeDidFinish")
+        }
     }
     func storeDidFail(deviceStoreAPI:SocivyDeviceStoreAPI){
         

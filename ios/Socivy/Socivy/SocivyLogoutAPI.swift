@@ -38,6 +38,7 @@ class SocivyLogoutAPI: SocivyBaseLoginAPI {
         
         switch validationResult{
         case .Success:
+            self.api.clearUserSecret()
             self.delegate?.logoutDidFinish(self)
             break
         case .InvalidAccessToken:

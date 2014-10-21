@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="PBV-gk-hCF">
     <dependencies>
-        <deployment defaultVersion="1808" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -426,7 +425,13 @@
                             <outlet property="delegate" destination="ga2-iP-rLW" id="Ujr-FP-6qb"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="hRQ-dw-kDv"/>
+                    <navigationItem key="navigationItem" id="hRQ-dw-kDv">
+                        <barButtonItem key="rightBarButtonItem" title="Share" id="1cY-gw-y0S">
+                            <connections>
+                                <action selector="share:" destination="ga2-iP-rLW" id="Ym9-v2-xas"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D21-WN-ktf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -623,7 +628,13 @@
                             <outlet property="delegate" destination="LXR-61-h7z" id="lQl-9i-wxz"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="an7-aD-Npc"/>
+                    <navigationItem key="navigationItem" id="an7-aD-Npc">
+                        <barButtonItem key="rightBarButtonItem" title="Share" id="m8A-Y8-P9r">
+                            <connections>
+                                <action selector="share:" destination="LXR-61-h7z" id="Sii-ta-dB7"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d8g-dc-LBU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1554,7 +1565,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GVe-GK-YOY">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <dataDetectorType key="dataDetectorTypes"/>
                             </webView>
@@ -1580,7 +1591,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CV6-4x-5ZN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1804" y="1034"/>
+            <point key="canvasLocation" x="1620" y="1562"/>
         </scene>
         <!--Main Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -1737,7 +1748,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.1007598851" green="0.44303433520000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
-                                            <segue destination="gfD-0o-oaB" kind="show" id="ZMf-KI-mKk"/>
+                                            <segue destination="gfD-0o-oaB" kind="show" identifier="register" id="ZMf-KI-mKk"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -2004,6 +2015,6 @@
         <image name="Socivy-Logo" width="815" height="510"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="jBQ-Om-cBu"/>
+        <segue reference="aIv-ad-t2n"/>
     </inferredMetricsTieBreakers>
 </document>

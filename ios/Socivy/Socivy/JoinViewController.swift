@@ -233,11 +233,7 @@ class JoinViewController: UITableViewController, UIActionSheetDelegate, SocivyRo
             NSLog("Cancel")
             break
             
-        case .SendMessage:
-            NSLog("SendMessage")
-            
-            break
-            
+
         case .SendMail:
             NSLog("SendMail");
             self.showEmail()
@@ -264,10 +260,10 @@ class JoinViewController: UITableViewController, UIActionSheetDelegate, SocivyRo
     func showContactSheet(indexPath: NSIndexPath){
 
         
-        var actionSheet = UIActionSheet(title: "Contact \(self.route!.driver.name)", delegate: self, cancelButtonTitle: "Cancel", destructiveButtonTitle: nil, otherButtonTitles: "Send Message","Send Mail","Call", "SMS" )
+        var actionSheet = UIActionSheet(title: "Contact \(self.route!.driver.name)", delegate: self, cancelButtonTitle: "Cancel", destructiveButtonTitle: nil, otherButtonTitles: "Send Mail","Call", "SMS" )
         
         if self.route!.driver.isPhoneVisible == false {
-            actionSheet = UIActionSheet(title: "Contact \(self.route!.driver.name)", delegate: self, cancelButtonTitle: "Cancel", destructiveButtonTitle: nil, otherButtonTitles: "Send Message","Send Mail" )
+            actionSheet = UIActionSheet(title: "Contact \(self.route!.driver.name)", delegate: self, cancelButtonTitle: "Cancel", destructiveButtonTitle: nil, otherButtonTitles: "Send Mail" )
             
             
         }
@@ -303,6 +299,49 @@ class JoinViewController: UITableViewController, UIActionSheetDelegate, SocivyRo
         println("tel://\(self.route!.driver.phone)")
         UIApplication.sharedApplication().openURL(NSURL(string: "tel://\(self.route!.driver.phone)"))
     }
+    
+    
+    func shareTextImageAndURL(#sharingText: String?, sharingImage: UIImage?, sharingURL: NSURL?) {
+        var sharingItems = [AnyObject]()
+        
+        if let text = sharingText {
+            sharingItems.append(text)
+        }
+        if let image = sharingImage {
+            sharingItems.append(image)
+        }
+        if let url = sharingURL {
+            sharingItems.append(url)
+        }
+        
+        let activityViewController = UIActivityViewController(activityItems: sharingItems, applicationActivities: nil)
+        self.presentViewController(activityViewController, animated: true, completion: nil)
+        
+        if activityViewController.respondsToSelector("popoverPresentationController") {
+            // iOS 8+
+            let presentationController = activityViewController.popoverPresentationController
+            presentationController?.sourceView = view
+        }
+        
+    }
+    
+    @IBAction func share(sender: AnyObject) {
+        let url = "\(SocivyAPI.sharedInstance.domain)/route/\(self.route!.id)"
+        var destination = ""
+        var stopsText = ", ".join(self.stops)
+        var text = ""
+        if route!.toOzu {
+            text = "\(stopsText) → ÖzÜ \(self.route!.getTweetDate()) seat:\(self.route!.seatLeft) @Socivy @AntiShuttleOzu"
+        }
+        else {
+            text = "ÖzÜ → \(stopsText) \(self.route!.getTweetDate()) seat:\(self.route!.seatLeft) @Socivy @AntiShuttleOzu"
+        }
+        println(text)
+        var image = UIImage(named: "Socivy-Logo")
+        self.shareTextImageAndURL(sharingText: text, sharingImage: image, sharingURL: NSURL(string:url))
+    }
+    
+    
     
     func sendSMS(){
         

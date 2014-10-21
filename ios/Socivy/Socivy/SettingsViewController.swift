@@ -57,7 +57,7 @@ class SettingsViewController: UITableViewController, SocivyLogoutAPIDelegate{
         else if segue.identifier == "about" {
             var destinationController = segue.destinationViewController as WebViewController
             destinationController.navTitle = "About"
-            destinationController.url = "http://socivy.com"
+            destinationController.url = "http://about.socivy.com"
         }
         
     }
@@ -98,7 +98,6 @@ class SettingsViewController: UITableViewController, SocivyLogoutAPIDelegate{
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         var selectedCell = self.tableView.cellForRowAtIndexPath(indexPath)
         if selectedCell == logoutCell {
-            println("[peek] logout touched")
             
             self.logoutAPI?.logout()
             self.applyBackgroundProcessMode(true)

@@ -62,7 +62,7 @@ class MyRoutesViewController: UITableViewController, SocivyRouteSelfAPIDelegate 
             var route: Route = Route(routeJson: route)
             
             self.routes.append(route)
-            println("\(index). \(route)")
+
             
             index += 1
             
@@ -74,7 +74,7 @@ class MyRoutesViewController: UITableViewController, SocivyRouteSelfAPIDelegate 
             helpLabel.hidden = true
         }
         
-        println("[MyRoutesVC] self.routes.count = \(self.routes.count) ")
+
         self.tableView.reloadData()
         self.tableRefreshControl.endRefreshing()
     }
@@ -123,7 +123,10 @@ class MyRoutesViewController: UITableViewController, SocivyRouteSelfAPIDelegate 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell: RouteCell = tableView.dequeueReusableCellWithIdentifier("RouteCell", forIndexPath:indexPath) as RouteCell
         
-        println("section:\(indexPath.section) row:\(indexPath.row)")
+        if DEBUG {
+            println("section:\(indexPath.section) row:\(indexPath.row)")
+        }
+
         var route = routes[indexPath.section]
         
         cell.contentView.layer.cornerRadius = 20

@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-let DEBUG:Bool = true
+let DEBUG:Bool = false
 
 
 class SocivyBaseAPI: AsyncHTTPRequestDelegate {
@@ -132,7 +132,8 @@ class SocivyBaseLoginAPI: SocivyBaseAPI, SocivyLoginAPIDelegate{
 class SocivyAPI {
     let public_key:String = "$2y$10$EABJx.UPPrTRCbn.nR34geK6HJOZWvEQFRFVQzCV2hW7aI13jn16G"
 
-    let domain = "http://development.socivy.com"
+    let domain = "https://socivy.com"
+    let forgotPassword:String
     let url:String
 
     
@@ -163,6 +164,7 @@ class SocivyAPI {
     }
     
     init(){
+        self.forgotPassword =  "\(domain)/forgot-password"
         url = "\(domain)/api/v1"
         self.authenticateAPI = SocivyAuthenticateAPI(api: self)
         self.loginAPI = SocivyLoginAPI(api: self)

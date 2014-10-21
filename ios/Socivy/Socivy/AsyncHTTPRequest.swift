@@ -25,7 +25,9 @@ class AsyncHTTPRequest: NSObject, NSURLConnectionDelegate, NSURLConnectionDataDe
     var postData:String
     
     init(url:String, headerDictionary:[String:String], postData:String, httpType:String){
-        println("[async] \(url)")
+        if DEBUG {
+            println("[async] \(url)")
+        }
         self.url = NSURL(string: url)
         self.headerDictionary = headerDictionary
         self.postData = postData
@@ -36,18 +38,32 @@ class AsyncHTTPRequest: NSObject, NSURLConnectionDelegate, NSURLConnectionDataDe
         var urlRequest = NSMutableURLRequest(URL:self.url)
         urlRequest = self.prepareHTTPRequest(urlRequest)
         let conn = NSURLConnection(request:urlRequest, delegate: self, startImmediately: true)
-        println("[async] start()")
+        
+        if DEBUG {
+            println("[async] start()")
+        }
+
         
     }
     
     func prepareHTTPRequest(urlRequest:NSMutableURLRequest) -> NSMutableURLRequest {
         urlRequest.timeoutInterval = timeoutInterval
         urlRequest.HTTPMethod = self.httpType
-        println("[async]  HTTPBody: '\(self.postData)'")
+        
+        if DEBUG {
+            println("[async]  HTTPBody: '\(self.postData)'")
+        }
+        
         urlRequest.HTTPBody = self.postData.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
-        println("[async] HTTPMethod: \(self.httpType)")
+        
+        if DEBUG {
+            println("[async] HTTPMethod: \(self.httpType)")
+        }
+
         for (key,value) in self.headerDictionary {
-            println("[async] $POST['\(key)'] = '\(value)'")
+            if DEBUG {
+                println("[async] $POST['\(key)'] = '\(value)'")
+            }
             urlRequest.setValue(value, forHTTPHeaderField: key)
         }
         return urlRequest
@@ -62,13 +78,15 @@ class AsyncHTTPRequest: NSObject, NSURLConnectionDelegate, NSURLConnectionDataDe
     }
     
     func connectionDidFinishLoading(connection: NSURLConnection) {
-        println("[async] didFinishLoading")
+        if DEBUG {
+            println("[async] didFinishLoading")
+        }
+
         if let _responseData = responseData {
             
             self.delegate?.requestDidFinish(self,_responseData)
         }
         else {
-            println("[async] unknownError :( ")
             self.reportUnknownError()
         }
     }

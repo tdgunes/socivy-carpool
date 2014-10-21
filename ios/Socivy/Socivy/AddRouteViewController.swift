@@ -48,12 +48,13 @@ class AddRouteViewController: UITableViewController {
             }
             
             
-            
-            println("action_day: \(action_day)")
-            println("action_hour: \(action_hour)")
-            println("action_minute: \(action_minute)")
-            println("available_seat: \(available_seat)")
-            println("plan: \(plan)")
+            if DEBUG {
+                println("action_day: \(action_day)")
+                println("action_hour: \(action_hour)")
+                println("action_minute: \(action_minute)")
+                println("available_seat: \(available_seat)")
+                println("plan: \(plan)")
+            }
             
             var info = self.additionalCell.textField!.text
             if info == nil {

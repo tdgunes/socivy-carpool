@@ -180,5 +180,24 @@ class Route: Printable {
         return text
         
     }
+    
+    func getTweetDate()->String{
+        let now = NSDate()
+        let then = NSDate(timeIntervalSince1970: NSTimeInterval(self.timestamp))
+        var dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "HH:mm"
+        let interval = self.timestamp - now.timeIntervalSince1970
+        
+        var formatter = NSDateFormatter()
+        formatter.dateFormat = "EEEE"
+        
+        
+        var text = formatter.stringFromDate(then)
+
+        
+        text = text + " " + dateFormatter.stringFromDate(then)
+        
+        return text
+    }
 
 }

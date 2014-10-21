@@ -13,7 +13,7 @@ import MessageUI
 
 
 enum ContactSheet: Int {
-    case Cancel = 0, SendMessage, SendMail, Call, SMS
+    case Cancel = 0, SendMail, Call, SMS
 }
 
 class DetailViewController: UITableViewController, UIActionSheetDelegate, SocivyRouteDestoryAPIDelegate, MFMailComposeViewControllerDelegate, MFMessageComposeViewControllerDelegate {
@@ -60,8 +60,46 @@ class DetailViewController: UITableViewController, UIActionSheetDelegate, Socivy
         self.navigationController?.popToRootViewControllerAnimated(true)
     }
     
-    @IBAction func share(sender: AnyObject) {
+    func shareTextImageAndURL(#sharingText: String?, sharingImage: UIImage?, sharingURL: NSURL?) {
+        var sharingItems = [AnyObject]()
+        
+        if let text = sharingText {
+            sharingItems.append(text)
+        }
+        if let image = sharingImage {
+            sharingItems.append(image)
+        }
+        if let url = sharingURL {
+            sharingItems.append(url)
+        }
+        
+        let activityViewController = UIActivityViewController(activityItems: sharingItems, applicationActivities: nil)
+        self.presentViewController(activityViewController, animated: true, completion: nil)
+        
+        if activityViewController.respondsToSelector("popoverPresentationController") {
+            // iOS 8+
+            let presentationController = activityViewController.popoverPresentationController
+            presentationController?.sourceView = view
+        }
+        
     }
+    
+    @IBAction func share(sender: AnyObject) {
+        let url = "\(SocivyAPI.sharedInstance.domain)/route/\(self.route!.id)"
+        var destination = ""
+        var stopsText = ", ".join(self.stops)
+        var text = ""
+        if route!.toOzu {
+            text = "\(stopsText) → ÖzÜ \(self.route!.getTweetDate()) seat:\(self.route!.seatLeft) @Socivy @AntiShuttleOzu"
+        }
+        else {
+            text = "ÖzÜ → \(stopsText) \(self.route!.getTweetDate()) seat:\(self.route!.seatLeft) @Socivy @AntiShuttleOzu"
+        }
+
+        var image = UIImage(named: "Socivy-Logo")
+        self.shareTextImageAndURL(sharingText: text, sharingImage: image, sharingURL: NSURL(string:url))
+    }
+    
     func requestDidFail(routeDestoryAPI:SocivyRouteDestoryAPI, error:NSError){
          self.applyBackgroundProcessMode(false)
     }
@@ -124,30 +162,20 @@ class DetailViewController: UITableViewController, UIActionSheetDelegate, Socivy
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
-        
-        
         var selectedCell = self.tableView.cellForRowAtIndexPath(indexPath)
         
-        
         if indexPath.section == 0 {
-            
             let values:Array = self.details[indexPath.row] as Array
             
-            
             switch values[0] {
-            
-            
-    
             case "Destroy":
                 self.applyBackgroundProcessMode(true)
                 self.destroyRouteAPI.request(self.route!.id)
-
             default:
-                println("Another cell pressed, s:\(indexPath.section) r:\(indexPath.row)")
+                if DEBUG {
+                     println("Another cell pressed, s:\(indexPath.section) r:\(indexPath.row)")
+                }
             }
-            
-            
         }
         
         
@@ -247,9 +275,7 @@ class DetailViewController: UITableViewController, UIActionSheetDelegate, Socivy
             return ""
         }
     }
-    
-    
-    //
+
     //    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
     //
     //        if indexPath.section == 0 {
@@ -259,38 +285,23 @@ class DetailViewController: UITableViewController, UIActionSheetDelegate, Socivy
     //        let height:CGFloat =  CGFloat(44)
     //        return height
     //    }
-    //
     
     func actionSheet(actionSheet: UIActionSheet!, clickedButtonAtIndex buttonIndex: Int)
     {
         let possibleButton = ContactSheet.fromRaw(buttonIndex)!
-        
         switch possibleButton{
-            
         case .Cancel:
             NSLog("Cancel")
             break
-            
-        case .SendMessage:
-            NSLog("SendMessage")
-
-            break
-            
         case .SendMail:
-            NSLog("SendMail");
             self.showEmail()
             break
-            
         case .Call:
-            NSLog("Call")
             self.call()
             break
-            
         case .SMS:
-            NSLog("SMS")
             self.sendSMS()
             break
-
         default:
             NSLog("Default")
             break
@@ -304,44 +315,36 @@ class DetailViewController: UITableViewController, UIActionSheetDelegate, Socivy
         
         selectedPassenger = passenger
         
-        var actionSheet = UIActionSheet(title: "Contact \(passenger.name)", delegate: self, cancelButtonTitle: "Cancel", destructiveButtonTitle: nil, otherButtonTitles: "Send Message","Send Mail","Call", "SMS" )
+        var actionSheet = UIActionSheet(title: "Contact \(passenger.name)", delegate: self, cancelButtonTitle: "Cancel", destructiveButtonTitle: nil, otherButtonTitles:"Send Mail","Call", "SMS")
         
         if passenger.isPhoneVisible == false {
-            actionSheet = UIActionSheet(title: "Contact \(passenger.name)", delegate: self, cancelButtonTitle: "Cancel", destructiveButtonTitle: nil, otherButtonTitles: "Send Message","Send Mail" )
+            actionSheet = UIActionSheet(title: "Contact \(passenger.name)", delegate: self, cancelButtonTitle: "Cancel", destructiveButtonTitle: nil, otherButtonTitles: "Send Mail" )
             
             
         }
         
-        println("\(passenger.isPhoneVisible)")
-        
         actionSheet.showInView(self.view)
     }
     
-    func messageComposeViewController(controller: MFMessageComposeViewController!, didFinishWithResult result: MessageComposeResult) {
-        
+    func messageComposeViewController(controller: MFMessageComposeViewController!, didFinishWithResult result: MessageComposeResult){
         switch (result.value) {
         case MessageComposeResultCancelled.value:
-            break;
-            
+            break
         case MessageComposeResultFailed.value:
-//            
 //                UIAlertView *warningAlert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Failed to send SMS!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
 //                [warningAlert show];
-            break;
-            
+            break
         case MessageComposeResultSent.value:
-            break;
-            
+            break
         default:
-            break;
+            break
         }
         
         self.dismissViewControllerAnimated(true, completion:nil)
     }
     
     func call(){
-        println("tel://\(self.selectedPassenger?.phone)")
-        UIApplication.sharedApplication().openURL(NSURL(string: "tel://\(self.selectedPassenger?.phone)"))
+        UIApplication.sharedApplication().openURL(NSURL(string: "tel://\(self.selectedPassenger!.phone)"))
     }
     
     func sendSMS(){

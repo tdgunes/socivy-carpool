@@ -27,18 +27,12 @@ class SignupViewController: UITableViewController, SocivyRegisterAPIDelegate, UI
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
-
         registerAPI?.delegate = self
 
-        
         self.activityIndicator.center = self.navigationController!.view.center
         self.activityIndicator.stopAnimating()
         self.activityIndicator.hidesWhenStopped = true
     }
-    
-
-    
     
     func applyBackgroundProcessMode(mode:Bool){
         if mode == true {
@@ -96,7 +90,10 @@ class SignupViewController: UITableViewController, SocivyRegisterAPIDelegate, UI
     }
     
     func register(){
-        println("[register] register touched")
+        if DEBUG {
+            println("[register] register touched")
+        }
+
         
         self.registerAPI?.register(self.nameTextField.text, email: self.emailTextField.text, password: self.passwordTextField.text, phone: self.phoneTextField.text)
         self.applyBackgroundProcessMode(true)

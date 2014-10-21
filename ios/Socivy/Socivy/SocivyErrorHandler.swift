@@ -48,6 +48,10 @@ class SocivyErrorFactory{
 
         
         switch error {
+            
+        case .InputError:
+            description = "Please check your credentials, and \n try again."
+        break
         case .JSONParseError:
             description = "Our server is dizzy today!, \n Why don't you try it later?"
         break
@@ -67,7 +71,9 @@ class SocivyErrorHandler{
     
     init(json:JSON){
         self.json = json
-        println(self.json.toString(pretty: true))
+        if DEBUG {
+            println(self.json.toString(pretty: true))
+        }
     }
     
     func validate()->SocivyErrorCode{

@@ -32,12 +32,19 @@ class EnrolledViewController: UITableViewController, SocivyRouteEnrolledAPIDeleg
                 var route: Route = Route(routeJson: route)
                 
                 self.routes.append(route)
-                println("\(index). \(route)")
+            
+                if DEBUG {
+                    println("\(index). \(route)")
+                }
+            
                 
                 index += 1
 
         }
-        println("[EnrolledVC] self.routes.count = \(self.routes.count) ")
+        if DEBUG {
+            println("[EnrolledVC] self.routes.count = \(self.routes.count) ")
+        }
+
         if self.routes.count == 0 {
             helpLabel.hidden = false
         }
@@ -71,6 +78,9 @@ class EnrolledViewController: UITableViewController, SocivyRouteEnrolledAPIDeleg
         //  self.updateTableView()
     }
     
+    
+    
+    
     func refreshControlRequest(){
         helpLabel.hidden = true
         self.enrolledRouteAPI?.fetch()
@@ -98,7 +108,11 @@ class EnrolledViewController: UITableViewController, SocivyRouteEnrolledAPIDeleg
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell: RouteCell = tableView.dequeueReusableCellWithIdentifier("RouteCell", forIndexPath:indexPath) as RouteCell
-        println("section:\(indexPath.section) row:\(indexPath.row)")
+        
+        if DEBUG {
+            println("section:\(indexPath.section) row:\(indexPath.row)")
+        }
+
         var route = routes[indexPath.section]
         
         cell.contentView.layer.cornerRadius = 20
