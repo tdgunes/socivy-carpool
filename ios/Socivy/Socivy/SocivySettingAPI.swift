@@ -33,7 +33,7 @@ class SocivySettingIndexAPI: SocivyBaseLoginAPI {
     
     override func requestDidFinish(asyncHTTPRequest: AsyncHTTPRequest, _ response: NSMutableData) {
         self.log("requestDidFinish")
-        let json = JSON.parse(NSString(data: response, encoding: NSASCIIStringEncoding))
+        let json = JSON.parse(NSString(data: response, encoding: NSASCIIStringEncoding)!)
         let validationResult = SocivyErrorHandler(json:json).validate()
         
         switch validationResult{
@@ -103,7 +103,7 @@ class SocivySettingStoreAPI: SocivyBaseLoginAPI {
     override func requestDidFinish(asyncHTTPRequest: AsyncHTTPRequest, _ response: NSMutableData) {
         self.log("requestDidFinish")
         
-        let json = JSON.parse(NSString(data: response, encoding: NSASCIIStringEncoding))
+        let json = JSON.parse(NSString(data: response, encoding: NSASCIIStringEncoding)!)
         let validationResult = SocivyErrorHandler(json:json).validate()
         
         switch validationResult{

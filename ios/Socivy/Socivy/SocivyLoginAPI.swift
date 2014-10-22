@@ -31,7 +31,7 @@ class SocivyLoginAPI: SocivyBaseAPI {
     }
     
     override func requestDidFinish(asyncHTTPRequest: AsyncHTTPRequest, _ response: NSMutableData) {
-        let json = JSON.parse(NSString(data: response, encoding: NSASCIIStringEncoding))
+        let json = JSON.parse(NSString(data: response, encoding: NSASCIIStringEncoding)!)
         let validationResult = SocivyErrorHandler(json:json).validate()
 
         switch validationResult{

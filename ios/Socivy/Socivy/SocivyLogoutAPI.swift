@@ -33,7 +33,7 @@ class SocivyLogoutAPI: SocivyBaseLoginAPI {
         self.log("requestDidFinish")
 
         
-        let json = JSON.parse(NSString(data: response, encoding: NSASCIIStringEncoding))
+        let json = JSON.parse(NSString(data: response, encoding: NSASCIIStringEncoding)!)
         let validationResult = SocivyErrorHandler(json:json).validate()
         
         switch validationResult{

@@ -21,7 +21,7 @@ class IETTViewController : UIViewController {
     
     func loadURL(){
         //[webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://i.wrightscs.com"]]];
-        var request = NSURLRequest(URL: NSURL(string: self.url))
+        var request = NSURLRequest(URL: NSURL(string: self.url)!)
         self.webView.loadRequest(request)
     }
     

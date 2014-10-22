@@ -56,7 +56,7 @@ class SocivyErrorFactory{
             description = "Our server is dizzy today!, \n Why don't you try it later?"
         break
         default:
-            description = "Something terrible happened. \n Error code: 0x000\(error.toRaw())"
+            description = "Something terrible happened. \n Error code: 0x000\(error.rawValue)"
         break
         }
         
@@ -96,7 +96,7 @@ class SocivyErrorHandler{
         if let info = self.json["info"].asDictionary{
             if let status_code  = self.json["info"]["status_code"].asInt{
                 
-                let statusCode = SocivyAPIStatusCode.fromRaw(status_code)!
+                let statusCode = SocivyAPIStatusCode(rawValue: status_code)!
                 switch statusCode {
                 case .Error:
                     return self.identifyError()
@@ -115,7 +115,7 @@ class SocivyErrorHandler{
     
     func identifyError()->SocivyErrorCode{
         if let error_code = self.json["info"]["error_code"].asInt {
-            let errorCode = SocivyAPIErrorCode.fromRaw(error_code)!
+            let errorCode = SocivyAPIErrorCode(rawValue: error_code)!
             
             switch errorCode{
             case .InputError:

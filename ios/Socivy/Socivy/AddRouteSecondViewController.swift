@@ -148,7 +148,7 @@ class AddRouteSecondViewController: UIViewController, UITableViewDataSource, UIT
             
         }
         else {
-            var payloadPlaces:Array = []
+            var payloadPlaces:[[String:Int]] = []
             
             
             for place in selectedPlacesArray{
@@ -184,7 +184,7 @@ class AddRouteSecondViewController: UIViewController, UITableViewDataSource, UIT
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         var cell = self.tableView.cellForRowAtIndexPath(indexPath)
-        var string:NSMutableAttributedString = NSMutableAttributedString(string: cell!.textLabel!.text!)
+        var string:NSMutableAttributedString = NSMutableAttributedString(string: cell!.textLabel.text!)
         if (cell?.accessoryType == UITableViewCellAccessoryType.Checkmark){
             // delete added record
             if DEBUG {
@@ -193,9 +193,9 @@ class AddRouteSecondViewController: UIViewController, UITableViewDataSource, UIT
             self.selectedPlaces.removeValueForKey(self.places[indexPath.row].id)
             
             cell?.accessoryType = UITableViewCellAccessoryType.None
-            string.addAttribute(NSFontAttributeName, value: self.lightFont, range: NSMakeRange(0, string.length))
+            string.addAttribute(NSFontAttributeName, value: self.lightFont!, range: NSMakeRange(0, string.length))
             cell?.backgroundColor = UIColor.lightGrayColor()
-            cell?.textLabel?.attributedText = string
+            cell?.textLabel.attributedText = string
 
         }
         else {
@@ -205,10 +205,10 @@ class AddRouteSecondViewController: UIViewController, UITableViewDataSource, UIT
             println("self.selectedPlaces[\(self.places[indexPath.row].id)] = \(self.places[indexPath.row].name)")
             self.selectedPlaces[self.places[indexPath.row].id] = self.places[indexPath.row]
             
-            string.addAttribute(NSFontAttributeName, value: self.boldFont, range: NSMakeRange(0, string.length))
-            string.addAttribute(NSFontAttributeName, value: self.lightFont, range: NSMakeRange(0, 2))
+            string.addAttribute(NSFontAttributeName, value: self.boldFont!, range: NSMakeRange(0, string.length))
+            string.addAttribute(NSFontAttributeName, value: self.lightFont!, range: NSMakeRange(0, 2))
             cell?.backgroundColor = UIColor.grayColor()
-            cell?.textLabel?.attributedText = string
+            cell?.textLabel.attributedText = string
         }
         
     }
@@ -219,8 +219,8 @@ class AddRouteSecondViewController: UIViewController, UITableViewDataSource, UIT
         
         var string:NSMutableAttributedString = NSMutableAttributedString(string: "  \(self.places[indexPath.row].name)")
 
-        string.addAttribute(NSFontAttributeName, value: self.lightFont, range: NSMakeRange(0, string.length))
-        cell.textLabel?.attributedText = string
+        string.addAttribute(NSFontAttributeName, value: self.lightFont!, range: NSMakeRange(0, string.length))
+        cell.textLabel.attributedText = string
         cell.backgroundColor = UIColor.lightGrayColor()
         cell.accessoryType = UITableViewCellAccessoryType.None
         return cell

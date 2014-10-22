@@ -25,7 +25,7 @@ class WebViewController : UIViewController {
     
     func loadURL(){
 //[webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://i.wrightscs.com"]]];
-        var request = NSURLRequest(URL: NSURL(string: self.url!))
+        var request = NSURLRequest(URL: NSURL(string: self.url!)!)
         self.webView.loadRequest(request)
     }
     
@@ -34,7 +34,7 @@ class WebViewController : UIViewController {
 
     }
     @IBAction func openInSafari(sender: UIBarButtonItem){
-        UIApplication.sharedApplication().openURL(NSURL(string: self.url!))
+        UIApplication.sharedApplication().openURL(NSURL(string: self.url!)!)
     }
     
     override func viewDidLoad() {

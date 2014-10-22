@@ -28,7 +28,7 @@ class AsyncHTTPRequest: NSObject, NSURLConnectionDelegate, NSURLConnectionDataDe
         if DEBUG {
             println("[async] \(url)")
         }
-        self.url = NSURL(string: url)
+        self.url = NSURL(string: url)!
         self.headerDictionary = headerDictionary
         self.postData = postData
         self.httpType = httpType

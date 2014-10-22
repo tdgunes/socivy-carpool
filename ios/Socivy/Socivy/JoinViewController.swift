@@ -159,7 +159,7 @@ class JoinViewController: UITableViewController, UIActionSheetDelegate, SocivyRo
                 let cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier("JoinCell", forIndexPath:indexPath) as UITableViewCell
             default:
                 cell.detailTextLabel?.text = values[1]
-                cell.textLabel?.text = values[0]
+                cell.textLabel.text = values[0]
             }
             
             
@@ -170,9 +170,9 @@ class JoinViewController: UITableViewController, UIActionSheetDelegate, SocivyRo
         else if indexPath.section == 1 {
              let cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier("PlaceCell", forIndexPath:indexPath) as UITableViewCell
                 var string:NSMutableAttributedString = NSMutableAttributedString(string: "  \(self.stops[indexPath.row])")
-                
-                string.addAttribute(NSFontAttributeName, value: self.lightFont, range: NSMakeRange(0, string.length))
-                cell.textLabel?.attributedText = string
+            
+                string.addAttribute(NSFontAttributeName, value: self.lightFont!, range: NSMakeRange(0, string.length))
+                cell.textLabel.attributedText = string
                 cell.backgroundColor = UIColor.grayColor()
                 cell.accessoryType = UITableViewCellAccessoryType.None
         }
@@ -225,7 +225,7 @@ class JoinViewController: UITableViewController, UIActionSheetDelegate, SocivyRo
     
     func actionSheet(actionSheet: UIActionSheet!, clickedButtonAtIndex buttonIndex: Int)
     {
-        let possibleButton = ContactSheet.fromRaw(buttonIndex)!
+        let possibleButton = ContactSheet(rawValue: buttonIndex)!
         
         switch possibleButton{
             
@@ -297,7 +297,7 @@ class JoinViewController: UITableViewController, UIActionSheetDelegate, SocivyRo
     
     func call(){
         println("tel://\(self.route!.driver.phone)")
-        UIApplication.sharedApplication().openURL(NSURL(string: "tel://\(self.route!.driver.phone)"))
+        UIApplication.sharedApplication().openURL(NSURL(string: "tel://\(self.route!.driver.phone)")!)
     }
     
     
