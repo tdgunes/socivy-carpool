@@ -619,7 +619,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "b4a841f9-8757-46ee-9065-07dc3fd7abb2";
+				PROVISIONING_PROFILE = "16721fec-6b2f-496d-906e-c9e649d9802a";
 				SWIFT_OBJC_BRIDGING_HEADER = "Socivy/Socivy-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -638,7 +638,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "5e38ba07-2239-4593-b30f-274af8055488";
 				SWIFT_OBJC_BRIDGING_HEADER = "Socivy/Socivy-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 1;
 			};

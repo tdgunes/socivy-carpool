@@ -19,7 +19,10 @@ class AddRouteViewController: UITableViewController {
     @IBOutlet weak var seatPicker: PickerCell!
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        println("segue: \(segue.identifier)")
+        if DEBUG {
+            println("segue: \(segue.identifier)")
+        }
+
 
         let identifier = segue.identifier
         

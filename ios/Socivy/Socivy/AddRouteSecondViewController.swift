@@ -158,7 +158,9 @@ class AddRouteSecondViewController: UIViewController, UITableViewDataSource, UIT
             payload["points"] = payloadPlaces
             
             for (key,value) in payload{
-                println("\(key) = \(value)")
+                if DEBUG {
+                    println("\(key) = \(value)")
+                }
             }
             
             
@@ -185,8 +187,9 @@ class AddRouteSecondViewController: UIViewController, UITableViewDataSource, UIT
         var string:NSMutableAttributedString = NSMutableAttributedString(string: cell!.textLabel!.text!)
         if (cell?.accessoryType == UITableViewCellAccessoryType.Checkmark){
             // delete added record
-            
-            println("self.selectedPlaces.removeValueForKey(\(self.places[indexPath.row].id))")
+            if DEBUG {
+                println("self.selectedPlaces.removeValueForKey(\(self.places[indexPath.row].id))")
+            }
             self.selectedPlaces.removeValueForKey(self.places[indexPath.row].id)
             
             cell?.accessoryType = UITableViewCellAccessoryType.None
