@@ -100,13 +100,66 @@
                 android:text="@string/string_choosestop"
                 android:textColor="#fff" />
 
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:orientation="horizontal"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp" >
+
+                <Button
+                    android:id="@+id/seatdec"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/custom_button"
+                    android:paddingLeft="25dp"
+                    android:paddingRight="25dp"
+                    android:text="-"
+                    android:textColor="#fff" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/listviewstyle"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="5dp"
+                        android:text="Seats"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                    <TextView
+                		android:id="@+id/seattext"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:paddingLeft="0dp"
+                        android:paddingRight="0dp"
+                        android:text="5"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/seatinc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/custom_button"
+                    android:paddingLeft="25dp"
+                    android:paddingRight="25dp"
+                    android:text="+"
+                    android:textColor="#fff" />
+            </LinearLayout>
+
             <TimePicker
                 android:id="@+id/timePicker1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
-
-            
-
         </LinearLayout>
 
         <LinearLayout

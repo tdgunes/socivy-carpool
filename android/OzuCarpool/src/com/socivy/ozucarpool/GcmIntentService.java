@@ -1,19 +1,17 @@
 package com.socivy.ozucarpool;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import android.app.IntentService;
+import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.SystemClock;
+import android.os.Vibrator;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
-import com.socivy.ozucarpool.R;
 import com.google.android.gms.gcm.GoogleCloudMessaging;
 
 public class GcmIntentService extends IntentService {
@@ -80,7 +78,7 @@ public class GcmIntentService extends IntentService {
   
 
         PendingIntent contentIntent = PendingIntent.getActivity(this, 0,
-                new Intent(this, UserActivity.class), 0);
+                new Intent(this, UserActivity.class), PendingIntent.FLAG_UPDATE_CURRENT);
 
         NotificationCompat.Builder mBuilder =
                 new NotificationCompat.Builder(this)
@@ -89,9 +87,14 @@ public class GcmIntentService extends IntentService {
         .setStyle(new NotificationCompat.BigTextStyle()
         .bigText(message))
         .setContentText(message);
-
+     
+        
+        Notification notif = mBuilder.build();
+        notif.defaults |= Notification.DEFAULT_SOUND;
+        notif.defaults |= Notification.DEFAULT_VIBRATE;
+        
         mBuilder.setContentIntent(contentIntent);
-        mNotificationManager.notify(NOTIFICATION_ID++, mBuilder.build());
+        mNotificationManager.notify(NOTIFICATION_ID++, notif);
         
     }
 }

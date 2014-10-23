@@ -9,7 +9,6 @@ package com.socivy.ozucarpool;
 
 public final class Manifest {
     public static final class permission {
-        public static final String C2D_MESSAGE="com.example.gcm.permission.C2D_MESSAGE";
-        public static final String MAPS_RECEIVE="com.truiton.supportmapfragment.permission.MAPS_RECEIVE";
+        public static final String C2D_MESSAGE="com.socivy.ozucarpool.permission.C2D_MESSAGE";
     }
 }

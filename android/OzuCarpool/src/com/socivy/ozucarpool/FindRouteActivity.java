@@ -54,6 +54,7 @@ public class FindRouteActivity extends ActionBarActivity {
 				Intent intent = new Intent(FindRouteActivity.this, InfoActivity.class);
 				Bundle b = new Bundle();
 				b.putInt("routeid", info.id);
+				b.putString("routejson", info.jsonData);
 				b.putBoolean("joined", false);
 				b.putBoolean("joinable", true);
 				intent.putExtras(b);
@@ -106,7 +107,7 @@ public class FindRouteActivity extends ActionBarActivity {
 			@Override
 			protected String doInBackground(String... token) {
 				try {
-					return HttpPoster.getJSON("http://development.socivy.com/api/v1/me/route/available", context);
+					return HttpPoster.getJSON(AppCredintals.BASE_LINK+"/api/v1/me/route/available", context);
 				} catch (Exception e) {
 					return e.toString();
 				}

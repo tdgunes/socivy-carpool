@@ -22,7 +22,7 @@ public class ExpiredAuthenticator {
 		try {
 			HttpClient httpclient = HttpPoster.getNewHttpClient();
 
-			HttpPost httppost = new HttpPost("http://development.socivy.com/api/v1/login");
+			HttpPost httppost = new HttpPost(AppCredintals.BASE_LINK+"/api/v1/login");
 			httppost.setHeader("Accept", "application/json");
 			httppost.setHeader("Content-type", "application/json");
 			StringEntity se = new StringEntity("{\"user_secret\":\""+AppCredintals.getUserSecret(context)+"\"}");

@@ -79,6 +79,7 @@ public class RoutesFragment extends Fragment {
 					Intent intent = new Intent(getActivity(), InfoActivity.class);
 					Bundle b = new Bundle();
 					b.putInt("routeid", info.id);
+					b.putString("routejson", info.jsonData);
 					b.putBoolean("joined", false);
 					b.putBoolean("joinable", false);
 					intent.putExtras(b);
@@ -139,7 +140,7 @@ public class RoutesFragment extends Fragment {
 			@Override
 			protected String doInBackground(String... token) {
 				try {
-					return HttpPoster.getJSON("http://development.socivy.com/api/v1/me/route/self", context);
+					return HttpPoster.getJSON(AppCredintals.BASE_LINK+"/api/v1/me/route/self", context);
 				} catch (Exception e) {
 					return e.toString();
 				}

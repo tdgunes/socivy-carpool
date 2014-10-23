@@ -6,6 +6,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -14,6 +15,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
@@ -23,6 +25,7 @@ public class AddRouteActivity extends Activity {
 	private int hour;
 	private int min;
 	private ArrayList<Integer> stopList;
+	private int seat = 1;
 
 	private TimePicker.OnTimeChangedListener mTimePickerListener=new TimePicker.OnTimeChangedListener(){
 		public void onTimeChanged(TimePicker timePicker, int hourOfDay, int minute){
@@ -31,6 +34,7 @@ public class AddRouteActivity extends Activity {
 
 		}
 	};
+	private TextView seattext;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -52,12 +56,46 @@ public class AddRouteActivity extends Activity {
 				startActivityForResult(intent, 0);
 			}
 		});
+		
+		Button seatinc = (Button) findViewById(R.id.seatinc);
+		
+		
+		Button seatdec = (Button) findViewById(R.id.seatdec);
+		seattext = (TextView) findViewById(R.id.seattext);
+		seattext.setText(""+seat);
+		
+		seatinc.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				seat++;
+				
+				seattext.setText(""+seat);
+			}
+		});
+		
+		seatdec.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				seat--;
+				if (seat < 1)
+					seat = 1;
+				seattext.setText(""+seat);
+			}
+		});
 
 		Button setoffButton = (Button) findViewById(R.id.buttonsetoff);
 		setoffButton.setOnClickListener(new View.OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
+
+				final ProgressDialog progressDialog = new ProgressDialog(AddRouteActivity.this);
+				progressDialog.setCancelable(false);
+				progressDialog.setMessage("Adding!");
+				progressDialog.show();
+				
 				RadioButton toStop = (RadioButton) findViewById(R.id.radioButton1);
 				RadioButton today = (RadioButton) findViewById(R.id.radioButton3);
 				EditText desc = (EditText) findViewById(R.id.editText1);
@@ -68,7 +106,7 @@ public class AddRouteActivity extends Activity {
 					postJson.accumulate("action_day", (today.isChecked() ? 0 : 1));
 					postJson.accumulate("action_hour", hour);
 					postJson.accumulate("action_minute", min);
-					postJson.accumulate("available_seat", 4);
+					postJson.accumulate("available_seat", seat);
 					postJson.accumulate("description", desc.getText());
 
 					JSONArray stopsArray = new JSONArray();
@@ -82,13 +120,14 @@ public class AddRouteActivity extends Activity {
 
 						@Override
 						protected void onPostExecute(String result) {
+							progressDialog.dismiss();
 							try {
 								JSONObject json = new JSONObject(result);
 								System.out.println(json.toString());
 								JSONObject info = json.getJSONObject("info");
-								int error = info.getInt("error_code");
+								int status = info.getInt("status_code");
 								
-								if (error == 0) {
+								if (status == 1) {
 									Toast.makeText(context, "Route added", Toast.LENGTH_LONG).show();
 									finish();
 								} 
@@ -104,7 +143,7 @@ public class AddRouteActivity extends Activity {
 						@Override
 						protected String doInBackground(String... token) {
 							try {
-								return HttpPoster.postJSON("http://development.socivy.com/api/v1/route", context, token[0]);
+								return HttpPoster.postJSON(AppCredintals.BASE_LINK+"/api/v1/route", context, token[0]);
 							} catch (Exception e) {
 								return e.toString();
 							}
@@ -112,6 +151,7 @@ public class AddRouteActivity extends Activity {
 					}.execute(postJson.toString());
 
 				} catch(Exception ex) {
+					progressDialog.dismiss();
 					ex.printStackTrace();
 				}
 			}

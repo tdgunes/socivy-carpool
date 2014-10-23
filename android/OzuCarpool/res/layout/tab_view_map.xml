@@ -1,8 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/tab_map_title"
-    android:layout_width="wrap_content"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="5dp"
-    android:drawableTop="@drawable/mapicon"
-    android:text="@string/title_section2" />
+    android:layout_gravity="top" >
+
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:layout_weight="4"
+        android:src="@drawable/mapicon" >
+    </ImageView>
+
+    <TextView
+        android:id="@+id/tab_map_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_marginTop="1dp"
+        android:text="@string/title_section2" />
+
+</LinearLayout>

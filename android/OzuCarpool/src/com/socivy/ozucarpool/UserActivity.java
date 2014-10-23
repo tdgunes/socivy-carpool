@@ -72,6 +72,9 @@ ActionBar.TabListener {
 		actionBar.addTab(actionBar.newTab().setTabListener(this).setCustomView(R.layout.tab_view_map));
 		((TextView) findViewById(R.id.tab_map_title)).setText(R.string.title_section2);
 
+		actionBar.addTab(actionBar.newTab().setTabListener(this).setCustomView(R.layout.tab_view_bus));
+		((TextView) findViewById(R.id.tab_bus_title)).setText(R.string.title_section4);
+		
 		actionBar.addTab(actionBar.newTab().setTabListener(this).setCustomView(R.layout.tab_view_settings));
 		((TextView) findViewById(R.id.tab_gear_title)).setText(R.string.title_section3);
 
@@ -177,7 +180,10 @@ ActionBar.TabListener {
 			case 1:
 				return SearchFragment.newInstance();
 			case 2:
+				return IETTFragment.newInstance();
+			case 3:
 				return SettingsFragment.newInstance();
+				
 
 			}
 			return RoutesFragment.newInstance();
@@ -186,7 +192,7 @@ ActionBar.TabListener {
 		@Override
 		public int getCount() {
 			// Show 3 total pages.
-			return 3;
+			return 4;
 		}
 
 		@Override
@@ -198,6 +204,8 @@ ActionBar.TabListener {
 			case 1:
 				return getString(R.string.title_section2).toUpperCase(l);
 			case 2:
+				return getString(R.string.title_section4).toUpperCase(l);
+			case 3:
 				return getString(R.string.title_section3).toUpperCase(l);
 			}
 			return null;
@@ -211,6 +219,8 @@ ActionBar.TabListener {
 			case 1:
 				return R.drawable.mapicon;
 			case 2:
+				return R.drawable.busicon;
+			case 3:
 				return R.drawable.gearicon;
 			}
 			return 0;

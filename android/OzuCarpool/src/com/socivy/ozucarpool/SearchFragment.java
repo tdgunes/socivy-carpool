@@ -90,6 +90,7 @@ public class SearchFragment extends Fragment  {
 					Intent intent = new Intent(getActivity(), InfoActivity.class);
 					Bundle b = new Bundle();
 					b.putInt("routeid", info.id);
+					b.putString("routejson", info.jsonData);
 					b.putBoolean("joined", true);
 					b.putBoolean("joinable", true);
 					intent.putExtras(b);
@@ -151,7 +152,7 @@ public class SearchFragment extends Fragment  {
 			@Override
 			protected String doInBackground(String... token) {
 				try {
-					return HttpPoster.getJSON("http://development.socivy.com/api/v1/me/route/enrolled", context);
+					return HttpPoster.getJSON(AppCredintals.BASE_LINK+"/api/v1/me/route/enrolled", context);
 				} catch (Exception e) {
 					return e.toString();
 				}

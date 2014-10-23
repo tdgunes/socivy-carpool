@@ -72,6 +72,7 @@ public class SettingsFragment extends Fragment {
 
 			@Override
 			protected void onPostExecute(String result) {
+				System.out.println(result);
 				try {
 					JSONObject obj = new JSONObject(result);
 					JSONObject json = obj.getJSONObject("result");
@@ -105,7 +106,7 @@ public class SettingsFragment extends Fragment {
 			@Override
 			protected String doInBackground(String... token) {
 				try {
-					return HttpPoster.getJSON("http://development.socivy.com/api/v1/me/setting", context);
+					return HttpPoster.getJSON(AppCredintals.BASE_LINK+"/api/v1/me/setting", context);
 				} catch (Exception e) {
 					return e.toString();
 				}
@@ -147,7 +148,7 @@ public class SettingsFragment extends Fragment {
 			}
 			
 			info.accumulate("phone", phone);
-			settings.accumulate("show_phone", (checked) ? "1": "0");
+			settings.accumulate("show_phone", (checked) ? true: false);
 			json.accumulate("information", info);
 			json.accumulate("route_settings", settings);
 			
@@ -168,7 +169,7 @@ public class SettingsFragment extends Fragment {
 			@Override
 			protected String doInBackground(String... token) {
 				try {
-					return HttpPoster.postJSON("http://development.socivy.com/api/v1/me/setting", context, token[0]);
+					return HttpPoster.postJSON(AppCredintals.BASE_LINK+"/api/v1/me/setting", context, token[0]);
 				} catch (Exception e) {
 					return e.toString();
 				}
@@ -200,10 +201,10 @@ public class SettingsFragment extends Fragment {
 			protected Boolean doInBackground(String... token) {
 				try {
 
-					JSONObject json = new JSONObject(HttpPoster.getJSON("http://development.socivy.com/api/v1/logout", context));
+					JSONObject json = new JSONObject(HttpPoster.getJSON(AppCredintals.BASE_LINK+"/api/v1/logout", context));
 					JSONObject info = json.getJSONObject("info");
-					int error = info.getInt("error_code");
-					if (error == 0)
+					int status = info.getInt("status_code");
+					if (status == 1)
 						return true;
 					else 
 						return false;

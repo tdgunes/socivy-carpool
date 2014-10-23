@@ -73,7 +73,7 @@ public class AddRouteMapActivity extends ActionBarActivity {
 			@Override
 			protected String doInBackground(String... token) {
 				try {
-					return HttpPoster.getJSON("http://development.socivy.com/api/v1/place", context);
+					return HttpPoster.getJSON(AppCredintals.BASE_LINK+"/api/v1/place", context);
 				} catch (Exception e) {
 					return e.toString();
 				}

@@ -17,6 +17,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.widget.Toast;
 
 public class Authenticator extends AsyncTask<String, String, String> {
 	private ProgressDialog progressDialog;
@@ -60,8 +61,9 @@ public class Authenticator extends AsyncTask<String, String, String> {
 				((Activity)current).finish();
 			}
 			else {
-				JSONArray jArray = status.getJSONArray("errors");
-				System.out.println(jArray.toString());
+				Toast.makeText(current, "Login failed, check your credintals", Toast.LENGTH_LONG).show();
+				//JSONArray jArray = status.getJSONArray("errors");
+				//System.out.println(jArray.toString());
 			}
 		} catch (Exception ex) {
 			ex.printStackTrace();
@@ -80,7 +82,7 @@ public class Authenticator extends AsyncTask<String, String, String> {
 			String user = params[0];
 			String pass = params[1];
 
-			HttpPost httppost = new HttpPost("http://development.socivy.com/api/v1/authenticate");
+			HttpPost httppost = new HttpPost(AppCredintals.BASE_LINK+"/api/v1/authenticate");
 			httppost.setHeader("Accept", "application/json");
 		    httppost.setHeader("Content-type", "application/json");
 		    StringEntity se = new StringEntity("{\"email\":\""+user+"\", \"password\":\""+pass+"\", \"public_key\":\""+AppCredintals.publicKey+"\"}");

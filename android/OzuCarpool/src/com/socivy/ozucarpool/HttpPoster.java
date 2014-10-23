@@ -77,18 +77,23 @@ public class HttpPoster {
 			builder.append(line);
 		}
 
+		System.out.println(builder.toString());
 		JSONObject json = new JSONObject(builder.toString());
 		JSONObject info = json.getJSONObject("info");
-		int error = info.getInt("error_code");
-		if (error == 4 || error == 3) { //expire olduysak bi daha baðlan ve tekrar çaðýr
-			new ExpiredAuthenticator().tryLogin(context);
-			return getJSON(address, context);
+		int status = info.getInt("status_code");
+
+		if (status == 0) {
+			int error = info.getInt("error_code");
+			if (error == 2) { //expire olduysak bi daha baðlan ve tekrar çaðýr
+				new ExpiredAuthenticator().tryLogin(context);
+				return getJSON(address, context);
+			}
 		}
 
 
 		return builder.toString();
 	}
-	
+
 	public static String deleteRequest(String address, Context context) throws Exception{
 		StringBuilder builder = new StringBuilder();
 		HttpClient client = new DefaultHttpClient();
@@ -104,14 +109,19 @@ public class HttpPoster {
 			builder.append(line);
 		}
 
+		System.out.println(builder.toString());
 		JSONObject json = new JSONObject(builder.toString());
 		JSONObject info = json.getJSONObject("info");
-		int error = info.getInt("error_code");
-		if (error == 4 || error == 3) { //expire olduysak bi daha baðlan ve tekrar çaðýr
-			new ExpiredAuthenticator().tryLogin(context);
-			return deleteRequest(address, context);
+		int status = info.getInt("status_code");
+
+		if (status == 0) {
+			int error = info.getInt("error_code");
+			if (error == 2) { //expire olduysak bi daha baðlan ve tekrar çaðýr
+				new ExpiredAuthenticator().tryLogin(context);
+				return deleteRequest(address, context);
+			}
 		}
-		
+
 		return builder.toString();
 	}
 
@@ -139,10 +149,15 @@ public class HttpPoster {
 		JSONObject json = new JSONObject(builder.toString());
 		System.out.println(json.toString());
 		JSONObject info = json.getJSONObject("info");
-		int error = info.getInt("error_code");
-		if (error == 4 || error == 3) { //expire olduysak bi daha baðlan ve tekrar çaðýr
-			new ExpiredAuthenticator().tryLogin(context);
-			return postJSON(address, context, jsonData);
+
+		int status = info.getInt("status_code");
+
+		if (status == 0) {
+			int error = info.getInt("error_code");
+			if (error == 2) { //expire olduysak bi daha baðlan ve tekrar çaðýr
+				new ExpiredAuthenticator().tryLogin(context);
+				return postJSON(address, context, jsonData);
+			}
 		}
 
 		return builder.toString();

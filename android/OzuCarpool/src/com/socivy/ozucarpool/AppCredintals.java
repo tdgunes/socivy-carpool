@@ -27,6 +27,7 @@ public class AppCredintals {
 	public static final String EXTRA_MESSAGE = "message";
 	public static final String PROPERTY_REG_ID = "registration_id";
 	public static final String PROPERTY_APP_VERSION = "appVersion";
+	public static final String BASE_LINK = "https://socivy.com";
 
 
 	public static void createFromJSON(String json) {
@@ -70,7 +71,7 @@ public class AppCredintals {
 			JSONObject postJson = new JSONObject();
 			postJson.accumulate("device_token", getRegistrationId(context));
 			postJson.accumulate("device_type", "android");
-			HttpPoster.postJSON("http://development.socivy.com/api/v1/device", context, postJson.toString());
+			HttpPoster.postJSON(AppCredintals.BASE_LINK+"/api/v1/device", context, postJson.toString());
 
 
 		} catch(Exception ex) {
