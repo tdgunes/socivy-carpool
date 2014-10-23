@@ -93,6 +93,23 @@ public class HttpPoster {
 
 		return builder.toString();
 	}
+	
+	public static String getRegularJSON(String address) throws Exception{
+		StringBuilder builder = new StringBuilder();
+		HttpClient client = new DefaultHttpClient();
+		HttpGet httpGet = new HttpGet(address);
+		HttpResponse response = client.execute(httpGet);
+		/*StatusLine statusLine = response.getStatusLine();
+		int statusCode = statusLine.getStatusCode();*/
+		HttpEntity entity = response.getEntity();
+		InputStream content = entity.getContent();
+		BufferedReader reader = new BufferedReader(new InputStreamReader(content));
+		String line;
+		while((line = reader.readLine()) != null){
+			builder.append(line);
+		}
+		return builder.toString();
+	}
 
 	public static String deleteRequest(String address, Context context) throws Exception{
 		StringBuilder builder = new StringBuilder();

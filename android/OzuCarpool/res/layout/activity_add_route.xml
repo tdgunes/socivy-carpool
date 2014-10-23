@@ -131,7 +131,7 @@
                         android:layout_gravity="center"
                         android:paddingLeft="5dp"
                         android:paddingRight="5dp"
-                        android:text="Seats"
+                        android:text="@string/string_seat"
                         android:textAppearance="?android:attr/textAppearanceMedium" />
 
                     <TextView

@@ -47,6 +47,10 @@
     <string name="string_stops">Stops</string>
     <string name="string_participants">Participants</string>
     <string name="icon_heart">&#xf1db;</string>
+    <string name="string_seat">Seats</string>
+    <string name="string_contact">Contact</string>
+    <string name="string_showtel">Show my phone number in the routes I have created</string>
+    <string name="string_mysettings">My Settings</string>
     <string name="title_activity_register">Register</string>
     <string name="title_activity_forgot_pass">Forgot Password</string>
     <string name="title_activity_find_route">Find Route</string>

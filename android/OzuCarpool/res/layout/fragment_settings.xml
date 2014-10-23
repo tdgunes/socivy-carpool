@@ -21,13 +21,13 @@
             android:layout_height="25dp"
             android:background="#dddddd"
             android:padding="3dp"
-            android:text="My Settings" />
+            android:text="@string/string_mysettings" />
 
         <CheckBox
             android:id="@+id/checktel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Oluşturduğum rotalarda telefon numaramı göster"
+            android:text="@string/string_showtel"
             android:textColor="#4456aa"
             android:textSize="14sp"  />
         

@@ -15,6 +15,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.text.Html;
+import android.text.format.Time;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -330,10 +331,13 @@ public class InfoActivity extends ActionBarActivity {
 			direction.setText(Html.fromHtml("&#xf024; &#xf178; &#xf19c;"));
 		else 
 			direction.setText(Html.fromHtml("&#xf19c; &#xf178; &#xf024;"));
+		
+		Time timestamp = new Time();
+		timestamp.setToNow();
 
 		TextView time = (TextView) findViewById(R.id.textView2);
 		time.setTypeface(font);
-		time.setText(Html.fromHtml("&#xf017; " + info.time.format("%H:%M")));
+		time.setText(Html.fromHtml("&#xf017; " + ((info.time.monthDay != timestamp.monthDay) ? "Tomorrow ":"") + info.time.format("%H:%M")));
 
 		TextView seats = (TextView) findViewById(R.id.textView3);
 		seats.setTypeface(font);

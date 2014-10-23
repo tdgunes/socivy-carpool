@@ -70,10 +70,13 @@ public class StopListAdapter extends ArrayAdapter<RouteInfo> {
 		timestamp.setToNow();
 		long diff = item.time.toMillis(false) - timestamp.toMillis(false);
 
-		diff /= 1000*60*60;
+		
 		
 		TextView tv = (TextView) row.findViewById(R.id.textView1);
-		tv.setText(diff+" saat sonra");
+		if (diff / (1000*60*60) > 0) 
+			tv.setText((diff / (1000*60*60))+" hour(s) left");
+		else
+			tv.setText((diff / (1000*60))+" minute(s) left");
 
 		TextView direction = (TextView) row.findViewById(R.id.textView7);
 		direction.setTypeface(font);
@@ -84,7 +87,7 @@ public class StopListAdapter extends ArrayAdapter<RouteInfo> {
 
 		TextView time = (TextView) row.findViewById(R.id.textView2);
 		time.setTypeface(font);
-		time.setText(Html.fromHtml("&#xf017; " + ((item.time.monthDay != timestamp.monthDay) ? "Yarýn ":"") + item.time.format("%H:%M")));
+		time.setText(Html.fromHtml("&#xf017; " + ((item.time.monthDay != timestamp.monthDay) ? "Tomorrow ":"") + item.time.format("%H:%M")));
 
 
 		TextView seats = (TextView) row.findViewById(R.id.textView3);

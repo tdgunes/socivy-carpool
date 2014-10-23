@@ -16,6 +16,7 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.AbsListView.OnScrollListener;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ProgressBar;
 
 
 public class RoutesFragment extends Fragment {
@@ -75,16 +76,19 @@ public class RoutesFragment extends Fragment {
 				@Override
 				public void onItemClick(AdapterView<?> arg0, View arg1, int pos,
 						long arg3) {
-					RouteInfo info = (RouteInfo) arg0.getItemAtPosition(pos);
-					Intent intent = new Intent(getActivity(), InfoActivity.class);
-					Bundle b = new Bundle();
-					b.putInt("routeid", info.id);
-					b.putString("routejson", info.jsonData);
-					b.putBoolean("joined", false);
-					b.putBoolean("joinable", false);
-					intent.putExtras(b);
+					ProgressBar bar = (ProgressBar) RoutesFragment.this.rootView.findViewById(R.id.progressBar2);
+					if (bar.getVisibility() == View.GONE) {
+						RouteInfo info = (RouteInfo) arg0.getItemAtPosition(pos);
+						Intent intent = new Intent(getActivity(), InfoActivity.class);
+						Bundle b = new Bundle();
+						b.putInt("routeid", info.id);
+						b.putString("routejson", info.jsonData);
+						b.putBoolean("joined", false);
+						b.putBoolean("joinable", false);
+						intent.putExtras(b);
 
-					getActivity().startActivity(intent);
+						getActivity().startActivity(intent);
+					}
 				}
 
 			});
@@ -112,11 +116,10 @@ public class RoutesFragment extends Fragment {
 		else {
 			((ViewGroup) rootView.getParent()).removeView(rootView);
 		}
-		getRoutes();
 
 		return rootView;
 	}
-	
+
 	@Override
 	public void onResume() {
 		super.onResume();

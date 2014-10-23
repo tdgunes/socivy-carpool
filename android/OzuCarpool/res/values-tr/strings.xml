@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Socivy</string>
+    <string name="string_socivy">Socivy</string>
+    <string name="hello_world">Lol</string>
+    <string name="title_activity_settings">Ayarlar</string>
+    <string name="title_activity_info">Durak</string>
+    <string name="title_activity_user">Ana Sayfa</string>
+    <string name="string_mail">isim@universite.edu.tr</string>
+    <string name="string_phone">Telefon Numarası</string>
+    <string name="string_name">Ad Soyad</string>
+    <string name="string_pass">Şifre</string>
+    <string name="string_login">Giriş yap</string>
+    <string name="string_forgot">Şifremi Unuttum</string>
+    <string name="string_forgotpass">Reset Password</string>
+    <string name="string_forgotdesc">If you have forgotten your password, enter your registered e-mail below and we will send you the necessary instructions to your e-mail for you to reset your password.</string>
+    <string name="string_register">Kayıt Ol</string>
+    <string name="string_join">Katıl</string>
+    <string name="string_leave">Ayrıl</string>
+    <string name="string_cancel">İptal Et</string>
+    <string name="string_add_route">Rota Ekle</string>
+    <string name="string_addroute">Rota Ekle</string>
+    <string name="string_findroute">Araç Bul</string>
+    <string name="title_section1">Arabam var</string>
+    <string name="title_section2">Arabam yok</string>
+    <string name="title_section3">Ayarlar</string>
+    <string name="title_section4">IETT</string>
+    <string name="action_settings">Ayarlar</string>
+    <string name="title_activity_add_route">Rota</string>
+    <string name="title_activity_add_route_map">Durak ekle</string>
+    <string name="string_toozu">Duraktan ÖzÜ\'ye</string>
+    <string name="string_tostop">ÖzÜ\'den durağa</string>
+    <string name="string_vehicle">Kayıtlı Rotalarım</string>
+    <string name="string_available">Müsait Araçlar</string>
+    <string name="string_routes">Rotalarım</string>
+    <string name="string_update">Ayarlarımı Güncelle</string>
+    <string name="string_account">Hesabım</string>
+    <string name="string_signout">Çıkış Yap</string>
+    <string name="string_today">Bugün</string>
+    <string name="string_tomorrow">Yarın</string>
+    <string name="string_choosestop">Durakları Belirle</string>
+    <string name="string_addinfo">Ek Açıklama</string>
+    <string name="string_setoff">Yola Çık</string>
+    <string name="string_addinfo2">Plaka, araç rengi, çay, kahve...</string>
+    <string name="string_done">Tamam</string>
+    <string name="string_stops">Duraklar</string>
+    <string name="string_participants">Yolcular</string>
+    <string name="icon_heart">&#xf1db;</string>
+    <string name="string_seat">Koltuk</string>
+    <string name="string_contact">İletişim</string>
+    <string name="string_showtel">Eklediğim rotalarda telefon numaramı göster</string>
+    <string name="string_mysettings">Ayarlarım</string>
+    <string name="title_activity_register">Kayıt</string>
+    <string name="title_activity_forgot_pass">Forgot Password</string>
+    <string name="title_activity_find_route">Araç bul</string>
+
+</resources>

@@ -23,7 +23,6 @@
             android:layout_height="40dip"
             android:hint="@string/string_mail"
             android:inputType="textEmailAddress"
-            android:text="deniz.sokmen@ozu.edu.tr"
             android:textColor="#778BB0"
             android:textColorHint="#778BB0"
             android:textSize="12sp" />
@@ -35,7 +34,6 @@
             android:layout_marginTop="-5dp"
             android:hint="@string/string_pass"
             android:inputType="textPassword"
-            android:text="1994277"
             android:textColor="#778BB0"
             android:textColorHint="#778BB0"
             android:textSize="12sp" />

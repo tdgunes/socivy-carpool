@@ -12,13 +12,14 @@ import android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.widget.AbsListView;
+import android.widget.ProgressBar;
 import android.widget.AbsListView.OnScrollListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
 public class FindRouteActivity extends ActionBarActivity {
-	
+
 	public ArrayList<RouteInfo> listItem= new ArrayList<RouteInfo>();
 	private SwipeRefreshLayout swipeLayout;
 	private ListView list;
@@ -29,7 +30,7 @@ public class FindRouteActivity extends ActionBarActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_find_route);
 		getSupportActionBar().setTitle("Available Routes");
-		
+
 		swipeLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_container);
 		swipeLayout.setColorScheme(R.color.blue2, R.color.blue25, R.color.orange4, R.color.orange5);
 		swipeLayout.setOnRefreshListener(new OnRefreshListener() {
@@ -50,16 +51,19 @@ public class FindRouteActivity extends ActionBarActivity {
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View arg1, int pos,
 					long arg3) {
-				RouteInfo info = (RouteInfo) arg0.getItemAtPosition(pos);
-				Intent intent = new Intent(FindRouteActivity.this, InfoActivity.class);
-				Bundle b = new Bundle();
-				b.putInt("routeid", info.id);
-				b.putString("routejson", info.jsonData);
-				b.putBoolean("joined", false);
-				b.putBoolean("joinable", true);
-				intent.putExtras(b);
+				ProgressBar bar = (ProgressBar) FindRouteActivity.this.findViewById(R.id.progressBar1);
+				if (bar.getVisibility() == View.GONE) {
+					RouteInfo info = (RouteInfo) arg0.getItemAtPosition(pos);
+					Intent intent = new Intent(FindRouteActivity.this, InfoActivity.class);
+					Bundle b = new Bundle();
+					b.putInt("routeid", info.id);
+					b.putString("routejson", info.jsonData);
+					b.putBoolean("joined", false);
+					b.putBoolean("joinable", true);
+					intent.putExtras(b);
 
-				startActivity(intent);
+					startActivity(intent);
+				}
 			}
 
 		});
@@ -82,16 +86,15 @@ public class FindRouteActivity extends ActionBarActivity {
 
 		adapter = new StopListAdapter(this, 0, listItem);
 		list.setAdapter(adapter);
-		
-		getRoutes();
+
 	}
-	
+
 	@Override
 	public void onResume() {
 		super.onResume();
 		getRoutes();
 	}
-	
+
 	private void getRoutes() {
 		findViewById(R.id.progressBar1).setVisibility(View.VISIBLE);
 		new ContextTask<String, Void, String>(this) {
