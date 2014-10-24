@@ -119,7 +119,6 @@ public class AppCredintals {
 			msg = "Error :" + ex.getMessage();
 		}
 		
-		Log.i("HATA", "GCM'ye kayit olunamadi.\n"+msg);
 
 	}
 

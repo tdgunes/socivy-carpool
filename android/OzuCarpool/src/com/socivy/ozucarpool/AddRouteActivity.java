@@ -132,10 +132,10 @@ public class AddRouteActivity extends Activity {
 									finish();
 								} 
 								else {
-									Toast.makeText(context, "Some problem occured", Toast.LENGTH_LONG).show();
+									Toast.makeText(context, "Failed to add route\nCheck the timing or stops you chose", Toast.LENGTH_LONG).show();
 								}
 							} catch(Exception ex) {
-								Toast.makeText(context, "Some problem occured", Toast.LENGTH_LONG).show();
+								Toast.makeText(context, "Failed to add route", Toast.LENGTH_LONG).show();
 							}
 							super.onPostExecute(result);
 						}

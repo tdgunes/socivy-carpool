@@ -17,6 +17,9 @@ import android.support.v7.app.ActionBarActivity;
 import android.text.Html;
 import android.text.format.Time;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
@@ -158,20 +161,20 @@ public class InfoActivity extends ActionBarActivity {
 				TextView tv = (TextView) row.findViewById(R.id.actress_name);
 				//tv.setTypeface(font);
 				tv.setText(Html.fromHtml(info.name));
-				
+
 
 				return row;
 			}
 
 		};
-		
+
 		list2.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
 				showContactPopup(position);
-				
+
 			}
 		});
 
@@ -202,7 +205,7 @@ public class InfoActivity extends ActionBarActivity {
 			emailtemp = participant.email;
 			driver = participant.name;
 		}
-		
+
 		Dialog popUp = new Dialog(this);
 		popUp.setTitle("Contact "+driver);
 		LinearLayout layout = new LinearLayout(this);
@@ -302,7 +305,7 @@ public class InfoActivity extends ActionBarActivity {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}*/
-		
+
 		populate(json);
 	}
 
@@ -331,7 +334,7 @@ public class InfoActivity extends ActionBarActivity {
 			direction.setText(Html.fromHtml("&#xf024; &#xf178; &#xf19c;"));
 		else 
 			direction.setText(Html.fromHtml("&#xf19c; &#xf178; &#xf024;"));
-		
+
 		Time timestamp = new Time();
 		timestamp.setToNow();
 
@@ -500,4 +503,26 @@ public class InfoActivity extends ActionBarActivity {
 			e.printStackTrace();
 		}
 	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		MenuInflater inflater=getMenuInflater();
+		inflater.inflate(R.menu.sharemenu, menu);
+		return super.onCreateOptionsMenu(menu);
+
+	}
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch(item.getItemId())
+		{
+		case R.id.action_sharefb:
+			Intent intent = new Intent(Intent.ACTION_SEND);
+			intent.setType("text/plain");
+			intent.putExtra(Intent.EXTRA_TEXT, "https://www.socivy.com/route/"+info.id);
+			startActivity(Intent.createChooser(intent, "Share with"));
+			break;
+		}
+		return true;
+	}
+
 }

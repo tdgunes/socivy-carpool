@@ -372,6 +372,7 @@ int id action_menu_divider 0x7f080028
 int id action_menu_presenter 0x7f080029
 int id action_mode_close_button 0x7f080036
 int id action_settings 0x7f08008d
+int id action_sharefb 0x7f08008e
 int id activity_chooser_view_content 0x7f080037
 int id actress_name 0x7f080085
 int id always 0x7f08001e
@@ -553,7 +554,8 @@ int layout view_car 0x7f03002e
 int menu add_route 0x7f0c0000
 int menu add_route_map 0x7f0c0001
 int menu main_activity_actions 0x7f0c0002
-int menu user 0x7f0c0003
+int menu sharemenu 0x7f0c0003
+int menu user 0x7f0c0004
 int string abc_action_bar_home_description 0x7f07001b
 int string abc_action_bar_up_description 0x7f07001c
 int string abc_action_menu_overflow_description 0x7f07001d

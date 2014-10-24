@@ -1508,6 +1508,7 @@ containing a value of this type.
         public static final int action_menu_presenter=0x7f080029;
         public static final int action_mode_close_button=0x7f080036;
         public static final int action_settings=0x7f08008d;
+        public static final int action_sharefb=0x7f08008e;
         public static final int activity_chooser_view_content=0x7f080037;
         public static final int actress_name=0x7f080085;
         public static final int always=0x7f08001e;
@@ -1717,7 +1718,8 @@ containing a value of this type.
         public static final int add_route=0x7f0c0000;
         public static final int add_route_map=0x7f0c0001;
         public static final int main_activity_actions=0x7f0c0002;
-        public static final int user=0x7f0c0003;
+        public static final int sharemenu=0x7f0c0003;
+        public static final int user=0x7f0c0004;
     }
     public static final class string {
         /**  Content description for the action bar "home" affordance. [CHAR LIMIT=NONE] 
