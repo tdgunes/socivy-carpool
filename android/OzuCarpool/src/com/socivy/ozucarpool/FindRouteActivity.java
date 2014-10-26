@@ -97,6 +97,7 @@ public class FindRouteActivity extends ActionBarActivity {
 
 	private void getRoutes() {
 		findViewById(R.id.progressBar1).setVisibility(View.VISIBLE);
+		findViewById(R.id.textnoavail).setVisibility(View.VISIBLE);
 		new ContextTask<String, Void, String>(this) {
 
 			@Override
@@ -104,6 +105,8 @@ public class FindRouteActivity extends ActionBarActivity {
 				populate(result);
 				swipeLayout.setRefreshing(false);
 				findViewById(R.id.progressBar1).setVisibility(View.GONE);
+				if (listItem.size() > 0)
+					findViewById(R.id.textnoavail).setVisibility(View.GONE);
 				super.onPostExecute(result);
 			}
 

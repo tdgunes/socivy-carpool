@@ -61,7 +61,7 @@ public class Authenticator extends AsyncTask<String, String, String> {
 				((Activity)current).finish();
 			}
 			else {
-				Toast.makeText(current, "Login failed, check your credintals", Toast.LENGTH_LONG).show();
+				Toast.makeText(current, "Login failed, check your credentials", Toast.LENGTH_LONG).show();
 				//JSONArray jArray = status.getJSONArray("errors");
 				//System.out.println(jArray.toString());
 			}

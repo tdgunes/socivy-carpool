@@ -22,6 +22,9 @@
     <string name="string_add_route">Rota Ekle</string>
     <string name="string_addroute">Rota Ekle</string>
     <string name="string_findroute">Araç Bul</string>
+    <string name="string_noroute">Henüz bir rota eklememişsiniz.</string>
+    <string name="string_noavail">Katılabileceğiniz müsait bir araç bulunmuyor.</string>
+    <string name="string_noenroll">Herhangi bir rotaya kayıtlı değilsiniz.</string>
     <string name="title_section1">Arabam var</string>
     <string name="title_section2">Arabam yok</string>
     <string name="title_section3">Ayarlar</string>

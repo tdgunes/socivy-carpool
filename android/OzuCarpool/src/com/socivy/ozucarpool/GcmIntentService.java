@@ -84,6 +84,7 @@ public class GcmIntentService extends IntentService {
                 new NotificationCompat.Builder(this)
         .setSmallIcon(R.drawable.ic_launcher)
         .setContentTitle("Socivy")
+        .setContentIntent(contentIntent)
         .setStyle(new NotificationCompat.BigTextStyle()
         .bigText(message))
         .setContentText(message);

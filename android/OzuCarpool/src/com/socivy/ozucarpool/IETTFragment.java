@@ -94,7 +94,7 @@ public class IETTFragment extends Fragment {
 					for (int i = 0; i < jarray.length(); i++) {
 						JSONObject bus = jarray.getJSONObject(i);
 
-						ParentItem parent = new ParentItem(bus.getString("id") + " - " + bus.getString("direction"));
+						ParentItem parent = new ParentItem(bus.getString("id") + " (" + bus.getString("direction")+")");
 						
 						JSONArray hours = new JSONArray(bus.getString("hours"));
 						for (int j = 0; j < hours.length(); j++) {

@@ -141,6 +141,7 @@ public class SearchFragment extends Fragment  {
 
 	private void getRoutes() {
 		rootView.findViewById(R.id.progressBar1).setVisibility(View.VISIBLE);
+		rootView.findViewById(R.id.textnoenroll).setVisibility(View.VISIBLE);
 		new ContextTask<String, Void, String>(getActivity()) {
 
 			@Override
@@ -149,6 +150,9 @@ public class SearchFragment extends Fragment  {
 				list.scrollTo(0, 0);
 				swipeLayout.setRefreshing(false);
 				rootView.findViewById(R.id.progressBar1).setVisibility(View.GONE);
+				if (listItem.size() > 0)
+					rootView.findViewById(R.id.textnoenroll).setVisibility(View.GONE);
+				
 				super.onPostExecute(result);
 			}
 

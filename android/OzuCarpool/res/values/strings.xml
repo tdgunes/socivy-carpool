@@ -22,6 +22,9 @@
     <string name="string_add_route">Add Route</string>
     <string name="string_addroute">Add Route</string>
     <string name="string_findroute">Find Route</string>
+    <string name="string_noroute">You haven\'t added any routes yet.</string>
+    <string name="string_noavail">There is currently no available routes you can join.</string>
+    <string name="string_noenroll">You have not enrolled to any routes yet.</string>
     <string name="title_section1">Have a Car</string>
     <string name="title_section2">Have No Car</string>
     <string name="title_section3">Settings</string>

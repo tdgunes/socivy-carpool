@@ -129,6 +129,7 @@ public class RoutesFragment extends Fragment {
 
 	private void getRoutes() {
 		rootView.findViewById(R.id.progressBar2).setVisibility(View.VISIBLE);
+		rootView.findViewById(R.id.textnoroute).setVisibility(View.VISIBLE);
 		new ContextTask<String, Void, String>(getActivity()) {
 
 			@Override
@@ -137,6 +138,8 @@ public class RoutesFragment extends Fragment {
 				swipeLayout.setRefreshing(false);
 				list.scrollTo(0, 0);
 				rootView.findViewById(R.id.progressBar2).setVisibility(View.GONE);
+				if (listItem.size() > 0)
+					rootView.findViewById(R.id.textnoroute).setVisibility(View.GONE);
 				super.onPostExecute(result);
 			}
 
