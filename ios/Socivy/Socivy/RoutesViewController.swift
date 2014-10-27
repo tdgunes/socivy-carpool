@@ -34,7 +34,7 @@ class RoutesViewController: UITableViewController, SocivyAvailableRouteAPIDelega
             index += 1
             
         }
-        
+        println(self.routes)
         if self.routes.count == 0 {
             infoLabel.hidden = false
         }

@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-let DEBUG:Bool = false
+let DEBUG:Bool = true
 
 
 class SocivyBaseAPI: AsyncHTTPRequestDelegate {
@@ -198,6 +198,9 @@ class SocivyAPI {
         if let value = KeychainService.stringForKey("user_secret"){
             if value.isEqualToString("") == false {
                 return true
+            }
+            else {
+                return false 
             }
         }
         return  false
