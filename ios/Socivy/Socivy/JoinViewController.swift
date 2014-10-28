@@ -112,16 +112,10 @@ class JoinViewController: UITableViewController, UIActionSheetDelegate, SocivyRo
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
 
-        
-        
         var selectedCell = self.tableView.cellForRowAtIndexPath(indexPath)
-        
-        
         if indexPath.section == 0 {
             
             let values:Array = self.details[indexPath.row] as Array
-            
-            
             switch values[0] {
                 
             case "Contact":
@@ -133,13 +127,7 @@ class JoinViewController: UITableViewController, UIActionSheetDelegate, SocivyRo
             default:
                 println("Another cell pressed, s:\(indexPath.section) r:\(indexPath.row)")
             }
-            
-            
         }
- 
-
-
-        
     }
     
     
@@ -149,7 +137,6 @@ class JoinViewController: UITableViewController, UIActionSheetDelegate, SocivyRo
             
     
             let values:Array = self.details[indexPath.row] as Array
-            
     
             switch values[0] {
             

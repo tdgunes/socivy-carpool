@@ -38,6 +38,50 @@
         </mutableArray>
     </customFonts>
     <scenes>
+        <!--IEET Hours-->
+        <scene sceneID="stl-EJ-eyt">
+            <objects>
+                <tableViewController id="Ccf-tM-MGX" customClass="IETTViewController" customModule="Socivy" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="56n-lA-vz6">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="busCell" id="2tH-Jm-16r">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2tH-Jm-16r" id="eVT-S2-R2g">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Ccf-tM-MGX" id="TcH-ty-WNW"/>
+                            <outlet property="delegate" destination="Ccf-tM-MGX" id="Rss-x2-hFB"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="IEET Hours" id="HNE-3o-6am"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OHP-a5-2Cv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1809" y="-1832"/>
+        </scene>
+        <!--IETT Hours-->
+        <scene sceneID="mor-PH-SzF">
+            <objects>
+                <navigationController id="ISI-8k-d1O" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="IETT Hours" image="15-bus" id="qsk-E2-kmc"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Rrp-39-LJe">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Ccf-tM-MGX" kind="relationship" relationship="rootViewController" id="dB7-ah-tTX"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0GJ-yC-4nY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="989" y="-1824"/>
+        </scene>
         <!--Available Routes-->
         <scene sceneID="KHh-Jw-qcV">
             <objects>
@@ -1043,7 +1087,7 @@
                             <outlet property="delegate" destination="PUE-dF-gu8" id="hZJ-Hx-fXW"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Ayarlar" id="jww-FD-QoQ"/>
+                    <tabBarItem key="tabBarItem" title="Ayarlar" image="19-gear" id="jww-FD-QoQ"/>
                     <navigationItem key="navigationItem" title="Settings" id="1hv-cW-k2Y"/>
                     <connections>
                         <outlet property="logoutCell" destination="ojm-pJ-cpD" id="dTc-jn-Uax"/>
@@ -1519,40 +1563,6 @@
             </objects>
             <point key="canvasLocation" x="760" y="1032"/>
         </scene>
-        <!--IETT hours-->
-        <scene sceneID="9vc-2E-smf">
-            <objects>
-                <viewController id="mMf-4Z-BKs" customClass="IETTViewController" customModule="Socivy" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="j3C-dr-yCb"/>
-                        <viewControllerLayoutGuide type="bottom" id="XnT-Pf-oKw"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="bLW-Hj-lJZ">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jqm-Id-Tfi">
-                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </webView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="Jqm-Id-Tfi" firstAttribute="top" secondItem="bLW-Hj-lJZ" secondAttribute="top" constant="20" id="5Va-ci-cfo"/>
-                            <constraint firstItem="Jqm-Id-Tfi" firstAttribute="leading" secondItem="bLW-Hj-lJZ" secondAttribute="leading" id="Qcb-0M-qbi"/>
-                            <constraint firstAttribute="trailing" secondItem="Jqm-Id-Tfi" secondAttribute="trailing" id="hNc-7x-stu"/>
-                            <constraint firstAttribute="bottom" secondItem="Jqm-Id-Tfi" secondAttribute="bottom" id="mZa-ax-uP2"/>
-                        </constraints>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="IETT hours" image="15-bus" id="5gg-RM-sxe"/>
-                    <connections>
-                        <outlet property="webView" destination="Jqm-Id-Tfi" id="THK-BS-jZT"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="9rA-g7-6kd" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="997" y="-1978"/>
-        </scene>
         <!--#ToDo-->
         <scene sceneID="1XD-DR-ogd">
             <objects>
@@ -1566,7 +1576,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GVe-GK-YOY">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <dataDetectorType key="dataDetectorTypes"/>
                             </webView>
@@ -1607,7 +1617,7 @@
                     <connections>
                         <segue destination="yFz-DC-9sT" kind="relationship" relationship="viewControllers" id="Keg-80-gFs"/>
                         <segue destination="myY-OX-Feb" kind="relationship" relationship="viewControllers" id="I36-8E-tkI"/>
-                        <segue destination="mMf-4Z-BKs" kind="relationship" relationship="viewControllers" id="alF-WU-XNC"/>
+                        <segue destination="ISI-8k-d1O" kind="relationship" relationship="viewControllers" id="FOm-Nz-Tgz"/>
                         <segue destination="WMG-9w-GKN" kind="relationship" relationship="viewControllers" id="YAz-0J-sMW"/>
                     </connections>
                 </tabBarController>
@@ -2016,6 +2026,6 @@
         <image name="Socivy-Logo" width="815" height="510"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="aIv-ad-t2n"/>
+        <segue reference="lIJ-dT-v8A"/>
     </inferredMetricsTieBreakers>
 </document>

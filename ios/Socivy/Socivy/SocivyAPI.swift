@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-let DEBUG:Bool = true
+let DEBUG:Bool = false
 
 
 class SocivyBaseAPI: AsyncHTTPRequestDelegate {
@@ -135,6 +135,7 @@ class SocivyAPI {
     let domain = "https://socivy.com"
     let forgotPassword:String
     let url:String
+    let key = "user_secret"
 
     
     var user_secret:String?
@@ -187,27 +188,49 @@ class SocivyAPI {
         self.registerAPI = SocivyRegisterAPI(api:self)
     }
 
-
     func clearUserSecret(){
-        KeychainService.setString("", forKey: "user_secret")
+        
+        let userDefaults = NSUserDefaults.standardUserDefaults()
+        userDefaults.setObject("", forKey: "user_secret")
+        userDefaults.synchronize()
+        self.user_secret = ""
     }
     func saveUserSecret(){
-        KeychainService.setString(user_secret!, forKey: "user_secret")
+        
+        let userDefaults = NSUserDefaults.standardUserDefaults()
+        userDefaults.setObject(user_secret!, forKey: "user_secret")
+        userDefaults.synchronize()
     }
+    
+    func log(string:String){
+        if DEBUG {
+            println("[api] \(string)")
+        }
+    }
+    
+
     func isUserSecretSaved()->Bool{
-        if let value = KeychainService.stringForKey("user_secret"){
-            if value.isEqualToString("") == false {
+        
+        let userDefaults = NSUserDefaults.standardUserDefaults()
+        userDefaults.synchronize()
+        
+        if let value:String = userDefaults.objectForKey("user_secret") as String? {
+            if !value.isEmpty {
+                self.log("isUserSecretSaved() -> true")
                 return true
             }
-            else {
-                return false 
-            }
+            self.log("isUserSecretSaved() -> false")
+            return false
         }
+        self.log("isUserSecretSaved() -> false")
         return  false
     }
     
     func loadUserSecret(){
-        self.user_secret = KeychainService.stringForKey("user_secret")
+        let userDefaults = NSUserDefaults.standardUserDefaults()
+        userDefaults.synchronize()
+        
+        self.user_secret = userDefaults.objectForKey("user_secret") as String?
     }
     
     func showError(error:NSError){

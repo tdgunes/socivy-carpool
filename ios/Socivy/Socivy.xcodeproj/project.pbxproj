@@ -20,12 +20,14 @@
 		3D5D006119F1E25600A6ADD3 /* RouteCancelAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5D006019F1E25600A6ADD3 /* RouteCancelAPI.swift */; };
 		3D82E0D719EB00B200A22CA1 /* JoinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D82E0D619EB00B200A22CA1 /* JoinViewController.swift */; };
 		3D8D941719EBF84A00EDF76E /* EnrolledViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8D941619EBF84A00EDF76E /* EnrolledViewController.swift */; };
+		3DAB93E019FE962F00077397 /* SocivyBusAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DAB93DF19FE962F00077397 /* SocivyBusAPI.swift */; };
 		3DB20B3519F2EDDE0077BE96 /* SocivyDeviceStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB20B3419F2EDDE0077BE96 /* SocivyDeviceStore.swift */; };
 		3DB20B3719F32C0C0077BE96 /* SocivyLogoutAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB20B3619F32C0C0077BE96 /* SocivyLogoutAPI.swift */; };
 		3DD6673819F67D1B009896FB /* IETTViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD6673719F67D1B009896FB /* IETTViewController.swift */; };
 		3DDCD4B619F40A4100FCF704 /* AccountSettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDCD4B519F40A4100FCF704 /* AccountSettingsController.swift */; };
 		3DDCD4B819F40E7D00FCF704 /* SettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDCD4B719F40E7D00FCF704 /* SettingCell.swift */; };
 		3DDCD4BA19F42F8200FCF704 /* SocivySettingAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDCD4B919F42F8200FCF704 /* SocivySettingAPI.swift */; };
+		3DEBF2AE1A003E3E001179DC /* KeychainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEBF2AD1A003E3E001179DC /* KeychainWrapper.swift */; };
 		3DFD3CA719EA9390008C6B73 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3DFD3CA519EA9390008C6B73 /* Main.storyboard */; };
 		3DFD3CA919EA9390008C6B73 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3DFD3CA819EA9390008C6B73 /* Images.xcassets */; };
 		3DFD3CAC19EA9390008C6B73 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DFD3CAA19EA9390008C6B73 /* LaunchScreen.xib */; };
@@ -83,12 +85,14 @@
 		3D5D006019F1E25600A6ADD3 /* RouteCancelAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteCancelAPI.swift; sourceTree = "<group>"; };
 		3D82E0D619EB00B200A22CA1 /* JoinViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoinViewController.swift; sourceTree = "<group>"; };
 		3D8D941619EBF84A00EDF76E /* EnrolledViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnrolledViewController.swift; sourceTree = "<group>"; };
+		3DAB93DF19FE962F00077397 /* SocivyBusAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocivyBusAPI.swift; sourceTree = "<group>"; };
 		3DB20B3419F2EDDE0077BE96 /* SocivyDeviceStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocivyDeviceStore.swift; sourceTree = "<group>"; };
 		3DB20B3619F32C0C0077BE96 /* SocivyLogoutAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocivyLogoutAPI.swift; sourceTree = "<group>"; };
 		3DD6673719F67D1B009896FB /* IETTViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IETTViewController.swift; sourceTree = "<group>"; };
 		3DDCD4B519F40A4100FCF704 /* AccountSettingsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountSettingsController.swift; sourceTree = "<group>"; };
 		3DDCD4B719F40E7D00FCF704 /* SettingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingCell.swift; sourceTree = "<group>"; };
 		3DDCD4B919F42F8200FCF704 /* SocivySettingAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocivySettingAPI.swift; sourceTree = "<group>"; };
+		3DEBF2AD1A003E3E001179DC /* KeychainWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainWrapper.swift; sourceTree = "<group>"; };
 		3DFD3C9C19EA9390008C6B73 /* Socivy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Socivy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DFD3CA019EA9390008C6B73 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3DFD3CA619EA9390008C6B73 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -189,6 +193,7 @@
 				3DB20B3419F2EDDE0077BE96 /* SocivyDeviceStore.swift */,
 				3DDCD4B919F42F8200FCF704 /* SocivySettingAPI.swift */,
 				3D3E7E1A19F5119E005D1BA7 /* SocivyRegisterAPI.swift */,
+				3DAB93DF19FE962F00077397 /* SocivyBusAPI.swift */,
 			);
 			name = API;
 			sourceTree = "<group>";
@@ -237,6 +242,7 @@
 				3DFD3D1919EA9554008C6B73 /* LocationStorage.swift */,
 				3DFD3D2C19EA9554008C6B73 /* Route.swift */,
 				3DFD3D1519EA9554008C6B73 /* APITools.swift */,
+				3DEBF2AD1A003E3E001179DC /* KeychainWrapper.swift */,
 			);
 			name = Essentials;
 			sourceTree = "<group>";
@@ -451,6 +457,7 @@
 				3DFD3D5019EA9580008C6B73 /* SegmentedControlCell.swift in Sources */,
 				3D3E7E1B19F5119E005D1BA7 /* SocivyRegisterAPI.swift in Sources */,
 				3DFD3D3619EA9554008C6B73 /* LoginViewController.swift in Sources */,
+				3DAB93E019FE962F00077397 /* SocivyBusAPI.swift in Sources */,
 				3DFD3D3519EA9554008C6B73 /* LocationStorage.swift in Sources */,
 				3DFD3D4619EA9554008C6B73 /* RouteCell.swift in Sources */,
 				3DFD3D3E19EA9554008C6B73 /* SocivyLoginAPI.swift in Sources */,
@@ -489,6 +496,7 @@
 				3DDCD4BA19F42F8200FCF704 /* SocivySettingAPI.swift in Sources */,
 				3D3E7E1D19F577CB005D1BA7 /* SocivyErrorHandler.swift in Sources */,
 				3D31F58B19EC500B0066A033 /* LeaveViewController.swift in Sources */,
+				3DEBF2AE1A003E3E001179DC /* KeychainWrapper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

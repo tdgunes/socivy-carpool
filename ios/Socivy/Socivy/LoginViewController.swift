@@ -76,10 +76,12 @@ class LoginViewController: UITableViewController, SocivyAuthenticateAPIDelegate,
         
         self.navigationController?.view.addSubview(self.activityIndicator)
         
+   
+        
+        
         if self.authenticateAPI!.api.isUserSecretSaved()  {
             
             self.authenticateAPI?.api.loadUserSecret()
-
             self.loginAPI?.login()
             self.applyBackgroundProcessMode(true)
             self.storeDeviceToken()
