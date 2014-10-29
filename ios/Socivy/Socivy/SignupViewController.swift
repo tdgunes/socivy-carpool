@@ -24,6 +24,13 @@ class SignupViewController: UITableViewController, SocivyRegisterAPIDelegate, UI
     
     var activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.WhiteLarge)
     
+    
+    override func viewDidAppear(animated: Bool) {
+        self.navigationController?.navigationBar.hidden = false
+        self.navigationController?.navigationBarHidden = false
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.

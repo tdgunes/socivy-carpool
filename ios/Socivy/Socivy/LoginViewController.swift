@@ -50,6 +50,13 @@ class LoginViewController: UITableViewController, SocivyAuthenticateAPIDelegate,
         return true
     }
     
+    override func viewDidAppear(animated: Bool) {
+        self.navigationController?.navigationBar.hidden = true
+        self.navigationController?.navigationBarHidden = true
+        
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.

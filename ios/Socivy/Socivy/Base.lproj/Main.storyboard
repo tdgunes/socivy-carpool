@@ -992,7 +992,7 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Extra" id="fek-Td-2iD">
+                            <tableViewSection headerTitle="Extra" footerTitle="1.1-1" id="fek-Td-2iD">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="4eO-to-2Le" style="IBUITableViewCellStyleDefault" id="vb2-pW-VI9">
                                         <autoresizingMask key="autoresizingMask"/>
@@ -1653,7 +1653,7 @@
                         <sections>
                             <tableViewSection id="8zN-Kz-feF">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="120" id="wYX-dB-BL2">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="120" id="wYX-dB-BL2">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wYX-dB-BL2" id="DD1-XD-Rcd">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -1809,7 +1809,7 @@
         <!--Navigation Controller-->
         <scene sceneID="B3d-GM-cMc">
             <objects>
-                <navigationController storyboardIdentifier="Login" id="PBV-gk-hCF" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="Login" navigationBarHidden="YES" id="PBV-gk-hCF" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ejY-gs-OMG">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>

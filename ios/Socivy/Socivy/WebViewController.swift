@@ -30,7 +30,8 @@ class WebViewController : UIViewController {
     }
     
     override func viewDidAppear(animated: Bool) {
-
+        self.navigationController?.navigationBar.hidden = false
+        self.navigationController?.navigationBarHidden = false
 
     }
     @IBAction func openInSafari(sender: UIBarButtonItem){
@@ -44,6 +45,8 @@ class WebViewController : UIViewController {
         
         self.loadURL()
         self.navigationItem.title = navTitle!
+
+
         
     }
     
