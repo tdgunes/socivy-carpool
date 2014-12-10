@@ -47,7 +47,7 @@ class RouteCell: UITableViewCell, UITableViewDataSource, UITableViewDelegate {
         let cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier("StopCell", forIndexPath:indexPath) as UITableViewCell
 
         if let stop = route?.stops[indexPath.row]{
-            cell.textLabel.text = " "+stop.name
+            cell.textLabel?.text = " "+stop.name
         }
         var stop = route?.stops[indexPath.row]
 

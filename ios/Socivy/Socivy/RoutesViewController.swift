@@ -19,6 +19,11 @@ class RoutesViewController: UITableViewController, SocivyAvailableRouteAPIDelega
     
     @IBOutlet weak var infoLabel: UILabel!
     
+    
+    override func viewWillAppear(animated: Bool) {
+        self.updateTableView()
+    }
+    
     func routesDidReturn(socivyRouteAPI:SocivyAvailableRouteAPI, routes:JSON){
         self.routes = []
         let routeArray = routes.asArray! as [JSON]

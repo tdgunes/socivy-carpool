@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-let DEBUG:Bool = false
+let DEBUG:Bool = true
 
 
 class SocivyBaseAPI: AsyncHTTPRequestDelegate {

@@ -211,7 +211,7 @@ class DetailViewController: UITableViewController, UIActionSheetDelegate, Socivy
                 let cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier("DestroyCell", forIndexPath:indexPath) as UITableViewCell
             default:
                 cell.detailTextLabel?.text = values[1]
-                cell.textLabel.text = values[0]
+                cell.textLabel?.text = values[0]
             }
             
             
@@ -224,7 +224,7 @@ class DetailViewController: UITableViewController, UIActionSheetDelegate, Socivy
             var string:NSMutableAttributedString = NSMutableAttributedString(string: "  \(self.passengers[indexPath.row].name)")
             
             string.addAttribute(NSFontAttributeName, value: self.lightFont!, range: NSMakeRange(0, string.length))
-            cell.textLabel.attributedText = string
+            cell.textLabel?.attributedText = string
 
             
         }
@@ -233,7 +233,7 @@ class DetailViewController: UITableViewController, UIActionSheetDelegate, Socivy
             var string:NSMutableAttributedString = NSMutableAttributedString(string: "  \(self.stops[indexPath.row])")
             
             string.addAttribute(NSFontAttributeName, value: self.lightFont!, range: NSMakeRange(0, string.length))
-            cell.textLabel.attributedText = string
+            cell.textLabel?.attributedText = string
 
             cell.accessoryType = UITableViewCellAccessoryType.None
         }

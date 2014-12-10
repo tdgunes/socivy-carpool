@@ -20,6 +20,7 @@
 		3D5D006119F1E25600A6ADD3 /* RouteCancelAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5D006019F1E25600A6ADD3 /* RouteCancelAPI.swift */; };
 		3D82E0D719EB00B200A22CA1 /* JoinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D82E0D619EB00B200A22CA1 /* JoinViewController.swift */; };
 		3D8D941719EBF84A00EDF76E /* EnrolledViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8D941619EBF84A00EDF76E /* EnrolledViewController.swift */; };
+		3D9AA1511A0A5CB900B043B1 /* MeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9AA1501A0A5CB900B043B1 /* MeViewController.swift */; };
 		3DAB93E019FE962F00077397 /* SocivyBusAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DAB93DF19FE962F00077397 /* SocivyBusAPI.swift */; };
 		3DB20B3519F2EDDE0077BE96 /* SocivyDeviceStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB20B3419F2EDDE0077BE96 /* SocivyDeviceStore.swift */; };
 		3DB20B3719F32C0C0077BE96 /* SocivyLogoutAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB20B3619F32C0C0077BE96 /* SocivyLogoutAPI.swift */; };
@@ -39,7 +40,6 @@
 		3DFD3D3219EA9554008C6B73 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFD3D1619EA9554008C6B73 /* AppDelegate.swift */; };
 		3DFD3D3319EA9554008C6B73 /* AsyncHTTPRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFD3D1719EA9554008C6B73 /* AsyncHTTPRequest.swift */; };
 		3DFD3D3419EA9554008C6B73 /* DatePickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFD3D1819EA9554008C6B73 /* DatePickerCell.swift */; };
-		3DFD3D3519EA9554008C6B73 /* LocationStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFD3D1919EA9554008C6B73 /* LocationStorage.swift */; };
 		3DFD3D3619EA9554008C6B73 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFD3D1A19EA9554008C6B73 /* LoginViewController.swift */; };
 		3DFD3D3719EA9554008C6B73 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFD3D1B19EA9554008C6B73 /* MainTabBarController.swift */; };
 		3DFD3D3819EA9554008C6B73 /* MapCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFD3D1C19EA9554008C6B73 /* MapCell.swift */; };
@@ -85,6 +85,7 @@
 		3D5D006019F1E25600A6ADD3 /* RouteCancelAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteCancelAPI.swift; sourceTree = "<group>"; };
 		3D82E0D619EB00B200A22CA1 /* JoinViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoinViewController.swift; sourceTree = "<group>"; };
 		3D8D941619EBF84A00EDF76E /* EnrolledViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnrolledViewController.swift; sourceTree = "<group>"; };
+		3D9AA1501A0A5CB900B043B1 /* MeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeViewController.swift; sourceTree = "<group>"; };
 		3DAB93DF19FE962F00077397 /* SocivyBusAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocivyBusAPI.swift; sourceTree = "<group>"; };
 		3DB20B3419F2EDDE0077BE96 /* SocivyDeviceStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocivyDeviceStore.swift; sourceTree = "<group>"; };
 		3DB20B3619F32C0C0077BE96 /* SocivyLogoutAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocivyLogoutAPI.swift; sourceTree = "<group>"; };
@@ -109,7 +110,6 @@
 		3DFD3D1619EA9554008C6B73 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3DFD3D1719EA9554008C6B73 /* AsyncHTTPRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncHTTPRequest.swift; sourceTree = "<group>"; };
 		3DFD3D1819EA9554008C6B73 /* DatePickerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerCell.swift; sourceTree = "<group>"; };
-		3DFD3D1919EA9554008C6B73 /* LocationStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationStorage.swift; sourceTree = "<group>"; };
 		3DFD3D1A19EA9554008C6B73 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		3DFD3D1B19EA9554008C6B73 /* MainTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		3DFD3D1C19EA9554008C6B73 /* MapCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapCell.swift; sourceTree = "<group>"; };
@@ -239,7 +239,6 @@
 			isa = PBXGroup;
 			children = (
 				3DFD3D1719EA9554008C6B73 /* AsyncHTTPRequest.swift */,
-				3DFD3D1919EA9554008C6B73 /* LocationStorage.swift */,
 				3DFD3D2C19EA9554008C6B73 /* Route.swift */,
 				3DFD3D1519EA9554008C6B73 /* APITools.swift */,
 				3DEBF2AD1A003E3E001179DC /* KeychainWrapper.swift */,
@@ -297,6 +296,7 @@
 			children = (
 				3DFD3D1619EA9554008C6B73 /* AppDelegate.swift */,
 				3DD6673719F67D1B009896FB /* IETTViewController.swift */,
+				3D9AA1501A0A5CB900B043B1 /* MeViewController.swift */,
 				3D0AFDA419F5CA1600439514 /* WebViewController.swift */,
 				3D82E0CF19EAAC3300A22CA1 /* CustomCells */,
 				3DFD3D1B19EA9554008C6B73 /* MainTabBarController.swift */,
@@ -458,7 +458,6 @@
 				3D3E7E1B19F5119E005D1BA7 /* SocivyRegisterAPI.swift in Sources */,
 				3DFD3D3619EA9554008C6B73 /* LoginViewController.swift in Sources */,
 				3DAB93E019FE962F00077397 /* SocivyBusAPI.swift in Sources */,
-				3DFD3D3519EA9554008C6B73 /* LocationStorage.swift in Sources */,
 				3DFD3D4619EA9554008C6B73 /* RouteCell.swift in Sources */,
 				3DFD3D3E19EA9554008C6B73 /* SocivyLoginAPI.swift in Sources */,
 				3DFD3D4119EA9554008C6B73 /* RouteDestoryAPI.swift in Sources */,
@@ -470,6 +469,7 @@
 				3D8D941719EBF84A00EDF76E /* EnrolledViewController.swift in Sources */,
 				3D5D005F19F1E23B00A6ADD3 /* RouteRequestAPI.swift in Sources */,
 				3DFD3D4019EA9554008C6B73 /* SocivyDatePickerCell.swift in Sources */,
+				3D9AA1511A0A5CB900B043B1 /* MeViewController.swift in Sources */,
 				3DFD3D3D19EA9554008C6B73 /* TextFieldCell.swift in Sources */,
 				3D82E0D719EB00B200A22CA1 /* JoinViewController.swift in Sources */,
 				3DFD3D4319EA9554008C6B73 /* SocivyAPI.swift in Sources */,

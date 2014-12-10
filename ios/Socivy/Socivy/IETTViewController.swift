@@ -78,7 +78,7 @@ class IETTViewController : UITableViewController, SocivyBusAPIDelegate {
         
 
 
-        cell.textLabel.text = self.busList[indexPath.section].hours[indexPath.row]
+        cell.textLabel?.text = self.busList[indexPath.section].hours[indexPath.row]
         return cell
         
     }

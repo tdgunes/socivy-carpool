@@ -100,7 +100,7 @@ class AsyncHTTPRequest: NSObject, NSURLConnectionDelegate, NSURLConnectionDataDe
         let suggestion: String = "Have you tried turning it off and on again?"
         
         let userInfo: NSDictionary = [ NSLocalizedDescriptionKey: description, NSLocalizedFailureReasonErrorKey: reason,NSLocalizedRecoverySuggestionErrorKey: suggestion]
-        let error = NSError(domain:"com.tdg.dilixiri", code:-57, userInfo:userInfo)
+        let error = NSError(domain:"com.tdg.socivy", code:-57, userInfo:userInfo)
         self.delegate?.requestFailWithError(self, error: error)
     }
     

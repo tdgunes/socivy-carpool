@@ -146,7 +146,7 @@ class JoinViewController: UITableViewController, UIActionSheetDelegate, SocivyRo
                 let cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier("JoinCell", forIndexPath:indexPath) as UITableViewCell
             default:
                 cell.detailTextLabel?.text = values[1]
-                cell.textLabel.text = values[0]
+                cell.textLabel?.text = values[0]
             }
             
             
@@ -159,7 +159,7 @@ class JoinViewController: UITableViewController, UIActionSheetDelegate, SocivyRo
                 var string:NSMutableAttributedString = NSMutableAttributedString(string: "  \(self.stops[indexPath.row])")
             
                 string.addAttribute(NSFontAttributeName, value: self.lightFont!, range: NSMakeRange(0, string.length))
-                cell.textLabel.attributedText = string
+                cell.textLabel?.attributedText = string
                 cell.backgroundColor = UIColor.grayColor()
                 cell.accessoryType = UITableViewCellAccessoryType.None
         }
