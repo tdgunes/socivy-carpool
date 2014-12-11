@@ -27,7 +27,7 @@ class JoinViewController: UITableViewController, UIActionSheetDelegate, SocivyRo
         }
     }
 
-    weak var requestRouteAPI = SocivyAPI.sharedInstance.requestRouteAPI
+    var requestRouteAPI = SocivyRouteRequestAPI()
     
     
     func authDidFail(){
@@ -46,7 +46,7 @@ class JoinViewController: UITableViewController, UIActionSheetDelegate, SocivyRo
         
         self.navigationController?.view.addSubview(self.activityIndicator)
 
-        self.requestRouteAPI?.delegate = self
+        self.requestRouteAPI.delegate = self
     }
     
     func requestDidFinish(routeRequestAPI:SocivyRouteRequestAPI){
@@ -122,10 +122,10 @@ class JoinViewController: UITableViewController, UIActionSheetDelegate, SocivyRo
                 self.showContactSheet(indexPath)
                 
             case "Join":
-                self.requestRouteAPI?.request(route!.id)
+                self.requestRouteAPI.request(route!.id)
                 self.applyBackgroundProcessMode(true)
             default:
-                println("Another cell pressed, s:\(indexPath.section) r:\(indexPath.row)")
+                Logger.sharedInstance.log(self, message: "Another cell pressed, s:\(indexPath.section) r:\(indexPath.row)")
             }
         }
     }
@@ -198,17 +198,6 @@ class JoinViewController: UITableViewController, UIActionSheetDelegate, SocivyRo
     }
     
 
-//    
-//    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-//        
-//        if indexPath.section == 0 {
-//            
-//        }
-//        
-//        let height:CGFloat =  CGFloat(44)
-//        return height
-//    }
-//    
     
     func actionSheet(actionSheet: UIActionSheet!, clickedButtonAtIndex buttonIndex: Int)
     {

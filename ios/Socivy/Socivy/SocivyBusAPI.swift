@@ -30,8 +30,8 @@ class SocivyBusAPI: SocivyBaseLoginAPI{
     
     var delegate: SocivyBusAPIDelegate?
     
-    init(api:SocivyAPI) {
-        super.init(path:"/bus", api:api)
+    init() {
+        super.init(path:"/bus")
     }
     
     func request(){
@@ -39,11 +39,17 @@ class SocivyBusAPI: SocivyBaseLoginAPI{
         self.makeGETAuth()
     }
     
-    override func requestFailWithError(asyncHTTPRequest:AsyncHTTPRequest, error:NSError){
-        self.delegate?.busesDidFailWithError(self, error: error)
+    override func requestFailWithError(errorCode: NetworkLibraryErrorCode, error: NSError?) {
+        if let err = error {
+            self.delegate?.busesDidFailWithError(self, error: err)
+        }
+        else {
+            self.log("errorCode:\(errorCode.rawValue)")
+        }
     }
     
-    override func requestDidFinish(asyncHTTPRequest: AsyncHTTPRequest, _ response: NSMutableData) {
+    
+    override func requestDidFinish(response: NSMutableData) {
         self.log("requestDidFinish")
         
         let json = JSON.parse(NSString(data: response, encoding: NSASCIIStringEncoding)!)

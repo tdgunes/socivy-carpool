@@ -11,7 +11,7 @@ import UIKit
 
 class IETTViewController : UITableViewController, SocivyBusAPIDelegate {
     
-    var busAPI = SocivyBusAPI(api: SocivyAPI.sharedInstance)
+    var busAPI = SocivyBusAPI()
     var busList:[Bus] = []
     var tableRefreshControl = UIRefreshControl()
     

@@ -14,9 +14,8 @@ class MainTabBarController : UITabBarController {
     override func viewDidAppear(animated: Bool) {
         self.navigationController?.navigationBar.hidden = true
         
-        if DEBUG {
-            println("[peek] Main loaded")
-        }
+        Logger.sharedInstance.log(self, message: "Main loaded!")
+
 
     }
     

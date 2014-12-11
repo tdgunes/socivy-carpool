@@ -13,7 +13,7 @@ import MapKit
 
 class RoutesViewController: UITableViewController, SocivyAvailableRouteAPIDelegate {
     
-    weak var indexRouteAPI = SocivyAPI.sharedInstance.availableRouteAPI
+    var indexRouteAPI = SocivyAvailableRouteAPI()
     var routes:[Route] = []
     var tableRefreshControl = UIRefreshControl()
     
@@ -58,7 +58,7 @@ class RoutesViewController: UITableViewController, SocivyAvailableRouteAPIDelega
     }
     
     func authDidFail() {
-        self.indexRouteAPI?.showSessionExpired()
+        self.indexRouteAPI.showSessionExpired()
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
@@ -70,7 +70,7 @@ class RoutesViewController: UITableViewController, SocivyAvailableRouteAPIDelega
         self.tableRefreshControl.addTarget(self, action: "refreshControlRequest", forControlEvents: UIControlEvents.ValueChanged)
         
         self.tableView.addSubview(self.tableRefreshControl)
-        self.indexRouteAPI?.delegate = self
+        self.indexRouteAPI.delegate = self
         
         
 
@@ -79,14 +79,14 @@ class RoutesViewController: UITableViewController, SocivyAvailableRouteAPIDelega
     }
     
     func refreshControlRequest(){
-        self.indexRouteAPI?.request()
+        self.indexRouteAPI.request()
     }
     
     func updateTableView(){
 
         self.tableRefreshControl.beginRefreshing()
         self.tableView.setContentOffset(CGPointMake(0, self.tableView.contentOffset.y-self.tableRefreshControl.frame.size.height), animated:true)
-        self.indexRouteAPI?.request()
+        self.indexRouteAPI.request()
     }
 
     

@@ -12,7 +12,7 @@ import MapKit
 
 class EnrolledViewController: UITableViewController, SocivyRouteEnrolledAPIDelegate {
     
-    weak var enrolledRouteAPI = SocivyAPI.sharedInstance.enrolledRouteAPI
+    var enrolledRouteAPI = SocivyRouteEnrolledAPI()
     var routes:[Route] = []
     var tableRefreshControl = UIRefreshControl()
     @IBOutlet weak var helpLabel: UILabel!
@@ -33,17 +33,16 @@ class EnrolledViewController: UITableViewController, SocivyRouteEnrolledAPIDeleg
                 
                 self.routes.append(route)
             
-                if DEBUG {
-                    println("\(index). \(route)")
-                }
+                Logger.sharedInstance.log(self, message: "\(index). \(route)")
+
             
                 
                 index += 1
 
         }
-        if DEBUG {
-            println("[EnrolledVC] self.routes.count = \(self.routes.count) ")
-        }
+        
+        Logger.sharedInstance.log(self, message: "[EnrolledVC] self.routes.count = \(self.routes.count) ")
+
 
         if self.routes.count == 0 {
             helpLabel.hidden = false
@@ -72,7 +71,7 @@ class EnrolledViewController: UITableViewController, SocivyRouteEnrolledAPIDeleg
         self.tableRefreshControl.addTarget(self, action: "refreshControlRequest", forControlEvents: UIControlEvents.ValueChanged)
         
         self.tableView.addSubview(self.tableRefreshControl)
-        self.enrolledRouteAPI?.delegate = self
+        self.enrolledRouteAPI.delegate = self
         
         //  not necessary since viewWillAppear is trigger before viewDidLoad()
         //  self.updateTableView()
@@ -83,13 +82,13 @@ class EnrolledViewController: UITableViewController, SocivyRouteEnrolledAPIDeleg
     
     func refreshControlRequest(){
         helpLabel.hidden = true
-        self.enrolledRouteAPI?.fetch()
+        self.enrolledRouteAPI.fetch()
     }
     
     func updateTableView(){
         self.tableRefreshControl.beginRefreshing()
         self.tableView.setContentOffset(CGPointMake(0, self.tableView.contentOffset.y-self.tableRefreshControl.frame.size.height), animated:true)
-        self.enrolledRouteAPI?.fetch()
+        self.enrolledRouteAPI.fetch()
     }
     
     override func didReceiveMemoryWarning() {
@@ -109,9 +108,8 @@ class EnrolledViewController: UITableViewController, SocivyRouteEnrolledAPIDeleg
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell: RouteCell = tableView.dequeueReusableCellWithIdentifier("RouteCell", forIndexPath:indexPath) as RouteCell
         
-        if DEBUG {
-            println("section:\(indexPath.section) row:\(indexPath.row)")
-        }
+        Logger.sharedInstance.log(self, message: "section:\(indexPath.section) row:\(indexPath.row)")
+
 
         var route = routes[indexPath.section]
         

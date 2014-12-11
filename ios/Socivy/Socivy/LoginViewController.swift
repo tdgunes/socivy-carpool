@@ -19,9 +19,9 @@ class LoginViewController: UITableViewController, SocivyAuthenticateAPIDelegate,
     @IBOutlet weak var forgotPasswordCell:UITableViewCell?
     @IBOutlet weak var signupCell: UITableViewCell?
     
-    weak var authenticateAPI = SocivyAPI.sharedInstance.authenticateAPI
-    weak var loginAPI =  SocivyAPI.sharedInstance.loginAPI
-    weak var deviceStoreAPI = SocivyAPI.sharedInstance.deviceStoreAPI
+    var authenticateAPI = SocivyAuthenticateAPI()
+    var loginAPI = SocivyLoginAPI()
+    var deviceStoreAPI = SocivyDeviceStoreAPI()
     
     var activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.WhiteLarge)
     var alert = UIAlertView()
@@ -35,14 +35,11 @@ class LoginViewController: UITableViewController, SocivyAuthenticateAPIDelegate,
         else if passwordCell?.textField == textField {
             passwordCell?.textField!.resignFirstResponder()
             
-            if DEBUG {
-                println("[peek] loginCell touched")
-                println("[peek] Email: \(emailCell?.textField?.text)")
-                println("[peek] Password: \(passwordCell?.textField?.text)")
-            }
+            Logger.sharedInstance.log("loginVC", message: "loginCell touched")
+            Logger.sharedInstance.log("loginVC", message: "email: \(emailCell?.textField?.text)")
 
             
-            SocivyAPI.sharedInstance.authenticateAPI?.authenticate(self.emailCell!.textField!.text, password: self.passwordCell!.textField!.text)
+            self.authenticateAPI.authenticate(self.emailCell!.textField!.text, password: self.passwordCell!.textField!.text)
             self.applyBackgroundProcessMode(true)
             
         }
@@ -61,9 +58,9 @@ class LoginViewController: UITableViewController, SocivyAuthenticateAPIDelegate,
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        self.authenticateAPI?.delegate = self
-        self.loginAPI?.delegate = self
-        self.deviceStoreAPI?.delegate = self
+        self.authenticateAPI.delegate = self
+        self.loginAPI.delegate = self
+        self.deviceStoreAPI.delegate = self
 
         
         
@@ -86,10 +83,10 @@ class LoginViewController: UITableViewController, SocivyAuthenticateAPIDelegate,
    
         
         
-        if self.authenticateAPI!.api.isUserSecretSaved()  {
+        if self.authenticateAPI.api.isUserSecretSaved()  {
             
-            self.authenticateAPI?.api.loadUserSecret()
-            self.loginAPI?.login()
+            self.authenticateAPI.api.loadUserSecret()
+            self.loginAPI.login()
             self.applyBackgroundProcessMode(true)
             self.storeDeviceToken()
         }
@@ -122,32 +119,25 @@ class LoginViewController: UITableViewController, SocivyAuthenticateAPIDelegate,
         var selectedCell = self.tableView.cellForRowAtIndexPath(indexPath)
         if selectedCell == loginCell {
             
-            if DEBUG {
-                println("[peek] loginCell touched")
-                println("[peek] Email: \(emailCell?.textField?.text)")
-                println("[peek] Password: \(passwordCell?.textField?.text)")
-            }
             
-            SocivyAPI.sharedInstance.authenticateAPI?.authenticate(self.emailCell!.textField!.text, password: self.passwordCell!.textField!.text)
+
+            
+            self.authenticateAPI.authenticate(self.emailCell!.textField!.text, password: self.passwordCell!.textField!.text)
             self.applyBackgroundProcessMode(true)
 
         }
         else if selectedCell == forgotPasswordCell {
-            if DEBUG {
-                println("[peek] forgotPasswordCell touched")
-            }
+            Logger.sharedInstance.log("loginVC", message: "forgotPasswordCell touched")
         }
         else if selectedCell == signupCell {
-            if DEBUG {
-                println("[peek] signupCell touched")
-            }
+            Logger.sharedInstance.log("loginVC", message: "signupCell touched")
         }
         
     }
     
     func storeDeviceToken() {
         if let deviceToken = socivyDeviceToken {
-            self.deviceStoreAPI?.request(deviceToken)
+            self.deviceStoreAPI.request(deviceToken)
         }
     }
 
@@ -191,26 +181,24 @@ class LoginViewController: UITableViewController, SocivyAuthenticateAPIDelegate,
     
     
     func authenticateDidFinish(socivyAPI:SocivyAuthenticateAPI){
-        if DEBUG {
-            println("[peek] login did finish")
-        }
+        Logger.sharedInstance.log("loginVC", message: "login did finish")
+
 
         
-        self.authenticateAPI?.api.saveUserSecret()
+        self.authenticateAPI.api.saveUserSecret()
         self.applyBackgroundProcessMode(false)
         self.storeDeviceToken()
         self.showMainView()
     }
     
     func authenticateDidFailWithError(socivyAPI:SocivyAuthenticateAPI, error:NSError){
-        self.authenticateAPI?.showError(error)
+        self.authenticateAPI.showError(error)
         self.applyBackgroundProcessMode(false)
     }
     
     func storeDidFinish(deviceStoreAPI:SocivyDeviceStoreAPI){
-        if DEBUG {
-            println("[loginView] storeDidFinish")
-        }
+        Logger.sharedInstance.log("loginVC", message: "storeDidFinish")
+
     }
     func storeDidFail(deviceStoreAPI:SocivyDeviceStoreAPI){
         

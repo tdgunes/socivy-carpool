@@ -18,8 +18,8 @@ class SocivyAuthenticateAPI: SocivyBaseAPI{
     
     var delegate: SocivyAuthenticateAPIDelegate?
 
-    init(api: SocivyAPI) {
-        super.init(path: "/authenticate", api:api)
+    init() {
+        super.init(path: "/authenticate")
     }
     
     func authenticate(email:String, password:String) {
@@ -27,11 +27,18 @@ class SocivyAuthenticateAPI: SocivyBaseAPI{
         self.makePOST(payload)
     }
     
-    override func requestFailWithError(asyncHTTPRequest:AsyncHTTPRequest, error:NSError){
-        self.delegate?.authenticateDidFailWithError(self, error: error)
+    
+    override func requestFailWithError(errorCode: NetworkLibraryErrorCode, error: NSError?) {
+        if let err = error {
+            self.delegate?.authenticateDidFailWithError(self, error: err)
+        }
+        else {
+            self.log("errorCode:\(errorCode.rawValue)")
+        }
     }
     
-    override func requestDidFinish(asyncHTTPRequest: AsyncHTTPRequest, _ response: NSMutableData) {
+
+    override func requestDidFinish(response: NSMutableData) {
         self.log("requestDidFinish")
         let json = JSON.parse(NSString(data: response, encoding: NSASCIIStringEncoding)!)
         let validationResult = SocivyErrorHandler(json:json).validate()

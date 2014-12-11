@@ -13,7 +13,7 @@ import MapKit
 
 class MyRoutesViewController: UITableViewController, SocivyRouteSelfAPIDelegate  {
     
-    weak var selfRouteAPI = SocivyAPI.sharedInstance.selfRouteAPI
+    var selfRouteAPI = SocivyRouteSelfAPI()
     var routes:[Route] = []
     var tableRefreshControl = UIRefreshControl()
     
@@ -23,7 +23,7 @@ class MyRoutesViewController: UITableViewController, SocivyRouteSelfAPIDelegate 
     override func viewWillAppear(animated: Bool) {
         self.tableRefreshControl.beginRefreshing()
         self.tableView.setContentOffset(CGPointMake(0, self.tableView.contentOffset.y-self.tableRefreshControl.frame.size.height), animated:true)
-        self.selfRouteAPI?.fetch()
+        self.selfRouteAPI.fetch()
     }
     
     
@@ -44,11 +44,11 @@ class MyRoutesViewController: UITableViewController, SocivyRouteSelfAPIDelegate 
         self.tableRefreshControl.addTarget(self, action: "refreshControlRequest", forControlEvents: UIControlEvents.ValueChanged)
         self.tableView.addSubview(self.tableRefreshControl)
         
-        self.selfRouteAPI?.delegate = self
+        self.selfRouteAPI.delegate = self
 
         self.tableRefreshControl.beginRefreshing()
         self.tableView.setContentOffset(CGPointMake(0, self.tableView.contentOffset.y-self.tableRefreshControl.frame.size.height), animated:true)
-        self.selfRouteAPI?.fetch()
+        self.selfRouteAPI.fetch()
         
     }
     
@@ -98,7 +98,7 @@ class MyRoutesViewController: UITableViewController, SocivyRouteSelfAPIDelegate 
     
     func refreshControlRequest(){
         helpLabel.hidden = true
-        self.selfRouteAPI?.fetch()
+        self.selfRouteAPI.fetch()
         self.updateTableView()
     }
     
@@ -123,9 +123,8 @@ class MyRoutesViewController: UITableViewController, SocivyRouteSelfAPIDelegate 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell: RouteCell = tableView.dequeueReusableCellWithIdentifier("RouteCell", forIndexPath:indexPath) as RouteCell
         
-        if DEBUG {
-            println("section:\(indexPath.section) row:\(indexPath.row)")
-        }
+        Logger.sharedInstance.log(self, message: "section:\(indexPath.section) row:\(indexPath.row)")
+
 
         var route = routes[indexPath.section]
         

@@ -16,7 +16,7 @@ class SettingsViewController: UITableViewController, SocivyLogoutAPIDelegate{
     
     var activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.WhiteLarge)
     
-    weak var logoutAPI = SocivyAPI.sharedInstance.logoutAPI
+    var logoutAPI = SocivyLogoutAPI()
     
     
     func authDidFail(){
@@ -27,7 +27,7 @@ class SettingsViewController: UITableViewController, SocivyLogoutAPIDelegate{
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        self.logoutAPI?.delegate = self
+        self.logoutAPI.delegate = self
         
         
     }
@@ -99,7 +99,7 @@ class SettingsViewController: UITableViewController, SocivyLogoutAPIDelegate{
         var selectedCell = self.tableView.cellForRowAtIndexPath(indexPath)
         if selectedCell == logoutCell {
             
-            self.logoutAPI?.logout()
+            self.logoutAPI.logout()
             self.applyBackgroundProcessMode(true)
             
         }

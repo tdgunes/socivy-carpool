@@ -22,8 +22,8 @@ class AddRouteSecondViewController: UIViewController, UITableViewDataSource, UIT
 
     var tableRefreshControl = UIRefreshControl()
 
-    weak var placeAPI = SocivyAPI.sharedInstance.placeAPI
-    weak var storeAPI = SocivyAPI.sharedInstance.storeRouteAPI
+    weak var placeAPI = SocivyPlaceAPI()
+    weak var storeAPI = SocivyStoreRouteAPI()
     
     
     var places:[Stop] = []
@@ -158,9 +158,7 @@ class AddRouteSecondViewController: UIViewController, UITableViewDataSource, UIT
             payload["points"] = payloadPlaces
             
             for (key,value) in payload{
-                if DEBUG {
-                    println("\(key) = \(value)")
-                }
+                Logger.sharedInstance.log("AddRouteSecondVC", message: "\(key) = \(value)")
             }
             
             
@@ -187,9 +185,8 @@ class AddRouteSecondViewController: UIViewController, UITableViewDataSource, UIT
         var string:NSMutableAttributedString = NSMutableAttributedString(string: cell.textLabel!.text!)
         if (cell.accessoryType == UITableViewCellAccessoryType.Checkmark){
             // delete added record
-            if DEBUG {
-                println("self.selectedPlaces.removeValueForKey(\(self.places[indexPath.row].id))")
-            }
+            Logger.sharedInstance.log("AddRouteSecondVC", message: "self.selectedPlaces.removeValueForKey(\(self.places[indexPath.row].id))")
+        
             self.selectedPlaces.removeValueForKey(self.places[indexPath.row].id)
             
             cell.accessoryType = UITableViewCellAccessoryType.None

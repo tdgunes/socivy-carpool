@@ -17,8 +17,8 @@ class SocivyRouteCancelAPI: SocivyBaseLoginAPI{
     var delegate: SocivyRouteCancelAPIDelegate?
     var id:String?
     
-    init(api:SocivyAPI){
-        super.init(path: "/route/{id}/cancel", api: api)
+    init(){
+        super.init(path: "/route/{id}/cancel")
     }
     
     func request(id:String) {
@@ -28,11 +28,19 @@ class SocivyRouteCancelAPI: SocivyBaseLoginAPI{
         self.makeGETAuth(finalURL)
     }
     
-    override func requestFailWithError(asyncHTTPRequest:AsyncHTTPRequest, error:NSError){
-        self.delegate?.requestDidFail(self, error: error)
+    
+    
+    override func requestFailWithError(errorCode: NetworkLibraryErrorCode, error: NSError?) {
+        if let err = error {
+            self.delegate?.requestDidFail(self, error: err)
+        }
+        else {
+            self.log("errorCode:\(errorCode.rawValue)")
+        }
     }
     
-    override func requestDidFinish(asyncHTTPRequest: AsyncHTTPRequest, _ response: NSMutableData) {
+
+    override func requestDidFinish(response: NSMutableData) {
         self.log("requestDidFinish")
         
         let json = JSON.parse(NSString(data: response, encoding: NSASCIIStringEncoding)!)

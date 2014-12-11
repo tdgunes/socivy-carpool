@@ -20,8 +20,8 @@ class SocivyDeviceStoreAPI: SocivyBaseLoginAPI {
     var deviceToken:String = ""
     var delegate: SocivyDeviceStoreAPIDelegate?
 
-    init(api:SocivyAPI) {
-        super.init(path: "/device", api:api)
+    init() {
+        super.init(path: "/device")
     }
     
     func request(deviceToken:String){
@@ -31,7 +31,7 @@ class SocivyDeviceStoreAPI: SocivyBaseLoginAPI {
         self.makePOSTAuth(postData)
     }
     
-    override func requestDidFinish(asyncHTTPRequest: AsyncHTTPRequest, _ response: NSMutableData) {
+    override func requestDidFinish(response: NSMutableData) {
         self.log("[store] requestDidFinish")
         
         let json = JSON.parse(NSString(data: response, encoding: NSASCIIStringEncoding)!)

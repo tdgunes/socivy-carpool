@@ -18,8 +18,8 @@ class SocivyRegisterAPI: SocivyBaseAPI {
     
     var delegate: SocivyRegisterAPIDelegate?
     
-    init(api: SocivyAPI){
-        super.init(path: "/register", api: api)
+    init(){
+        super.init(path: "/register")
     }
     
     func register(name:String, email:String, password:String, phone:String){
@@ -27,10 +27,18 @@ class SocivyRegisterAPI: SocivyBaseAPI {
         self.makePOST(payload)
     }
     
-    override func requestFailWithError(asyncHTTPRequest:AsyncHTTPRequest, error:NSError){
-
+    override func requestFailWithError(errorCode: NetworkLibraryErrorCode, error: NSError?) {
+        if let err = error {
+            self.delegate?.registerDidFail(err)
+        }
+        else {
+            self.log("errorCode:\(errorCode.rawValue)")
+        }
     }
-    override func requestDidFinish(asyncHTTPRequest:AsyncHTTPRequest, _ response:NSMutableData){
+    
+
+
+    override func requestDidFinish(response: NSMutableData) {
         let json = JSON.parse(NSString(data: response, encoding: NSASCIIStringEncoding)!)
         let validationResult = SocivyErrorHandler(json:json).validate()
         

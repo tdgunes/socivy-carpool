@@ -66,14 +66,13 @@ class SocivyErrorFactory{
 }
 
 class SocivyErrorHandler{
-    
+    let tag = "errhandler"
     var json:JSON
     
     init(json:JSON){
         self.json = json
-        if DEBUG {
-            println(self.json.toString(pretty: true))
-        }
+        Logger.sharedInstance.log(tag, message: self.json.toString(pretty: true))
+
     }
     
     func validate()->SocivyErrorCode{

@@ -19,7 +19,7 @@ class SignupViewController: UITableViewController, SocivyRegisterAPIDelegate, UI
     @IBOutlet weak var registerCell:UITableViewCell?
     
     
-    weak var registerAPI = SocivyAPI.sharedInstance.registerAPI
+    var registerAPI = SocivyRegisterAPI()
     
     
     var activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.WhiteLarge)
@@ -34,7 +34,7 @@ class SignupViewController: UITableViewController, SocivyRegisterAPIDelegate, UI
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        registerAPI?.delegate = self
+        registerAPI.delegate = self
 
         self.activityIndicator.center = self.navigationController!.view.center
         self.activityIndicator.stopAnimating()
@@ -97,12 +97,10 @@ class SignupViewController: UITableViewController, SocivyRegisterAPIDelegate, UI
     }
     
     func register(){
-        if DEBUG {
-            println("[register] register touched")
-        }
+        Logger.sharedInstance.log("register", message: "register touched")
 
         
-        self.registerAPI?.register(self.nameTextField.text, email: self.emailTextField.text, password: self.passwordTextField.text, phone: self.phoneTextField.text)
+        self.registerAPI.register(self.nameTextField.text, email: self.emailTextField.text, password: self.passwordTextField.text, phone: self.phoneTextField.text)
         self.applyBackgroundProcessMode(true)
         
     }

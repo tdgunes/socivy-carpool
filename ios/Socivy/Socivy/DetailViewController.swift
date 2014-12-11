@@ -38,7 +38,7 @@ class DetailViewController: UITableViewController, UIActionSheetDelegate, Socivy
         }
     }
     
-    var destroyRouteAPI = SocivyRouteDestoryAPI(api:SocivyAPI.sharedInstance)
+    var destroyRouteAPI = SocivyRouteDestoryAPI()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -172,9 +172,8 @@ class DetailViewController: UITableViewController, UIActionSheetDelegate, Socivy
                 self.applyBackgroundProcessMode(true)
                 self.destroyRouteAPI.request(self.route!.id)
             default:
-                if DEBUG {
-                     println("Another cell pressed, s:\(indexPath.section) r:\(indexPath.row)")
-                }
+                Logger.sharedInstance.log("detailVC", message: "Another cell pressed, s:\(indexPath.section) r:\(indexPath.row)")
+
             }
         }
         

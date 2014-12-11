@@ -9,48 +9,6 @@
 import Foundation
 import MapKit
 
-
-
-
-class User {
-    
-    var id:String
-    var email:String
-    var name:String
-    var isPhoneVisible:Bool
-    var phone:String
-    
-    init(id:String, name:String, email:String,  showPhone:Bool, phone:String){
-        self.id = id
-        self.name = name
-        self.isPhoneVisible = showPhone
-        self.phone = phone
-        self.email = email
-    }
-    
-    convenience init(jsonUser:JSON){
-        let driverID = jsonUser["id"].asString!
-        let driverName = jsonUser["name"].asString!
-        let driverEmail = jsonUser["email"].asString!
-        let driverPhone = jsonUser["information"]["phone"].asString!
-        let driverShowPhone = jsonUser["information"]["showPhone"].asBool!
-        self.init(id: driverID, name: driverName, email: driverEmail, showPhone: driverShowPhone, phone: driverPhone)
-    }
-}
-
-
-class Stop {
-    var location:CLLocationCoordinate2D
-    var name:String
-    var id:String
-    
-    init (id:String, name:String, location:CLLocationCoordinate2D){
-        self.location = location
-        self.name = name
-        self.id = id
-    }
-}
-
 class Route: Printable {
 
     var stops:[Stop]
@@ -103,8 +61,6 @@ class Route: Printable {
         let timestampStr = routeJson["action_time"].asString!
         let timestamp: Double = (timestampStr as NSString).doubleValue as Double
         
-
-        
         self.init(id: routeJson["id"].asString!, stops: places,
             timestamp: timestamp,
             description: routeJson["description"].asString!,
@@ -114,7 +70,6 @@ class Route: Printable {
             passengers:passengers)
 
     }
-    
     
     func getTime()->String?{
         let date:NSDate = NSDate(timeIntervalSince1970: NSTimeInterval(self.timestamp))
@@ -131,16 +86,11 @@ class Route: Printable {
     
      func getLeft()->String{
         let now = NSDate()
-//        println("Now: \(now) - \(now.timeIntervalSince1970)")
         let then = NSDate(timeIntervalSince1970: NSTimeInterval(self.timestamp))
-//        println("Then: \(then) - \(self.timestamp)")
-        
         let interval = self.timestamp - now.timeIntervalSince1970
-        
         let diffMinute = Int(floor(interval/60))
-//        println("diffMinute: \(diffMinute)")
         let diffHour:Int =  Int( floor(interval/3600) )
-//        println("diffHour: \(diffHour)")
+
         
         var text = ""
         if diffMinute <= 0 {
@@ -169,7 +119,7 @@ class Route: Printable {
         var text = ""
         
         let diffDay = Int(floor(interval/(3600*24)))
-//        println(diffDay)
+
         if(diffDay == 1)
         {
             text = "Tom. ";

@@ -16,8 +16,8 @@ class MeViewController: UITableViewController, SocivyRouteSelfAPIDelegate,  Soci
     let upperBoundary = CGFloat(60)
     
     
-    weak var selfRouteAPI = SocivyAPI.sharedInstance.selfRouteAPI
-    weak var enrolledRouteAPI = SocivyAPI.sharedInstance.enrolledRouteAPI
+    var selfRouteAPI = SocivyRouteSelfAPI()
+    var enrolledRouteAPI = SocivyRouteEnrolledAPI()
     
     var routes:[Route] = []
     var tableRefreshControl = UIRefreshControl()
@@ -31,8 +31,8 @@ class MeViewController: UITableViewController, SocivyRouteSelfAPIDelegate,  Soci
         self.tableRefreshControl.addTarget(self, action: "refreshControlRequest", forControlEvents: UIControlEvents.ValueChanged)
         self.tableView.addSubview(self.tableRefreshControl)
         
-        self.selfRouteAPI?.delegate = self
-        self.enrolledRouteAPI?.delegate = self
+        self.selfRouteAPI.delegate = self
+        self.enrolledRouteAPI.delegate = self
         
         
         self.loadTab()
@@ -178,10 +178,10 @@ class MeViewController: UITableViewController, SocivyRouteSelfAPIDelegate,  Soci
         helpLabel.hidden = true
         
         if segmentedControl?.selectedSegmentIndex == 0 {
-            self.enrolledRouteAPI?.fetch()
+            self.enrolledRouteAPI.fetch()
         }
         else if segmentedControl?.selectedSegmentIndex == 1{
-            self.selfRouteAPI?.fetch()
+            self.selfRouteAPI.fetch()
         }
         
 //        self.selfRouteAPI?.fetch()
@@ -200,9 +200,9 @@ class MeViewController: UITableViewController, SocivyRouteSelfAPIDelegate,  Soci
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell: RouteCell = tableView.dequeueReusableCellWithIdentifier("RouteCell", forIndexPath:indexPath) as RouteCell
         
-        if DEBUG {
-            println("section:\(indexPath.section) row:\(indexPath.row)")
-        }
+        
+        Logger.sharedInstance.log(self, message: "section:\(indexPath.section) row:\(indexPath.row)")
+
         
         var route = routes[indexPath.section]
         

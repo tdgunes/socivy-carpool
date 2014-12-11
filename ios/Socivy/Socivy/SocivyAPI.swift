@@ -9,11 +9,10 @@
 import Foundation
 import UIKit
 
-let DEBUG:Bool = true
 
 
-class SocivyBaseAPI: AsyncHTTPRequestDelegate {
-    var asyncRequest:AsyncHTTPRequest?
+class SocivyBaseAPI: NetworkLibraryDelegate {
+    var networkLibrary:NetworkLibrary?
   
     unowned var api: SocivyAPI
     
@@ -25,32 +24,35 @@ class SocivyBaseAPI: AsyncHTTPRequestDelegate {
     
     let path:String
     
-    init(path:String, api:SocivyAPI){
+    init(path:String){
         self.path = path
-        self.api = api
+        self.api = SocivyAPI.sharedInstance
     }
+    
+    // MARK: - NetworkLibrary Delegate
+    func requestFailWithError(errorCode:NetworkLibraryErrorCode, error:NSError?){
+        fatalError("requestFailWithError(asyncHTTPRequest:, error:) has not been implemented")
+    }
+    func requestDidFinish(response:NSMutableData){
+        fatalError("requestDidFinish(asyncHTTPRequest:, _ response:) has not been implemented")
+    }
+    
     func log(string:String){
-        if DEBUG {
-            println("[\(self.path)] \(string)")
-        }
+        Logger.sharedInstance.log(self.path, message: string)
     }
     
 
     
     func makePOST(payload:[String:String]){
         self.log("makePOST:")
+        
         let postData = JSON(payload).toString(pretty: false)
-        self.asyncRequest = AsyncHTTPRequest(url: self.url, headerDictionary:["Content-Type":"application/json"], postData:postData, httpType:"POST")
-        self.asyncRequest?.delegate = self
-        self.asyncRequest?.start()
+        self.networkLibrary = NetworkLibrary(url: self.url, headers:["Content-Type":"application/json"], postData:postData, httpMethod:HTTPMethod.POST)
+        self.networkLibrary?.delegate = self
+        self.networkLibrary?.request()
     }
     
-    func requestFailWithError(asyncHTTPRequest:AsyncHTTPRequest, error:NSError){
-        fatalError("requestFailWithError(asyncHTTPRequest:, error:) has not been implemented")
-    }
-    func requestDidFinish(asyncHTTPRequest:AsyncHTTPRequest, _ response:NSMutableData){
-        fatalError("requestDidFinish(asyncHTTPRequest:, _ response:) has not been implemented")
-    }
+
     
     func generateError() -> NSError{
         let description:String = "Something terrible happened! \nFailed to login."
@@ -74,47 +76,47 @@ class SocivyBaseLoginAPI: SocivyBaseAPI, SocivyLoginAPIDelegate{
 
     var loginAPI:SocivyLoginAPI?
     
-    override init(path:String, api:SocivyAPI){
-        super.init(path: path , api: api)
-        self.loginAPI = SocivyLoginAPI(api:self.api)
+    override init(path:String){
+        super.init(path: path)
+        self.loginAPI = SocivyLoginAPI()
         self.loginAPI?.delegate = self
     }
     
     
     func makeGETAuth(customURL:String){
         self.log("makeGETPOST:")
-        self.asyncRequest = AsyncHTTPRequest(url: customURL, headerDictionary: ["Access-token":self.api.access_token!], postData: "", httpType: "GET")
-        self.asyncRequest?.delegate = self
-        self.asyncRequest?.start()
+        self.networkLibrary = NetworkLibrary(url: customURL, headers: ["Access-token":self.api.access_token!], postData: nil, httpMethod: .GET)
+        self.networkLibrary?.delegate = self
+        self.networkLibrary?.request()
     }
     
     func makeGETAuth(){
         self.log("makeGETPOST:")
-        self.asyncRequest = AsyncHTTPRequest(url: self.url, headerDictionary: ["Access-token":self.api.access_token!], postData: "", httpType: "GET")
-        self.asyncRequest?.delegate = self
-        self.asyncRequest?.start()
+        self.networkLibrary = NetworkLibrary(url: self.url, headers: ["Access-token":self.api.access_token!], postData: nil, httpMethod: .GET)
+        self.networkLibrary?.delegate = self
+        self.networkLibrary?.request()
     }
     
     func makePOSTAuth(payload:[String:AnyObject]){
         self.log("makeAuthPOST:")
         let postData = JSON(payload).toString(pretty: false)
-        self.asyncRequest = AsyncHTTPRequest(url: self.url, headerDictionary:["Content-Type":"application/json","Access-token":self.api.access_token!], postData:postData, httpType:"POST")
-        self.asyncRequest?.delegate = self
-        self.asyncRequest?.start()
+        self.networkLibrary = NetworkLibrary(url: self.url, headers:["Content-Type":"application/json","Access-token":self.api.access_token!], postData:postData, httpMethod:.POST)
+        self.networkLibrary?.delegate = self
+        self.networkLibrary?.request()
     }
     
     func makePOSTAuth(payload:[String:AnyObject], customURL:String){
         self.log("makeAuthPOST:")
         let postData = JSON(payload).toString(pretty: false)
-        self.asyncRequest = AsyncHTTPRequest(url: customURL, headerDictionary:["Content-Type":"application/json","Access-token":self.api.access_token!], postData:postData, httpType:"POST")
-        self.asyncRequest?.delegate = self
-        self.asyncRequest?.start()
+        self.networkLibrary = NetworkLibrary(url: customURL, headers:["Content-Type":"application/json","Access-token":self.api.access_token!], postData:postData, httpMethod:.POST)
+        self.networkLibrary?.delegate = self
+        self.networkLibrary?.request()
     }
     
     func makeDELETEAuth(customURL:String){
-        self.asyncRequest = AsyncHTTPRequest(url: customURL, headerDictionary: ["Access-token":self.api.access_token!], postData: "", httpType: "DELETE")
-        self.asyncRequest?.delegate = self
-        self.asyncRequest?.start()
+        self.networkLibrary = NetworkLibrary(url: customURL, headers: ["Access-token":self.api.access_token!], postData: nil, httpMethod: .DELETE)
+        self.networkLibrary?.delegate = self
+        self.networkLibrary?.request()
     }
 
     func loginDidFinish(socivyAPI:SocivyLoginAPI){
@@ -132,7 +134,7 @@ class SocivyBaseLoginAPI: SocivyBaseAPI, SocivyLoginAPIDelegate{
 class SocivyAPI {
     let public_key:String = "$2y$10$EABJx.UPPrTRCbn.nR34geK6HJOZWvEQFRFVQzCV2hW7aI13jn16G"
 
-    let domain = "https://socivy.com"
+    var domain = "https://socivy.com"
     let forgotPassword:String
     let url:String
     let key = "user_secret"
@@ -141,22 +143,7 @@ class SocivyAPI {
     var user_secret:String?
     var access_token:String?
     
-    var authenticateAPI:SocivyAuthenticateAPI?
-    var availableRouteAPI:SocivyAvailableRouteAPI?
-    var storeRouteAPI:SocivyStoreRouteAPI?
-    var selfRouteAPI:SocivyRouteSelfAPI?
-    var placeAPI: SocivyPlaceAPI?
-    var enrolledRouteAPI:SocivyRouteEnrolledAPI?
-    var requestRouteAPI:SocivyRouteRequestAPI?
-    var cancelRouteAPI:SocivyRouteCancelAPI?
-    var loginAPI:SocivyLoginAPI?
-    var logoutAPI:SocivyLogoutAPI?
-    
-    var deviceStoreAPI:SocivyDeviceStoreAPI?
-    var settingIndexAPI:SocivySettingIndexAPI?
-    var settingStoreAPI:SocivySettingStoreAPI?
-    
-    var registerAPI:SocivyRegisterAPI?
+ 
     
     var expireTime:Int?
     
@@ -165,27 +152,14 @@ class SocivyAPI {
     }
     
     init(){
+//        if Logger.sharedInstance.DEBUG {
+//            Logger.sharedInstance.log("api", message: "Development Mode")
+//            domain = "https://socivy.com"
+//        }
+        
         self.forgotPassword =  "\(domain)/forgot-password"
         url = "\(domain)/api/v1"
-        self.authenticateAPI = SocivyAuthenticateAPI(api: self)
-        self.loginAPI = SocivyLoginAPI(api: self)
-            
-        //route related
-        self.availableRouteAPI = SocivyAvailableRouteAPI(api: self)
-        self.storeRouteAPI = SocivyStoreRouteAPI(api: self)
-        self.enrolledRouteAPI = SocivyRouteEnrolledAPI(api: self)
-        self.requestRouteAPI = SocivyRouteRequestAPI(api: self)
-        self.cancelRouteAPI = SocivyRouteCancelAPI(api:self)
-        
-        self.selfRouteAPI = SocivyRouteSelfAPI(api:self)
-        self.placeAPI = SocivyPlaceAPI(api: self)
 
-        self.deviceStoreAPI = SocivyDeviceStoreAPI(api:self)
-        self.logoutAPI = SocivyLogoutAPI(api:self)
-        
-        self.settingIndexAPI = SocivySettingIndexAPI(api:self)
-        self.settingStoreAPI = SocivySettingStoreAPI(api:self)
-        self.registerAPI = SocivyRegisterAPI(api:self)
     }
 
     func clearUserSecret(){
@@ -203,9 +177,7 @@ class SocivyAPI {
     }
     
     func log(string:String){
-        if DEBUG {
-            println("[api] \(string)")
-        }
+        Logger.sharedInstance.log("api", message: string)
     }
     
 

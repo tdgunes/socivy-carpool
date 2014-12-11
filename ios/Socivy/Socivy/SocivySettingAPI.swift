@@ -18,8 +18,8 @@ protocol SocivySettingIndexAPIDelegate : SocivyBaseLoginAPIDelegate {
 class SocivySettingIndexAPI: SocivyBaseLoginAPI {
     var delegate: SocivySettingIndexAPIDelegate?
     
-    init(api:SocivyAPI){
-        super.init(path: "/me/setting", api: api)
+    init(){
+        super.init(path: "/me/setting")
     }
     
     func fetch() {
@@ -27,11 +27,18 @@ class SocivySettingIndexAPI: SocivyBaseLoginAPI {
         self.makeGETAuth()
     }
     
-    override func requestFailWithError(asyncHTTPRequest:AsyncHTTPRequest, error:NSError){
-        self.delegate?.fetchDidFail(self, error: error)
+    
+    override func requestFailWithError(errorCode: NetworkLibraryErrorCode, error: NSError?) {
+        if let err = error {
+            self.delegate?.fetchDidFail(self, error: err)
+        }
+        else {
+            self.log("errorCode:\(errorCode.rawValue)")
+        }
     }
     
-    override func requestDidFinish(asyncHTTPRequest: AsyncHTTPRequest, _ response: NSMutableData) {
+    
+    override func requestDidFinish(response: NSMutableData) {
         self.log("requestDidFinish")
         let json = JSON.parse(NSString(data: response, encoding: NSASCIIStringEncoding)!)
         let validationResult = SocivyErrorHandler(json:json).validate()
@@ -74,8 +81,8 @@ class SocivySettingStoreAPI: SocivyBaseLoginAPI {
     var delegate: SocivySettingStoreAPIDelegate?
     var storedPost:[String:AnyObject]?
     
-    init(api:SocivyAPI){
-        super.init(path: "/me/setting", api: api)
+    init(){
+        super.init(path: "/me/setting")
 
     }
     
@@ -96,11 +103,20 @@ class SocivySettingStoreAPI: SocivyBaseLoginAPI {
         self.makePOSTAuth(self.storedPost!)
     }
     
-    override func requestFailWithError(asyncHTTPRequest:AsyncHTTPRequest, error:NSError){
-        self.delegate?.storeDidFail(self, error:error)
+    
+    
+    override func requestFailWithError(errorCode: NetworkLibraryErrorCode, error: NSError?) {
+        if let err = error {
+            self.delegate?.storeDidFail(self, error: err)
+        }
+        else {
+            self.log("errorCode:\(errorCode.rawValue)")
+        }
     }
     
-    override func requestDidFinish(asyncHTTPRequest: AsyncHTTPRequest, _ response: NSMutableData) {
+
+    
+    override func requestDidFinish(response: NSMutableData) {
         self.log("requestDidFinish")
         
         let json = JSON.parse(NSString(data: response, encoding: NSASCIIStringEncoding)!)

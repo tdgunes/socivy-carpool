@@ -16,8 +16,8 @@ protocol SocivyLoginAPIDelegate {
 class SocivyLoginAPI: SocivyBaseAPI {
     var delegate: SocivyLoginAPIDelegate?
     
-    init(api:SocivyAPI) {
-        super.init(path: "/login", api: api)
+    init() {
+        super.init(path: "/login")
     }
 
     func login() {
@@ -26,11 +26,18 @@ class SocivyLoginAPI: SocivyBaseAPI {
         self.makePOST(payload)
     }
     
-    override func requestFailWithError(asyncHTTPRequest:AsyncHTTPRequest, error:NSError){
-        self.delegate?.loginDidFailWithError(self, error: error)
+    
+    override func requestFailWithError(errorCode: NetworkLibraryErrorCode, error: NSError?) {
+        if let err = error {
+            self.delegate?.loginDidFailWithError(self, error: err)
+        }
+        else {
+            self.log("errorCode:\(errorCode.rawValue)")
+        }
     }
     
-    override func requestDidFinish(asyncHTTPRequest: AsyncHTTPRequest, _ response: NSMutableData) {
+    
+    override func requestDidFinish(response: NSMutableData) {
         let json = JSON.parse(NSString(data: response, encoding: NSASCIIStringEncoding)!)
         let validationResult = SocivyErrorHandler(json:json).validate()
 

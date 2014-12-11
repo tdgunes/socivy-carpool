@@ -16,8 +16,8 @@ class AccountSettingsController: UITableViewController, SocivySettingIndexAPIDel
     
     var tableRefreshControl = UIRefreshControl()
     
-    weak var settingIndexAPI = SocivyAPI.sharedInstance.settingIndexAPI
-    weak var settingStoreAPI = SocivyAPI.sharedInstance.settingStoreAPI
+    var settingIndexAPI = SocivySettingIndexAPI()
+    var settingStoreAPI = SocivySettingStoreAPI()
     
     
     @IBOutlet weak var phoneNumberCell: UITextField!
@@ -43,7 +43,7 @@ class AccountSettingsController: UITableViewController, SocivySettingIndexAPIDel
     self.tableRefreshControl.beginRefreshing()
 
         
-       self.settingIndexAPI?.fetch()
+       self.settingIndexAPI.fetch()
     }
 
 
@@ -64,9 +64,9 @@ class AccountSettingsController: UITableViewController, SocivySettingIndexAPIDel
     }
     
     override func viewDidLoad() {
-        self.settingIndexAPI?.delegate = self
-        self.settingStoreAPI?.delegate = self
-        
+        self.settingIndexAPI.delegate = self
+        self.settingStoreAPI.delegate = self
+    
         self.tableView.setContentOffset(CGPointMake(0, self.tableView.contentOffset.y-self.tableRefreshControl.frame.size.height), animated:true)
         
         
@@ -79,7 +79,7 @@ class AccountSettingsController: UITableViewController, SocivySettingIndexAPIDel
     
     
     func refreshControlRequest(){
-       self.settingIndexAPI?.fetch()
+       self.settingIndexAPI.fetch()
     }
 
     
@@ -92,7 +92,7 @@ class AccountSettingsController: UITableViewController, SocivySettingIndexAPIDel
     }
     func storeDidFail(settingStoreAPI:SocivySettingStoreAPI, error:NSError){
         self.applyBackgroundProcessMode(false)
-        self.settingStoreAPI?.showError(error)
+        self.settingStoreAPI.showError(error)
     }
     
     func authDidFail() {
@@ -119,7 +119,7 @@ class AccountSettingsController: UITableViewController, SocivySettingIndexAPIDel
 
     }
     func fetchDidFail(settingIndexAPI:SocivySettingIndexAPI, error:NSError){
-        self.settingIndexAPI?.showError(error)
+        self.settingIndexAPI.showError(error)
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -132,7 +132,7 @@ class AccountSettingsController: UITableViewController, SocivySettingIndexAPIDel
                 showPhone = false
             }
             
-            self.settingStoreAPI?.store(self.nameSurnameCell!.textField!.text, password: self.passwordCell!.text, phone:self.phoneNumberCell.text, showPhone: showPhone)
+            self.settingStoreAPI.store(self.nameSurnameCell!.textField!.text, password: self.passwordCell!.text, phone:self.phoneNumberCell.text, showPhone: showPhone)
             self.applyBackgroundProcessMode(true)
         }
     }
