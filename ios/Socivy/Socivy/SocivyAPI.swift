@@ -10,6 +10,29 @@ import Foundation
 import UIKit
 
 
+enum SocivyAPIMethod: String {
+    
+    //route API
+    case selfURL = "/me/route/self"
+    case availableURL = "/me/route/available"
+    case destroyURL = "/route/{id}"
+    case storeURL = "/route"
+    case enrolledURL = "/me/route/enrolled"
+    case requestURL = "/route/{id}/request"
+    case cancelURL = "/route/{id}/cancel"
+    
+    
+    //user API
+    case login = "/login"
+    case logout = "/logout"
+    case authenticate = "/authenticate"
+}
+
+
+
+
+
+
 
 class SocivyBaseAPI: NetworkLibraryDelegate {
     var networkLibrary:NetworkLibrary?
@@ -152,10 +175,10 @@ class SocivyAPI {
     }
     
     init(){
-//        if Logger.sharedInstance.DEBUG {
-//            Logger.sharedInstance.log("api", message: "Development Mode")
-//            domain = "https://socivy.com"
-//        }
+        if Logger.sharedInstance.DEBUG {
+            Logger.sharedInstance.log("api", message: "Development Mode")
+            domain = "http://development.socivy.com"
+        }
         
         self.forgotPassword =  "\(domain)/forgot-password"
         url = "\(domain)/api/v1"

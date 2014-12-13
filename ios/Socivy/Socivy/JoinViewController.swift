@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import MessageUI
 
-class JoinViewController: UITableViewController, UIActionSheetDelegate, SocivyRouteRequestAPIDelegate,MFMailComposeViewControllerDelegate, MFMessageComposeViewControllerDelegate {
+class JoinViewController: UITableViewController, UIActionSheetDelegate, SocivyBaseLoginAPIDelegate, MFMailComposeViewControllerDelegate, MFMessageComposeViewControllerDelegate {
     
 
     var activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.WhiteLarge)
@@ -27,7 +27,7 @@ class JoinViewController: UITableViewController, UIActionSheetDelegate, SocivyRo
         }
     }
 
-    var requestRouteAPI = SocivyRouteRequestAPI()
+    var routeAPI = SocivyRouteAPI()
     
     
     func authDidFail(){
@@ -46,16 +46,16 @@ class JoinViewController: UITableViewController, UIActionSheetDelegate, SocivyRo
         
         self.navigationController?.view.addSubview(self.activityIndicator)
 
-        self.requestRouteAPI.delegate = self
+        self.routeAPI.delegate = self
     }
     
-    func requestDidFinish(routeRequestAPI:SocivyRouteRequestAPI){
+    func requestDidFinish(json:JSON){
       
         self.applyBackgroundProcessMode(false)
         self.navigationController?.popToRootViewControllerAnimated(true)
     }
     
-    func requestDidFail(routeRequestAPI:SocivyRouteRequestAPI, error:NSError){
+    func requestDidFail(error:NSError, errorCode:NetworkLibraryErrorCode){
         self.applyBackgroundProcessMode(false)
     }
     
@@ -122,7 +122,8 @@ class JoinViewController: UITableViewController, UIActionSheetDelegate, SocivyRo
                 self.showContactSheet(indexPath)
                 
             case "Join":
-                self.requestRouteAPI.request(route!.id)
+                //route!.id)
+                self.routeAPI.request(route!.id, completionHandler: self.requestDidFinish, errorHandler: self.requestDidFail)
                 self.applyBackgroundProcessMode(true)
             default:
                 Logger.sharedInstance.log(self, message: "Another cell pressed, s:\(indexPath.section) r:\(indexPath.row)")

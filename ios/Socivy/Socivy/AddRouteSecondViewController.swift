@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import MapKit
 
-class AddRouteSecondViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, SocivyPlaceAPIDelegate, SocivyStoreRouteAPIDelegate {
+class AddRouteSecondViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, SocivyPlaceAPIDelegate, SocivyBaseLoginAPIDelegate {
     
     @IBOutlet weak var tableView: UITableView!
 
@@ -22,8 +22,8 @@ class AddRouteSecondViewController: UIViewController, UITableViewDataSource, UIT
 
     var tableRefreshControl = UIRefreshControl()
 
-    weak var placeAPI = SocivyPlaceAPI()
-    weak var storeAPI = SocivyStoreRouteAPI()
+    var placeAPI = SocivyPlaceAPI()
+    var routeAPI = SocivyRouteAPI()
     
     
     var places:[Stop] = []
@@ -36,8 +36,8 @@ class AddRouteSecondViewController: UIViewController, UITableViewDataSource, UIT
         
     }
 
-    func storeDidFail(storeRouteApi: SocivyStoreRouteAPI, error: NSError) {
-        self.storeAPI?.showError(error)
+    func storeDidFail(error: NSError, errorCode:NetworkLibraryErrorCode) {
+        SocivyAPI.sharedInstance.showError(error)
     }
     
     override func viewDidLoad() {
@@ -47,15 +47,15 @@ class AddRouteSecondViewController: UIViewController, UITableViewDataSource, UIT
         self.tableRefreshControl.addTarget(self, action: "refreshControlRequest", forControlEvents: UIControlEvents.ValueChanged)
         self.tableView.addSubview(self.tableRefreshControl)
         
-        self.placeAPI?.delegate = self
-        self.storeAPI?.delegate = self
+        self.placeAPI.delegate = self
+        self.routeAPI.delegate = self
         
         
         self.tableRefreshControl.beginRefreshing()
         self.tableView.setContentOffset(CGPointMake(0, self.tableView.contentOffset.y-self.tableRefreshControl.frame.size.height), animated:true)
         
         
-        self.placeAPI?.requestPlaces()
+        self.placeAPI.requestPlaces()
         
         self.activityIndicator.center = self.navigationController!.view.center
         self.activityIndicator.stopAnimating()
@@ -113,23 +113,14 @@ class AddRouteSecondViewController: UIViewController, UITableViewDataSource, UIT
     
     
     
-    func storeDidFinish(storeRouteApi:SocivyStoreRouteAPI){
+    func storeDidFinish(json:JSON){
         self.dismissView()
     }
     
-    func storeDidFail(storeRouteApi:SocivyStoreRouteAPI){
-        var alertView = UIAlertView()
-        alertView.title = "Unable to Store"
-        alertView.message = "Please try sending your route again!"
-        alertView.addButtonWithTitle("OK")
-        alertView.show()
-        
-        self.applyBackgroundProcessMode(false)
-    }
-    
+
     
     func refreshControlRequest(){
-        self.placeAPI?.requestPlaces()
+        self.placeAPI.requestPlaces()
     }
 
     
@@ -162,7 +153,8 @@ class AddRouteSecondViewController: UIViewController, UITableViewDataSource, UIT
             }
             
             
-            self.storeAPI?.requestStoreRoute(payload)
+            self.routeAPI.store(payload, completionHandler: self.storeDidFinish, errorHandler: self.storeDidFail)
+
             self.applyBackgroundProcessMode(true)
         }
     }

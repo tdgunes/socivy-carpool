@@ -9,15 +9,16 @@
 import Foundation
 import UIKit
 
-class MeViewController: UITableViewController, SocivyRouteSelfAPIDelegate,  SocivyRouteEnrolledAPIDelegate {
+class MeViewController: UITableViewController,  SocivyBaseLoginAPIDelegate {
     var segmentedControl: UISegmentedControl?
 
     
     let upperBoundary = CGFloat(60)
     
+    var routeAPI = SocivyRouteAPI()
     
-    var selfRouteAPI = SocivyRouteSelfAPI()
-    var enrolledRouteAPI = SocivyRouteEnrolledAPI()
+
+    
     
     var routes:[Route] = []
     var tableRefreshControl = UIRefreshControl()
@@ -31,8 +32,7 @@ class MeViewController: UITableViewController, SocivyRouteSelfAPIDelegate,  Soci
         self.tableRefreshControl.addTarget(self, action: "refreshControlRequest", forControlEvents: UIControlEvents.ValueChanged)
         self.tableView.addSubview(self.tableRefreshControl)
         
-        self.selfRouteAPI.delegate = self
-        self.enrolledRouteAPI.delegate = self
+        self.routeAPI.delegate = self
         
         
         self.loadTab()
@@ -109,9 +109,9 @@ class MeViewController: UITableViewController, SocivyRouteSelfAPIDelegate,  Soci
     }
     
     
-    
-    func fetchDidFinish(routeEnrolledAPI:SocivyRouteEnrolledAPI, routes:JSON){
-        let routeArray = routes.asArray! as [JSON]
+    // MARK: SocivyRouteEnrolledAPI
+    func fetchEnrolledDidFinish(json:JSON){
+        let routeArray = json["result"].asArray! as [JSON]
         var index:Int = 0
         for route in routeArray {
             var route: Route = Route(routeJson: route)
@@ -130,13 +130,19 @@ class MeViewController: UITableViewController, SocivyRouteSelfAPIDelegate,  Soci
         self.tableRefreshControl.endRefreshing()
     }
     
-    func fetchDidFail(routeEnrolledAPI:SocivyRouteEnrolledAPI, error:NSError){
-        
+    func fetchEnrolledDidFail(error:NSError, errorCode:NetworkLibraryErrorCode){
+        var alert = UIAlertView()
+        alert.title = "Error"
+        alert.message = error.localizedDescription
+        alert.addButtonWithTitle("OK")
+        alert.show()
     }
 
-    func fetchDidFinish(storeRouteApi:SocivyRouteSelfAPI, routes:JSON){
+    
+    // MARK: SocivyRouteSelfAPI
+    func fetchDidFinish(json:JSON){
 
-        let routeArray = routes.asArray! as [JSON]
+        let routeArray = json["result"].asArray! as [JSON]
         var index:Int = 0
         for route in routeArray {
             var route: Route = Route(routeJson: route)
@@ -155,7 +161,7 @@ class MeViewController: UITableViewController, SocivyRouteSelfAPIDelegate,  Soci
         self.tableRefreshControl.endRefreshing()
     }
     
-    func fetchDidFail(storeRouteApi:SocivyRouteSelfAPI, error:NSError){
+    func fetchDidFail(error:NSError, errorCode:NetworkLibraryErrorCode){
         var alert = UIAlertView()
         alert.title = "Error"
         alert.message = error.localizedDescription
@@ -163,6 +169,7 @@ class MeViewController: UITableViewController, SocivyRouteSelfAPIDelegate,  Soci
         alert.show()
     }
     
+    // MARK: LoginDidFail
     func authDidFail() {
         var alert = UIAlertView()
         alert.title = "Error"
@@ -178,10 +185,11 @@ class MeViewController: UITableViewController, SocivyRouteSelfAPIDelegate,  Soci
         helpLabel.hidden = true
         
         if segmentedControl?.selectedSegmentIndex == 0 {
-            self.enrolledRouteAPI.fetch()
+            self.routeAPI.fetchEnrolled(self.fetchEnrolledDidFinish, errorHandler: self.fetchEnrolledDidFail)
         }
         else if segmentedControl?.selectedSegmentIndex == 1{
-            self.selfRouteAPI.fetch()
+            self.routeAPI.fetchSelf(self.fetchDidFinish, errorHandler: self.fetchDidFail)
+
         }
         
 //        self.selfRouteAPI?.fetch()

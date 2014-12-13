@@ -11,9 +11,9 @@ import UIKit
 import MapKit
 
 
-class RoutesViewController: UITableViewController, SocivyAvailableRouteAPIDelegate {
+class RoutesViewController: UITableViewController, SocivyBaseLoginAPIDelegate {
     
-    var indexRouteAPI = SocivyAvailableRouteAPI()
+    var routeAPI = SocivyRouteAPI()
     var routes:[Route] = []
     var tableRefreshControl = UIRefreshControl()
     
@@ -24,9 +24,9 @@ class RoutesViewController: UITableViewController, SocivyAvailableRouteAPIDelega
         self.updateTableView()
     }
     
-    func routesDidReturn(socivyRouteAPI:SocivyAvailableRouteAPI, routes:JSON){
+    func routesDidReturn(json:JSON){
         self.routes = []
-        let routeArray = routes.asArray! as [JSON]
+        let routeArray = json["result"].asArray! as [JSON]
         var index:Int = 0
         for route in routeArray {
             
@@ -52,13 +52,13 @@ class RoutesViewController: UITableViewController, SocivyAvailableRouteAPIDelega
         self.tableView.reloadData()
         self.tableRefreshControl.endRefreshing()
     }
-    func routesDidFailWithError(socivyRouteAPI:SocivyAvailableRouteAPI, error:NSError){
+    func routesDidFailWithError(error:NSError, errorCode:NetworkLibraryErrorCode){
         
         self.tableRefreshControl.endRefreshing()
     }
     
     func authDidFail() {
-        self.indexRouteAPI.showSessionExpired()
+        SocivyAPI.sharedInstance.showSessionExpired()
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
@@ -70,7 +70,7 @@ class RoutesViewController: UITableViewController, SocivyAvailableRouteAPIDelega
         self.tableRefreshControl.addTarget(self, action: "refreshControlRequest", forControlEvents: UIControlEvents.ValueChanged)
         
         self.tableView.addSubview(self.tableRefreshControl)
-        self.indexRouteAPI.delegate = self
+        self.routeAPI.delegate = self
         
         
 
@@ -79,14 +79,14 @@ class RoutesViewController: UITableViewController, SocivyAvailableRouteAPIDelega
     }
     
     func refreshControlRequest(){
-        self.indexRouteAPI.request()
+        self.routeAPI.fetchAvailable(self.routesDidReturn, errorHandler: self.routesDidFailWithError)
     }
     
     func updateTableView(){
 
         self.tableRefreshControl.beginRefreshing()
         self.tableView.setContentOffset(CGPointMake(0, self.tableView.contentOffset.y-self.tableRefreshControl.frame.size.height), animated:true)
-        self.indexRouteAPI.request()
+        self.routeAPI.fetchAvailable(self.routesDidReturn, errorHandler: self.routesDidFailWithError)
     }
 
     
