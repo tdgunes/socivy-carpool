@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import MapKit
 
-class AddRouteSecondViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, SocivyPlaceAPIDelegate, SocivyBaseLoginAPIDelegate {
+class AddRouteSecondViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, SocivyBaseLoginAPIDelegate {
     
     @IBOutlet weak var tableView: UITableView!
 
@@ -22,7 +22,7 @@ class AddRouteSecondViewController: UIViewController, UITableViewDataSource, UIT
 
     var tableRefreshControl = UIRefreshControl()
 
-    var placeAPI = SocivyPlaceAPI()
+    var toolAPI = SocivyToolAPI()
     var routeAPI = SocivyRouteAPI()
     
     
@@ -47,7 +47,7 @@ class AddRouteSecondViewController: UIViewController, UITableViewDataSource, UIT
         self.tableRefreshControl.addTarget(self, action: "refreshControlRequest", forControlEvents: UIControlEvents.ValueChanged)
         self.tableView.addSubview(self.tableRefreshControl)
         
-        self.placeAPI.delegate = self
+        self.toolAPI.delegate = self
         self.routeAPI.delegate = self
         
         
@@ -55,7 +55,7 @@ class AddRouteSecondViewController: UIViewController, UITableViewDataSource, UIT
         self.tableView.setContentOffset(CGPointMake(0, self.tableView.contentOffset.y-self.tableRefreshControl.frame.size.height), animated:true)
         
         
-        self.placeAPI.requestPlaces()
+        self.toolAPI.getPlaces(self.placesDidReturn, errorHandler: self.placesDidFailWithError)
         
         self.activityIndicator.center = self.navigationController!.view.center
         self.activityIndicator.stopAnimating()
@@ -64,10 +64,10 @@ class AddRouteSecondViewController: UIViewController, UITableViewDataSource, UIT
     }
 
     
-    func placesDidReturn(indexRouteAPI:SocivyPlaceAPI, places:JSON){
+    func placesDidReturn(json:JSON){
         self.places = []
         self.selectedPlaces = [:]
-        let placeArray = places.asArray! as [JSON]
+        let placeArray = json["result"].asArray! as [JSON]
 
         for place in placeArray {
             let id = place["id"].asString!
@@ -107,7 +107,7 @@ class AddRouteSecondViewController: UIViewController, UITableViewDataSource, UIT
     }
  
     
-    func placesDidFailWithError(indexRouteAPI:SocivyPlaceAPI, error:NSError){
+    func placesDidFailWithError(error:NSError, errorCode:NetworkLibraryErrorCode){
         
     }
     
@@ -120,7 +120,7 @@ class AddRouteSecondViewController: UIViewController, UITableViewDataSource, UIT
 
     
     func refreshControlRequest(){
-        self.placeAPI.requestPlaces()
+        self.toolAPI.getPlaces(self.placesDidReturn, errorHandler: self.placesDidFailWithError)
     }
 
     

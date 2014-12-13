@@ -122,7 +122,7 @@ class NetworkLibrary : LowLevelLayerDelegate{
 
             
             for (key,value) in self.headers {
-                Logger.sharedInstance.log(tag, message: "$POST['\(key)'] = '\(value)'")
+                Logger.sharedInstance.log(tag, message: "$\(self.httpMethod.rawValue)['\(key)'] = '\(value)'")
                 urlRequest.setValue(value, forHTTPHeaderField: key)
             }
             
@@ -135,6 +135,11 @@ class NetworkLibrary : LowLevelLayerDelegate{
     
     func updateAccessToken(){
         self.headers["Access-token"] = SocivyAPI.sharedInstance.access_token!
+    }
+    
+    deinit{
+        Logger.sharedInstance.log(tag, message: "Bye")
+
     }
     
 }

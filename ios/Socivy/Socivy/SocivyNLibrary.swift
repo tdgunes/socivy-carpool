@@ -38,7 +38,7 @@ class APINetworkLibraryFactory {
             var networkLibrary = NetworkLibrary(url: self.url, headers: self.headers, postData: postData, httpMethod: method)
             
             self.finalizeCompletionHandler(networkLibrary, completionHandler: completionHandler, errorHandler: errorHandler)
-            
+
             
             return networkLibrary
     }
@@ -53,6 +53,7 @@ class APINetworkLibraryFactory {
                 Logger.sharedInstance.log("finalhandler", message: responseAsText)
                 let json = JSON.parse(responseAsText)
                 let validationResult = SocivyErrorHandler(json:json).validate()
+                Logger.sharedInstance.log("finalhandler", message: "validationResult: \(validationResult.rawValue)")
                 switch validationResult{
                 case .Success:
                     completionHandler(json: json)
@@ -60,13 +61,15 @@ class APINetworkLibraryFactory {
                 case .InvalidAccessToken:
                     var userAPI = SocivyUserAPI()
                     Logger.sharedInstance.log("finalhandler", message: "invalidAccessToken")
-                    userAPI.fetchLogin(completionHandler, errorHandler: errorHandler, networkLibrary:networkLibrary)
+                    userAPI.login(nil, errorHandler: errorHandler, networkLibrary:networkLibrary)
                     // self.loginAPI?.login() <- give completionHandler
                     break
                 case .InvalidUserSecret:
+                    Logger.sharedInstance.log("finalhandler", message: "invalidUserSecret")
                     self.delegate?.authDidFail()
                     break
                 default:
+
                     var error = SocivyErrorFactory().create(validationResult)
                     errorHandler(error: error, errocode: NetworkLibraryErrorCode.HasNSError)
                 }
@@ -101,7 +104,10 @@ class APINetworkLibraryFactory {
     }
     
     func includeAccessToken(){
-        headers["Access-token"] = SocivyAPI.sharedInstance.access_token!
+        if let token = SocivyAPI.sharedInstance.access_token {
+            headers["Access-token"] = token
+        }
+
     }
     
     func includeContentType(){

@@ -25,6 +25,7 @@ class User {
     }
     
     convenience init(jsonUser:JSON){
+        Logger.sharedInstance.log("userobj", message: jsonUser.toString(pretty: true))
         let driverID = jsonUser["id"].asString!
         let driverName = jsonUser["name"].asString!
         let driverEmail = jsonUser["email"].asString!

@@ -51,10 +51,10 @@ class SocivyRouteAPI {
     }
     
     
-//    func cancel(id:String,completionHandler:(json:JSON)->(),errorHandler:(error:NSError, errocode:NetworkLibraryErrorCode)->() ){
-//        var networkLibrary = self.networkLibraryFactory.generate(.requestURL, .withAccessToken, nil, .GET, completionHandler, errorHandler, withReplacement:id)
-//        networkLibrary.request()
-//    }
+    func cancel(id:String,completionHandler:(json:JSON)->(),errorHandler:(error:NSError, errocode:NetworkLibraryErrorCode)->() ){
+        var networkLibrary = self.networkLibraryFactory.generate(.cancelURL, .withAccessToken, nil, .GET, completionHandler, errorHandler, withReplacement:id)
+        networkLibrary.request()
+    }
     
 
 }

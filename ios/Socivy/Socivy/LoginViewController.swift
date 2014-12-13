@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class LoginViewController: UITableViewController, SocivyAuthenticateAPIDelegate, SocivyLoginAPIDelegate, SocivyDeviceStoreAPIDelegate, UITextFieldDelegate {
+class LoginViewController: UITableViewController, SocivyBaseLoginAPIDelegate, UITextFieldDelegate {
     
     
     @IBOutlet weak var emailCell: TextFieldCell?
@@ -19,9 +19,9 @@ class LoginViewController: UITableViewController, SocivyAuthenticateAPIDelegate,
     @IBOutlet weak var forgotPasswordCell:UITableViewCell?
     @IBOutlet weak var signupCell: UITableViewCell?
     
-    var authenticateAPI = SocivyAuthenticateAPI()
-    var loginAPI = SocivyLoginAPI()
-    var deviceStoreAPI = SocivyDeviceStoreAPI()
+    var userAPI = SocivyUserAPI()
+
+    var toolAPI = SocivyToolAPI()
     
     var activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.WhiteLarge)
     var alert = UIAlertView()
@@ -38,8 +38,8 @@ class LoginViewController: UITableViewController, SocivyAuthenticateAPIDelegate,
             Logger.sharedInstance.log("loginVC", message: "loginCell touched")
             Logger.sharedInstance.log("loginVC", message: "email: \(emailCell?.textField?.text)")
 
-            
-            self.authenticateAPI.authenticate(self.emailCell!.textField!.text, password: self.passwordCell!.textField!.text)
+            self.userAPI.authenticate(self.emailCell!.textField!.text, password: self.passwordCell!.textField!.text, completionHandler: self.authenticateDidFinish, errorHandler: self.authenticateDidFailWithError)
+
             self.applyBackgroundProcessMode(true)
             
         }
@@ -58,10 +58,9 @@ class LoginViewController: UITableViewController, SocivyAuthenticateAPIDelegate,
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        self.authenticateAPI.delegate = self
-        self.loginAPI.delegate = self
-        self.deviceStoreAPI.delegate = self
 
+        self.toolAPI.delegate = self
+        self.userAPI.delegate = self
         
         
         emailCell?.selectionStyle = .None
@@ -83,10 +82,11 @@ class LoginViewController: UITableViewController, SocivyAuthenticateAPIDelegate,
    
         
         
-        if self.authenticateAPI.api.isUserSecretSaved()  {
-            
-            self.authenticateAPI.api.loadUserSecret()
-            self.loginAPI.login()
+        if SocivyAPI.sharedInstance.isUserSecretSaved()  {
+
+            SocivyAPI.sharedInstance.loadUserSecret()
+            self.userAPI.delegate = self
+            self.userAPI.login(self.loginDidFinish, errorHandler: self.loginDidFailWithError, networkLibrary: nil)
             self.applyBackgroundProcessMode(true)
             self.storeDeviceToken()
         }
@@ -119,10 +119,10 @@ class LoginViewController: UITableViewController, SocivyAuthenticateAPIDelegate,
         var selectedCell = self.tableView.cellForRowAtIndexPath(indexPath)
         if selectedCell == loginCell {
             
+            self.userAPI.delegate = self
+            self.userAPI.authenticate(self.emailCell!.textField!.text, password: self.passwordCell!.textField!.text, completionHandler: self.authenticateDidFinish, errorHandler: self.authenticateDidFailWithError)
             
 
-            
-            self.authenticateAPI.authenticate(self.emailCell!.textField!.text, password: self.passwordCell!.textField!.text)
             self.applyBackgroundProcessMode(true)
 
         }
@@ -137,12 +137,12 @@ class LoginViewController: UITableViewController, SocivyAuthenticateAPIDelegate,
     
     func storeDeviceToken() {
         if let deviceToken = socivyDeviceToken {
-            self.deviceStoreAPI.request(deviceToken)
+            self.toolAPI.storeDevice(deviceToken, completionHandler: self.storeDidFinish, errorHandler: self.storeDidFail)
         }
     }
 
     
-    func loginDidFinish(socivyAPI:SocivyLoginAPI){
+    func loginDidFinish(json:JSON){
         self.applyBackgroundProcessMode(false)
         
         self.storeDeviceToken()
@@ -150,7 +150,7 @@ class LoginViewController: UITableViewController, SocivyAuthenticateAPIDelegate,
         self.showMainView()
 
     }
-    func loginDidFailWithError(socivyAPI:SocivyLoginAPI, error:NSError){
+    func loginDidFailWithError(error:NSError, errorCode:NetworkLibraryErrorCode){
         self.applyBackgroundProcessMode(false)
         
         var alertView = UIAlertView()
@@ -161,7 +161,12 @@ class LoginViewController: UITableViewController, SocivyAuthenticateAPIDelegate,
     }
     
     func authDidFail(){
-        
+        self.applyBackgroundProcessMode(false)
+        var alertView = UIAlertView()
+        alert.title = "Session Expired"
+        alert.message = "Please enter your credentials to log in!"
+        alert.addButtonWithTitle("OK")
+        alert.show()
     }
 
     
@@ -180,28 +185,28 @@ class LoginViewController: UITableViewController, SocivyAuthenticateAPIDelegate,
 
     
     
-    func authenticateDidFinish(socivyAPI:SocivyAuthenticateAPI){
+    func authenticateDidFinish(json:JSON){
         Logger.sharedInstance.log("loginVC", message: "login did finish")
 
 
         
-        self.authenticateAPI.api.saveUserSecret()
+        SocivyAPI.sharedInstance.saveUserSecret()
         self.applyBackgroundProcessMode(false)
         self.storeDeviceToken()
         self.showMainView()
     }
     
-    func authenticateDidFailWithError(socivyAPI:SocivyAuthenticateAPI, error:NSError){
-        self.authenticateAPI.showError(error)
+    func authenticateDidFailWithError( error:NSError, errorCode:NetworkLibraryErrorCode){
+        SocivyAPI.sharedInstance.showError(error)
         self.applyBackgroundProcessMode(false)
     }
     
-    func storeDidFinish(deviceStoreAPI:SocivyDeviceStoreAPI){
+    func storeDidFinish(json:JSON){
         Logger.sharedInstance.log("loginVC", message: "storeDidFinish")
 
     }
-    func storeDidFail(deviceStoreAPI:SocivyDeviceStoreAPI){
-        
+    func storeDidFail(error:NSError, errorCode:NetworkLibraryErrorCode){
+        Logger.sharedInstance.log("loginVC", message: "storeDidFail")
     }
 
 }
