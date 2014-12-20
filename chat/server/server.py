@@ -31,4 +31,5 @@ class Server(object):
             peer_sock.setblocking(0)
             peer = Peer(self, peer_sock, peer_name)
             self._peers.append(peer)
+            print('Peer {0} connected!'.format(peer.name))
             self.broadcast('Peer %s connected!\n' % (peer.name,))
