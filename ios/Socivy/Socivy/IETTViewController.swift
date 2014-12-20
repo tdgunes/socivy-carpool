@@ -9,9 +9,9 @@
 import Foundation
 import UIKit
 
-class IETTViewController : UITableViewController, SocivyBusAPIDelegate {
+class IETTViewController : UITableViewController, SocivyBaseLoginAPIDelegate {
     
-    var busAPI = SocivyBusAPI(api: SocivyAPI.sharedInstance)
+    var toolAPI = SocivyToolAPI()
     var busList:[Bus] = []
     var tableRefreshControl = UIRefreshControl()
     
@@ -21,7 +21,7 @@ class IETTViewController : UITableViewController, SocivyBusAPIDelegate {
     }
     
     override func viewDidLoad() {
-        self.busAPI.delegate = self
+        self.toolAPI.delegate = self
         
         self.tableRefreshControl.addTarget(self, action: "refreshControlRequest", forControlEvents: UIControlEvents.ValueChanged)
         self.tableView.addSubview(self.tableRefreshControl)
@@ -30,25 +30,26 @@ class IETTViewController : UITableViewController, SocivyBusAPIDelegate {
     }
 
     func refreshControlRequest(){
-        self.busAPI.request()
+        self.toolAPI.getBuses(self.busesDidReturn, errorHandler: self.busesDidFailWithError)
+
     }
     
     
     func updateTableView(){
         self.tableRefreshControl.beginRefreshing()
         self.tableView.setContentOffset(CGPointMake(0, self.tableView.contentOffset.y-self.tableRefreshControl.frame.size.height), animated:true)
-        self.busAPI.request()
+        self.toolAPI.getBuses(self.busesDidReturn, errorHandler: self.busesDidFailWithError)
     }
     
     
-    func busesDidFailWithError(busAPI: SocivyBusAPI, error: NSError) {
-        self.busAPI.showError(error)
+    func busesDidFailWithError( error: NSError, errorCode:NetworkLibraryErrorCode) {
+        SocivyAPI.sharedInstance.showError(error)
     }
     
-    func busesDidReturn(busAPI: SocivyBusAPI, buses: JSON) {
+    func busesDidReturn( json: JSON) {
         self.busList = []
         
-        var busArray = buses.asArray!
+        var busArray = json["result"].asArray!
         for bus in busArray {
             
             let id = bus["id"].asString!
@@ -65,7 +66,7 @@ class IETTViewController : UITableViewController, SocivyBusAPIDelegate {
     }
     
     func authDidFail(){
-        self.busAPI.showSessionExpired()
+        SocivyAPI.sharedInstance.showSessionExpired()
         self.dismissViewControllerAnimated(true, completion: nil)
     }
 

@@ -12,20 +12,20 @@ import UIKit
 
 
 
-class AccountSettingsController: UITableViewController, SocivySettingIndexAPIDelegate, SocivySettingStoreAPIDelegate, UITextFieldDelegate {
+class AccountSettingsController: UITableViewController, SocivyBaseLoginAPIDelegate, UITextFieldDelegate {
     
     var tableRefreshControl = UIRefreshControl()
     
-    weak var settingIndexAPI = SocivyAPI.sharedInstance.settingIndexAPI
-    weak var settingStoreAPI = SocivyAPI.sharedInstance.settingStoreAPI
+    var settingsAPI = SocivySettingsAPI()
+
     
     
     @IBOutlet weak var phoneNumberCell: UITextField!
     @IBOutlet weak var nameSurnameCell: SettingCell!
-//    
     @IBOutlet weak var showPhoneCell: SegmentedControlCell!
     @IBOutlet weak var emailCell: UITextField!
     @IBOutlet weak var passwordCell: UITextField!
+    @IBOutlet weak var saveSettings: UITableViewCell!
     
     var activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.WhiteLarge)
     
@@ -34,16 +34,9 @@ class AccountSettingsController: UITableViewController, SocivySettingIndexAPIDel
     }
     
     
-  
-    @IBOutlet weak var saveSettings: UITableViewCell!
     override func viewWillAppear(animated: Bool) {
-        
-        
-        
-    self.tableRefreshControl.beginRefreshing()
-
-        
-       self.settingIndexAPI?.fetch()
+        self.tableRefreshControl.beginRefreshing()
+        self.refreshControlRequest()
     }
 
 
@@ -64,42 +57,34 @@ class AccountSettingsController: UITableViewController, SocivySettingIndexAPIDel
     }
     
     override func viewDidLoad() {
-        self.settingIndexAPI?.delegate = self
-        self.settingStoreAPI?.delegate = self
-        
-        self.tableView.setContentOffset(CGPointMake(0, self.tableView.contentOffset.y-self.tableRefreshControl.frame.size.height), animated:true)
-        
-        
-        self.tableRefreshControl.addTarget(self, action: "refreshControlRequest", forControlEvents: UIControlEvents.ValueChanged)
-        
-        self.tableView.addSubview(self.tableRefreshControl)
-        
-        
-    }
+        self.settingsAPI.delegate = self
+
     
+        self.tableView.setContentOffset(CGPointMake(0, self.tableView.contentOffset.y-self.tableRefreshControl.frame.size.height), animated:true)
+        self.tableRefreshControl.addTarget(self, action: "refreshControlRequest", forControlEvents: UIControlEvents.ValueChanged)
+        self.tableView.addSubview(self.tableRefreshControl)
+    }
     
     func refreshControlRequest(){
-       self.settingIndexAPI?.fetch()
+        self.settingsAPI.fetchIndex(self.fetchDidFinish, errorHandler: self.fetchDidFail)
     }
 
     
-    
-
-    
-    func storeDidFinish(settingStoreAPI:SocivySettingStoreAPI){
+    func storeDidFinish(json:JSON){
         self.dismissViewControllerAnimated(true, completion: nil)
         self.applyBackgroundProcessMode(false)
     }
-    func storeDidFail(settingStoreAPI:SocivySettingStoreAPI, error:NSError){
+    func storeDidFail(error:NSError, errorCode:NetworkLibraryErrorCode){
         self.applyBackgroundProcessMode(false)
-        self.settingStoreAPI?.showError(error)
+        SocivyAPI.sharedInstance.showError(error)
     }
     
     func authDidFail() {
         // TODO, dismissView twice needed
     }
     
-    func fetchDidFinish(settingIndexAPI:SocivySettingIndexAPI, user:JSON){
+    func fetchDidFinish(json:JSON){
+        let user = json["result"]
         var email = user["email"].asString!
         var name = user["name"].asString!
         var phone = user["information"]["phone"].asString!
@@ -118,8 +103,8 @@ class AccountSettingsController: UITableViewController, SocivySettingIndexAPIDel
         self.tableRefreshControl.endRefreshing()
 
     }
-    func fetchDidFail(settingIndexAPI:SocivySettingIndexAPI, error:NSError){
-        self.settingIndexAPI?.showError(error)
+    func fetchDidFail(error:NSError, errorCode:NetworkLibraryErrorCode){
+        SocivyAPI.sharedInstance.showError(error)
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -132,7 +117,8 @@ class AccountSettingsController: UITableViewController, SocivySettingIndexAPIDel
                 showPhone = false
             }
             
-            self.settingStoreAPI?.store(self.nameSurnameCell!.textField!.text, password: self.passwordCell!.text, phone:self.phoneNumberCell.text, showPhone: showPhone)
+            self.settingsAPI.store(self.nameSurnameCell!.textField!.text, password: self.passwordCell!.text, phone:self.phoneNumberCell.text, showPhone: showPhone, completionHandler: self.storeDidFinish, errorHandler: self.storeDidFail)
+
             self.applyBackgroundProcessMode(true)
         }
     }

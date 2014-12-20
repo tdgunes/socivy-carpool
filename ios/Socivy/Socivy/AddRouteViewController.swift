@@ -19,10 +19,8 @@ class AddRouteViewController: UITableViewController {
     @IBOutlet weak var seatPicker: PickerCell!
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if DEBUG {
-            println("segue: \(segue.identifier)")
-        }
-
+        
+        Logger.sharedInstance.log("segue", message: "\(segue.identifier)")
 
         let identifier = segue.identifier
         
@@ -50,21 +48,13 @@ class AddRouteViewController: UITableViewController {
                 plan = "fromSchool"
             }
             
-            
-            if DEBUG {
-                println("action_day: \(action_day)")
-                println("action_hour: \(action_hour)")
-                println("action_minute: \(action_minute)")
-                println("available_seat: \(available_seat)")
-                println("plan: \(plan)")
-            }
-            
+
             var info = self.additionalCell.textField!.text
             if info == nil {
                 info = ""
             }
             
-            println("description: \(info)")
+
             
             var payload:Dictionary<String,AnyObject> = ["action_day":action_day, "action_hour":action_hour, "action_minute":action_minute,
                            "available_seat":available_seat, "plan":plan, "description":info, "points":[]]

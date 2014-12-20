@@ -15,9 +15,7 @@ class RouteCell: UITableViewCell, UITableViewDataSource, UITableViewDelegate {
 
     var route:Route?{
         didSet {
-            if DEBUG {
-                println("[routecell] route set")
-            }
+            Logger.sharedInstance.log("routeCell", message: "route set")
             self.tableView?.reloadData()
         }
     }

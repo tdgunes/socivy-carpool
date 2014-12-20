@@ -10,13 +10,13 @@ import Foundation
 import UIKit
 
 
-class SettingsViewController: UITableViewController, SocivyLogoutAPIDelegate{
+class SettingsViewController: UITableViewController, SocivyBaseLoginAPIDelegate{
     
     @IBOutlet weak var logoutCell: UITableViewCell?
     
     var activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.WhiteLarge)
     
-    weak var logoutAPI = SocivyAPI.sharedInstance.logoutAPI
+    var userAPI = SocivyUserAPI()
     
     
     func authDidFail(){
@@ -27,7 +27,7 @@ class SettingsViewController: UITableViewController, SocivyLogoutAPIDelegate{
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        self.logoutAPI?.delegate = self
+        self.userAPI.delegate = self
         
         
     }
@@ -63,12 +63,12 @@ class SettingsViewController: UITableViewController, SocivyLogoutAPIDelegate{
     }
     
     
-    func logoutDidFinish(socivyAPI:SocivyLogoutAPI){
+    func logoutDidFinish(json:JSON){
         self.applyBackgroundProcessMode(false)
         self.dismissViewControllerAnimated(true, completion: nil)
         
     }
-    func logoutDidFailWithError(socivyAPI:SocivyLogoutAPI, error:NSError){
+    func logoutDidFailWithError(error:NSError, errorCode:NetworkLibraryErrorCode){
         self.applyBackgroundProcessMode(false)
     }
     
@@ -99,7 +99,7 @@ class SettingsViewController: UITableViewController, SocivyLogoutAPIDelegate{
         var selectedCell = self.tableView.cellForRowAtIndexPath(indexPath)
         if selectedCell == logoutCell {
             
-            self.logoutAPI?.logout()
+            self.userAPI.logout(self.logoutDidFinish, errorHandler: self.logoutDidFailWithError)
             self.applyBackgroundProcessMode(true)
             
         }

@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class SignupViewController: UITableViewController, SocivyRegisterAPIDelegate, UITextFieldDelegate {
+class SignupViewController: UITableViewController, UITextFieldDelegate {
     
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
@@ -19,7 +19,7 @@ class SignupViewController: UITableViewController, SocivyRegisterAPIDelegate, UI
     @IBOutlet weak var registerCell:UITableViewCell?
     
     
-    weak var registerAPI = SocivyAPI.sharedInstance.registerAPI
+    var userAPI = SocivyUserAPI()
     
     
     var activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.WhiteLarge)
@@ -34,7 +34,7 @@ class SignupViewController: UITableViewController, SocivyRegisterAPIDelegate, UI
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        registerAPI?.delegate = self
+
 
         self.activityIndicator.center = self.navigationController!.view.center
         self.activityIndicator.stopAnimating()
@@ -97,17 +97,15 @@ class SignupViewController: UITableViewController, SocivyRegisterAPIDelegate, UI
     }
     
     func register(){
-        if DEBUG {
-            println("[register] register touched")
-        }
+        Logger.sharedInstance.log("register", message: "register touched")
 
-        
-        self.registerAPI?.register(self.nameTextField.text, email: self.emailTextField.text, password: self.passwordTextField.text, phone: self.phoneTextField.text)
+        self.userAPI.register(self.nameTextField.text, email: self.emailTextField.text, password: self.passwordTextField.text, phone: self.phoneTextField.text, completionHandler: self.registerDidFinish, errorHandler: self.registerDidFail)
+
         self.applyBackgroundProcessMode(true)
         
     }
     
-    func registerDidFail(error: NSError) {
+    func registerDidFail(error: NSError, errorCode:NetworkLibraryErrorCode) {
         var alert = UIAlertView()
         alert.title = "Error"
         alert.message = error.localizedDescription
@@ -116,8 +114,10 @@ class SignupViewController: UITableViewController, SocivyRegisterAPIDelegate, UI
         self.applyBackgroundProcessMode(false)
     }
     
-    func registerDidFinish() {
+    func registerDidFinish(json:JSON) {
         self.applyBackgroundProcessMode(false)
         self.navigationController?.popToRootViewControllerAnimated(true)
     }
+    
+    
 }

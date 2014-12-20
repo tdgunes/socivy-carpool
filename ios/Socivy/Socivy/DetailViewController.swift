@@ -16,7 +16,7 @@ enum ContactSheet: Int {
     case Cancel = 0, SendMail, Call, SMS
 }
 
-class DetailViewController: UITableViewController, UIActionSheetDelegate, SocivyRouteDestoryAPIDelegate, MFMailComposeViewControllerDelegate, MFMessageComposeViewControllerDelegate {
+class DetailViewController: UITableViewController, SocivyBaseLoginAPIDelegate, UIActionSheetDelegate, MFMailComposeViewControllerDelegate, MFMessageComposeViewControllerDelegate {
     
     
     var activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.WhiteLarge)
@@ -38,7 +38,7 @@ class DetailViewController: UITableViewController, UIActionSheetDelegate, Socivy
         }
     }
     
-    var destroyRouteAPI = SocivyRouteDestoryAPI(api:SocivyAPI.sharedInstance)
+    var routeAPI = SocivyRouteAPI()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,11 +51,11 @@ class DetailViewController: UITableViewController, UIActionSheetDelegate, Socivy
         self.activityIndicator.hidesWhenStopped = true
         
         self.navigationController?.view.addSubview(self.activityIndicator)
-        self.destroyRouteAPI.delegate = self
+        self.routeAPI.delegate = self
 
     }
     
-    func requestDidFinish(routeDestroyAPI:SocivyRouteDestoryAPI){
+    func requestDidFinish(json:JSON){
         self.applyBackgroundProcessMode(false)
         self.navigationController?.popToRootViewControllerAnimated(true)
     }
@@ -100,7 +100,7 @@ class DetailViewController: UITableViewController, UIActionSheetDelegate, Socivy
         self.shareTextImageAndURL(sharingText: text, sharingImage: image, sharingURL: NSURL(string:url))
     }
     
-    func requestDidFail(routeDestoryAPI:SocivyRouteDestoryAPI, error:NSError){
+    func requestDidFail(error:NSError, errorCode:NetworkLibraryErrorCode){
          self.applyBackgroundProcessMode(false)
     }
     
@@ -170,11 +170,10 @@ class DetailViewController: UITableViewController, UIActionSheetDelegate, Socivy
             switch values[0] {
             case "Destroy":
                 self.applyBackgroundProcessMode(true)
-                self.destroyRouteAPI.request(self.route!.id)
+                self.routeAPI.destroy(self.route!.id, completionHandler: self.requestDidFinish, errorHandler: self.requestDidFail)
             default:
-                if DEBUG {
-                     println("Another cell pressed, s:\(indexPath.section) r:\(indexPath.row)")
-                }
+                Logger.sharedInstance.log("detailVC", message: "Another cell pressed, s:\(indexPath.section) r:\(indexPath.row)")
+
             }
         }
         

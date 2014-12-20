@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import MessageUI
 
-class LeaveViewController: UITableViewController, UIActionSheetDelegate, SocivyRouteCancelAPIDelegate, MFMailComposeViewControllerDelegate, MFMessageComposeViewControllerDelegate {
+class LeaveViewController: UITableViewController, SocivyBaseLoginAPIDelegate, UIActionSheetDelegate, MFMailComposeViewControllerDelegate, MFMessageComposeViewControllerDelegate {
     
     
     var activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.WhiteLarge)
@@ -27,7 +27,7 @@ class LeaveViewController: UITableViewController, UIActionSheetDelegate, SocivyR
         }
     }
     
-    weak var cancelRouteAPI = SocivyAPI.sharedInstance.cancelRouteAPI
+    var routeAPI = SocivyRouteAPI()
     
     func authDidFail(){
         
@@ -89,17 +89,17 @@ class LeaveViewController: UITableViewController, UIActionSheetDelegate, SocivyR
         
         self.navigationController?.view.addSubview(self.activityIndicator)
         
-        self.cancelRouteAPI?.delegate = self
+        self.routeAPI.delegate = self
     }
     
-    func requestDidFinish(routeCancelAPI:SocivyRouteCancelAPI){
+    func requestDidFinish(json:JSON){
         
         self.applyBackgroundProcessMode(false)
 
         self.navigationController?.popToRootViewControllerAnimated(true)
     }
     
-    func requestDidFail(routeCancelAPI:SocivyRouteCancelAPI, error:NSError){
+    func requestDidFail(error:NSError, errorCode:NetworkLibraryErrorCode){
         self.applyBackgroundProcessMode(false)
     }
     
@@ -173,7 +173,7 @@ class LeaveViewController: UITableViewController, UIActionSheetDelegate, SocivyR
                 self.showContactSheet(indexPath)
                 
             case "Leave":
-                self.cancelRouteAPI?.request(route!.id)
+                self.routeAPI.cancel(route!.id, completionHandler: self.requestDidFinish, errorHandler: self.requestDidFail)
                 self.applyBackgroundProcessMode(true)
             default:
                 println("Another cell pressed, s:\(indexPath.section) r:\(indexPath.row)")

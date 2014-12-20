@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import MapKit
 
-class AddRouteSecondViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, SocivyPlaceAPIDelegate, SocivyStoreRouteAPIDelegate {
+class AddRouteSecondViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, SocivyBaseLoginAPIDelegate {
     
     @IBOutlet weak var tableView: UITableView!
 
@@ -22,8 +22,8 @@ class AddRouteSecondViewController: UIViewController, UITableViewDataSource, UIT
 
     var tableRefreshControl = UIRefreshControl()
 
-    weak var placeAPI = SocivyAPI.sharedInstance.placeAPI
-    weak var storeAPI = SocivyAPI.sharedInstance.storeRouteAPI
+    var toolAPI = SocivyToolAPI()
+    var routeAPI = SocivyRouteAPI()
     
     
     var places:[Stop] = []
@@ -36,8 +36,8 @@ class AddRouteSecondViewController: UIViewController, UITableViewDataSource, UIT
         
     }
 
-    func storeDidFail(storeRouteApi: SocivyStoreRouteAPI, error: NSError) {
-        self.storeAPI?.showError(error)
+    func storeDidFail(error: NSError, errorCode:NetworkLibraryErrorCode) {
+        SocivyAPI.sharedInstance.showError(error)
     }
     
     override func viewDidLoad() {
@@ -47,15 +47,15 @@ class AddRouteSecondViewController: UIViewController, UITableViewDataSource, UIT
         self.tableRefreshControl.addTarget(self, action: "refreshControlRequest", forControlEvents: UIControlEvents.ValueChanged)
         self.tableView.addSubview(self.tableRefreshControl)
         
-        self.placeAPI?.delegate = self
-        self.storeAPI?.delegate = self
+        self.toolAPI.delegate = self
+        self.routeAPI.delegate = self
         
         
         self.tableRefreshControl.beginRefreshing()
         self.tableView.setContentOffset(CGPointMake(0, self.tableView.contentOffset.y-self.tableRefreshControl.frame.size.height), animated:true)
         
         
-        self.placeAPI?.requestPlaces()
+        self.toolAPI.getPlaces(self.placesDidReturn, errorHandler: self.placesDidFailWithError)
         
         self.activityIndicator.center = self.navigationController!.view.center
         self.activityIndicator.stopAnimating()
@@ -64,10 +64,10 @@ class AddRouteSecondViewController: UIViewController, UITableViewDataSource, UIT
     }
 
     
-    func placesDidReturn(indexRouteAPI:SocivyPlaceAPI, places:JSON){
+    func placesDidReturn(json:JSON){
         self.places = []
         self.selectedPlaces = [:]
-        let placeArray = places.asArray! as [JSON]
+        let placeArray = json["result"].asArray! as [JSON]
 
         for place in placeArray {
             let id = place["id"].asString!
@@ -107,29 +107,20 @@ class AddRouteSecondViewController: UIViewController, UITableViewDataSource, UIT
     }
  
     
-    func placesDidFailWithError(indexRouteAPI:SocivyPlaceAPI, error:NSError){
+    func placesDidFailWithError(error:NSError, errorCode:NetworkLibraryErrorCode){
         
     }
     
     
     
-    func storeDidFinish(storeRouteApi:SocivyStoreRouteAPI){
+    func storeDidFinish(json:JSON){
         self.dismissView()
     }
     
-    func storeDidFail(storeRouteApi:SocivyStoreRouteAPI){
-        var alertView = UIAlertView()
-        alertView.title = "Unable to Store"
-        alertView.message = "Please try sending your route again!"
-        alertView.addButtonWithTitle("OK")
-        alertView.show()
-        
-        self.applyBackgroundProcessMode(false)
-    }
-    
+
     
     func refreshControlRequest(){
-        self.placeAPI?.requestPlaces()
+        self.toolAPI.getPlaces(self.placesDidReturn, errorHandler: self.placesDidFailWithError)
     }
 
     
@@ -158,13 +149,12 @@ class AddRouteSecondViewController: UIViewController, UITableViewDataSource, UIT
             payload["points"] = payloadPlaces
             
             for (key,value) in payload{
-                if DEBUG {
-                    println("\(key) = \(value)")
-                }
+                Logger.sharedInstance.log("AddRouteSecondVC", message: "\(key) = \(value)")
             }
             
             
-            self.storeAPI?.requestStoreRoute(payload)
+            self.routeAPI.store(payload, completionHandler: self.storeDidFinish, errorHandler: self.storeDidFail)
+
             self.applyBackgroundProcessMode(true)
         }
     }
@@ -187,9 +177,8 @@ class AddRouteSecondViewController: UIViewController, UITableViewDataSource, UIT
         var string:NSMutableAttributedString = NSMutableAttributedString(string: cell.textLabel!.text!)
         if (cell.accessoryType == UITableViewCellAccessoryType.Checkmark){
             // delete added record
-            if DEBUG {
-                println("self.selectedPlaces.removeValueForKey(\(self.places[indexPath.row].id))")
-            }
+            Logger.sharedInstance.log("AddRouteSecondVC", message: "self.selectedPlaces.removeValueForKey(\(self.places[indexPath.row].id))")
+        
             self.selectedPlaces.removeValueForKey(self.places[indexPath.row].id)
             
             cell.accessoryType = UITableViewCellAccessoryType.None
