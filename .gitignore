@@ -31,3 +31,5 @@ DerivedData
 .idea/workspace.xml
 libproject
 appcompat_v7
+
+*.sqlite3
