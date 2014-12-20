@@ -21,6 +21,7 @@ class Server(object):
         self.broadcast('Peer %s quit!\n' % (peer.name,))
 
     def broadcast(self, message):
+        print("[SERVER]: {0}".format(message))
         for peer in self._peers:
             peer.send(message)
 
@@ -31,5 +32,4 @@ class Server(object):
             peer_sock.setblocking(0)
             peer = Peer(self, peer_sock, peer_name)
             self._peers.append(peer)
-            print('Peer {0} connected!'.format(peer.name))
             self.broadcast('Peer %s connected!\n' % (peer.name,))
