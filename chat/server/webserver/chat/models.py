@@ -3,12 +3,11 @@ from django.db import models
 
 class Message(models.Model):
     sender = models.ForeignKey('Peer', null=False, related_name="sender", blank=False)
-    recipient = models.ForeignKey('Peer', null=False, related_name="recipient", blank=False)
     text = models.TextField(null=False,blank=False)
     timestamp = models.DateTimeField(auto_now_add=True,null=False, blank=False)
 
     def __str__(self):
-        return "{0} -> {1} message \'{2}\'".format(self.sender, self.recipient, self.text)
+        return "{0} -> {1}".format(self.sender, self.text)
 
 class Room(models.Model):
     messages = models.ManyToManyField(Message, blank=True)

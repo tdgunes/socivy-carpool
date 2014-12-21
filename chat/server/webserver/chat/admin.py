@@ -6,7 +6,7 @@ from .models import Message, Peer, Room
 
 
 class MessageAdmin(admin.ModelAdmin):
-    list_display = ('text', 'sender', 'recipient', 'timestamp')
+    list_display = ('text', 'sender', 'timestamp')
     list_filter = ['timestamp']
 
 class PeerAdmin(admin.ModelAdmin):
