@@ -24,6 +24,18 @@ class RoutesViewController: UITableViewController, SocivyBaseLoginAPIDelegate {
         self.updateTableView()
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view, typically from a nib.
+
+        self.tableRefreshControl.addTarget(self, action: "refreshControlRequest", forControlEvents: UIControlEvents.ValueChanged)
+        self.tableView.addSubview(self.tableRefreshControl)
+        
+        self.routeAPI.delegate = self
+        self.updateTableView()
+    }
+    
+    
     func routesDidReturn(json:JSON){
         self.routes = []
         let routeArray = json["result"].asArray! as [JSON]
@@ -62,22 +74,7 @@ class RoutesViewController: UITableViewController, SocivyBaseLoginAPIDelegate {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        
 
-        self.tableRefreshControl.addTarget(self, action: "refreshControlRequest", forControlEvents: UIControlEvents.ValueChanged)
-        
-        self.tableView.addSubview(self.tableRefreshControl)
-        self.routeAPI.delegate = self
-        
-        
-
-        
-        self.updateTableView()
-    }
-    
     func refreshControlRequest(){
         self.routeAPI.fetchAvailable(self.routesDidReturn, errorHandler: self.routesDidFailWithError)
     }

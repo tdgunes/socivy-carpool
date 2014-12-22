@@ -49,11 +49,16 @@ class APINetworkLibraryFactory {
             
             var finalHandler = { (response:NSMutableData)->() in
                 Logger.sharedInstance.log("finalhandler", message: "Got Response")
+                
                 var responseAsText = NSString(data: response, encoding: NSASCIIStringEncoding)!
+                
                 Logger.sharedInstance.log("finalhandler", message: responseAsText)
+                
                 let json = JSON.parse(responseAsText)
                 let validationResult = SocivyErrorHandler(json:json).validate()
+                
                 Logger.sharedInstance.log("finalhandler", message: "validationResult: \(validationResult.rawValue)")
+                
                 switch validationResult{
                 case .Success:
                     completionHandler(json: json)

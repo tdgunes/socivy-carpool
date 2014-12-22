@@ -16,12 +16,12 @@ class Server(object):
         self._peers = []
         Task(self._server())
 
-    def remove(self, peer):
+    def remove(self, peer=""):
         self._peers.remove(peer)
         self.broadcast('Peer %s quit!\n' % (peer.name,))
 
-    def broadcast(self, message):
-        print("[SERVER]: {0}".format(message))
+    def broadcast(self, message , peer):
+        print("[SERVER]:{1} sent: {0}".format(message, peer.name))
         for peer in self._peers:
             peer.send(message)
 
@@ -32,4 +32,4 @@ class Server(object):
             peer_sock.setblocking(0)
             peer = Peer(self, peer_sock, peer_name)
             self._peers.append(peer)
-            self.broadcast('Peer %s connected!\n' % (peer.name,))
+            self.broadcast('connectionEstablished', peer)

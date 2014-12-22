@@ -24,6 +24,9 @@
 		3DDCD4B619F40A4100FCF704 /* AccountSettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDCD4B519F40A4100FCF704 /* AccountSettingsController.swift */; };
 		3DDCD4B819F40E7D00FCF704 /* SettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDCD4B719F40E7D00FCF704 /* SettingCell.swift */; };
 		3DDCD4BA19F42F8200FCF704 /* SocivySettingsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDCD4B919F42F8200FCF704 /* SocivySettingsAPI.swift */; };
+		3DEC58891A47828700168B83 /* StreamLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEC58881A47828700168B83 /* StreamLibrary.swift */; };
+		3DEC588C1A4782B100168B83 /* LowLevelLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEC588B1A4782B100168B83 /* LowLevelLayer.swift */; };
+		3DEC58901A47A9F900168B83 /* RoomsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEC588F1A47A9F900168B83 /* RoomsViewController.swift */; };
 		3DF07E3E1A3B7CE6003EA5F2 /* SocivyUserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF07E3D1A3B7CE6003EA5F2 /* SocivyUserAPI.swift */; };
 		3DF07E431A3B89E4003EA5F2 /* SocivyNLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF07E421A3B89E4003EA5F2 /* SocivyNLibrary.swift */; };
 		3DFD3CA719EA9390008C6B73 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3DFD3CA519EA9390008C6B73 /* Main.storyboard */; };
@@ -69,6 +72,9 @@
 		3DDCD4B519F40A4100FCF704 /* AccountSettingsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountSettingsController.swift; sourceTree = "<group>"; };
 		3DDCD4B719F40E7D00FCF704 /* SettingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingCell.swift; sourceTree = "<group>"; };
 		3DDCD4B919F42F8200FCF704 /* SocivySettingsAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocivySettingsAPI.swift; sourceTree = "<group>"; };
+		3DEC58881A47828700168B83 /* StreamLibrary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StreamLibrary.swift; sourceTree = "<group>"; };
+		3DEC588B1A4782B100168B83 /* LowLevelLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LowLevelLayer.swift; sourceTree = "<group>"; };
+		3DEC588F1A47A9F900168B83 /* RoomsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomsViewController.swift; sourceTree = "<group>"; };
 		3DF07E3D1A3B7CE6003EA5F2 /* SocivyUserAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocivyUserAPI.swift; sourceTree = "<group>"; };
 		3DF07E421A3B89E4003EA5F2 /* SocivyNLibrary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocivyNLibrary.swift; sourceTree = "<group>"; };
 		3DFD3C9C19EA9390008C6B73 /* Socivy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Socivy.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -175,7 +181,7 @@
 			children = (
 				3D1E540A1A389F170031EB71 /* Logger.swift */,
 				3DFD3D1519EA9554008C6B73 /* JSON.swift */,
-				3D1E540C1A38A02E0031EB71 /* NetworkLibrary.swift */,
+				3DEC588A1A47828E00168B83 /* Network Essentials */,
 				3DF07E421A3B89E4003EA5F2 /* SocivyNLibrary.swift */,
 				3D3E7E1C19F577CB005D1BA7 /* SocivyErrorHandler.swift */,
 				3D1E54101A38BD840031EB71 /* Models */,
@@ -201,6 +207,40 @@
 				3DFD3D1F19EA9554008C6B73 /* RoutesViewController.swift */,
 			);
 			name = "Routes Tab";
+			sourceTree = "<group>";
+		};
+		3DEC588A1A47828E00168B83 /* Network Essentials */ = {
+			isa = PBXGroup;
+			children = (
+				3DEC588D1A4782BD00168B83 /* HTTP */,
+				3DEC588E1A4782C400168B83 /* Stream */,
+			);
+			name = "Network Essentials";
+			sourceTree = "<group>";
+		};
+		3DEC588D1A4782BD00168B83 /* HTTP */ = {
+			isa = PBXGroup;
+			children = (
+				3D1E540C1A38A02E0031EB71 /* NetworkLibrary.swift */,
+				3DEC588B1A4782B100168B83 /* LowLevelLayer.swift */,
+			);
+			name = HTTP;
+			sourceTree = "<group>";
+		};
+		3DEC588E1A4782C400168B83 /* Stream */ = {
+			isa = PBXGroup;
+			children = (
+				3DEC58881A47828700168B83 /* StreamLibrary.swift */,
+			);
+			name = Stream;
+			sourceTree = "<group>";
+		};
+		3DEC58911A47AA0400168B83 /* Chat Tab */ = {
+			isa = PBXGroup;
+			children = (
+				3DEC588F1A47A9F900168B83 /* RoomsViewController.swift */,
+			);
+			name = "Chat Tab";
 			sourceTree = "<group>";
 		};
 		3DF07E411A3B8296003EA5F2 /* Me Tab */ = {
@@ -237,6 +277,7 @@
 				3DFD3D1619EA9554008C6B73 /* AppDelegate.swift */,
 				3D0AFDA419F5CA1600439514 /* WebViewController.swift */,
 				3DFD3D1B19EA9554008C6B73 /* MainTabBarController.swift */,
+				3DEC58911A47AA0400168B83 /* Chat Tab */,
 				3DF07E411A3B8296003EA5F2 /* Me Tab */,
 				3DB20B3219F2E3AE0077BE96 /* Routes Tab */,
 				3D82E0D319EAAD6D00A22CA1 /* Settings Tab */,
@@ -364,6 +405,7 @@
 				3DFD3D5019EA9580008C6B73 /* SegmentedControlCell.swift in Sources */,
 				3D1E540B1A389F170031EB71 /* Logger.swift in Sources */,
 				3DFD3D3619EA9554008C6B73 /* LoginViewController.swift in Sources */,
+				3DEC588C1A4782B100168B83 /* LowLevelLayer.swift in Sources */,
 				3DFD3D4619EA9554008C6B73 /* RouteCell.swift in Sources */,
 				3DB185591A3BC69A00E24F30 /* Bus.swift in Sources */,
 				3DF07E431A3B89E4003EA5F2 /* SocivyNLibrary.swift in Sources */,
@@ -375,6 +417,7 @@
 				3DFD3D3819EA9554008C6B73 /* MapCell.swift in Sources */,
 				3DB185571A3BC3A800E24F30 /* SocivyToolAPI.swift in Sources */,
 				3DFD3D3719EA9554008C6B73 /* MainTabBarController.swift in Sources */,
+				3DEC58891A47828700168B83 /* StreamLibrary.swift in Sources */,
 				3DFD3D4019EA9554008C6B73 /* SocivyDatePickerCell.swift in Sources */,
 				3D9AA1511A0A5CB900B043B1 /* MeViewController.swift in Sources */,
 				3DFD3D3D19EA9554008C6B73 /* TextFieldCell.swift in Sources */,
@@ -383,6 +426,7 @@
 				3D0AFDA519F5CA1600439514 /* WebViewController.swift in Sources */,
 				3DDCD4B819F40E7D00FCF704 /* SettingCell.swift in Sources */,
 				3DD6673819F67D1B009896FB /* IETTViewController.swift in Sources */,
+				3DEC58901A47A9F900168B83 /* RoomsViewController.swift in Sources */,
 				3DFD3D3219EA9554008C6B73 /* AppDelegate.swift in Sources */,
 				3DDCD4B619F40A4100FCF704 /* AccountSettingsController.swift in Sources */,
 				3DFD3D3119EA9554008C6B73 /* JSON.swift in Sources */,
