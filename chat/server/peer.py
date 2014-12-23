@@ -2,6 +2,13 @@ __author__ = 'tdgunes'
 
 from socket import socket, SO_REUSEADDR, SOL_SOCKET
 from asyncio import Task, coroutine, get_event_loop
+import json, requests
+
+class Room(object):
+    def __init__(self, id):
+        self.identifier = id
+        self.peers = []
+
 
 class Peer(object):
     def __init__(self, server, sock, name):
@@ -9,6 +16,7 @@ class Peer(object):
         self.name = name
         self._sock = sock
         self._server = server
+        self.email = ""
         Task(self._peer_handler())
 
     def send(self, data):
@@ -29,5 +37,12 @@ class Peer(object):
             buf = yield from self.loop.sock_recv(self._sock, 1024)
             if buf == b'':
                 break
-            self._server.broadcast('%s: %s' % (self.name, buf.decode('utf8')))
+
+            message = json.loads(buf.decode('utf8'))
+            # message = {"email":"tdgunes@gmail"}
+
+            self._server.users[message["email"]] = peer
+
+
+            # self._server.broadcast('%s: %s' % (self.name, buf.decode('utf8')), peer=self)
 

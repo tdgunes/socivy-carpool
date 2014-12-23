@@ -37,7 +37,8 @@ class LoginViewController: UITableViewController, SocivyBaseLoginAPIDelegate, UI
             
             Logger.sharedInstance.log("loginVC", message: "loginCell touched")
             Logger.sharedInstance.log("loginVC", message: "email: \(emailCell?.textField?.text)")
-
+            
+            
             self.userAPI.authenticate(self.emailCell!.textField!.text, password: self.passwordCell!.textField!.text, completionHandler: self.authenticateDidFinish, errorHandler: self.authenticateDidFailWithError)
 
             self.applyBackgroundProcessMode(true)

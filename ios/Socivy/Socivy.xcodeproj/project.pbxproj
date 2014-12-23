@@ -20,6 +20,26 @@
 		3D9AA1511A0A5CB900B043B1 /* MeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9AA1501A0A5CB900B043B1 /* MeViewController.swift */; };
 		3DB185571A3BC3A800E24F30 /* SocivyToolAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB185561A3BC3A800E24F30 /* SocivyToolAPI.swift */; };
 		3DB185591A3BC69A00E24F30 /* Bus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB185581A3BC69A00E24F30 /* Bus.swift */; };
+		3DB5F6511A49C7B100C760E6 /* ChatCommunicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB5F6501A49C7B100C760E6 /* ChatCommunicator.swift */; };
+		3DB5F6541A49C97400C760E6 /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB5F6531A49C97400C760E6 /* Room.swift */; };
+		3DB5F6571A49C9B500C760E6 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB5F6561A49C9B500C760E6 /* Message.swift */; };
+		3DB5F6591A4A123B00C760E6 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DB5F6581A4A123B00C760E6 /* AudioToolbox.framework */; };
+		3DB5F65E1A4A154200C760E6 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DB5F65D1A4A154200C760E6 /* AVFoundation.framework */; };
+		3DB5F6601A4A176700C760E6 /* mgs.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3DB5F65F1A4A176700C760E6 /* mgs.mp3 */; };
+		3DB5F66B1A4A18E000C760E6 /* codeccall.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3DB5F6611A4A18E000C760E6 /* codeccall.wav */; };
+		3DB5F66C1A4A18E000C760E6 /* codecopen.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3DB5F6621A4A18E000C760E6 /* codecopen.wav */; };
+		3DB5F66D1A4A18E000C760E6 /* codecover.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3DB5F6631A4A18E000C760E6 /* codecover.wav */; };
+		3DB5F66E1A4A18E000C760E6 /* doorbuzz.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3DB5F6641A4A18E000C760E6 /* doorbuzz.wav */; };
+		3DB5F66F1A4A18E000C760E6 /* exit.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3DB5F6651A4A18E000C760E6 /* exit.wav */; };
+		3DB5F6701A4A18E000C760E6 /* found.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3DB5F6661A4A18E000C760E6 /* found.wav */; };
+		3DB5F6711A4A18E000C760E6 /* gameover.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3DB5F6671A4A18E000C760E6 /* gameover.wav */; };
+		3DB5F6721A4A18E000C760E6 /* itemequip.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3DB5F6681A4A18E000C760E6 /* itemequip.wav */; };
+		3DB5F6731A4A18E000C760E6 /* itemopen.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3DB5F6691A4A18E000C760E6 /* itemopen.wav */; };
+		3DB5F6741A4A18E000C760E6 /* itemused.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3DB5F66A1A4A18E000C760E6 /* itemused.wav */; };
+		3DB5F6761A4A196D00C760E6 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB5F6751A4A196D00C760E6 /* AudioPlayer.swift */; };
+		3DB5F6781A4A20A500C760E6 /* ContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB5F6771A4A20A500C760E6 /* ContactsViewController.swift */; };
+		3DB5F67A1A4A216800C760E6 /* Peer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB5F6791A4A216800C760E6 /* Peer.swift */; };
+		3DB5F67D1A4A221300C760E6 /* SocivyChatAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB5F67C1A4A221300C760E6 /* SocivyChatAPI.swift */; };
 		3DD6673819F67D1B009896FB /* IETTViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD6673719F67D1B009896FB /* IETTViewController.swift */; };
 		3DDCD4B619F40A4100FCF704 /* AccountSettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDCD4B519F40A4100FCF704 /* AccountSettingsController.swift */; };
 		3DDCD4B819F40E7D00FCF704 /* SettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDCD4B719F40E7D00FCF704 /* SettingCell.swift */; };
@@ -68,6 +88,26 @@
 		3D9AA1501A0A5CB900B043B1 /* MeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeViewController.swift; sourceTree = "<group>"; };
 		3DB185561A3BC3A800E24F30 /* SocivyToolAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocivyToolAPI.swift; sourceTree = "<group>"; };
 		3DB185581A3BC69A00E24F30 /* Bus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bus.swift; sourceTree = "<group>"; };
+		3DB5F6501A49C7B100C760E6 /* ChatCommunicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatCommunicator.swift; sourceTree = "<group>"; };
+		3DB5F6531A49C97400C760E6 /* Room.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
+		3DB5F6561A49C9B500C760E6 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		3DB5F6581A4A123B00C760E6 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		3DB5F65D1A4A154200C760E6 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		3DB5F65F1A4A176700C760E6 /* mgs.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = mgs.mp3; sourceTree = "<group>"; };
+		3DB5F6611A4A18E000C760E6 /* codeccall.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = codeccall.wav; sourceTree = "<group>"; };
+		3DB5F6621A4A18E000C760E6 /* codecopen.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = codecopen.wav; sourceTree = "<group>"; };
+		3DB5F6631A4A18E000C760E6 /* codecover.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = codecover.wav; sourceTree = "<group>"; };
+		3DB5F6641A4A18E000C760E6 /* doorbuzz.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = doorbuzz.wav; sourceTree = "<group>"; };
+		3DB5F6651A4A18E000C760E6 /* exit.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = exit.wav; sourceTree = "<group>"; };
+		3DB5F6661A4A18E000C760E6 /* found.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = found.wav; sourceTree = "<group>"; };
+		3DB5F6671A4A18E000C760E6 /* gameover.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = gameover.wav; sourceTree = "<group>"; };
+		3DB5F6681A4A18E000C760E6 /* itemequip.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = itemequip.wav; sourceTree = "<group>"; };
+		3DB5F6691A4A18E000C760E6 /* itemopen.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = itemopen.wav; sourceTree = "<group>"; };
+		3DB5F66A1A4A18E000C760E6 /* itemused.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = itemused.wav; sourceTree = "<group>"; };
+		3DB5F6751A4A196D00C760E6 /* AudioPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
+		3DB5F6771A4A20A500C760E6 /* ContactsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsViewController.swift; sourceTree = "<group>"; };
+		3DB5F6791A4A216800C760E6 /* Peer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Peer.swift; sourceTree = "<group>"; };
+		3DB5F67C1A4A221300C760E6 /* SocivyChatAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocivyChatAPI.swift; sourceTree = "<group>"; };
 		3DD6673719F67D1B009896FB /* IETTViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IETTViewController.swift; sourceTree = "<group>"; };
 		3DDCD4B519F40A4100FCF704 /* AccountSettingsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountSettingsController.swift; sourceTree = "<group>"; };
 		3DDCD4B719F40E7D00FCF704 /* SettingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingCell.swift; sourceTree = "<group>"; };
@@ -112,6 +152,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3DB5F65E1A4A154200C760E6 /* AVFoundation.framework in Frameworks */,
+				3DB5F6591A4A123B00C760E6 /* AudioToolbox.framework in Frameworks */,
 				3DFD3CC219EA93A7008C6B73 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -122,10 +164,8 @@
 		3D1E54101A38BD840031EB71 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				3DFD3D2C19EA9554008C6B73 /* Route.swift */,
-				3D1E540E1A38BD2E0031EB71 /* User.swift */,
-				3D1E54111A38BD970031EB71 /* Stop.swift */,
-				3DB185581A3BC69A00E24F30 /* Bus.swift */,
+				3DB5F6521A49C96200C760E6 /* Core */,
+				3DB5F6551A49C97C00C760E6 /* Chat */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -149,6 +189,7 @@
 			isa = PBXGroup;
 			children = (
 				3D82E0D519EAADDF00A22CA1 /* Essentials */,
+				3DB5F67C1A4A221300C760E6 /* SocivyChatAPI.swift */,
 				3DFD3D2719EA9554008C6B73 /* SocivyAPI.swift */,
 				3DF07E3D1A3B7CE6003EA5F2 /* SocivyUserAPI.swift */,
 				3D32417D1A3B6C9900E795DE /* SocivyRouteAPI.swift */,
@@ -209,6 +250,37 @@
 			name = "Routes Tab";
 			sourceTree = "<group>";
 		};
+		3DB5F6521A49C96200C760E6 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				3DFD3D2C19EA9554008C6B73 /* Route.swift */,
+				3D1E540E1A38BD2E0031EB71 /* User.swift */,
+				3D1E54111A38BD970031EB71 /* Stop.swift */,
+				3DB185581A3BC69A00E24F30 /* Bus.swift */,
+			);
+			name = Core;
+			sourceTree = "<group>";
+		};
+		3DB5F6551A49C97C00C760E6 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				3DB5F6531A49C97400C760E6 /* Room.swift */,
+				3DB5F6561A49C9B500C760E6 /* Message.swift */,
+				3DB5F6791A4A216800C760E6 /* Peer.swift */,
+			);
+			name = Chat;
+			sourceTree = "<group>";
+		};
+		3DB5F65A1A4A125B00C760E6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3DB5F65D1A4A154200C760E6 /* AVFoundation.framework */,
+				3DB5F6581A4A123B00C760E6 /* AudioToolbox.framework */,
+				3DFD3CC119EA93A7008C6B73 /* MapKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		3DEC588A1A47828E00168B83 /* Network Essentials */ = {
 			isa = PBXGroup;
 			children = (
@@ -230,7 +302,9 @@
 		3DEC588E1A4782C400168B83 /* Stream */ = {
 			isa = PBXGroup;
 			children = (
+				3DB5F6751A4A196D00C760E6 /* AudioPlayer.swift */,
 				3DEC58881A47828700168B83 /* StreamLibrary.swift */,
+				3DB5F6501A49C7B100C760E6 /* ChatCommunicator.swift */,
 			);
 			name = Stream;
 			sourceTree = "<group>";
@@ -239,6 +313,7 @@
 			isa = PBXGroup;
 			children = (
 				3DEC588F1A47A9F900168B83 /* RoomsViewController.swift */,
+				3DB5F6771A4A20A500C760E6 /* ContactsViewController.swift */,
 			);
 			name = "Chat Tab";
 			sourceTree = "<group>";
@@ -287,7 +362,7 @@
 				3DFD3CA519EA9390008C6B73 /* Main.storyboard */,
 				3DFD3CA819EA9390008C6B73 /* Images.xcassets */,
 				3DFD3CAA19EA9390008C6B73 /* LaunchScreen.xib */,
-				3DFD3CC119EA93A7008C6B73 /* MapKit.framework */,
+				3DB5F65A1A4A125B00C760E6 /* Frameworks */,
 				3DFD3C9F19EA9390008C6B73 /* Supporting Files */,
 				3DFD3D1319EA9554008C6B73 /* Socivy-Bridging-Header.h */,
 			);
@@ -297,6 +372,17 @@
 		3DFD3C9F19EA9390008C6B73 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				3DB5F6611A4A18E000C760E6 /* codeccall.wav */,
+				3DB5F6621A4A18E000C760E6 /* codecopen.wav */,
+				3DB5F6631A4A18E000C760E6 /* codecover.wav */,
+				3DB5F6641A4A18E000C760E6 /* doorbuzz.wav */,
+				3DB5F6651A4A18E000C760E6 /* exit.wav */,
+				3DB5F6661A4A18E000C760E6 /* found.wav */,
+				3DB5F6671A4A18E000C760E6 /* gameover.wav */,
+				3DB5F6681A4A18E000C760E6 /* itemequip.wav */,
+				3DB5F6691A4A18E000C760E6 /* itemopen.wav */,
+				3DB5F66A1A4A18E000C760E6 /* itemused.wav */,
+				3DB5F65F1A4A176700C760E6 /* mgs.mp3 */,
 				3DFD3CA019EA9390008C6B73 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -385,10 +471,21 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3DB5F66F1A4A18E000C760E6 /* exit.wav in Resources */,
+				3DB5F6701A4A18E000C760E6 /* found.wav in Resources */,
 				3DFD3CA719EA9390008C6B73 /* Main.storyboard in Resources */,
 				3DFD3CC419EA93E4008C6B73 /* fontawesome-webfont.ttf in Resources */,
+				3DB5F6721A4A18E000C760E6 /* itemequip.wav in Resources */,
+				3DB5F6741A4A18E000C760E6 /* itemused.wav in Resources */,
+				3DB5F66C1A4A18E000C760E6 /* codecopen.wav in Resources */,
+				3DB5F66E1A4A18E000C760E6 /* doorbuzz.wav in Resources */,
+				3DB5F6711A4A18E000C760E6 /* gameover.wav in Resources */,
+				3DB5F66D1A4A18E000C760E6 /* codecover.wav in Resources */,
+				3DB5F6731A4A18E000C760E6 /* itemopen.wav in Resources */,
 				3DFD3CAC19EA9390008C6B73 /* LaunchScreen.xib in Resources */,
 				3DFD3CA919EA9390008C6B73 /* Images.xcassets in Resources */,
+				3DB5F6601A4A176700C760E6 /* mgs.mp3 in Resources */,
+				3DB5F66B1A4A18E000C760E6 /* codeccall.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -400,7 +497,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				3DF07E3E1A3B7CE6003EA5F2 /* SocivyUserAPI.swift in Sources */,
+				3DB5F67D1A4A221300C760E6 /* SocivyChatAPI.swift in Sources */,
 				3D1E540F1A38BD2E0031EB71 /* User.swift in Sources */,
+				3DB5F6541A49C97400C760E6 /* Room.swift in Sources */,
 				3DFD3D4A19EA9554008C6B73 /* SignupViewController.swift in Sources */,
 				3DFD3D5019EA9580008C6B73 /* SegmentedControlCell.swift in Sources */,
 				3D1E540B1A389F170031EB71 /* Logger.swift in Sources */,
@@ -408,9 +507,11 @@
 				3DEC588C1A4782B100168B83 /* LowLevelLayer.swift in Sources */,
 				3DFD3D4619EA9554008C6B73 /* RouteCell.swift in Sources */,
 				3DB185591A3BC69A00E24F30 /* Bus.swift in Sources */,
+				3DB5F6571A49C9B500C760E6 /* Message.swift in Sources */,
 				3DF07E431A3B89E4003EA5F2 /* SocivyNLibrary.swift in Sources */,
 				3D1E54121A38BD970031EB71 /* Stop.swift in Sources */,
 				3DFD3D3A19EA9554008C6B73 /* AddRouteViewController.swift in Sources */,
+				3DB5F6781A4A20A500C760E6 /* ContactsViewController.swift in Sources */,
 				3DFD3D4419EA9554008C6B73 /* PickerCell.swift in Sources */,
 				3D159F6F19EDC7BE003B61AB /* DetailViewController.swift in Sources */,
 				3D1E540D1A38A02E0031EB71 /* NetworkLibrary.swift in Sources */,
@@ -426,17 +527,20 @@
 				3D0AFDA519F5CA1600439514 /* WebViewController.swift in Sources */,
 				3DDCD4B819F40E7D00FCF704 /* SettingCell.swift in Sources */,
 				3DD6673819F67D1B009896FB /* IETTViewController.swift in Sources */,
+				3DB5F6511A49C7B100C760E6 /* ChatCommunicator.swift in Sources */,
 				3DEC58901A47A9F900168B83 /* RoomsViewController.swift in Sources */,
 				3DFD3D3219EA9554008C6B73 /* AppDelegate.swift in Sources */,
 				3DDCD4B619F40A4100FCF704 /* AccountSettingsController.swift in Sources */,
 				3DFD3D3119EA9554008C6B73 /* JSON.swift in Sources */,
 				3DFD3D3019EA9554008C6B73 /* AddRouteSecondViewController.swift in Sources */,
+				3DB5F6761A4A196D00C760E6 /* AudioPlayer.swift in Sources */,
 				3D32417E1A3B6C9900E795DE /* SocivyRouteAPI.swift in Sources */,
 				3DFD3D3C19EA9554008C6B73 /* SettingsViewController.swift in Sources */,
 				3DFD3D3B19EA9554008C6B73 /* RoutesViewController.swift in Sources */,
 				3DFD3D4819EA9554008C6B73 /* Route.swift in Sources */,
 				3DFD3D3419EA9554008C6B73 /* DatePickerCell.swift in Sources */,
 				3DDCD4BA19F42F8200FCF704 /* SocivySettingsAPI.swift in Sources */,
+				3DB5F67A1A4A216800C760E6 /* Peer.swift in Sources */,
 				3D3E7E1D19F577CB005D1BA7 /* SocivyErrorHandler.swift in Sources */,
 				3D31F58B19EC500B0066A033 /* LeaveViewController.swift in Sources */,
 			);

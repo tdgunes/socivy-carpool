@@ -77,13 +77,13 @@ class LowLevelStream: NSObject, NSStreamDelegate, Printable{
         self.inputStream.delegate = self
         self.outputStream.delegate = self
 
-        dispatch_async(dispatch_get_main_queue(), {
-            self.inputStream.scheduleInRunLoop(NSRunLoop.currentRunLoop(), forMode: NSDefaultRunLoopMode)
-            self.outputStream.scheduleInRunLoop(NSRunLoop.currentRunLoop(), forMode: NSDefaultRunLoopMode)
-            
-            self.inputStream.open()
-            self.outputStream.open()
-        })
+
+        self.inputStream.scheduleInRunLoop(NSRunLoop.currentRunLoop(), forMode: NSDefaultRunLoopMode)
+        self.outputStream.scheduleInRunLoop(NSRunLoop.currentRunLoop(), forMode: NSDefaultRunLoopMode)
+        
+        self.inputStream.open()
+        self.outputStream.open()
+
         
     }
     
@@ -146,7 +146,6 @@ class LowLevelStream: NSObject, NSStreamDelegate, Printable{
             
         case NSStreamEvent.HasSpaceAvailable:
             Logger.sharedInstance.log(self, message: "Has space event")
-
             break
         default:
             Logger.sharedInstance.log(self, message: "Unknown event")

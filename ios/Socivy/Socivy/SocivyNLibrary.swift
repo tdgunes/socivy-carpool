@@ -22,6 +22,9 @@ class APINetworkLibraryFactory {
     var headers: [String:String] = [:]
     var delegate: SocivyBaseLoginAPIDelegate?
     var replacement:String?
+    var rootURL = SocivyAPI.sharedInstance.url
+    var doValidation = true
+    
     init(){
         
     }
@@ -59,25 +62,31 @@ class APINetworkLibraryFactory {
                 
                 Logger.sharedInstance.log("finalhandler", message: "validationResult: \(validationResult.rawValue)")
                 
-                switch validationResult{
-                case .Success:
-                    completionHandler(json: json)
-                    break
-                case .InvalidAccessToken:
-                    var userAPI = SocivyUserAPI()
-                    Logger.sharedInstance.log("finalhandler", message: "invalidAccessToken")
-                    userAPI.login(nil, errorHandler: errorHandler, networkLibrary:networkLibrary)
-                    // self.loginAPI?.login() <- give completionHandler
-                    break
-                case .InvalidUserSecret:
-                    Logger.sharedInstance.log("finalhandler", message: "invalidUserSecret")
-                    self.delegate?.authDidFail()
-                    break
-                default:
-
-                    var error = SocivyErrorFactory().create(validationResult)
-                    errorHandler(error: error, errocode: NetworkLibraryErrorCode.HasNSError)
+                if self.doValidation {
+                    switch validationResult{
+                    case .Success:
+                        completionHandler(json: json)
+                        break
+                    case .InvalidAccessToken:
+                        var userAPI = SocivyUserAPI()
+                        Logger.sharedInstance.log("finalhandler", message: "invalidAccessToken")
+                        userAPI.login(nil, errorHandler: errorHandler, networkLibrary:networkLibrary)
+                        // self.loginAPI?.login() <- give completionHandler
+                        break
+                    case .InvalidUserSecret:
+                        Logger.sharedInstance.log("finalhandler", message: "invalidUserSecret")
+                        self.delegate?.authDidFail()
+                        break
+                    default:
+                        
+                        var error = SocivyErrorFactory().create(validationResult)
+                        errorHandler(error: error, errocode: NetworkLibraryErrorCode.HasNSError)
+                    }
                 }
+                else {
+                    completionHandler(json: json)
+                }
+        
                 
             }
             networkLibrary.errorHandler = errorHandler
@@ -86,7 +95,7 @@ class APINetworkLibraryFactory {
     
     
     func finalizeURL(method:SocivyAPIMethod){
-        self.url =  "\(SocivyAPI.sharedInstance.url)\(method.rawValue)"
+        self.url =  "\(self.rootURL)\(method.rawValue)"
         if let replacementString = self.replacement {
             self.url = self.url.stringByReplacingOccurrencesOfString("{id}", withString: replacementString, options: nil, range: nil)
         }

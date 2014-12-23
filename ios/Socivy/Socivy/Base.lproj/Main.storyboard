@@ -1316,6 +1316,69 @@
             </objects>
             <point key="canvasLocation" x="2757" y="998"/>
         </scene>
+        <!--Contacts-->
+        <scene sceneID="dXv-Qi-GmX">
+            <objects>
+                <tableViewController id="GMs-uB-mQg" customClass="ContactsViewController" customModule="Socivy" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="4wh-XC-Buq">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="contactCell" textLabel="saC-Qr-d6w" detailTextLabel="wrK-ds-3iz" style="IBUITableViewCellStyleSubtitle" id="Pvm-Nm-YIe">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Pvm-Nm-YIe" id="R75-H4-utA">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="saC-Qr-d6w">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="wrK-ds-3iz">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="GMs-uB-mQg" id="cJm-EA-60I"/>
+                            <outlet property="delegate" destination="GMs-uB-mQg" id="QFF-QZ-jBj"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Contacts" id="hAM-3d-Xnk">
+                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="lLS-Bv-2yf">
+                            <connections>
+                                <action selector="dissmissNewRoom:" destination="GMs-uB-mQg" id="zCW-Jf-PGd"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1kK-PC-hEj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3799" y="159"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="9mu-Y5-75g">
+            <objects>
+                <navigationController id="k1R-IY-7cZ" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="3Hc-ao-i2K">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="GMs-uB-mQg" kind="relationship" relationship="rootViewController" id="t34-UA-0TE"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="C3S-JJ-XzZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3152" y="159"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="sGX-pk-DTw">
             <objects>
@@ -1330,7 +1393,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8gK-s7-bHy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2469" y="272"/>
+            <point key="canvasLocation" x="2533" y="594"/>
         </scene>
         <!--Register-->
         <scene sceneID="4bD-I2-fan">
@@ -1667,8 +1730,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Messages" id="HKI-nA-K27">
-                        <barButtonItem key="leftBarButtonItem" systemItem="edit" id="hRQ-kf-RBQ"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="compose" id="je1-Ju-P2e"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="compose" id="je1-Ju-P2e">
+                            <connections>
+                                <segue destination="k1R-IY-7cZ" kind="showDetail" id="2Az-o2-ytZ"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="searchDisplayController" destination="aeX-bk-rz7" id="J8v-cu-fQo"/>
@@ -1742,7 +1808,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JAA-C9-bUR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2500" y="-573"/>
+            <point key="canvasLocation" x="3152" y="-625"/>
         </scene>
         <!--Messages-->
         <scene sceneID="BbL-6e-EHL">

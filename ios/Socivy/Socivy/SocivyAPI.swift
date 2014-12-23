@@ -39,6 +39,20 @@ enum SocivyAPIMethod: String {
     case device = "/device"
     case bus = "/bus"
     
+    
+    //chat API
+//    url(r'^get_rooms_by_email/', views.get_rooms_by_email, name='get_rooms_by_email'),
+//    url(r'^get_all_chat_users/',views.get_all_chat_users, name='get_all_chat_users'),
+//    url(r'^start_room/', views.start_room, name='start_room'),
+//    url(r'^get_room_conversation/', views.get_room_conversation, name='get_room_conversation'),
+//    # store_message for internal purposes
+//    url(r'^store_message/', views.store_message, name='store_message'),
+    
+//    case getRoomsByEmail = "/get_rooms_by_email/"
+    case getAllChatUser = "/get_all_chat_users/"
+//    case startRoom = "/start_room"
+//    case
+    
 }
 
 
@@ -52,6 +66,7 @@ class SocivyAPI {
 
     
     var user_secret:String?
+    var email:String?
     var access_token:String?
     
  
@@ -77,13 +92,14 @@ class SocivyAPI {
         
         let userDefaults = NSUserDefaults.standardUserDefaults()
         userDefaults.setObject("", forKey: "user_secret")
+        userDefaults.setObject("", forKey: "email")
         userDefaults.synchronize()
         self.user_secret = ""
     }
     func saveUserSecret(){
-        
         let userDefaults = NSUserDefaults.standardUserDefaults()
         userDefaults.setObject(user_secret!, forKey: "user_secret")
+        userDefaults.setObject(email!, forKey: "email")
         userDefaults.synchronize()
     }
     
@@ -112,7 +128,7 @@ class SocivyAPI {
     func loadUserSecret(){
         let userDefaults = NSUserDefaults.standardUserDefaults()
         userDefaults.synchronize()
-        
+        self.email = userDefaults.objectForKey("email") as String?
         self.user_secret = userDefaults.objectForKey("user_secret") as String?
     }
     

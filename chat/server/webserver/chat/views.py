@@ -55,6 +55,11 @@ def get_all_chat_users(request):
     """
     data = json.loads(request.body.decode("utf-8"))
 
+    try:
+        peer = Peer.objects.get(email=data["email"])
+    except Peer.DoesNotExist:
+        Peer.objects.create(email=data["email"])
+
     response = []
     for peer in Peer.objects.all():
         if peer.email != data["email"]:
@@ -74,6 +79,11 @@ def start_room(request):
     {
        "sender": "tdgunes@gmail.com",
        "recipient": "hakanuyumaz@gmail.com"
+    }
+    Returns
+    {
+        status: {}
+        room : 1
     }
     :param request:
     :return:

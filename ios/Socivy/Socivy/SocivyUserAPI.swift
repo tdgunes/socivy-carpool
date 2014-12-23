@@ -68,7 +68,7 @@ class SocivyUserAPI {
             (json:JSON) -> () in
 
             Logger.sharedInstance.log("authenticate", message: "authenticate")
-            
+             SocivyAPI.sharedInstance.email = email
             SocivyAPI.sharedInstance.user_secret = json["result"]["user_secret"].asString
             SocivyAPI.sharedInstance.access_token = json["result"]["access_token"].asString
             SocivyAPI.sharedInstance.expireTime = json["result"]["expire_time"].asInt
