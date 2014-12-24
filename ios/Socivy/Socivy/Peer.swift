@@ -8,9 +8,12 @@
 
 import Foundation
 
-class Peer {
+class Peer: Printable {
     var email:String
     var name:String
+    var description: String {
+        return "Name: \(self.name) \(self.email)"
+    }
     
     init(email:String, name:String){
         println(email)
@@ -24,4 +27,6 @@ class Peer {
         
         self.init(email: json["email"].asString!, name:json["name"].asString!)
     }
+    
+
 }

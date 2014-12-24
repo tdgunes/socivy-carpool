@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3D0AFDA519F5CA1600439514 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0AFDA419F5CA1600439514 /* WebViewController.swift */; };
+		3D0B2F341A4AD95B0071AE3F /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0B2F331A4AD95B0071AE3F /* MessagesViewController.swift */; };
 		3D159F6F19EDC7BE003B61AB /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D159F6E19EDC7BE003B61AB /* DetailViewController.swift */; };
 		3D1E540B1A389F170031EB71 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1E540A1A389F170031EB71 /* Logger.swift */; };
 		3D1E540D1A38A02E0031EB71 /* NetworkLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1E540C1A38A02E0031EB71 /* NetworkLibrary.swift */; };
@@ -76,6 +77,7 @@
 
 /* Begin PBXFileReference section */
 		3D0AFDA419F5CA1600439514 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		3D0B2F331A4AD95B0071AE3F /* MessagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
 		3D159F6E19EDC7BE003B61AB /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		3D1E540A1A389F170031EB71 /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		3D1E540C1A38A02E0031EB71 /* NetworkLibrary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkLibrary.swift; sourceTree = "<group>"; };
@@ -314,6 +316,7 @@
 			children = (
 				3DEC588F1A47A9F900168B83 /* RoomsViewController.swift */,
 				3DB5F6771A4A20A500C760E6 /* ContactsViewController.swift */,
+				3D0B2F331A4AD95B0071AE3F /* MessagesViewController.swift */,
 			);
 			name = "Chat Tab";
 			sourceTree = "<group>";
@@ -526,6 +529,7 @@
 				3DFD3D4319EA9554008C6B73 /* SocivyAPI.swift in Sources */,
 				3D0AFDA519F5CA1600439514 /* WebViewController.swift in Sources */,
 				3DDCD4B819F40E7D00FCF704 /* SettingCell.swift in Sources */,
+				3D0B2F341A4AD95B0071AE3F /* MessagesViewController.swift in Sources */,
 				3DD6673819F67D1B009896FB /* IETTViewController.swift in Sources */,
 				3DB5F6511A49C7B100C760E6 /* ChatCommunicator.swift in Sources */,
 				3DEC58901A47A9F900168B83 /* RoomsViewController.swift in Sources */,

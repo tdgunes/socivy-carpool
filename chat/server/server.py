@@ -2,7 +2,7 @@ __author__ = 'tdgunes'
 
 from socket import socket, SO_REUSEADDR, SOL_SOCKET
 from asyncio import Task, coroutine, get_event_loop
-from .peer import Peer
+from .peer import Peer, API
 
 class Server(object):
     PORT = 1234
@@ -14,7 +14,7 @@ class Server(object):
         self._serv_sock.bind(('', Server.PORT))
         self._serv_sock.listen(5)
         self._peers = []
-        self._users = {}
+        self.users = {}
         Task(self._server())
 
     def remove(self, peer=""):

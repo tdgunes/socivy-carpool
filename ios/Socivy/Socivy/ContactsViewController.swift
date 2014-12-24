@@ -66,6 +66,16 @@ class ContactsViewController: UITableViewController {
     }
     
     
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        var peer = self.peers[indexPath.row]
+        println(peer.name)
+        
+
+        self.dismissViewControllerAnimated(true, completion: nil)
+        NSNotificationCenter.defaultCenter().postNotificationName("openNewRoom", object: peer)
+    }
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier("contactCell", forIndexPath:indexPath) as UITableViewCell
         
@@ -88,4 +98,6 @@ class ContactsViewController: UITableViewController {
         return 1
     }
     
+    
+ 
 }

@@ -88,6 +88,7 @@ def start_room(request):
     :param request:
     :return:
     """
+    print(request.body)
     data = json.loads(request.body.decode("utf-8"))
     sender = Peer.objects.get(email=data["sender"])
     recipient = Peer.objects.get(email=data["recipient"])
@@ -99,7 +100,9 @@ def start_room(request):
     sender.rooms.add(room)
     recipient.rooms.add(room)
 
-    return HttpResponse(APIResponseFactory.create(Status.Success, additions={"room": room.id}),
+    return HttpResponse(APIResponseFactory.create(Status.Success, additions={"peer": {"email": recipient.email,
+                                                                                      "name": recipient.name},
+                                                                             "room": room.id}),
                         content_type='application/json')
 
 

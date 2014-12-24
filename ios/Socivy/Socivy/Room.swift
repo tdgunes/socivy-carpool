@@ -8,17 +8,23 @@
 
 import Foundation
 
-class Room {
+class Room:Printable{
     var identifier:Int
     var messages:[Message]
+    var peer:Peer
+    var description: String {
+        return "Room: \(self.identifier)"
+    }
     
-    init (identifier:Int){
+    
+    init (identifier:Int, peer:Peer){
         self.identifier = identifier
         self.messages = []
+        self.peer = peer
     }
     
     convenience init(json:JSON){
-        self.init(identifier: json["room"].asInt!)
+        self.init(identifier: json["room"].asInt!, peer:(Peer(json:json["peer"])))
     }
     
     func addMessage(message:Message){

@@ -12,12 +12,14 @@ import UIKit
 class MainTabBarController : UITabBarController {
     
     override func viewDidAppear(animated: Bool) {
-        self.navigationController?.navigationBar.hidden = true
+        self.navigationController?.navigationBar.hidden = false
         
         Logger.sharedInstance.log(self, message: "Main loaded!")
 
 
     }
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,4 +37,6 @@ class MainTabBarController : UITabBarController {
         // Dispose of any resources that can be recreated.
     }
     
+
+
 }
