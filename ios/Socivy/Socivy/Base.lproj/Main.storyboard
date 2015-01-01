@@ -1765,7 +1765,7 @@
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="99" contentMode="left" horizontalHuggingPriority="251" text="merhabalar" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="50V-ue-OoX">
                                                     <rect key="frame" x="8" y="8" width="481" height="22"/>
-                                                    <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" name="GillSans-Light" family="Gill Sans" pointSize="19"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -1799,13 +1799,13 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="99" contentMode="left" horizontalHuggingPriority="251" text="merhabalar" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gKV-RV-SAW">
-                                                    <rect key="frame" x="508" y="8" width="85" height="22"/>
-                                                    <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="17"/>
+                                                    <rect key="frame" x="509" y="6" width="83.5" height="22"/>
+                                                    <fontDescription key="fontDescription" name="GillSans-Light" family="Gill Sans" pointSize="19"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="101" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="19:10 12:12:2014" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c4g-hP-AdS">
-                                                    <rect key="frame" x="8" y="8" width="90" height="14"/>
+                                                    <rect key="frame" x="8" y="8" width="89.5" height="13.5"/>
                                                     <fontDescription key="fontDescription" type="italicSystem" pointSize="11"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
@@ -1822,7 +1822,7 @@
                                                 <constraint firstAttribute="bottomMargin" secondItem="Lje-8I-dli" secondAttribute="bottom" constant="-3.5" id="Hp8-fD-1Ll"/>
                                                 <constraint firstItem="gKV-RV-SAW" firstAttribute="trailing" secondItem="qVX-iD-o6k" secondAttribute="trailingMargin" id="Mxe-Ht-oHu"/>
                                                 <constraint firstItem="Lje-8I-dli" firstAttribute="trailing" secondItem="qVX-iD-o6k" secondAttribute="trailingMargin" id="dFE-uT-nLl"/>
-                                                <constraint firstItem="gKV-RV-SAW" firstAttribute="top" secondItem="qVX-iD-o6k" secondAttribute="topMargin" id="ezU-pm-1y4"/>
+                                                <constraint firstItem="gKV-RV-SAW" firstAttribute="top" secondItem="qVX-iD-o6k" secondAttribute="topMargin" constant="-2" id="ezU-pm-1y4"/>
                                                 <constraint firstItem="c4g-hP-AdS" firstAttribute="leading" secondItem="qVX-iD-o6k" secondAttribute="leadingMargin" id="pth-sl-DlA"/>
                                                 <constraint firstItem="c4g-hP-AdS" firstAttribute="top" secondItem="qVX-iD-o6k" secondAttribute="topMargin" id="ve6-UF-0V5"/>
                                             </constraints>
@@ -1909,7 +1909,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JAA-C9-bUR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2541" y="-577"/>
+            <point key="canvasLocation" x="2541.5" y="-577"/>
         </scene>
         <!--Messages-->
         <scene sceneID="BbL-6e-EHL">

@@ -53,7 +53,10 @@ class ChatCommunicator{
             "timestamp": timestamp
         }
         */
+
         let json = JSON.parse(string)
+        println("Received: \n \(json.toString(pretty: true))")
+        
         if let status = json["status"].asString {
             if status == "connectionEstablished"{
                 self.delegate?.connectionEstablished()
@@ -64,16 +67,23 @@ class ChatCommunicator{
         let roomIdentifier = json["room"].asInt!
         
         if let room = roomsDictionary[roomIdentifier] {
-            var message = Message(json: json)
+            var peer = Peer(email: json["email"].asString!, name: json["name"].asString!)
+            
+            var message = Message(text: json["text"].asString!, timestamp: json["timestamp"].asInt!, peer: peer )
             room.addMessage(message)
+            
             self.delegate?.messageRecieved(message, room: room)
             return
         }
         else{
-            var room = Room(json: json)
+            var room = Room(identifier: roomIdentifier)
+            var peer = Peer(email: json["peer"]["email"].asString!, name: json["peer"]["name"].asString!)
             
             roomsDictionary[room.identifier] = room
             rooms.append(room)
+            
+            var message = Message(text: json["text"].asString!, timestamp: json["timestamp"].asInt!, peer: peer )
+            room.addMessage(message)
             
             self.delegate?.newRoomRecieved(room)
             return
@@ -85,4 +95,8 @@ class ChatCommunicator{
     func onInterrupt(){
         self.delegate?.connectionFailed()
     }
+    class var sharedInstance : ChatCommunicator {
+        return _SingletonChatCommunicator
+    }
 }
+let _SingletonChatCommunicator = ChatCommunicator()

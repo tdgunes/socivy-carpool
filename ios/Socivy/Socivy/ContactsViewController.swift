@@ -52,7 +52,7 @@ class ContactsViewController: UITableViewController {
         
         for peerObj in jsonPeers{
 
-            let peer = Peer(json: peerObj)
+            let peer = Peer(email: peerObj["email"].asString!, name: peerObj["name"].asString!)
             self.peers.append(peer)
         }
         

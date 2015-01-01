@@ -29,12 +29,44 @@ class API(object):
         response = requests.post(self.url+"start_room/", data=json.dumps(received_json))
         return response.text
 
+    def store_message(self, recieved_json):
+        print("Sending to django: {0}".format(received_json))
+        response = requests.post(self.url+"store_message/", data=json.dumps(received_json))
+        return response.text
+
+class Database(object):
+    def __init__(self):
+        self.rooms = {}
+
+    def add_room(self, room):
+        self.rooms[room.id] = room
+
+    def remove_room(self, room_id):
+        self.rooms.pop(room_id)
+
+    def send_message(self, room, peer, message):
+        """
+
+        :type room: Room
+        :type peer: Peer
+        :type message: Message
+        :return:
+        """
+        for peer in room.get_peers():
+            pass
+
+
+
+
 
 
 class Room(object):
     def __init__(self, id):
-        self.identifier = id
+        self.id = id
         self.peers = []
+
+    def get_peers(self):
+        return self.peers
 
 
 class Peer(object):
@@ -72,11 +104,12 @@ class Peer(object):
             email = message["sender"]
             self._server.users[email] = self
             self.email = email
+            api = API()
             if message["method"] == "room":
-                api = API()
                 self.send(api.start_room(message))
             elif method["method"] == "message":
-                pass
+                self.send(api.store_message(message))
+
 
 
             # self._server.broadcast('%s: %s' % (self.name, buf.decode('utf8')), peer=self)

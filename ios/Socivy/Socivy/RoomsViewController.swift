@@ -15,7 +15,7 @@ import UIKit
 class RoomsViewController: UITableViewController, ChatCommunicatorDelegate {
     
 //    var communicator:Communicator?
-    var communicator:ChatCommunicator?
+    weak var communicator = ChatCommunicator.sharedInstance
     var player = AudioPlayer()
     
     
@@ -30,7 +30,6 @@ class RoomsViewController: UITableViewController, ChatCommunicatorDelegate {
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("openNewRoom:"), name: "openNewRoom", object: nil)
         
-        communicator = ChatCommunicator()
         communicator?.delegate = self
         communicator?.start()
         
@@ -46,12 +45,14 @@ class RoomsViewController: UITableViewController, ChatCommunicatorDelegate {
     }
     
     func messageRecieved(message:Message, room:Room){
-        
+        println("\(message.peer.name) sent '\(message.text)'")
     }
+    
     func newRoomRecieved(room:Room){
         self.player.play(ChatSound.NewMessage)
-        println(room)
+        println("newRoomRecieved \(room)")
         self.tableView.reloadData()
+        self.messageReceived()
     }
     
     func connectionEstablished(){
@@ -71,7 +72,7 @@ class RoomsViewController: UITableViewController, ChatCommunicatorDelegate {
     }
     
     
-    func messageRecieved(string:String){
+    func messageReceived(){
         var tabBarItem = self.tabBarController?.tabBar.items![2] as UITabBarItem
         if tabBarItem.badgeValue == nil {
             tabBarItem.badgeValue = "1"
@@ -113,7 +114,7 @@ class RoomsViewController: UITableViewController, ChatCommunicatorDelegate {
         var messageLabel = cell.viewWithTag(100) as UILabel
         var timeLabel = cell.viewWithTag(101) as UILabel
         
-        contactLabel.text = room?.peer.name
+        contactLabel.text = room?.messages[0].peer.name
         
         
         

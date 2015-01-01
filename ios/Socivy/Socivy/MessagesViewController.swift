@@ -17,7 +17,7 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var sendButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
     
-    var room = Room(identifier: 2, peer: Peer(email: "deniz.sokmen@ozu.edu.tr", name: "Deniz Sokmen"))
+    var room = Room(identifier: 2)
 
     
     override func viewDidLoad() {
@@ -29,7 +29,8 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
         self.navigationItem.title = "Deniz Sökmen"
         
         for i in 1...20{
-            var message = Message(sender:"deniz.sokmen@ozu.edu.tr", text: "Lorem impsum lorem impsum", timestamp: 123123123+10*i)
+            var peer = Peer(email: "deniz.sokmen@ozu.edu.tr", name: "Deniz Sokmen")
+            var message = Message(text: "hello lorem impsum", timestamp: 123123123, peer: peer)
             room.messages.append(message)
         }
         
@@ -57,7 +58,8 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func sendMessage(){
-        self.room.messages.append(Message(sender: SocivyAPI.sharedInstance.email!, text: self.textField.text, timestamp: 123123123))
+        var peer = Peer(email: "taha.gunes@ozu.edu.tr", name: "Taha Dogan Gunes")
+        self.room.messages.append(Message(text: self.textField.text, timestamp: 123123123, peer: peer))
         
         var newIndexPath = NSIndexPath(forRow: self.room.messages.count-1, inSection: 0)
         self.tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Fade)
@@ -74,7 +76,7 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
         var message = room.messages[indexPath.row]
         
         var cell: UITableViewCell?
-        if message.sender == SocivyAPI.sharedInstance.email!{
+        if message.peer.email == SocivyAPI.sharedInstance.email!{
             cell = (self.tableView.dequeueReusableCellWithIdentifier("messageRightCell", forIndexPath:indexPath) as UITableViewCell)
         }
         else {
@@ -90,6 +92,11 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
         
         return cell!
     }
+    
+    func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 44.0
+    }
+    
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         

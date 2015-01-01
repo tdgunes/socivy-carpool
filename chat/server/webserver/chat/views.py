@@ -80,11 +80,7 @@ def start_room(request):
        "sender": "tdgunes@gmail.com",
        "recipient": "hakanuyumaz@gmail.com"
     }
-    Returns
-    {
-        status: {}
-        room : 1
-    }
+
     :param request:
     :return:
     """
@@ -102,6 +98,8 @@ def start_room(request):
 
     return HttpResponse(APIResponseFactory.create(Status.Success, additions={"peer": {"email": recipient.email,
                                                                                       "name": recipient.name},
+                                                                             "text": "Chat room is started!",
+                                                                             "timestamp": 123123123123,
                                                                              "room": room.id}),
                         content_type='application/json')
 

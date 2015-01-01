@@ -10,18 +10,15 @@ import Foundation
 
 class Message {
 
-    var sender: String
     var text: String
     var timestamp: Int
+    var peer: Peer
     weak var room: Room?
     
-    init (sender:String, text:String, timestamp:Int) {
-        self.sender = sender
+    init (text:String, timestamp:Int, peer:Peer) {
         self.text = text
         self.timestamp = timestamp
+        self.peer = peer
     }
     
-    convenience init(json:JSON){
-        self.init(sender:json["sender"].asString!, text:json["text"].asString!, timestamp:json["timestamp"].asInt!)
-    }
 }
