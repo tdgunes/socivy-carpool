@@ -71,7 +71,7 @@ class ChatCommunicator{
         let roomIdentifier = json["room"].asInt!
         
         if let room = roomsDictionary[roomIdentifier] {
-            var peer = Peer(email: json["email"].asString!, name: json["name"].asString!)
+            var peer = Peer(email: json["peer"]["email"].asString!, name: json["peer"]["name"].asString!)
             
             var message = Message(text: json["text"].asString!, timestamp: json["timestamp"].asInt!, peer: peer )
             room.addMessage(message)

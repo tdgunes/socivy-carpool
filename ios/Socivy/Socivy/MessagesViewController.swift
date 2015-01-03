@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import QuartzCore
 
-class MessagesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate{
+class MessagesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, ChatCommunicatorDelegate{
     
     @IBOutlet weak var messageBarView: UIView!
     @IBOutlet weak var textField: UITextField!
@@ -18,9 +18,10 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var tableView: UITableView!
     
     var room: Room?
+    weak var communicator = ChatCommunicator.sharedInstance
 
     override func viewWillAppear(animated: Bool) {
-        
+        communicator?.delegate = self
     }
     
     override func viewDidLoad() {
@@ -30,17 +31,32 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
         
         
         self.navigationItem.title = self.room!.messages[0].peer.name
-        
-        
-        
         self.addUpperBorder()
         self.updateContentInset()
-        
-//        [[NSNotificationCenter defaultCenter] addObserver:self
-//            selector:@selector(keyboardWillShow:)
-//        name:UIKeyboardWillShowNotification
-//        object:nil];
+    
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name: UIKeyboardWillShowNotification, object: nil)
+    }
+    
+    func messageRecieved(message: Message, room: Room) {
+        if self.room?.identifier == room.identifier {
+            
+            self.updateContentInset()
+            var newIndexPath = NSIndexPath(forRow: self.room!.messages.count-1, inSection: 0)
+            self.tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Fade)
+            self.tableView.scrollToRowAtIndexPath(newIndexPath, atScrollPosition: UITableViewScrollPosition.Top , animated: true)
+        }
+    }
+    
+    func newRoomRecieved(room: Room) {
+        
+    }
+    
+    func connectionFailed() {
+        //If connection is interrupted, failed
+    }
+    
+    func connectionEstablished() {
+        //If reconnection is done
     }
 
     func keyboardWillShow(notification:NSNotification){
@@ -128,6 +144,8 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
     func sendMessage(){
         var peer = Peer(email: "taha.gunes@ozu.edu.tr", name: "Taha Dogan Gunes")
         self.room?.messages.append(Message(text: self.textField.text, timestamp: 123123123, peer: peer))
+        
+        
         
         self.updateContentInset()
         var newIndexPath = NSIndexPath(forRow: self.room!.messages.count-1, inSection: 0)

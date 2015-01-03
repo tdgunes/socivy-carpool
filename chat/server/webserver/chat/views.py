@@ -86,7 +86,7 @@ def start_room(request):
     """
     print(request.body)
     data = json.loads(request.body.decode("utf-8"))
-    sender = Peer.objects.get(email=data["sender"])
+    sender = Peer.objects.get(email=data["peer"]["email"])
     recipient = Peer.objects.get(email=data["recipient"])
 
     room = Room.objects.create()
@@ -96,8 +96,10 @@ def start_room(request):
     sender.rooms.add(room)
     recipient.rooms.add(room)
 
-    return HttpResponse(APIResponseFactory.create(Status.Success, additions={"peer": {"email": recipient.email,
-                                                                                      "name": recipient.name},
+    return HttpResponse(APIResponseFactory.create(Status.Success, additions={"sender":{"peer": {"email": sender.email,
+                                                                                      "name": sender.name}},
+                                                                             "recipient":{"peer": {"email": recipient.email,
+                                                                                      "name": recipient.name}},
                                                                              "text": "Chat room is started!",
                                                                              "timestamp": 123123123123,
                                                                              "room": room.id}),

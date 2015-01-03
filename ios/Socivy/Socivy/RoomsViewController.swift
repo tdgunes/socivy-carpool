@@ -45,7 +45,13 @@ class RoomsViewController: UITableViewController, ChatCommunicatorDelegate {
     }
     
     func messageRecieved(message:Message, room:Room){
-        println("\(message.peer.name) sent '\(message.text)'")
+        println("\(message.peer.name) said '\(message.text)'")
+        
+//        [self.tableView beginUpdates];
+//        [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPathOfYourCell] withRowAnimation:UITableViewRowAnimationNone];
+//        [self.tableView endUpdates];
+        
+        self.tableView.reloadData()
     }
     
     func newRoomRecieved(room:Room){
@@ -111,14 +117,14 @@ class RoomsViewController: UITableViewController, ChatCommunicatorDelegate {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier("roomCell", forIndexPath:indexPath) as UITableViewCell
         
-        var room = self.communicator?.rooms[indexPath.row]
+        var room = self.communicator!.rooms[indexPath.row]
         
         var contactLabel = cell.viewWithTag(99) as UILabel
         var messageLabel = cell.viewWithTag(100) as UILabel
         var timeLabel = cell.viewWithTag(101) as UILabel
         
-        contactLabel.text = room?.messages[0].peer.name
-        
+        contactLabel.text = room.messages.last!.peer.name
+        messageLabel.text = room.messages.last!.text
         
         
         return cell

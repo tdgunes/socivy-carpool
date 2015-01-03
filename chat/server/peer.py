@@ -70,10 +70,10 @@ class Peer(object):
             print(buf.decode('utf8'))
             if buf == b'':
                 break
-            print("{1} : {0} ".format(buf.decode('utf8'), self.name))
+            print("Server got '{0}' ".format(buf.decode('utf8')))
 
 
-            message_as_string = buf.decode('utf8')
+            message_as_string = buf.decode('utf8').strip()
             message = json.loads(message_as_string)
             self.chat_email = message["peer"]["email"]
             self.chat_name = message["peer"]["name"]
@@ -89,14 +89,25 @@ class Peer(object):
             elif message["method"] == "room":
                 room_creation_as_string = api.start_room(message)
                 room_creation_as_json = json.loads(room_creation_as_string)
-                self._server.rooms.add_room(json.loads(room_creation_as_string)["room"])
-                recipient = self._server.users.get(room_creation_as_json["peer"]["email"],None)
+
+                room = self._server.rooms.add_room(room_creation_as_json["room"])
+
+
+
+                recipient = self._server.users.get(room_creation_as_json["recipient"]["peer"]["email"],None)
+
                 if recipient:
-                    recipient.send(room_creation_as_string)
+                    room_creation_as_json["peer"] = room_creation_as_json["sender"]["peer"]
+                    recipient.send(json.dumps(room_creation_as_json))
 
-                self.send(room_creation_as_string)
+                room_creation_as_json["peer"] = room_creation_as_json["recipient"]["peer"]
 
-            elif method["method"] == "message":
+                room.add_member(recipient)
+                room.add_member(self)
+
+                self.send(json.dumps(room_creation_as_json))
+
+            elif message["method"] == "message":
                 # api.store_message(message)
 
                 room = self._server.rooms.get_room(message["room"])

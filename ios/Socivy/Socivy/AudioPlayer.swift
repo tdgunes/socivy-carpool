@@ -12,6 +12,7 @@ import AVFoundation
 enum ChatSound:String {
     case NewMessage = "codeccall"
     case ConnectionEstablished = "codecopen"
+    case MessageSend = "itemopen"
 }
 
 class AudioPlayer {
@@ -21,7 +22,6 @@ class AudioPlayer {
     func play(sound:ChatSound){
         
         var alertSound = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource(sound.rawValue, ofType: "wav")!)!
-//        println(alertSound)
         var error = NSErrorPointer()
         
         AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback, error: nil)
