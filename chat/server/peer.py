@@ -90,9 +90,10 @@ class Peer(object):
                 room_creation_as_string = api.start_room(message)
                 room_creation_as_json = json.loads(room_creation_as_string)
                 self._server.rooms.add_room(json.loads(room_creation_as_string)["room"])
-                recipient = self._server.users[room_creation_as_json["peer"]["email"]]
+                recipient = self._server.users.get(room_creation_as_json["peer"]["email"],None)
+                if recipient:
+                    recipient.send(room_creation_as_string)
 
-                recipient.send(room_creation_as_string)
                 self.send(room_creation_as_string)
 
             elif method["method"] == "message":

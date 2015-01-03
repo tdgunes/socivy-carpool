@@ -19,6 +19,9 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
     
     var room: Room?
 
+    override func viewWillAppear(animated: Bool) {
+        
+    }
     
     override func viewDidLoad() {
         self.tabBarController?.navigationController?.navigationBar.hidden = false
@@ -28,8 +31,80 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
         
         self.navigationItem.title = self.room!.messages[0].peer.name
         
+        
+        
         self.addUpperBorder()
+        self.updateContentInset()
+        
+//        [[NSNotificationCenter defaultCenter] addObserver:self
+//            selector:@selector(keyboardWillShow:)
+//        name:UIKeyboardWillShowNotification
+//        object:nil];
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name: UIKeyboardWillShowNotification, object: nil)
     }
+
+    func keyboardWillShow(notification:NSNotification){
+        let info:NSDictionary = notification.userInfo!
+        let keyboardSize = info.objectForKey(UIKeyboardFrameEndUserInfoKey)!.CGRectValue().size
+        let keyboardHeight = keyboardSize.height
+        
+        let movementDuration = 0.3 // tweak as neededsc
+
+        UIView.beginAnimations("animation", context: nil)
+        UIView.setAnimationBeginsFromCurrentState(true)
+        UIView.setAnimationDuration(movementDuration)
+        self.view.frame = CGRectOffset(self.view.frame, 0, -keyboardHeight)
+        
+        UIView.commitAnimations()
+        
+    }
+
+    func updateContentInset (){
+        let numberOfRows = self.tableView.numberOfRowsInSection(0)
+        var contentInsetTop = self.tableView.bounds.size.height
+        for i in 0...numberOfRows{
+            contentInsetTop -= self.tableView(tableView, estimatedHeightForRowAtIndexPath: NSIndexPath(forItem: i, inSection: 0))
+            if contentInsetTop<=0 {
+                contentInsetTop = 0
+                break
+            }
+        }
+        self.tableView.contentInset = UIEdgeInsetsMake(contentInsetTop, 0, 0, 0)
+    }
+//    - (void)updateContentInset {
+//    NSInteger numRows=[self tableView:_tableView numberOfRowsInSection:0];
+//    CGFloat contentInsetTop=_tableView.bounds.size.height;
+//    for (int i=0;i<numRows;i++) {
+//    contentInsetTop-=[self tableView:_tableView heightForRowAtIndexPath:[NSIndexPath indexPathForItem:i inSection:0]];
+//    if (contentInsetTop<=0) {
+//    contentInsetTop=0;
+//    break;
+//    }
+//    }
+//    _tableView.contentInset = UIEdgeInsetsMake(contentInsetTop, 0, 0, 0);
+//    }
+//    - (void)keyboardWillShow:(NSNotification*)notification {
+//    NSDictionary *info = [notification userInfo];
+//    CGSize kbSize = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
+//    CGFloat deltaHeight = kbSize.height - _currentKeyboardHeight;
+//    // Write code to adjust views accordingly using deltaHeight
+//    _currentKeyboardHeight = kbSize.height;
+//    }
+    
+//    func textFieldDidBeginEditing(textField: UITextField) {
+//
+//        let movementDistance:CGFloat = -200.0 // tweak as needed
+//        let movementDuration = 0.3 // tweak as needed
+//        
+//        UIView.beginAnimations("animation", context: nil)
+//        UIView.setAnimationBeginsFromCurrentState(true)
+//        UIView.setAnimationDuration(movementDuration)
+//    
+//        self.view.frame = CGRectOffset(self.view.frame, 0, movementDistance)
+//        
+//        UIView.commitAnimations()
+//    }
+
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         self.sendMessage()
@@ -54,6 +129,7 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
         var peer = Peer(email: "taha.gunes@ozu.edu.tr", name: "Taha Dogan Gunes")
         self.room?.messages.append(Message(text: self.textField.text, timestamp: 123123123, peer: peer))
         
+        self.updateContentInset()
         var newIndexPath = NSIndexPath(forRow: self.room!.messages.count-1, inSection: 0)
         self.tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Fade)
         self.tableView.scrollToRowAtIndexPath(newIndexPath, atScrollPosition: UITableViewScrollPosition.Top , animated: true)
