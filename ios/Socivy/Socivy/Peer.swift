@@ -20,6 +20,9 @@ class Peer: Printable {
         self.email = email
         self.name = name
     }
-
+    
+    func toJSONString()->String{
+        return JSON(["email":self.email,"name":self.name]).toString(pretty: false)
+    }
 
 }

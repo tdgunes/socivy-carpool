@@ -1775,8 +1775,8 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.60999999999999999" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" tag="101" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="19:10 12:12:2014" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u7p-oZ-92O">
-                                                    <rect key="frame" x="473" y="9" width="119" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="101" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="19:10 12:12:2014" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u7p-oZ-92O">
+                                                    <rect key="frame" x="502.5" y="9" width="89.5" height="13.5"/>
                                                     <fontDescription key="fontDescription" type="italicSystem" pointSize="11"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
@@ -1786,7 +1786,9 @@
                                                 <constraint firstItem="50V-ue-OoX" firstAttribute="trailing" secondItem="rcG-Za-tWB" secondAttribute="trailingMargin" constant="-103" id="FeM-rE-OBG"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="UeH-kE-F1Z" secondAttribute="bottom" constant="-4" id="T26-g7-2Jk"/>
                                                 <constraint firstItem="UeH-kE-F1Z" firstAttribute="leading" secondItem="rcG-Za-tWB" secondAttribute="leadingMargin" id="W1P-Te-BXj"/>
+                                                <constraint firstItem="u7p-oZ-92O" firstAttribute="top" secondItem="rcG-Za-tWB" secondAttribute="topMargin" constant="1" id="k5N-lz-7tI"/>
                                                 <constraint firstItem="50V-ue-OoX" firstAttribute="leading" secondItem="rcG-Za-tWB" secondAttribute="leadingMargin" id="kiJ-Ef-Ufg"/>
+                                                <constraint firstItem="u7p-oZ-92O" firstAttribute="trailing" secondItem="rcG-Za-tWB" secondAttribute="trailingMargin" id="mtQ-gd-YPG"/>
                                                 <constraint firstItem="50V-ue-OoX" firstAttribute="top" secondItem="rcG-Za-tWB" secondAttribute="topMargin" id="piU-OY-3tA"/>
                                                 <constraint firstItem="UeH-kE-F1Z" firstAttribute="top" secondItem="50V-ue-OoX" secondAttribute="bottom" constant="-4" id="tpk-oh-Ehg"/>
                                                 <constraint firstItem="UeH-kE-F1Z" firstAttribute="trailing" secondItem="rcG-Za-tWB" secondAttribute="trailingMargin" id="uac-hF-fAW"/>

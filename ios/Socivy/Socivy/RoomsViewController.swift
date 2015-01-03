@@ -65,6 +65,7 @@ class RoomsViewController: UITableViewController, ChatCommunicatorDelegate {
         }
         
         player.play(.ConnectionEstablished)
+    
     }
     
     func connectionFailed(){
@@ -92,6 +93,8 @@ class RoomsViewController: UITableViewController, ChatCommunicatorDelegate {
         var room = self.communicator?.rooms[indexPath.row]
 
         var messageVC = self.storyboard?.instantiateViewControllerWithIdentifier("messageView") as MessagesViewController
+        
+        messageVC.room = room!
         
         self.tabBarController?.navigationController?.pushViewController(messageVC, animated: true)
         

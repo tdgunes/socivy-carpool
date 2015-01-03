@@ -30,8 +30,11 @@ class Client:
 
     def start_message_loop(self):
         try:
+            t = """{"status":{"message": "Success!", "code": 1}, "room": 87, "timestamp": 123123123123, "peer": {"name": "Hakan Uyumaz", "email": "hakanuyuma@gmail.com"}, "text": "Chat room is started!"}"""
+            self.s.send(t.encode('utf-8'))
             while True:
                 message = input('')
+
                 self.s.send(message.encode('utf-8'))
         except EOFError:
             pass

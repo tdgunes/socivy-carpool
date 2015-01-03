@@ -89,8 +89,10 @@ class LowLevelStream: NSObject, NSStreamDelegate, Printable{
     
     func write(text:String){
         Logger.sharedInstance.log(self, message:"writing to stream: \(text)")
-        var data:NSData = NSData(data: text.dataUsingEncoding(NSASCIIStringEncoding, allowLossyConversion: false)!)
+        let textWithEnd = "\(text)\r\n"
+        var data:NSData = NSData(data: textWithEnd.dataUsingEncoding(NSASCIIStringEncoding, allowLossyConversion: false)!)
 
+        println(self.outputStream.hasSpaceAvailable)
         self.outputStream.write(UnsafePointer(data.bytes), maxLength: data.length)
     }
     
@@ -116,7 +118,7 @@ class LowLevelStream: NSObject, NSStreamDelegate, Printable{
                         var output = NSString(bytes: &buffer, length: length, encoding: NSASCIIStringEncoding)
                         
                         if output != nil {
-                            Logger.sharedInstance.log(self, message:output!)
+                            Logger.sharedInstance.log(self, message:"'\(output!)'")
                             self.delegate?.connectionReceive(output!)
                             
                         }

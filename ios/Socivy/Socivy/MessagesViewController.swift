@@ -17,7 +17,7 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var sendButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
     
-    var room = Room(identifier: 2)
+    var room: Room?
 
     
     override func viewDidLoad() {
@@ -26,15 +26,8 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
         self.navigationController?.navigationBarHidden = false
         
         
-        self.navigationItem.title = "Deniz Sökmen"
+        self.navigationItem.title = self.room!.messages[0].peer.name
         
-        for i in 1...20{
-            var peer = Peer(email: "deniz.sokmen@ozu.edu.tr", name: "Deniz Sokmen")
-            var message = Message(text: "hello lorem impsum", timestamp: 123123123, peer: peer)
-            room.messages.append(message)
-        }
-        
-            
         self.addUpperBorder()
     }
     
@@ -59,9 +52,9 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
     
     func sendMessage(){
         var peer = Peer(email: "taha.gunes@ozu.edu.tr", name: "Taha Dogan Gunes")
-        self.room.messages.append(Message(text: self.textField.text, timestamp: 123123123, peer: peer))
+        self.room?.messages.append(Message(text: self.textField.text, timestamp: 123123123, peer: peer))
         
-        var newIndexPath = NSIndexPath(forRow: self.room.messages.count-1, inSection: 0)
+        var newIndexPath = NSIndexPath(forRow: self.room!.messages.count-1, inSection: 0)
         self.tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Fade)
         self.tableView.scrollToRowAtIndexPath(newIndexPath, atScrollPosition: UITableViewScrollPosition.Top , animated: true)
         
@@ -69,11 +62,11 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return room.messages.count
+        return room!.messages.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var message = room.messages[indexPath.row]
+        var message = room!.messages[indexPath.row]
         
         var cell: UITableViewCell?
         if message.peer.email == SocivyAPI.sharedInstance.email!{
@@ -81,14 +74,15 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
         }
         else {
             cell = (self.tableView.dequeueReusableCellWithIdentifier("messageLeftCell", forIndexPath:indexPath) as UITableViewCell)
-                var senderLabel = cell?.viewWithTag(100) as UILabel
+
         }
-        
+        var senderLabel = cell?.viewWithTag(100) as UILabel
         var messageLabel = cell?.viewWithTag(99) as UILabel
 
         var timeLabel = cell?.viewWithTag(101) as UILabel
         
         messageLabel.text = message.text
+        senderLabel.text = message.peer.name
         
         return cell!
     }

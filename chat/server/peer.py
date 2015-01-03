@@ -25,61 +25,32 @@ class API(object):
         :param request:
         :return:
         """
-        print("Sending to django: {0}".format(received_json))
+        # print("Sending to django: {0}".format(received_json))
         response = requests.post(self.url+"start_room/", data=json.dumps(received_json))
         return response.text
 
     def store_message(self, recieved_json):
-        print("Sending to django: {0}".format(received_json))
+        # print("Sending to django: {0}".format(received_json))
         response = requests.post(self.url+"store_message/", data=json.dumps(received_json))
         return response.text
 
-class Database(object):
-    def __init__(self):
-        self.rooms = {}
 
-    def add_room(self, room):
-        self.rooms[room.id] = room
-
-    def remove_room(self, room_id):
-        self.rooms.pop(room_id)
-
-    def send_message(self, room, peer, message):
-        """
-
-        :type room: Room
-        :type peer: Peer
-        :type message: Message
-        :return:
-        """
-        for peer in room.get_peers():
-            pass
-
-
-
-
-
-
-class Room(object):
-    def __init__(self, id):
-        self.id = id
-        self.peers = []
-
-    def get_peers(self):
-        return self.peers
 
 
 class Peer(object):
     def __init__(self, server, sock, name):
         self.loop = server.loop
-        self.name = name
+        self.name = name # socketName
         self._sock = sock
         self._server = server
-        self.email = ""
+
+        self.chat_email = ""
+        self.chat_name = ""
+
         Task(self._peer_handler())
 
     def send(self, data):
-
+        print("sending {1} to peer {0} ".format(self.name, data))
         return self.loop.sock_sendall(self._sock, data.encode('utf8'))
 
     @coroutine
@@ -95,22 +66,39 @@ class Peer(object):
     def _peer_loop(self):
         while True:
             buf = yield from self.loop.sock_recv(self._sock, 1024)
+            print(buf.decode('utf8'))
             if buf == b'':
                 break
+            print("{1} : {0} ".format(buf.decode('utf8'), self.name))
 
-            message = json.loads(buf.decode('utf8'))
-            print("Received message from peer: {0}".format(json.dumps(message, indent=4)))
-            # message = {"sender":"tdgunes@gmail"}
-            email = message["sender"]
-            self._server.users[email] = self
-            self.email = email
+
+            message_as_string = buf.decode('utf8')
+            message = json.loads(message_as_string)
+            self.chat_email = message["peer"]["email"]
+            self.chat_name = message["peer"]["name"]
+
             api = API()
-            if message["method"] == "room":
-                self.send(api.start_room(message))
+            if message["method"] == "acknowledge":
+                self.chat_email = message["peer"]["email"]
+                self.chat_name = message["peer"]["name"]
+                self._server.users[self.chat_email] = self
+
+            elif message["method"] == "room":
+                room_creation_as_string = api.start_room(message)
+                room_creation_as_json = json.loads(room_creation_as_string)
+                self._server.rooms.add_room(json.loads(room_creation_as_string)["room"])
+                recipient = self._server.users[room_creation_as_json["recipient"]]
+
+                recipient.send(room_creation_as_string)
+                self.send(room_creation_as_string)
+
             elif method["method"] == "message":
-                self.send(api.store_message(message))
+                # api.store_message(message)
 
+                room = self._server.rooms.get_room(message["room"])
 
+                for peer in room.peers:
+                    if peer.chat_email != self.chat_email:
+                        peer.send(message_as_string)
 
-            # self._server.broadcast('%s: %s' % (self.name, buf.decode('utf8')), peer=self)
 

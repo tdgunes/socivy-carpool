@@ -35,31 +35,32 @@ class ChatCommunicator{
     }
     
     func startRoom(recipient:String){
-        var payload:[String:String] = ["method":"room","sender":SocivyAPI.sharedInstance.email!, "recipient":recipient]
+        var payload:NSMutableDictionary = ["method":"room","sender":SocivyAPI.sharedInstance.email!, "recipient":recipient]
+        
+        payload.setObject(["name":SocivyAPI.sharedInstance.email!, "email":SocivyAPI.sharedInstance.email!], forKey: "peer")
+            
         let postData = JSON(payload).toString(pretty: false)
         
         self.communicator?.send(postData)
         
     }
     
+
     
     func onReceive(string:String){
-        /*
-        json is excepted to be:
-        {
-            "room": roomid,
-            "text": text,
-            "sender": sender's email,
-            "timestamp": timestamp
-        }
-        */
+
 
         let json = JSON.parse(string)
-        println("Received: \n \(json.toString(pretty: true))")
+        //println("Received: \n \(json.toString(pretty: true))")
         
         if let status = json["status"].asString {
             if status == "connectionEstablished"{
                 self.delegate?.connectionEstablished()
+
+                var payload:NSMutableDictionary = ["method":"acknowledge"]
+                payload.setObject(["name":SocivyAPI.sharedInstance.email!, "email":SocivyAPI.sharedInstance.email!], forKey: "peer")
+                self.communicator?.send(JSON(payload).toString(pretty: false))
+   
             }
             return
         }
@@ -98,5 +99,7 @@ class ChatCommunicator{
     class var sharedInstance : ChatCommunicator {
         return _SingletonChatCommunicator
     }
+    
+
 }
 let _SingletonChatCommunicator = ChatCommunicator()
