@@ -9,7 +9,7 @@
 import Foundation
 
 class Communicator: LowLevelStreamDelegate  {
-    let port:UInt32 = 1234
+    let port:Int = 1234
     let address:CFString = "127.0.0.1"
     var lowLevelSteam: LowLevelStream
     
@@ -53,8 +53,8 @@ protocol LowLevelStreamDelegate {
 
 class LowLevelStream: NSObject, NSStreamDelegate, Printable{
     
-    var inputStream: NSInputStream
-    var outputStream: NSOutputStream
+    var inputStream: NSInputStream?
+    var outputStream: NSOutputStream?
     var delegate: LowLevelStreamDelegate?
     
     let bufferSize = 1024
@@ -62,38 +62,36 @@ class LowLevelStream: NSObject, NSStreamDelegate, Printable{
         return "lls"
     }
     
-    init(address:CFString, port:UInt32){
-        var readStream:  Unmanaged<CFReadStream>?
-        var writeStream: Unmanaged<CFWriteStream>?
+    init(address:CFString, port:Int){
+
+        NSStream.getStreamsToHostWithName(address, port: port, inputStream: &self.inputStream, outputStream: &self.outputStream)
+    
         
-        CFStreamCreatePairWithSocketToHost(nil, address, port, &readStream, &writeStream)
-        
-        self.inputStream = readStream!.takeRetainedValue()
-        self.outputStream = writeStream!.takeRetainedValue()
-        
+
     }
     
     func startConnection(){
-        self.inputStream.delegate = self
-        self.outputStream.delegate = self
+        self.inputStream!.delegate = self
+        self.outputStream!.delegate = self
 
 
-        self.inputStream.scheduleInRunLoop(NSRunLoop.currentRunLoop(), forMode: NSDefaultRunLoopMode)
-        self.outputStream.scheduleInRunLoop(NSRunLoop.currentRunLoop(), forMode: NSDefaultRunLoopMode)
+        self.inputStream!.scheduleInRunLoop(NSRunLoop.currentRunLoop(), forMode: NSDefaultRunLoopMode)
+        self.outputStream!.scheduleInRunLoop(NSRunLoop.currentRunLoop(), forMode: NSDefaultRunLoopMode)
         
-        self.inputStream.open()
-        self.outputStream.open()
+        self.inputStream!.open()
+        self.outputStream!.open()
 
         
     }
     
     func write(text:String){
-        Logger.sharedInstance.log(self, message:"writing to stream: \(text)")
-        let textWithEnd = "\(text)\r\n"
+        let textWithEnd = "\(text)\n"
+        Logger.sharedInstance.log(self, message:"writing to stream: \(textWithEnd)")
+
         var data:NSData = NSData(data: textWithEnd.dataUsingEncoding(NSASCIIStringEncoding, allowLossyConversion: false)!)
 
-        println(self.outputStream.hasSpaceAvailable)
-        self.outputStream.write(UnsafePointer(data.bytes), maxLength: data.length)
+        println(self.outputStream!.hasSpaceAvailable)
+        self.outputStream!.write(UnsafePointer(data.bytes), maxLength: data.length)
     }
     
     func stream(theStream: NSStream, handleEvent streamEvent: NSStreamEvent) {
@@ -111,8 +109,8 @@ class LowLevelStream: NSObject, NSStreamDelegate, Printable{
 
                 var length = 0;
                 
-                while self.inputStream.hasBytesAvailable {
-                    length = self.inputStream.read(&buffer, maxLength: self.bufferSize)
+                while self.inputStream!.hasBytesAvailable {
+                    length = self.inputStream!.read(&buffer, maxLength: self.bufferSize)
                     
                     if length > 0{
                         var output = NSString(bytes: &buffer, length: length, encoding: NSASCIIStringEncoding)

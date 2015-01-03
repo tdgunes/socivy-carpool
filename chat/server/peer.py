@@ -51,6 +51,7 @@ class Peer(object):
 
     def send(self, data):
         print("sending {1} to peer {0} ".format(self.name, data))
+        data = data + "\n"
         return self.loop.sock_sendall(self._sock, data.encode('utf8'))
 
     @coroutine
@@ -81,13 +82,15 @@ class Peer(object):
             if message["method"] == "acknowledge":
                 self.chat_email = message["peer"]["email"]
                 self.chat_name = message["peer"]["name"]
+
+                print("New user connected with:\n{0}: {1}".format(self.chat_email, self.chat_name))
                 self._server.users[self.chat_email] = self
 
             elif message["method"] == "room":
                 room_creation_as_string = api.start_room(message)
                 room_creation_as_json = json.loads(room_creation_as_string)
                 self._server.rooms.add_room(json.loads(room_creation_as_string)["room"])
-                recipient = self._server.users[room_creation_as_json["recipient"]]
+                recipient = self._server.users[room_creation_as_json["peer"]["email"]]
 
                 recipient.send(room_creation_as_string)
                 self.send(room_creation_as_string)

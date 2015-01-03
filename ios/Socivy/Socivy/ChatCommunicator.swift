@@ -32,6 +32,11 @@ class ChatCommunicator{
         self.communicator =  Communicator(onRecieve: self.onReceive,
                                           onInterrupt: self.onInterrupt)
         communicator?.startConnection()
+        
+        var payload:NSMutableDictionary = ["method":"acknowledge"]
+        payload.setObject(["name":SocivyAPI.sharedInstance.email!, "email":SocivyAPI.sharedInstance.email!], forKey: "peer")
+        self.communicator?.send(JSON(payload).toString(pretty: false))
+        
     }
     
     func startRoom(recipient:String){
@@ -57,9 +62,7 @@ class ChatCommunicator{
             if status == "connectionEstablished"{
                 self.delegate?.connectionEstablished()
 
-                var payload:NSMutableDictionary = ["method":"acknowledge"]
-                payload.setObject(["name":SocivyAPI.sharedInstance.email!, "email":SocivyAPI.sharedInstance.email!], forKey: "peer")
-                self.communicator?.send(JSON(payload).toString(pretty: false))
+
    
             }
             return

@@ -80,7 +80,7 @@ class Server(object):
 
     def remove(self, peer=""):
         self._peers.remove(peer)
-        self.broadcast('Peer %s quit!\n')
+        # self.broadcast('Peer %s quit!\n')
 
     def broadcast(self, message, peer=None):
         if peer:
