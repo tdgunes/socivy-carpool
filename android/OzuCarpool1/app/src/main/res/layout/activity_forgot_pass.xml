@@ -1,0 +1,50 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingLeft="2dp"
+        android:paddingRight="2dp" >
+
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/socivylogo"
+            android:contentDescription="@string/string_socivy" />
+        
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/string_forgotdesc"
+            android:background="@drawable/listviewstyle" />
+
+        <EditText
+            android:id="@+id/editemail"
+            android:layout_width="match_parent"
+            android:layout_height="40dip"
+            android:hint="@string/string_mail"
+            android:inputType="textEmailAddress"
+            android:background="@drawable/register_edittext"
+            android:padding="10dp"
+            android:textColorHint="#778BB0"
+            android:textColor="#778BB0"
+            android:textSize="12sp"
+            android:drawableLeft="@drawable/email" />
+
+        
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/custom_button"
+            android:text="@string/string_forgotpass"
+            android:textColor="#fff" />
+    </LinearLayout>
+
+</ScrollView>

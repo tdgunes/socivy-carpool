@@ -1,0 +1,67 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingLeft="2dp"
+        android:paddingRight="2dp" >
+
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="fill_parent"
+            android:layout_height="150dp"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/socivylogo"
+            android:contentDescription="@string/string_socivy" />
+
+        <EditText
+            android:id="@+id/editText1"
+            android:layout_width="match_parent"
+            android:layout_height="40dip"
+            android:hint="@string/string_mail"
+            android:inputType="textEmailAddress"
+            android:textColor="#778BB0"
+            android:textColorHint="#778BB0"
+            android:textSize="12sp" />
+
+        <EditText
+            android:id="@+id/editText2"
+            android:layout_width="match_parent"
+            android:layout_height="40dip"
+            android:layout_marginTop="-5dp"
+            android:hint="@string/string_pass"
+            android:inputType="textPassword"
+            android:textColor="#778BB0"
+            android:textColorHint="#778BB0"
+            android:textSize="12sp" />
+
+        <Button
+            android:id="@+id/girisbut"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/custom_button"
+            android:text="@string/string_login"
+            android:textColor="#fff" />
+
+        <Button
+            android:id="@+id/sifrebut"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/custom_button"
+            android:gravity="center_horizontal"
+            android:text="@string/string_forgot"
+            android:textColor="#fff" />
+
+        <Button
+            android:id="@+id/kayitbut"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/custom_button"
+            android:text="@string/string_register"
+            android:textColor="#fff" />
+    </LinearLayout>
+
+</ScrollView>
