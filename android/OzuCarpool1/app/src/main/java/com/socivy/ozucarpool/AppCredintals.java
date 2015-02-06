@@ -87,6 +87,7 @@ public class AppCredintals {
 		editor.putString(PROPERTY_REG_ID, regId);
 		editor.putInt(PROPERTY_APP_VERSION, appVersion);
 		editor.commit();
+
 	}
 
 	public static int getAppVersion(Context context) {
