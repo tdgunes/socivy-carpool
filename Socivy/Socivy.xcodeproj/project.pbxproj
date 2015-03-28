@@ -1,0 +1,424 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3DD9DF521AC6D40000606989 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD9DF511AC6D40000606989 /* AppDelegate.swift */; };
+		3DD9DF541AC6D40000606989 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD9DF531AC6D40000606989 /* MasterViewController.swift */; };
+		3DD9DF561AC6D40000606989 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD9DF551AC6D40000606989 /* DetailViewController.swift */; };
+		3DD9DF591AC6D40000606989 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3DD9DF571AC6D40000606989 /* Main.storyboard */; };
+		3DD9DF5B1AC6D40000606989 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3DD9DF5A1AC6D40000606989 /* Images.xcassets */; };
+		3DD9DF5E1AC6D40000606989 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DD9DF5C1AC6D40000606989 /* LaunchScreen.xib */; };
+		3DD9DF6A1AC6D40000606989 /* SocivyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD9DF691AC6D40000606989 /* SocivyTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3DD9DF641AC6D40000606989 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3DD9DF441AC6D40000606989 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3DD9DF4B1AC6D40000606989;
+			remoteInfo = Socivy;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		3DD9DF4C1AC6D40000606989 /* Socivy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Socivy.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3DD9DF501AC6D40000606989 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3DD9DF511AC6D40000606989 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		3DD9DF531AC6D40000606989 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
+		3DD9DF551AC6D40000606989 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		3DD9DF581AC6D40000606989 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		3DD9DF5A1AC6D40000606989 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		3DD9DF5D1AC6D40000606989 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		3DD9DF631AC6D40000606989 /* SocivyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SocivyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3DD9DF681AC6D40000606989 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3DD9DF691AC6D40000606989 /* SocivyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocivyTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3DD9DF491AC6D40000606989 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3DD9DF601AC6D40000606989 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3DD9DF431AC6D40000606989 = {
+			isa = PBXGroup;
+			children = (
+				3DD9DF4E1AC6D40000606989 /* Socivy */,
+				3DD9DF661AC6D40000606989 /* SocivyTests */,
+				3DD9DF4D1AC6D40000606989 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		3DD9DF4D1AC6D40000606989 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3DD9DF4C1AC6D40000606989 /* Socivy.app */,
+				3DD9DF631AC6D40000606989 /* SocivyTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3DD9DF4E1AC6D40000606989 /* Socivy */ = {
+			isa = PBXGroup;
+			children = (
+				3DD9DF511AC6D40000606989 /* AppDelegate.swift */,
+				3DD9DF531AC6D40000606989 /* MasterViewController.swift */,
+				3DD9DF551AC6D40000606989 /* DetailViewController.swift */,
+				3DD9DF571AC6D40000606989 /* Main.storyboard */,
+				3DD9DF5A1AC6D40000606989 /* Images.xcassets */,
+				3DD9DF5C1AC6D40000606989 /* LaunchScreen.xib */,
+				3DD9DF4F1AC6D40000606989 /* Supporting Files */,
+			);
+			path = Socivy;
+			sourceTree = "<group>";
+		};
+		3DD9DF4F1AC6D40000606989 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3DD9DF501AC6D40000606989 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3DD9DF661AC6D40000606989 /* SocivyTests */ = {
+			isa = PBXGroup;
+			children = (
+				3DD9DF691AC6D40000606989 /* SocivyTests.swift */,
+				3DD9DF671AC6D40000606989 /* Supporting Files */,
+			);
+			path = SocivyTests;
+			sourceTree = "<group>";
+		};
+		3DD9DF671AC6D40000606989 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3DD9DF681AC6D40000606989 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3DD9DF4B1AC6D40000606989 /* Socivy */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3DD9DF6D1AC6D40000606989 /* Build configuration list for PBXNativeTarget "Socivy" */;
+			buildPhases = (
+				3DD9DF481AC6D40000606989 /* Sources */,
+				3DD9DF491AC6D40000606989 /* Frameworks */,
+				3DD9DF4A1AC6D40000606989 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Socivy;
+			productName = Socivy;
+			productReference = 3DD9DF4C1AC6D40000606989 /* Socivy.app */;
+			productType = "com.apple.product-type.application";
+		};
+		3DD9DF621AC6D40000606989 /* SocivyTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3DD9DF701AC6D40000606989 /* Build configuration list for PBXNativeTarget "SocivyTests" */;
+			buildPhases = (
+				3DD9DF5F1AC6D40000606989 /* Sources */,
+				3DD9DF601AC6D40000606989 /* Frameworks */,
+				3DD9DF611AC6D40000606989 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3DD9DF651AC6D40000606989 /* PBXTargetDependency */,
+			);
+			name = SocivyTests;
+			productName = SocivyTests;
+			productReference = 3DD9DF631AC6D40000606989 /* SocivyTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3DD9DF441AC6D40000606989 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0620;
+				ORGANIZATIONNAME = "Socivy Team";
+				TargetAttributes = {
+					3DD9DF4B1AC6D40000606989 = {
+						CreatedOnToolsVersion = 6.2;
+					};
+					3DD9DF621AC6D40000606989 = {
+						CreatedOnToolsVersion = 6.2;
+						TestTargetID = 3DD9DF4B1AC6D40000606989;
+					};
+				};
+			};
+			buildConfigurationList = 3DD9DF471AC6D40000606989 /* Build configuration list for PBXProject "Socivy" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 3DD9DF431AC6D40000606989;
+			productRefGroup = 3DD9DF4D1AC6D40000606989 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3DD9DF4B1AC6D40000606989 /* Socivy */,
+				3DD9DF621AC6D40000606989 /* SocivyTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3DD9DF4A1AC6D40000606989 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3DD9DF591AC6D40000606989 /* Main.storyboard in Resources */,
+				3DD9DF5E1AC6D40000606989 /* LaunchScreen.xib in Resources */,
+				3DD9DF5B1AC6D40000606989 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3DD9DF611AC6D40000606989 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3DD9DF481AC6D40000606989 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3DD9DF561AC6D40000606989 /* DetailViewController.swift in Sources */,
+				3DD9DF541AC6D40000606989 /* MasterViewController.swift in Sources */,
+				3DD9DF521AC6D40000606989 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3DD9DF5F1AC6D40000606989 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3DD9DF6A1AC6D40000606989 /* SocivyTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3DD9DF651AC6D40000606989 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3DD9DF4B1AC6D40000606989 /* Socivy */;
+			targetProxy = 3DD9DF641AC6D40000606989 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		3DD9DF571AC6D40000606989 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3DD9DF581AC6D40000606989 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		3DD9DF5C1AC6D40000606989 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3DD9DF5D1AC6D40000606989 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		3DD9DF6B1AC6D40000606989 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		3DD9DF6C1AC6D40000606989 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		3DD9DF6E1AC6D40000606989 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Socivy/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		3DD9DF6F1AC6D40000606989 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Socivy/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		3DD9DF711AC6D40000606989 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = SocivyTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Socivy.app/Socivy";
+			};
+			name = Debug;
+		};
+		3DD9DF721AC6D40000606989 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = SocivyTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Socivy.app/Socivy";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3DD9DF471AC6D40000606989 /* Build configuration list for PBXProject "Socivy" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3DD9DF6B1AC6D40000606989 /* Debug */,
+				3DD9DF6C1AC6D40000606989 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3DD9DF6D1AC6D40000606989 /* Build configuration list for PBXNativeTarget "Socivy" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3DD9DF6E1AC6D40000606989 /* Debug */,
+				3DD9DF6F1AC6D40000606989 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		3DD9DF701AC6D40000606989 /* Build configuration list for PBXNativeTarget "SocivyTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3DD9DF711AC6D40000606989 /* Debug */,
+				3DD9DF721AC6D40000606989 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3DD9DF441AC6D40000606989 /* Project object */;
+}
